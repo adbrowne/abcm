@@ -33,7 +33,7 @@ namespace PostFixTranslater
             if (isDigit(lookahead))
             {
                 output(lookahead);
-                match(lookahead);
+                match(lookahead.Type);
             }
             else throw new InvalidOperationException(String.Format("Illegal term detected {0}", lookahead));
         }
@@ -42,15 +42,15 @@ namespace PostFixTranslater
         {
             while (true)
             {
-                if (lookahead == Token.Plus)
+                if (lookahead.Type == TokenType.Plus)
                 {
-                    match(Token.Plus);
+                    match(TokenType.Plus);
                     term();
                     output('+');
                 }
-                else if (lookahead == Token.Minus)
+                else if (lookahead.Type == TokenType.Minus)
                 {
-                    match(Token.Minus);
+                    match(TokenType.Minus);
                     term();
                     output('-');
                 }
@@ -66,11 +66,11 @@ namespace PostFixTranslater
             result.Append(c);
         }
 
-        private void match(Token token)
+        private void match(TokenType token)
         {
-            if (lookahead == token)
+            if (lookahead.Type == token)
             {
-                lookahead = enumerator.MoveNext() ? enumerator.Current : Token.Empty;
+                lookahead = enumerator.MoveNext() ? enumerator.Current : new Token(TokenType.Empty);
             }
             else throw new InvalidOperationException(String.Format("Failed to match on {0}", token));
         }
@@ -79,12 +79,12 @@ namespace PostFixTranslater
 
         private static bool isDigit(Token lookahead)
         {
-            return (int)lookahead < 10;
+            return lookahead.Type == TokenType.Digit;
         }
 
         private void output(Token token)
         {
-            result.Append(((int)token).ToString());
+            result.Append(token.Value.ToString());
         }
     }
 }

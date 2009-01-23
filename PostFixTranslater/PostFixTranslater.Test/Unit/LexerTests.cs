@@ -17,7 +17,7 @@ namespace PostFixTranslater.Test.Unit
             var tokens = simpleLexer.Tokenize("0");
 
             Assert.That(tokens.Count(), Is.EqualTo(1));
-            Assert.That(tokens.First(), Is.EqualTo(Token.Zero));
+            Assert.That(tokens.First(), Is.EqualTo(new Token(TokenType.Digit, 0)));
         }
 
         [Test]
@@ -29,16 +29,16 @@ namespace PostFixTranslater.Test.Unit
             
             ICollection resultTokens = new List<Token>(
                 new []{
-                    Token.Zero, 
-                    Token.One, 
-                    Token.Two, 
-                    Token.Three, 
-                    Token.Four, 
-                    Token.Five, 
-                    Token.Six, 
-                    Token.Seven, 
-                    Token.Eight, 
-                    Token.Nine
+                    new Token(TokenType.Digit, 0), 
+                    new Token(TokenType.Digit, 1), 
+                    new Token(TokenType.Digit, 2), 
+                    new Token(TokenType.Digit, 3), 
+                    new Token(TokenType.Digit, 4), 
+                    new Token(TokenType.Digit, 5), 
+                    new Token(TokenType.Digit, 6), 
+                    new Token(TokenType.Digit, 7), 
+                    new Token(TokenType.Digit, 8), 
+                    new Token(TokenType.Digit, 9), 
                 });
 
             AssertListIsSame(resultTokens, tokens);
@@ -53,8 +53,8 @@ namespace PostFixTranslater.Test.Unit
 
             ICollection resultTokens = new List<Token>(
                 new[]{
-                    Token.Plus, 
-                    Token.Minus
+                    new Token(TokenType.Plus),
+                    new Token(TokenType.Minus)
                 });
 
             AssertListIsSame(resultTokens, tokens);
@@ -64,16 +64,16 @@ namespace PostFixTranslater.Test.Unit
         public void SimpleEquationTest()
         {
             var simpleLexer = new SimpleLexer();
-            var tokens = new List<Token>(simpleLexer.Tokenize("9-6+2"));
+            var tokens = new List<Token>(simpleLexer.Tokenize("9-5+2"));
             Assert.That(tokens.Count(), Is.EqualTo(5));
 
             ICollection resultTokens = new List<Token>(
                 new[]{
-                    Token.Nine, 
-                    Token.Minus,
-                    Token.Six,
-                    Token.Plus,
-                    Token.Two
+                    new Token(TokenType.Digit, 9),
+                    new Token(TokenType.Minus),
+                    new Token(TokenType.Digit, 5),
+                    new Token(TokenType.Plus),
+                    new Token(TokenType.Digit, 2),
                 });
 
             AssertListIsSame(resultTokens, tokens);
