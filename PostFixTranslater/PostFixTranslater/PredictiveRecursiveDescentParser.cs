@@ -14,14 +14,14 @@ namespace PostFixTranslater
             enumerator = tokens.GetEnumerator();
             result = new StringBuilder();
 
-            if(enumerator.MoveNext())
+            if (enumerator.MoveNext())
             {
                 lookahead = enumerator.Current;
                 expr();
             }
             return result.ToString();
         }
-        
+
         private void expr()
         {
             term();
@@ -40,19 +40,24 @@ namespace PostFixTranslater
 
         private void rest()
         {
-            if(lookahead == Token.Plus)
+            while (true)
             {
-                match(Token.Plus);
-                term();
-                output('+');
-                rest();
-            }
-            else if(lookahead == Token.Minus)
-            {
-                match(Token.Minus);
-                term();
-                output('-');
-                rest();
+                if (lookahead == Token.Plus)
+                {
+                    match(Token.Plus);
+                    term();
+                    output('+');
+                }
+                else if (lookahead == Token.Minus)
+                {
+                    match(Token.Minus);
+                    term();
+                    output('-');
+                }
+                else
+                {
+                    break;
+                }
             }
         }
 
@@ -63,18 +68,18 @@ namespace PostFixTranslater
 
         private void match(Token token)
         {
-            if(lookahead == token)
+            if (lookahead == token)
             {
                 lookahead = enumerator.MoveNext() ? enumerator.Current : Token.Empty;
             }
             else throw new InvalidOperationException(String.Format("Failed to match on {0}", token));
         }
 
-        
+
 
         private static bool isDigit(Token lookahead)
         {
-            return (int) lookahead < 10;
+            return (int)lookahead < 10;
         }
 
         private void output(Token token)
