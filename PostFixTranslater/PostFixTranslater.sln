@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostFixTranslater", "PostFixTranslater\PostFixTranslater.csproj", "{2CC81134-9A43-430E-A04D-7B9E23E5D747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostFixTranslater.Test", "PostFixTranslater.Test\PostFixTranslater.Test.csproj", "{E868E021-9BD5-423D-BAD4-4DF857C77E9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CC81134-9A43-430E-A04D-7B9E23E5D747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC81134-9A43-430E-A04D-7B9E23E5D747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC81134-9A43-430E-A04D-7B9E23E5D747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC81134-9A43-430E-A04D-7B9E23E5D747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E868E021-9BD5-423D-BAD4-4DF857C77E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E868E021-9BD5-423D-BAD4-4DF857C77E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E868E021-9BD5-423D-BAD4-4DF857C77E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E868E021-9BD5-423D-BAD4-4DF857C77E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
