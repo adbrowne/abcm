@@ -40,22 +40,19 @@ namespace PostFixTranslater
 
         private void rest()
         {
-            while (true)
+            if(lookahead == Token.Plus)
             {
-                if (lookahead == Token.Plus)
-                {
-                    match(Token.Plus);
-                    term();
-                    output('+');
-                }
-                else if (lookahead == Token.Minus)
-                {
-                    match(Token.Minus);
-                    term();
-                    output('-');
-                }
-                else
-                    break;
+                match(Token.Plus);
+                term();
+                output('+');
+                rest();
+            }
+            else if(lookahead == Token.Minus)
+            {
+                match(Token.Minus);
+                term();
+                output('-');
+                rest();
             }
         }
 
