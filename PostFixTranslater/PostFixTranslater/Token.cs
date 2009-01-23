@@ -1,3 +1,5 @@
+using System;
+
 namespace PostFixTranslater
 {
     public enum TokenType
@@ -21,6 +23,14 @@ namespace PostFixTranslater
         public Token(TokenType type) : this(type, null)
         {
             
+        }
+
+        public override string ToString()
+        {
+            if (Value != null)
+                return String.Format("Token.{0}: {1}", Type, Value);
+            
+            return String.Format("Token.{0}", Type);
         }
     }
 }

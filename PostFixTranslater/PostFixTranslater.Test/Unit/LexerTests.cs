@@ -21,10 +21,20 @@ namespace PostFixTranslater.Test.Unit
         }
 
         [Test]
+        public void TwoDigitNumberTest()
+        {
+            var simpleLexer = new SimpleLexer();
+            var tokens = simpleLexer.Tokenize("42");
+
+            Assert.That(tokens.Count(), Is.EqualTo(1));
+            Assert.That(tokens.First(), Is.EqualTo(new Token(TokenType.Digit, 42)));
+        }
+
+        [Test]
         public void AllDigitsTest()
         {
             var simpleLexer = new SimpleLexer();
-            var tokens = new List<Token>(simpleLexer.Tokenize("0123456789"));
+            var tokens = new List<Token>(simpleLexer.Tokenize("0 1 2 3 4 5 6 7 8 9"));
             Assert.That(tokens.Count(), Is.EqualTo(10));
             
             ICollection resultTokens = new List<Token>(
