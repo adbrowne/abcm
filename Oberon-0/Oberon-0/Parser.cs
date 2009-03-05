@@ -82,8 +82,8 @@ namespace Oberon_0
                     if (modId != scanner.id)
                     {
                         scanner.Mark("no match");
-                        NextToken();
                     }
+                    NextToken();
                 }
                 else
                     scanner.Mark("ident?");

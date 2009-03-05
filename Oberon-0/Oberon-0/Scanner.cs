@@ -74,7 +74,7 @@ namespace Oberon_0
 
         internal Token Get()
         {
-            while (!Eof() && (ch == ' ' || ch == '\n'))
+            while (!Eof() && (ch == ' ' || ch == '\n' || ch == '\r'))
             {
                 ReadChar();
             }

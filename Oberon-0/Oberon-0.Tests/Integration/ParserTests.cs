@@ -15,7 +15,7 @@ namespace Oberon_0.Tests.Integration
         {
             var parser = new Parser();
             Stream input = GetStream(@"MODULE TEST;
-END
+END TEST.
 ");
             parser.Compile(input);
         }
