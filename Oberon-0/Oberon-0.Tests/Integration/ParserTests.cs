@@ -20,6 +20,61 @@ END TEST.
             parser.Compile(input);
         }
 
+        [Test]
+        public void TestProcedure()
+        {
+            var parser = new Parser();
+            Stream input = GetStream(@"MODULE TEST;
+PROCEDURE TestProc;
+BEGIN
+END TestProc;
+END TEST.
+");
+            parser.Compile(input);
+        }
+
+        [Test]
+        public void TestModuleDeclaration()
+        {
+            var parser = new Parser();
+            Stream input = GetStream(
+@"MODULE TEST;
+VAR W: Writer;
+PROCEDURE TestProc;
+BEGIN
+END TestProc;
+END TEST.
+");
+            parser.Compile(input);
+        }
+
+        [Test]
+        public void TestMethodCall()
+        {
+            var parser = new Parser();
+            Stream input = GetStream(
+@"MODULE TEST;
+PROCEDURE TestProc;
+BEGIN
+    Write();
+END TestProc;
+END TEST.
+");
+            parser.Compile(input);
+        }
+//        [Test]
+//        public void TestProcedureWithParens()
+//        {
+//            var parser = new Parser();
+//            Stream input = GetStream(@"MODULE TEST;
+//PROCEDURE TestProc();
+//BEGIN
+//END TestProc;
+//END TEST.
+//");
+//            parser.Compile(input);
+//        }
+
         private Stream GetStream(string input)
         {
             Stream stream = new MemoryStream();

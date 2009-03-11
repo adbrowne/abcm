@@ -46,11 +46,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Generator.cs" />
+    <Compile Include="GenForms.cs" />
+    <Compile Include="GenItem.cs" />
+    <Compile Include="GenType.cs" />
+    <Compile Include="ILGen.cs" />
+    <Compile Include="ObjDesc.cs" />
     <Compile Include="KeyTable.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Scanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Writer.cs" />
     <Compile Include="Token.cs" />
+    <Compile Include="TypeDesc.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

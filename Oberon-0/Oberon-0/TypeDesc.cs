@@ -2,7 +2,8 @@ namespace Oberon_0
 {
     class TypeDesc
     {
-        public int form;
+        public static TypeDesc intType = new TypeDesc {form = GenForms.Integer, size = 4};
+        public GenForms form;
         public object fields;
         public TypeDesc @base;
         public int size, len;
