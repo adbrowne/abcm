@@ -57,6 +57,7 @@ END TEST.
 PROCEDURE TestProc;
 BEGIN
     Write();
+    Write();
 END TestProc;
 END TEST.
 ");

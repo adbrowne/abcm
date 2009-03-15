@@ -15,8 +15,7 @@ namespace Oberon_0
         private ObjDesc universe = new ObjDesc();
         private readonly ObjDesc guard = new ObjDesc();
         private const long WordSize = 4;
-        private List<ObjDesc> builtInProcs = new List<ObjDesc>();
-
+        
         public Parser()
         {
             topScope = null;
@@ -45,17 +44,7 @@ namespace Oberon_0
             proc.next = guard;
             proc.ILGen = ilDelegate;
 
-            builtInProcs.Add(proc);
             x.next = proc;
-        }
-
-        private void GenerateBuiltInProcs(Generator generator)
-        {
-            foreach (var proc in builtInProcs)
-            {
-                generator.AddMethod(proc);    
-            }
-            
         }
 
         private void enter(GenType typ, int i, string name, TypeDesc type)
@@ -100,7 +89,6 @@ namespace Oberon_0
 
                 generator = new Generator("output.exe");
                 generator.Open(modId);
-                GenerateBuiltInProcs(generator);
                 OpenScope();
                 
                 if (sym == Token.Semicolon)
@@ -170,7 +158,7 @@ namespace Oberon_0
 
         private void StatSequence()
         {
-            ObjDesc obj;
+            ObjDesc obj, par;
             GenItem x;
             do
             {
@@ -189,15 +177,40 @@ namespace Oberon_0
                     x = generator.MakeItem(obj);
                     NextToken();
 
-                    if (sym == Token.Lparen)
+                    if (x.mode == GenType.Proc)
                     {
-                        NextToken();
-                        if (sym == Token.Rparen)
+                        par = obj.dsc;
+
+                        if (sym == Token.Lparen)
                         {
                             NextToken();
+                            if (sym == Token.Rparen)
+                            {
+                                NextToken();
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    parameter(par);
+                                    if(sym == Token.Comma) NextToken();
+                                    else if (sym == Token.Rparen) {
+                                        NextToken();
+                                        break;
+                                    }
+                                    else if((int) sym >= (int)Token.Semicolon) 
+                                        break;
+                                    else
+                                    {
+                                        scanner.Mark(") or ,?");
+                                    }
+
+                                } while (true);
+                                // TODO: Handle parameters  
+                            }
                         }
+                        generator.Call(x);
                     }
-                    generator.Call(x);
                 }
                 else
                 {
@@ -217,6 +230,31 @@ namespace Oberon_0
 
             } while (true);
             /* TODO: implement */
+        }
+
+        private void parameter(ObjDesc fp)
+        {
+            GenItem x;
+            x = expression();
+            if(IsParam(fp))
+            {
+                generator.Parameter(x, fp.type, fp.@class);
+                fp = fp.next;
+            }
+            else
+            {
+                scanner.Mark("too many parameters");
+            }
+        }
+
+        private bool IsParam(ObjDesc fp)
+        {
+            throw new NotImplementedException();
+        }
+
+        private GenItem expression()
+        {
+            throw new NotImplementedException();
         }
 
         private void ProcedureDecl()

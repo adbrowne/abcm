@@ -81,7 +81,8 @@ namespace Oberon_0
             if(x.mode == GenType.Proc)
             {
                 var methodIlGen = currentMethodBuilder.GetILGenerator();
-                methodIlGen.Emit(OpCodes.Call, x.ObjDesc.MethodBuilder);
+                x.ObjDesc.ILGen(methodIlGen);
+                //methodIlGen.Emit(OpCodes.Call, x.ObjDesc.MethodBuilder);
             }
             Debug.WriteLine(String.Format("Call: Call({0})", x.type));
         }
@@ -100,6 +101,11 @@ namespace Oberon_0
             proc.ILGen(ilGenerator);
             ilGenerator.Emit(OpCodes.Ret);
             proc.MethodBuilder = methodBuilder;
+        }
+
+        public void Parameter(GenItem x, TypeDesc type, GenType @class)
+        {
+            throw new NotImplementedException();
         }
     }
 }
