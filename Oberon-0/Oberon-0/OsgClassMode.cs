@@ -1,6 +1,6 @@
 ﻿namespace Oberon_0
 {
-    enum GenType
+    enum OsgClassMode
     {
         Head = 0,
         Var = 1,

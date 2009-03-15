@@ -1,6 +1,6 @@
 namespace Oberon_0
 {
-    enum GenForms
+    enum OsgForm
     {
         Boolean = 0,
         Integer = 1,

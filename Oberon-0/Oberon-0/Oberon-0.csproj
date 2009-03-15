@@ -46,11 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Generator.cs" />
-    <Compile Include="GenForms.cs" />
-    <Compile Include="GenItem.cs" />
-    <Compile Include="GenType.cs" />
+    <Compile Include="OsgForm.cs" />
+    <Compile Include="OsgItem.cs" />
+    <Compile Include="OsgClassMode.cs" />
     <Compile Include="ILGen.cs" />
-    <Compile Include="ObjDesc.cs" />
+    <Compile Include="OsgObject.cs" />
     <Compile Include="KeyTable.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Scanner.cs" />

@@ -11,9 +11,9 @@ namespace Oberon_0
         private Token sym;
         private Scanner scanner;
         private Generator generator;
-        private ObjDesc topScope = new ObjDesc();
-        private ObjDesc universe = new ObjDesc();
-        private readonly ObjDesc guard = new ObjDesc();
+        private OsgObject topScope = new OsgObject();
+        private OsgObject universe = new OsgObject();
+        private readonly OsgObject guard = new OsgObject();
         private const long WordSize = 4;
         
         public Parser()
@@ -28,7 +28,7 @@ namespace Oberon_0
                                typeof(System.Console).GetMethod("WriteLine",
                                                                  new System.Type[] { typeof(string) }));
                 }));
-            //enter(GenType.Typ, 1, "Writer", TypeDesc.classType);
+            //enter(OsgClassMode.Typ, 1, "Writer", TypeDesc.classType);
             universe = topScope;
         }
 
@@ -38,25 +38,25 @@ namespace Oberon_0
             while (x.next != guard)
                 x = x.next;
 
-            var proc = new ObjDesc();
+            var proc = new OsgObject();
             proc.name = procName;
-            proc.@class = GenType.Proc;
+            proc.@class = OsgClassMode.Proc;
             proc.next = guard;
             proc.ILGen = ilDelegate;
 
             x.next = proc;
         }
 
-        private void enter(GenType typ, int i, string name, TypeDesc type)
+        private void enter(OsgClassMode typ, int i, string name, TypeDesc type)
         {
-            ObjDesc obj = new ObjDesc();
-            obj.@class = typ;
-            obj.val = i;
-            obj.name = name;
-            obj.type = type;
-            obj.dsc = null;
-            obj.next = topScope.next;
-            topScope.next = obj;
+            OsgObject osg = new OsgObject();
+            osg.@class = typ;
+            osg.val = i;
+            osg.name = name;
+            osg.type = type;
+            osg.dsc = null;
+            osg.next = topScope.next;
+            topScope.next = osg;
         }
 
         public void Compile(Stream input)
@@ -158,8 +158,8 @@ namespace Oberon_0
 
         private void StatSequence()
         {
-            ObjDesc obj, par;
-            GenItem x;
+            OsgObject osg, par;
+            OsgItem x;
             do
             {
                 if ((int)sym < (int)Token.Ident)
@@ -173,13 +173,13 @@ namespace Oberon_0
 
                 if (sym == Token.Ident)
                 {
-                    obj = find();
-                    x = generator.MakeItem(obj);
+                    osg = find();
+                    x = generator.MakeItem(osg);
                     NextToken();
 
-                    if (x.mode == GenType.Proc)
+                    if (x.mode == OsgClassMode.Proc)
                     {
-                        par = obj.dsc;
+                        par = osg.dsc;
 
                         if (sym == Token.Lparen)
                         {
@@ -232,9 +232,9 @@ namespace Oberon_0
             /* TODO: implement */
         }
 
-        private void parameter(ObjDesc fp)
+        private void parameter(OsgObject fp)
         {
-            GenItem x;
+            OsgItem x;
             x = expression();
             if(IsParam(fp))
             {
@@ -247,12 +247,12 @@ namespace Oberon_0
             }
         }
 
-        private bool IsParam(ObjDesc fp)
+        private bool IsParam(OsgObject fp)
         {
             throw new NotImplementedException();
         }
 
-        private GenItem expression()
+        private OsgItem expression()
         {
             throw new NotImplementedException();
         }
@@ -262,12 +262,12 @@ namespace Oberon_0
             const int markSize = 8;
             Int64 parblksize, locblksize;
             string procId;
-            ObjDesc proc, obj;
+            OsgObject proc, osg;
             NextToken();
             if (sym == Token.Ident)
             {
                 procId = scanner.id;
-                proc = NewObj(GenType.Proc);
+                proc = NewObj(OsgClassMode.Proc);
                 NextToken();
                 parblksize = markSize;
                 generator.IncLevel(1, procId);
@@ -278,25 +278,25 @@ namespace Oberon_0
                 {
                     // TODO: handle braces
                 }
-                else if (generator.curlev == GenType.Var)
+                else if (generator.curlev == OsgClassMode.Var)
                 {
                     generator.EnterCmd(procId);
                 }
 
-                obj = topScope.next;
+                osg = topScope.next;
                 locblksize = parblksize;
 
-                while (obj != guard)
+                while (osg != guard)
                 {
-                    obj.lev = generator.curlev;
-                    if (obj.@class == GenType.Par)
+                    osg.lev = generator.curlev;
+                    if (osg.@class == OsgClassMode.Par)
                     {
                         locblksize -= WordSize;
                     }
                     else
                     {
-                        obj.val = locblksize;
-                        obj = obj.next;
+                        osg.val = locblksize;
+                        osg = osg.next;
                     }
                 }
 
@@ -354,10 +354,10 @@ namespace Oberon_0
             }
         }
 
-        private ObjDesc NewObj(GenType proc)
+        private OsgObject NewObj(OsgClassMode proc)
         {
-            ObjDesc @new;
-            ObjDesc x = topScope;
+            OsgObject @new;
+            OsgObject x = topScope;
             guard.name = scanner.id;
 
             while (x.next.name != scanner.id)
@@ -367,7 +367,7 @@ namespace Oberon_0
 
             if (x.next == guard)
             {
-                @new = new ObjDesc();
+                @new = new OsgObject();
                 @new.name = scanner.id;
                 @new.@class = proc;
                 @new.next = guard;
@@ -383,8 +383,8 @@ namespace Oberon_0
 
         private void Declarations(long varSize)
         {
-            ObjDesc obj;
-            ObjDesc first;
+            OsgObject osg;
+            OsgObject first;
             TypeDesc tp;
 
             if ((int)sym < (int)Token.Const & sym != Token.End)
@@ -403,7 +403,7 @@ namespace Oberon_0
                 //    NextToken();
                 //    while (sym == Token.Ident)
                 //    {
-                //        obj = NewObj(GenType.Const);
+                //        osg = NewObj(OsgClassMode.Const);
                 //        NextToken();
                 //        if(sym == Token.Eql)
                 //        {
@@ -423,18 +423,18 @@ namespace Oberon_0
                     NextToken();
                     while (sym == Token.Ident)
                     {
-                        first = IdentList(GenType.Var);
+                        first = IdentList(OsgClassMode.Var);
                         tp = type();
 
-                        obj = first;
+                        osg = first;
 
-                        while (obj != guard)
+                        while (osg != guard)
                         {
-                            obj.type = tp;
-                            obj.lev = generator.curlev;
-                            varSize = varSize + obj.type.size;
-                            obj.val = -varSize;
-                            obj = obj.next;
+                            osg.type = tp;
+                            osg.lev = generator.curlev;
+                            varSize = varSize + osg.type.size;
+                            osg.val = -varSize;
+                            osg = osg.next;
                         }
 
                         if (sym == Token.Semicolon)
@@ -465,9 +465,9 @@ namespace Oberon_0
             } while (true);
         }
 
-        private ObjDesc IdentList(GenType var)
+        private OsgObject IdentList(OsgClassMode var)
         {
-            ObjDesc first = null;
+            OsgObject first = null;
             if (sym == Token.Ident)
             {
                 first = NewObj(var);
@@ -490,15 +490,15 @@ namespace Oberon_0
 
         private TypeDesc type()
         {
-            ObjDesc obj;
+            OsgObject osg;
             TypeDesc type = TypeDesc.intType;
             if (sym == Token.Ident)
             {
-                obj = find();
+                osg = find();
                 NextToken();
-                if (obj.@class == GenType.Typ)
+                if (osg.@class == OsgClassMode.Typ)
                 {
-                    type = obj.type;
+                    type = osg.type;
                 }
                 else
                 {
@@ -508,9 +508,9 @@ namespace Oberon_0
             return type;
         }
 
-        private ObjDesc find()
+        private OsgObject find()
         {
-            ObjDesc x, s;
+            OsgObject x, s;
             s = topScope;
             guard.name = scanner.id;
             do
@@ -535,7 +535,7 @@ namespace Oberon_0
 
         }
 
-        private GenItem Expression()
+        private OsgItem Expression()
         {
             throw new NotImplementedException();
         }
@@ -547,8 +547,8 @@ namespace Oberon_0
 
         private void OpenScope()
         {
-            var s = new ObjDesc();
-            s.@class = GenType.Head;
+            var s = new OsgObject();
+            s.@class = OsgClassMode.Head;
             s.dsc = topScope;
             s.next = guard;
             topScope = s;
