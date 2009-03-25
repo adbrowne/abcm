@@ -107,5 +107,10 @@ namespace Oberon_0
         {
             throw new NotImplementedException();
         }
+
+        public void Relation(Token op, OsgItem x, OsgItem y)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

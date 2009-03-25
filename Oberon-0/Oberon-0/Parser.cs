@@ -162,10 +162,10 @@ namespace Oberon_0
             OsgItem x;
             do
             {
-                if ((int)sym < (int)Token.Ident)
+                if (sym.Value < Token.Ident.Value)
                 {
                     scanner.Mark("statement?");
-                    while ((int)sym >= (int)Token.Ident)
+                    while (sym.Value >= Token.Ident.Value)
                     {
                         NextToken();
                     }
@@ -198,7 +198,7 @@ namespace Oberon_0
                                         NextToken();
                                         break;
                                     }
-                                    else if((int) sym >= (int)Token.Semicolon) 
+                                    else if((int) sym.Value >= (int)Token.Semicolon.Value) 
                                         break;
                                     else
                                     {
@@ -219,7 +219,7 @@ namespace Oberon_0
 
                 if (sym == Token.Semicolon)
                     NextToken();
-                else if ((int)sym >= (int)Token.Semicolon & (int)sym < (int)Token.If | sym >= Token.Array)
+                else if (sym.Value >= Token.Semicolon.Value & sym.Value < Token.If.Value | sym.Value >= Token.Array.Value)
                 {
                     break;
                 }
@@ -247,14 +247,56 @@ namespace Oberon_0
             }
         }
 
-        private bool IsParam(OsgObject fp)
+        private bool IsParam(OsgObject obj)
         {
-            throw new NotImplementedException();
+            return (obj.@class == OsgClassMode.Par || (obj.@class == OsgClassMode.Var && obj.val > 0));
         }
 
         private OsgItem expression()
         {
+            Token op;
+            OsgItem y, x;
+            x = SimpleExpression();
+            if((int)sym.Value > (int)Token.Eql.Value && (int) sym.Value <= (int) Token.Gtr.Value)
+            {
+                op = sym;
+                NextToken();
+                y = SimpleExpression();
+                generator.Relation(op, x, y);
+            }
+
+            return x;
+        }
+
+        private OsgItem SimpleExpression()
+        {
             throw new NotImplementedException();
+        }
+
+        internal void factor(ref OsgItem x)
+        {
+            OsgObject obj;
+            if (sym.Value < Token.Lparen.Value)
+            {
+                scanner.Mark("ident?");
+                while(sym.Value < Token.Lparen.Value)
+                {
+                    NextToken();
+                }
+            }
+
+            if(sym == Token.Ident)
+            {
+                obj = find();
+                NextToken();
+                generator.MakeItem(x, obj);
+                selector(x);
+            }
+    }
+
+        private void selector(OsgItem x)
+        {
+            
         }
 
         private void ProcedureDecl()
@@ -387,12 +429,12 @@ namespace Oberon_0
             OsgObject first;
             TypeDesc tp;
 
-            if ((int)sym < (int)Token.Const & sym != Token.End)
+            if ((int)sym.Value < (int)Token.Const.Value & sym.Value != Token.End.Value)
             {
                 do
                 {
                     NextToken();
-                } while (((int)sym < (int)Token.Const) && sym != Token.End);
+                } while (((int)sym.Value < (int)Token.Const.Value) && sym.Value != Token.End.Value);
             }
 
             do
@@ -447,7 +489,7 @@ namespace Oberon_0
                         }
                     }
 
-                    if ((int)sym >= (int)Token.Const & ((int)sym <= (int)Token.Var))
+                    if ((int)sym.Value >= (int)Token.Const.Value & ((int)sym.Value <= (int)Token.Var.Value))
                     {
                         scanner.Mark("declaration?");
                     }
@@ -533,11 +575,6 @@ namespace Oberon_0
                 s = s.dsc;
             } while (true);
 
-        }
-
-        private OsgItem Expression()
-        {
-            throw new NotImplementedException();
         }
 
         private void NextToken()

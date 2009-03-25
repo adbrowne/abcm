@@ -1,0 +1,13 @@
+MODULE TEST;
+
+PROCEDURE TestProc(VAR x: INTEGER);
+
+BEGIN 
+
+x := 3;
+
+END TestProc;
+
+BEGIN
+
+END TEST.

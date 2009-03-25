@@ -63,18 +63,18 @@ END TEST.
 ");
             parser.Compile(input);
         }
-//        [Test]
-//        public void TestProcedureWithParens()
-//        {
-//            var parser = new Parser();
-//            Stream input = GetStream(@"MODULE TEST;
-//PROCEDURE TestProc();
-//BEGIN
-//END TestProc;
-//END TEST.
-//");
-//            parser.Compile(input);
-//        }
+        [Test]
+        public void TestProcedureWithParens()
+        {
+            var parser = new Parser();
+            Stream input = GetStream(@"MODULE TEST;
+PROCEDURE TestProc();
+BEGIN
+END TestProc;
+END TEST.
+");
+            parser.Compile(input);
+        }
 
         private Stream GetStream(string input)
         {
