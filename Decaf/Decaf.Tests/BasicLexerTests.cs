@@ -41,6 +41,20 @@ namespace Decaf.Tests
             AssertThat(sampleInput).HasNoTokens();
         }
 
+        [Test]
+        public void DigitTest()
+        {
+            const string sampleInput = @"9";
+            AssertThat(sampleInput).ResultsIn("9", DecafLexer.DIGIT, 1);
+        }
+
+        [Test]
+        public void MultipleDigitTest()
+        {
+            const string sampleInput = @"98";
+            AssertThat(sampleInput).ResultsIn("9", DecafLexer.DIGIT, 2);
+        }
+
         private static LexResult AssertThat(string input)
         {
             var antlrStringStream = new ANTLRStringStream(input);

@@ -5,8 +5,19 @@ options
     language=CSharp2;
 }
 
-prog:   STRING_LITERAL+ ;
+prog:   expr+ ;
 
+expr	:	 literal;
+
+literal	:	 int_literal;
+
+int_literal
+	:	 decimal_literal;
+	
+decimal_literal: DIGIT+;
+	
+DIGIT: '0'..'9';
+	 
 STRING_LITERAL : '\"' .* '\"';
   
 CHAR_LITERAL
