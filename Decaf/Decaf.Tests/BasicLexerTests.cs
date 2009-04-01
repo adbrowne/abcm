@@ -55,6 +55,20 @@ namespace Decaf.Tests
             AssertThat(sampleInput).ResultsIn("9", DecafLexer.DIGIT, 2);
         }
 
+        [Test]
+        public void AdditionOperatorTest()
+        {
+            const string sampleInput = @"+";
+            AssertThat(sampleInput).ResultsIn("+", DecafLexer.ARITH_OP, 1);
+        }
+
+        [Test]
+        public void AdditionTest()
+        {
+            const string sampleInput = @"9+8";
+            AssertThat(sampleInput).ResultsIn("9", DecafLexer.DIGIT).Then("+", DecafLexer.ARITH_OP).Then("8",DecafLexer.DIGIT);
+        }
+
         private static LexResult AssertThat(string input)
         {
             var antlrStringStream = new ANTLRStringStream(input);

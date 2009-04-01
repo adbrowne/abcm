@@ -5,16 +5,29 @@ options
     language=CSharp2;
 }
 
+@lexer::namespace {
+    Decaf
+}
+
+@parser::namespace {
+    Decaf
+}
+
 prog:   expr+ ;
 
-expr	:	 literal;
+expr	:	 (literal) (binop expr)*;
+
+binop	:	 ARITH_OP{ Generator.Operator($ARITH_OP.text);};
+
+ARITH_OP 
+	:	 '+';
 
 literal	:	 int_literal;
 
-int_literal
-	:	 decimal_literal;
+int_literal :	 decimal_literal { Generator.OutputDigit($decimal_literal.value);};
 	
-decimal_literal: DIGIT+;
+decimal_literal returns [int value]
+	: DIGIT+ {$value = int.Parse($DIGIT.text);};
 	
 DIGIT: '0'..'9';
 	 

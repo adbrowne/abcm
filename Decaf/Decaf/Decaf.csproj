@@ -53,8 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DecafParser.Static.cs" />
     <Compile Include="DecafLexer.cs" />
     <Compile Include="DecafParser.cs" />
+    <Compile Include="IGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
