@@ -1,0 +1,9 @@
+Decaf/bin/
+Decaf/obj/
+Decaf.Tests/obj
+Decaf.Tests/bin
+_ReSharper.Decaf/
+Decaf/Oberon-0.csproj.user
+Decaf.4.0.resharper.user
+Decaf.4.1.resharper.user
+Decaf.suo
