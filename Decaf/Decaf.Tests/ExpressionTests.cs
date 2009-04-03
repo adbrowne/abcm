@@ -18,8 +18,9 @@ namespace Decaf.Tests
             
             var sampleInput = SurroundWithProgram("9");
             var generator = repository.DynamicMock<IGenerator>();
-            
-            generator.Expect(x => x.OutputDigit(9));
+
+            generator.Expect(x => x.BeginExpression());
+            generator.Expect(x => x.ExprNumber(9));
             
             var parser = CreateParser(sampleInput, generator);
             parser.prog();
@@ -35,9 +36,7 @@ namespace Decaf.Tests
             var sampleInput = SurroundWithProgram("9+8");
             var generator = repository.DynamicMock<IGenerator>();
 
-            generator.Expect(x => x.OutputDigit(9));
-            generator.Expect(x => x.Operator("+"));
-            generator.Expect(x => x.OutputDigit(8));
+            generator.Expect(x => x.ExprAddition(9,8));
             var parser = CreateParser(sampleInput, generator);
             parser.prog();
 

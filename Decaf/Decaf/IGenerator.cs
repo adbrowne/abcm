@@ -2,7 +2,8 @@ namespace Decaf
 {
     public interface IGenerator
     {
-        void OutputDigit(int digit);
-        void Operator(string c);
+        void BeginExpression();
+        void ExprNumber(int i);
+        void ExprAddition(int num1, int num2);
     }
 }
