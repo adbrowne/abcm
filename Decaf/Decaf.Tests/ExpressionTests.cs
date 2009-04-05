@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Antlr.Runtime;
+using Castle.DynamicProxy;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -31,16 +31,48 @@ namespace Decaf.Tests
         [Test]
         public void SimpleAdditionExpressionTest()
         {
-            var repository = new MockRepository();
+            var input = "9+8";
+            var output = GetOutput(input);
 
-            var sampleInput = SurroundWithProgram("9+8");
-            var generator = repository.DynamicMock<IGenerator>();
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=8)
+ExprNumber(i=9)
+Operation(operationName=Addition)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
 
-            generator.Expect(x => x.ExprAddition(9,8));
+        [Test]
+        public void TwoAdditionsExpressionTest()
+        {
+            var input = "9+8+10";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=10)
+ExprNumber(i=8)
+Operation(operationName=Addition)
+ExprNumber(i=9)
+Operation(operationName=Addition)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        private string GetOutput(string input)
+        {
+            var sampleInput = SurroundWithProgram(input);
+
+            var proxyGenerator = new ProxyGenerator();
+            var output = new StringBuilder();
+            var generator = proxyGenerator.CreateInterfaceProxyWithoutTarget<IGenerator>(new ConsoleInterceptor(output));
+
             var parser = CreateParser(sampleInput, generator);
             parser.prog();
-
-            generator.VerifyAllExpectations();
+            return output.ToString();
         }
 
         private DecafParser CreateParser(string input, IGenerator generator)

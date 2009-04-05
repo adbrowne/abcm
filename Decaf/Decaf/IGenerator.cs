@@ -4,6 +4,8 @@ namespace Decaf
     {
         void BeginExpression();
         void ExprNumber(int i);
-        void ExprAddition(int num1, int num2);
+        void Operation(string operationName);
+        void Comment(string comment);
+        void EndExpression();
     }
 }

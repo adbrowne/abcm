@@ -13,18 +13,18 @@ options
     Decaf
 }
 
-prog:   expr+ ;
+prog:   ( {Generator.BeginExpression();} expr { Generator.EndExpression(); })+ ;
 
-expr	:	 (literal) (binop expr)*;
+expr	: (((l=literal )) (b=binop e=expr  )* { Generator.ExprNumber(int.Parse($l.text)); if($b.value != null){Generator.Operation($b.value);};});
 
-binop	:	 ARITH_OP{ Generator.Operator($ARITH_OP.text);};
+binop	returns [string value] :	 ARITH_OP {$value = "Addition";};
 
 ARITH_OP 
 	:	 '+';
 
-literal	:	 int_literal;
+literal	returns [int value]:	 int_literal { $value = int.Parse($int_literal.text);};
 
-int_literal :	 decimal_literal { Generator.ExprNumber($decimal_literal.value);};
+int_literal :	 decimal_literal;
 	
 decimal_literal returns [int value]
 	: DIGIT+ {$value = int.Parse($DIGIT.text);};
