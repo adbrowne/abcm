@@ -12,6 +12,14 @@ namespace Decaf
         {
             Generator = generator;
         }
+
+        private void GenerateExpression(ExprStack e)
+        {
+            foreach (var item in e)
+            {
+                item.Generate(Generator);
+            }
+        }
     }
 
 }

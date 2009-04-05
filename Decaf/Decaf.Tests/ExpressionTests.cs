@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Antlr.Runtime;
@@ -36,8 +37,8 @@ namespace Decaf.Tests
 
             var expected =
                 @"BeginExpression()
-ExprNumber(i=8)
 ExprNumber(i=9)
+ExprNumber(i=8)
 Operation(operationName=Addition)
 EndExpression()
 ";
@@ -48,19 +49,73 @@ EndExpression()
         public void TwoAdditionsExpressionTest()
         {
             var input = "9+8+10";
-            var output = GetOutput(input);
+            var output = GetOutput(input);  
 
             var expected =
                 @"BeginExpression()
-ExprNumber(i=10)
-ExprNumber(i=8)
-Operation(operationName=Addition)
 ExprNumber(i=9)
+ExprNumber(i=8)
+ExprNumber(i=10)
+Operation(operationName=Addition)
 Operation(operationName=Addition)
 EndExpression()
 ";
             Assert.AreEqual(expected, output);
         }
+
+        [Test]
+        public void SimpleMultiplicationExpressionTest()
+        {
+            var input = "9*8";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=9)
+ExprNumber(i=8)
+Operation(operationName=Multiplication)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
+        public void MultiplicationPrecedenceExpressionTest()
+        {
+            var input = "9*8+3";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=9)
+ExprNumber(i=8)
+Operation(operationName=Multiplication)
+ExprNumber(i=3)
+Operation(operationName=Addition)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+
+        [Test]
+        public void MultipleMultiplicationsExpressionTest()
+        {
+            var input = "9*8*3";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=9)
+ExprNumber(i=8)
+ExprNumber(i=3)
+Operation(operationName=Multiplication)
+Operation(operationName=Multiplication)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
 
         private string GetOutput(string input)
         {

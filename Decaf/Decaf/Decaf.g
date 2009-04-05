@@ -13,16 +13,42 @@ options
     Decaf
 }
 
-prog:   ( {Generator.BeginExpression();} expr { Generator.EndExpression(); })+ ;
+prog:   ( {Generator.BeginExpression();} e=expr { GenerateExpression(e); Generator.EndExpression(); })+ ;
 
-expr	: (((l=literal )) (b=binop e=expr  )* { Generator.ExprNumber(int.Parse($l.text)); if($b.value != null){Generator.Operation($b.value);};});
+expr	returns [ExprStack stack]: (m=multExpr (b=ARITH_OP e=expr  )* { 
+		if($b == null){
+			$stack = $m.stack;
+		}
+		else{
+			$stack = new ExprStack {new OperationExprItem("Addition")};
+			$stack.Prepend($e.stack);
+			$stack.Prepend($m.stack);
+		}
+	
+	});
 
-binop	returns [string value] :	 ARITH_OP {$value = "Addition";};
+binop	returns [string value] :	 ARITH_OP {$value = "Addition";} | MULT_OP {$value = "Multiplication";};
+
+multExpr returns [ExprStack stack]:   (l=literal (b=MULT_OP e=multExpr)* 
+    { 
+    
+    	if($b == null){
+		$stack = $l.stack;
+	}
+	else{
+		$stack = new ExprStack {new OperationExprItem("Multiplication")};
+		$stack.Prepend($e.stack);
+		$stack.Prepend($l.stack);
+	}    
+    })
+    ; 
 
 ARITH_OP 
 	:	 '+';
 
-literal	returns [int value]:	 int_literal { $value = int.Parse($int_literal.text);};
+MULT_OP :	 '*';
+
+literal	returns [ExprStack stack]:	 (int_literal { $stack = new ExprStack{ new NumericExprItem(int.Parse($int_literal.text))};});  
 
 int_literal :	 decimal_literal;
 	
