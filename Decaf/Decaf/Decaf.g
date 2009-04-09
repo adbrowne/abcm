@@ -15,28 +15,30 @@ options
 
 prog:   ( {Generator.BeginExpression();} e=expr { GenerateExpression(e); Generator.EndExpression(); })+ ;
 
-expr	returns [ExprStack stack]: (m=multExpr (b=ARITH_OP e=expr  )* { 
-		if($b == null){
+expr	returns [ExprStack stack]: (m=multExpr (b=arithop e=expr  )* { 
+		if($b.value == null){
 			$stack = $m.stack;
 		}
 		else{
-			$stack = new ExprStack {new OperationExprItem("Addition")};
+			$stack = new ExprStack {new OperationExprItem($b.value)};
 			$stack.Prepend($e.stack);
 			$stack.Prepend($m.stack);
 		}
 	
 	});
 
-binop	returns [string value] :	 ARITH_OP {$value = "Addition";} | MULT_OP {$value = "Multiplication";};
+arithop	returns [string value] :	 ARITH_OP {$value = "Addition";} | MINUS_OP{$value = "Subtraction";};
 
-multExpr returns [ExprStack stack]:   (l=atom (b=MULT_OP e=multExpr)* 
+multop	returns [string value] : MULT_OP { $value = "Multiplication"; } | DIV_OP{$value = "Division";};
+
+multExpr returns [ExprStack stack]:   (l=atom (b=multop e=multExpr)* 
     { 
     
-    	if($b == null){
+    	if($b.value == null){
 		$stack = $l.stack;
 	}
 	else{
-		$stack = new ExprStack {new OperationExprItem("Multiplication")};
+		$stack = new ExprStack {new OperationExprItem($b.value)};
 		$stack.Prepend($e.stack);
 		$stack.Prepend($l.stack);
 	}    
@@ -46,7 +48,10 @@ multExpr returns [ExprStack stack]:   (l=atom (b=MULT_OP e=multExpr)*
 ARITH_OP 
 	:	 '+';
 
+MINUS_OP:	 '-';
+
 MULT_OP :	 '*';
+DIV_OP 	:	 '/';
 
 literal	returns [ExprStack stack]:	 (int_literal { $stack = new ExprStack{ new NumericExprItem(int.Parse($int_literal.text))};});  
 

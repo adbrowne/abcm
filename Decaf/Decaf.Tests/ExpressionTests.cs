@@ -43,6 +43,22 @@ EndExpression()
         }
 
         [Test]
+        public void SimpleSubtractionExpressionTest()
+        {
+            var input = "9-8";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=9)
+ExprNumber(i=8)
+Operation(operationName=Subtraction)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
         public void TwoAdditionsExpressionTest()
         {
             var input = "9+8+10";
@@ -71,6 +87,22 @@ EndExpression()
 ExprNumber(i=9)
 ExprNumber(i=8)
 Operation(operationName=Multiplication)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
+        public void SimpleDivisionExpressionTest()
+        {
+            var input = "9/8";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=9)
+ExprNumber(i=8)
+Operation(operationName=Division)
 EndExpression()
 ";
             Assert.AreEqual(expected, output);
