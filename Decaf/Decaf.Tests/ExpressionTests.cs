@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using Antlr.Runtime;
 using Castle.DynamicProxy;
 using NUnit.Framework;
@@ -116,6 +113,23 @@ EndExpression()
             Assert.AreEqual(expected, output);
         }
 
+        [Test]
+        public void BracketsExpressionTest()
+        {
+            var input = "(9+8)*3";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=9)
+ExprNumber(i=8)
+Operation(operationName=Addition)
+ExprNumber(i=3)
+Operation(operationName=Multiplication)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
 
         private string GetOutput(string input)
         {

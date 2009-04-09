@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-04-06 00:01:58
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-04-09 16:52:09
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -18,11 +18,13 @@ using Stack 		= Antlr.Runtime.Collections.StackList;
 
 public partial class DecafLexer : Lexer {
     public const int MULT_OP = 5;
-    public const int STRING_LITERAL = 7;
-    public const int CHAR_LITERAL = 8;
+    public const int STRING_LITERAL = 9;
+    public const int CHAR_LITERAL = 10;
+    public const int RBRAC = 7;
     public const int ARITH_OP = 4;
-    public const int DIGIT = 6;
+    public const int DIGIT = 8;
     public const int EOF = -1;
+    public const int LBRAC = 6;
 
     // delegates
     // delegators
@@ -91,6 +93,52 @@ public partial class DecafLexer : Lexer {
     }
     // $ANTLR end "MULT_OP"
 
+    // $ANTLR start "LBRAC"
+    public void mLBRAC() // throws RecognitionException [2]
+    {
+    		try
+    		{
+            int _type = LBRAC;
+    	int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:57:7: ( '(' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:57:10: '('
+            {
+            	Match('('); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally 
+    	{
+        }
+    }
+    // $ANTLR end "LBRAC"
+
+    // $ANTLR start "RBRAC"
+    public void mRBRAC() // throws RecognitionException [2]
+    {
+    		try
+    		{
+            int _type = RBRAC;
+    	int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:58:8: ( ')' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:58:11: ')'
+            {
+            	Match(')'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally 
+    	{
+        }
+    }
+    // $ANTLR end "RBRAC"
+
     // $ANTLR start "DIGIT"
     public void mDIGIT() // throws RecognitionException [2]
     {
@@ -98,8 +146,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = DIGIT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:58:6: ( '0' .. '9' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:58:8: '0' .. '9'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:63:6: ( '0' .. '9' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:63:8: '0' .. '9'
             {
             	MatchRange('0','9'); 
 
@@ -121,11 +169,11 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = STRING_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:16: ( '\\\"' ( . )* '\\\"' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:18: '\\\"' ( . )* '\\\"'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:16: ( '\\\"' ( . )* '\\\"' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:18: '\\\"' ( . )* '\\\"'
             {
             	Match('\"'); 
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:23: ( . )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:23: ( . )*
             	do 
             	{
             	    int alt1 = 2;
@@ -144,7 +192,7 @@ public partial class DecafLexer : Lexer {
             	    switch (alt1) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:23: .
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:23: .
             			    {
             			    	MatchAny(); 
 
@@ -179,10 +227,10 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = CHAR_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:63:2: ( ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\'' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:63:5: ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\''
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:68:2: ( ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\'' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:68:5: ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\''
             {
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:63:5: ( '\\'' )+
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:68:5: ( '\\'' )+
             	int cnt2 = 0;
             	do 
             	{
@@ -198,7 +246,7 @@ public partial class DecafLexer : Lexer {
             	    switch (alt2) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:63:5: '\\''
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:68:5: '\\''
             			    {
             			    	Match('\''); 
 
@@ -243,8 +291,8 @@ public partial class DecafLexer : Lexer {
 
     override public void mTokens() // throws RecognitionException 
     {
-        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:8: ( ARITH_OP | MULT_OP | DIGIT | STRING_LITERAL | CHAR_LITERAL )
-        int alt3 = 5;
+        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:8: ( ARITH_OP | MULT_OP | LBRAC | RBRAC | DIGIT | STRING_LITERAL | CHAR_LITERAL )
+        int alt3 = 7;
         switch ( input.LA(1) ) 
         {
         case '+':
@@ -255,6 +303,16 @@ public partial class DecafLexer : Lexer {
         case '*':
         	{
             alt3 = 2;
+            }
+            break;
+        case '(':
+        	{
+            alt3 = 3;
+            }
+            break;
+        case ')':
+        	{
+            alt3 = 4;
             }
             break;
         case '0':
@@ -268,17 +326,17 @@ public partial class DecafLexer : Lexer {
         case '8':
         case '9':
         	{
-            alt3 = 3;
+            alt3 = 5;
             }
             break;
         case '\"':
         	{
-            alt3 = 4;
+            alt3 = 6;
             }
             break;
         case '\'':
         	{
-            alt3 = 5;
+            alt3 = 7;
             }
             break;
         	default:
@@ -305,21 +363,35 @@ public partial class DecafLexer : Lexer {
                 }
                 break;
             case 3 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:27: DIGIT
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:27: LBRAC
+                {
+                	mLBRAC(); 
+
+                }
+                break;
+            case 4 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:33: RBRAC
+                {
+                	mRBRAC(); 
+
+                }
+                break;
+            case 5 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:39: DIGIT
                 {
                 	mDIGIT(); 
 
                 }
                 break;
-            case 4 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:33: STRING_LITERAL
+            case 6 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:45: STRING_LITERAL
                 {
                 	mSTRING_LITERAL(); 
 
                 }
                 break;
-            case 5 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:48: CHAR_LITERAL
+            case 7 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:60: CHAR_LITERAL
                 {
                 	mCHAR_LITERAL(); 
 

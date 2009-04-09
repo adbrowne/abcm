@@ -29,7 +29,7 @@ expr	returns [ExprStack stack]: (m=multExpr (b=ARITH_OP e=expr  )* {
 
 binop	returns [string value] :	 ARITH_OP {$value = "Addition";} | MULT_OP {$value = "Multiplication";};
 
-multExpr returns [ExprStack stack]:   (l=literal (b=MULT_OP e=multExpr)* 
+multExpr returns [ExprStack stack]:   (l=atom (b=MULT_OP e=multExpr)* 
     { 
     
     	if($b == null){
@@ -50,7 +50,12 @@ MULT_OP :	 '*';
 
 literal	returns [ExprStack stack]:	 (int_literal { $stack = new ExprStack{ new NumericExprItem(int.Parse($int_literal.text))};});  
 
+atom returns [ExprStack stack]: l=literal {$stack = $l.stack;} | LBRAC + e=expr + RBRAC {$stack = $e.stack;};
+
 int_literal :	 decimal_literal;
+
+LBRAC	:	 '(';
+RBRAC 	:	 ')';
 	
 decimal_literal returns [int value]
 	: DIGIT+ {$value = int.Parse($DIGIT.text);};
