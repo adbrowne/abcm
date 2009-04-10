@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using Antlr.Runtime;
 using Castle.DynamicProxy;
 using NUnit.Framework;
@@ -109,6 +110,22 @@ EndExpression()
         }
 
         [Test]
+        public void SimplerRemainderExpressionTest()
+        {
+            var input = "9 % 8";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=9)
+ExprNumber(i=8)
+Operation(operationName=Remainder)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
         public void MultiplicationPrecedenceExpressionTest()
         {
             var input = "9*8+3";
@@ -140,6 +157,36 @@ ExprNumber(i=8)
 ExprNumber(i=3)
 Operation(operationName=Multiplication)
 Operation(operationName=Multiplication)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
+        public void UnaryMinusExpressionTest()
+        {
+            var input = "-9";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=-9)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
+        public void UnaryMinusInExpressionTest()
+        {
+            var input = "3+-2";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=3)
+ExprNumber(i=-2)
+Operation(operationName=Addition)
 EndExpression()
 ";
             Assert.AreEqual(expected, output);

@@ -29,7 +29,9 @@ expr	returns [ExprStack stack]: (m=multExpr (b=arithop e=expr  )* {
 
 arithop	returns [string value] :	 ARITH_OP {$value = "Addition";} | MINUS_OP{$value = "Subtraction";};
 
-multop	returns [string value] : MULT_OP { $value = "Multiplication"; } | DIV_OP{$value = "Division";};
+multop	returns [string value] : MULT_OP { $value = "Multiplication"; } 
+				| DIV_OP{$value = "Division";}
+				| REM_OP{$value = "Remainder";};
 
 multExpr returns [ExprStack stack]:   (l=atom (b=multop e=multExpr)* 
     { 
@@ -52,6 +54,7 @@ MINUS_OP:	 '-';
 
 MULT_OP :	 '*';
 DIV_OP 	:	 '/';
+REM_OP 	:	'%';
 
 literal	returns [ExprStack stack]:	 (int_literal { $stack = new ExprStack{ new NumericExprItem(int.Parse($int_literal.text))};});  
 
@@ -63,7 +66,8 @@ LBRAC	:	 '(';
 RBRAC 	:	 ')';
 	
 decimal_literal returns [int value]
-	: DIGIT+ {$value = int.Parse($DIGIT.text);};
+	: '-' DIGIT+ {$value = -int.Parse($DIGIT.text);}
+	| DIGIT+ {$value = int.Parse($DIGIT.text);};
 	
 DIGIT: '0'..'9';
 	 
