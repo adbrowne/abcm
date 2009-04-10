@@ -13,3 +13,4 @@ RomanNumeralTranslator/RomanNumeralTranslator/bin/
 RomanNumeralTranslator/RomanNumeralTranslator/obj/
 RomanNumeralTranslator/_ReSharper.RomanNumeralTranslator/
 SimpleAssemblyGen/
+*.resharper.user
