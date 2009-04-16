@@ -105,12 +105,12 @@ public partial class DecafParser : Parser
             			case 1 :
             			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:16:11: e= expr
             			    {
-            			    	Generator.BeginExpression();
+            			    	CodeGenerator.BeginExpression();
             			    	PushFollow(FOLLOW_expr_in_prog49);
             			    	e = expr();
             			    	state.followingStackPointer--;
 
-            			    	 GenerateExpression(e); Generator.EndExpression(); 
+            			    	 GenerateExpression(e); CodeGenerator.EndExpression(); 
 
             			    }
             			    break;

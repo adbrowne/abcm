@@ -5,19 +5,19 @@ namespace Decaf
 
     public partial class DecafParser
     {
-        private IGenerator Generator { get; set; }
+        private ICodeGenerator CodeGenerator { get; set; }
 
-        public DecafParser(ITokenStream input, IGenerator generator)
+        public DecafParser(ITokenStream input, ICodeGenerator codeGenerator)
             : this(input)
         {
-            Generator = generator;
+            CodeGenerator = codeGenerator;
         }
 
         private void GenerateExpression(ExprStack e)
         {
             foreach (var item in e)
             {
-                item.Generate(Generator);
+                item.Generate(CodeGenerator);
             }
         }
     }

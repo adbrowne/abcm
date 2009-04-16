@@ -15,7 +15,7 @@ namespace Decaf
 
     public abstract class ExprItem
     {
-        public abstract void Generate(IGenerator generator);
+        public abstract void Generate(ICodeGenerator codeGenerator);
     }
 
     public class OperationExprItem :ExprItem
@@ -26,9 +26,9 @@ namespace Decaf
         }
 
         public string Name { get; private set; }
-        public override void Generate(IGenerator generator)
+        public override void Generate(ICodeGenerator codeGenerator)
         {
-            generator.Operation(Name);
+            codeGenerator.Operation(Name);
         }
     }
 
@@ -44,9 +44,9 @@ namespace Decaf
             get; private set;
         }
 
-        public override void Generate(IGenerator generator)
+        public override void Generate(ICodeGenerator codeGenerator)
         {
-            generator.ExprNumber(Value);
+            codeGenerator.ExprNumber(Value);
         }
     }
 }

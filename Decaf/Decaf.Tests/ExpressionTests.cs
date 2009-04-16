@@ -16,7 +16,7 @@ namespace Decaf.Tests
             var repository = new MockRepository();
             
             var sampleInput = SurroundWithProgram("9");
-            var generator = repository.DynamicMock<IGenerator>();
+            var generator = repository.DynamicMock<ICodeGenerator>();
 
             generator.Expect(x => x.BeginExpression());
             generator.Expect(x => x.ExprNumber(9));
@@ -216,19 +216,19 @@ EndExpression()
 
             var proxyGenerator = new ProxyGenerator();
             var output = new StringBuilder();
-            var generator = proxyGenerator.CreateInterfaceProxyWithoutTarget<IGenerator>(new ConsoleInterceptor(output));
+            var generator = proxyGenerator.CreateInterfaceProxyWithoutTarget<ICodeGenerator>(new ConsoleInterceptor(output));
 
             var parser = CreateParser(sampleInput, generator);
             parser.prog();
             return output.ToString();
         }
 
-        private DecafParser CreateParser(string input, IGenerator generator)
+        private DecafParser CreateParser(string input, ICodeGenerator codeGenerator)
         {
             var antlrStringStream = new ANTLRStringStream(input);
             var lexter = new DecafLexer(antlrStringStream);
             var tokens = new CommonTokenStream(lexter);
-            var parser = new DecafParser(tokens, generator);
+            var parser = new DecafParser(tokens, codeGenerator);
             return parser;
         }
 
