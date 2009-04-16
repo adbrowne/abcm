@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClrCodeGenerator.cs" />
     <Compile Include="DecafParser.Static.cs" />
     <Compile Include="DecafLexer.cs" />
     <Compile Include="DecafParser.cs" />
