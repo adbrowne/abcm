@@ -10,6 +10,8 @@ namespace Decaf
         private readonly string outputFileName;
         private ModuleBuilder mainModuleBuilder;
         AssemblyBuilder assemblyBuilder;
+        private TypeBuilder currentType;
+        private ILGenerator ilGenerator;
 
         public ClrCodeGenerator(string outputFileName)
         {
@@ -24,7 +26,8 @@ namespace Decaf
 
         public TypeBuilder StartModule(string id)
         {
-            return mainModuleBuilder.DefineType(id);
+            currentType = mainModuleBuilder.DefineType(id);
+            return currentType;
         }
 
         public void Save()
@@ -35,17 +38,23 @@ namespace Decaf
 
         public void BeginExpression()
         {
-            throw new System.NotImplementedException();
+            var methodBuilder = currentType.DefineMethod("Main", MethodAttributes.Static, typeof(void), System.Type.EmptyTypes);
+            ilGenerator = methodBuilder.GetILGenerator();
+            
+            
         }
 
         public void ExprNumber(int i)
         {
-            throw new System.NotImplementedException();
+            ilGenerator.Emit(OpCodes.Ldc_I4_S, i);
         }
 
         public void Operation(string operationName)
         {
-            throw new System.NotImplementedException();
+         if(operationName == "Multiplication")
+         {
+             ilGenerator.Emit(OpCodes.Mul);
+         }
         }
 
         public void Comment(string comment)
@@ -55,7 +64,8 @@ namespace Decaf
 
         public void EndExpression()
         {
-            throw new System.NotImplementedException();
+            ilGenerator.Emit(OpCodes.Call, typeof(System.Console).GetMethod("WriteLine", new System.Type[] { typeof(int) }));
+            ilGenerator.Emit(OpCodes.Ret);
         }
     }
 }
