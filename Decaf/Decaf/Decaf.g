@@ -13,7 +13,7 @@ options
     Decaf
 }
 
-prog:   ( {Generator.BeginExpression();} e=expr { GenerateExpression(e); Generator.EndExpression(); })+ ;
+prog:   ( {CodeGenerator.BeginExpression();} e=expr { GenerateExpression(e); CodeGenerator.EndExpression(); })+ ;
 
 expr	returns [ExprStack stack]: (m=multExpr (b=arithop e=expr  )* { 
 		if($b.value == null){
@@ -25,6 +25,10 @@ expr	returns [ExprStack stack]: (m=multExpr (b=arithop e=expr  )* {
 			$stack.Prepend($m.stack);
 		}
 	
+	})
+	|
+	(s=STRING_LITERAL{
+		$stack = new ExprStack{ new StringExprItem($s.text)};
 	});
 
 arithop	returns [string value] :	 ARITH_OP {$value = "Addition";} | MINUS_OP{$value = "Subtraction";};

@@ -32,6 +32,24 @@ namespace Decaf
         }
     }
 
+    public class StringExprItem :ExprItem
+    {
+        public StringExprItem(string value)
+        {
+            Value = value;
+        }
+
+        public string Value
+        {
+            get; private set;
+        }
+
+
+        public override void Generate(ICodeGenerator codeGenerator)
+        {
+            codeGenerator.ExprString(Value);
+        }
+    }
     public class NumericExprItem :ExprItem
     {
         public NumericExprItem(int num)

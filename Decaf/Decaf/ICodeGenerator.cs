@@ -7,5 +7,6 @@ namespace Decaf
         void Operation(string operationName);
         void Comment(string comment);
         void EndExpression();
+        void ExprString(string value);
     }
 }

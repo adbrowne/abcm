@@ -40,8 +40,6 @@ namespace Decaf
         {
             var methodBuilder = currentType.DefineMethod("Main", MethodAttributes.Static, typeof(void), System.Type.EmptyTypes);
             ilGenerator = methodBuilder.GetILGenerator();
-            
-            
         }
 
         public void ExprNumber(int i)
@@ -66,6 +64,11 @@ namespace Decaf
         {
             ilGenerator.Emit(OpCodes.Call, typeof(System.Console).GetMethod("WriteLine", new System.Type[] { typeof(int) }));
             ilGenerator.Emit(OpCodes.Ret);
+        }
+
+        public void ExprString(string value)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

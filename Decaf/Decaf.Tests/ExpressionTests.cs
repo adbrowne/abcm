@@ -210,6 +210,20 @@ EndExpression()
             Assert.AreEqual(expected, output);
         }
 
+        [Test]
+        public void StringExpressionTest()
+        {
+            var input = @"""test""";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprString(value=""test"")
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
         private string GetOutput(string input)
         {
             var sampleInput = SurroundWithProgram(input);
