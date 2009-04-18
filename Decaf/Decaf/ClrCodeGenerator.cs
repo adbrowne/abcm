@@ -80,5 +80,10 @@ namespace Decaf
         {
             throw new System.NotImplementedException();
         }
+
+        public void ExprChar(char value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

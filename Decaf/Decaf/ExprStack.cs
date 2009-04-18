@@ -65,6 +65,26 @@ namespace Decaf
         }
     }
 
+    public class CharExprItem : ExprItem
+    {
+        public CharExprItem(char value)
+        {
+            Value = value;
+        }
+
+        public char Value
+        {
+            get;
+            private set;
+        }
+
+
+        public override void Generate(ICodeGenerator codeGenerator)
+        {
+            codeGenerator.ExprChar(Value);
+        }
+    }
+
     public class IdExprItem : ExprItem
     {
         public IdExprItem(string name)

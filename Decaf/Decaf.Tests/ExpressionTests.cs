@@ -225,6 +225,20 @@ EndExpression()
         }
 
         [Test]
+        public void CharExpressionTest()
+        {
+            var input = @"'t'";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprChar(value=t)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
         public void IdExpressionTest()
         {
             var input = @"Id";

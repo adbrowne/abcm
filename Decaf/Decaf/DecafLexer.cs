@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-04-18 22:52:25
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-04-18 22:57:45
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -17,21 +17,21 @@ using Stack 		= Antlr.Runtime.Collections.StackList;
 
 
 public partial class DecafLexer : Lexer {
-    public const int ALPHA_NUM = 15;
+    public const int ALPHA_NUM = 16;
     public const int MULT_OP = 6;
-    public const int STRING_LITERAL = 12;
-    public const int CHAR_LITERAL = 17;
+    public const int STRING_LITERAL = 13;
+    public const int CHAR_LITERAL = 10;
     public const int DIV_OP = 7;
     public const int ARITH_OP = 4;
-    public const int RBRAC = 11;
+    public const int RBRAC = 12;
     public const int REM_OP = 8;
     public const int MINUS_OP = 5;
     public const int BOOL_LITERAL = 9;
-    public const int DIGIT = 16;
-    public const int ID = 13;
+    public const int DIGIT = 17;
+    public const int ID = 14;
     public const int EOF = -1;
-    public const int LBRAC = 10;
-    public const int ALPHA = 14;
+    public const int LBRAC = 11;
+    public const int ALPHA = 15;
 
     // delegates
     // delegators
@@ -176,7 +176,7 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = BOOL_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:82:2: ( 'true' | 'false' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:84:2: ( 'true' | 'false' )
             int alt1 = 2;
             int LA1_0 = input.LA(1);
 
@@ -198,7 +198,7 @@ public partial class DecafLexer : Lexer {
             switch (alt1) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:82:4: 'true'
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:84:4: 'true'
                     {
                     	Match("true"); 
 
@@ -206,7 +206,7 @@ public partial class DecafLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:82:13: 'false'
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:84:13: 'false'
                     {
                     	Match("false"); 
 
@@ -231,8 +231,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = LBRAC;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:84:7: ( '(' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:84:10: '('
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:86:7: ( '(' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:86:10: '('
             {
             	Match('('); 
 
@@ -254,8 +254,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = RBRAC;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:85:8: ( ')' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:85:11: ')'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:87:8: ( ')' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:87:11: ')'
             {
             	Match(')'); 
 
@@ -277,11 +277,11 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = ID;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:87:4: ( ALPHA ( ALPHA_NUM )* )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:87:6: ALPHA ( ALPHA_NUM )*
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:89:4: ( ALPHA ( ALPHA_NUM )* )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:89:6: ALPHA ( ALPHA_NUM )*
             {
             	mALPHA(); 
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:87:12: ( ALPHA_NUM )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:89:12: ( ALPHA_NUM )*
             	do 
             	{
             	    int alt2 = 2;
@@ -296,7 +296,7 @@ public partial class DecafLexer : Lexer {
             	    switch (alt2) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:87:12: ALPHA_NUM
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:89:12: ALPHA_NUM
             			    {
             			    	mALPHA_NUM(); 
 
@@ -328,7 +328,7 @@ public partial class DecafLexer : Lexer {
     {
     		try
     		{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:90:2: ( ALPHA | DIGIT )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:92:2: ( ALPHA | DIGIT )
             // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:
             {
             	if ( input.LA(1) == '.' || (input.LA(1) >= '0' && input.LA(1) <= '9') || (input.LA(1) >= 'A' && input.LA(1) <= 'Z') || input.LA(1) == '_' || (input.LA(1) >= 'a' && input.LA(1) <= 'z') ) 
@@ -357,7 +357,7 @@ public partial class DecafLexer : Lexer {
     {
     		try
     		{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:92:17: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:94:17: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' )
             // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:
             {
             	if ( input.LA(1) == '.' || (input.LA(1) >= 'A' && input.LA(1) <= 'Z') || input.LA(1) == '_' || (input.LA(1) >= 'a' && input.LA(1) <= 'z') ) 
@@ -388,8 +388,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = DIGIT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:98:6: ( '0' .. '9' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:98:8: '0' .. '9'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:100:6: ( '0' .. '9' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:100:8: '0' .. '9'
             {
             	MatchRange('0','9'); 
 
@@ -411,11 +411,11 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = STRING_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:100:16: ( '\\\"' ( . )* '\\\"' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:100:18: '\\\"' ( . )* '\\\"'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:102:16: ( '\\\"' ( . )* '\\\"' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:102:18: '\\\"' ( . )* '\\\"'
             {
             	Match('\"'); 
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:100:23: ( . )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:102:23: ( . )*
             	do 
             	{
             	    int alt3 = 2;
@@ -434,7 +434,7 @@ public partial class DecafLexer : Lexer {
             	    switch (alt3) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:100:23: .
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:102:23: .
             			    {
             			    	MatchAny(); 
 
@@ -469,10 +469,10 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = CHAR_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:103:2: ( ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\'' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:103:5: ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\''
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:2: ( ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\'' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:5: ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\''
             {
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:103:5: ( '\\'' )+
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:5: ( '\\'' )+
             	int cnt4 = 0;
             	do 
             	{
@@ -488,7 +488,7 @@ public partial class DecafLexer : Lexer {
             	    switch (alt4) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:103:5: '\\''
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:5: '\\''
             			    {
             			    	Match('\''); 
 
