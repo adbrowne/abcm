@@ -50,6 +50,27 @@ namespace Decaf
             codeGenerator.ExprString(Value);
         }
     }
+
+    public class IdExprItem : ExprItem
+    {
+        public IdExprItem(string name)
+        {
+            Name = name;
+        }
+
+        public string Name
+        {
+            get;
+            private set;
+        }
+
+
+        public override void Generate(ICodeGenerator codeGenerator)
+        {
+            codeGenerator.ExprId(Name);
+        }
+    }
+
     public class NumericExprItem :ExprItem
     {
         public NumericExprItem(int num)

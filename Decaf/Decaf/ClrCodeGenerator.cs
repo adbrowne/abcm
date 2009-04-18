@@ -70,5 +70,10 @@ namespace Decaf
         {
             throw new System.NotImplementedException();
         }
+
+        public void ExprId(string name)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace Decaf
         void Comment(string comment);
         void EndExpression();
         void ExprString(string value);
+        void ExprId(string name);
     }
 }

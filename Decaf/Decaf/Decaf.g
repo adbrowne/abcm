@@ -29,7 +29,11 @@ expr	returns [ExprStack stack]: (m=multExpr (b=arithop e=expr  )* {
 	|
 	(s=STRING_LITERAL{
 		$stack = new ExprStack{ new StringExprItem($s.text)};
-	});
+	})
+	|
+	(id=ID){
+		$stack = new ExprStack{ new IdExprItem($id.text)};
+	};
 
 arithop	returns [string value] :	 ARITH_OP {$value = "Addition";} | MINUS_OP{$value = "Subtraction";};
 
@@ -68,7 +72,14 @@ int_literal :	 decimal_literal;
 
 LBRAC	:	 '(';
 RBRAC 	:	 ')';
-	
+
+ID	:	ALPHA ALPHA_NUM*;
+
+fragment ALPHA_NUM
+	:	 ALPHA | DIGIT;
+
+fragment ALPHA 	:	'a'..'z' | 'A'..'Z' | '_' | '.';
+		
 decimal_literal returns [int value]
 	: '-' DIGIT+ {$value = -int.Parse($DIGIT.text);}
 	| DIGIT+ {$value = int.Parse($DIGIT.text);};

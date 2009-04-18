@@ -224,6 +224,20 @@ EndExpression()
             Assert.AreEqual(expected, output);
         }
 
+        [Test]
+        public void IdExpressionTest()
+        {
+            var input = @"Id";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprId(name=Id)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
         private string GetOutput(string input)
         {
             var sampleInput = SurroundWithProgram(input);

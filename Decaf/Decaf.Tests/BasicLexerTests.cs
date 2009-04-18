@@ -69,6 +69,13 @@ namespace Decaf.Tests
             AssertThat(sampleInput).ResultsIn("9", DecafLexer.DIGIT).Then("+", DecafLexer.ARITH_OP).Then("8",DecafLexer.DIGIT);
         }
 
+        [Test]
+        public void IdentifierTest()
+        {
+            const string sampleInput = @"varName";
+            AssertThat(sampleInput).ResultsIn("varName", DecafLexer.ID, 1);
+        }
+
         private static LexResult AssertThat(string input)
         {
             var antlrStringStream = new ANTLRStringStream(input);
