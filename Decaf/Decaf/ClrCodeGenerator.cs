@@ -85,5 +85,10 @@ namespace Decaf
         {
             throw new NotImplementedException();
         }
+
+        public void MethodCall(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

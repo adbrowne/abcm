@@ -225,6 +225,20 @@ EndExpression()
         }
 
         [Test]
+        public void CalloutMethodExpressionTest()
+        {
+            var input = @"callout(""test"")";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+MethodCall(name=""test"")
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
         public void CharExpressionTest()
         {
             var input = @"'t'";

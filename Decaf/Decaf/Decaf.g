@@ -26,6 +26,8 @@ expr	returns [ExprStack stack]: (m=multExpr (b=arithop e=expr  )* {
 		}
 	
 	})
+	|
+	m=method_call { $stack = $m.stack; }
 	;
 
 arithop	returns [string value] :	 ARITH_OP {$value = "Addition";} | MINUS_OP{$value = "Subtraction";};
@@ -78,7 +80,19 @@ atom returns [ExprStack stack]:
 	}
 	;
 
+method_call returns [ExprStack stack]:
+		 CALLOUT LBRAC m=STRING_LITERAL (',' callout_arg )* RBRAC
+	{
+		$stack = new ExprStack{ new MethodCallExprItem($m.text)};
+	};
+	
+callout_arg
+	: expr;
+	
 int_literal :	 decimal_literal;
+
+
+CALLOUT	:	'callout';
 
 BOOL_LITERAL
 	:	'true' | 'false';

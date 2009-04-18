@@ -11,5 +11,6 @@ namespace Decaf
         void ExprId(string name);
         void ExprBool(bool i);
         void ExprChar(char value);
+        void MethodCall(string name);
     }
 }
