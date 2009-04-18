@@ -26,14 +26,7 @@ expr	returns [ExprStack stack]: (m=multExpr (b=arithop e=expr  )* {
 		}
 	
 	})
-	|
-	(s=STRING_LITERAL{
-		$stack = new ExprStack{ new StringExprItem($s.text)};
-	})
-	|
-	(id=ID){
-		$stack = new ExprStack{ new IdExprItem($id.text)};
-	};
+	;
 
 arithop	returns [string value] :	 ARITH_OP {$value = "Addition";} | MINUS_OP{$value = "Subtraction";};
 
@@ -66,7 +59,19 @@ REM_OP 	:	'%';
 
 literal	returns [ExprStack stack]:	 (int_literal { $stack = new ExprStack{ new NumericExprItem(int.Parse($int_literal.text))};});  
 
-atom returns [ExprStack stack]: l=literal {$stack = $l.stack;} | LBRAC + e=expr + RBRAC {$stack = $e.stack;};
+atom returns [ExprStack stack]: 
+	l=literal {$stack = $l.stack;} 
+	| 
+	LBRAC + e=expr + RBRAC {$stack = $e.stack;}
+	|
+	s=STRING_LITERAL{
+		$stack = new ExprStack{ new StringExprItem($s.text)};
+	}
+	|
+	id=ID{
+		$stack = new ExprStack{ new IdExprItem($id.text)};
+	}
+	;
 
 int_literal :	 decimal_literal;
 
