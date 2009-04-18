@@ -75,5 +75,10 @@ namespace Decaf
         {
             throw new System.NotImplementedException();
         }
+
+        public void ExprBool(bool i)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

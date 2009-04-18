@@ -238,6 +238,34 @@ EndExpression()
             Assert.AreEqual(expected, output);
         }
 
+        [Test] 
+        public void BooleanFalseExpressionTest()
+        {
+            var input = "false";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprBool(i=False)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
+        public void BooleanTrueExpressionTest()
+        {
+            var input = "true";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+ExprBool(i=True)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
         private string GetOutput(string input)
         {
             var sampleInput = SurroundWithProgram(input);

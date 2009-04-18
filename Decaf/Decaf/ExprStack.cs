@@ -32,6 +32,20 @@ namespace Decaf
         }
     }
 
+    public class BoolExprItem : ExprItem
+    {
+        public BoolExprItem(bool value)
+        {
+            Value = value;
+        }
+
+        public bool Value { get; private set; }
+        public override void Generate(ICodeGenerator codeGenerator)
+        {
+            codeGenerator.ExprBool(Value);
+        }
+    }
+
     public class StringExprItem :ExprItem
     {
         public StringExprItem(string value)

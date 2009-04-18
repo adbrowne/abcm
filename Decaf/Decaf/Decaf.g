@@ -57,7 +57,10 @@ MULT_OP :	 '*';
 DIV_OP 	:	 '/';
 REM_OP 	:	'%';
 
-literal	returns [ExprStack stack]:	 (int_literal { $stack = new ExprStack{ new NumericExprItem(int.Parse($int_literal.text))};});  
+literal	returns [ExprStack stack]:	 (int_literal { $stack = new ExprStack{ new NumericExprItem(int.Parse($int_literal.text))};})
+	|
+	b=BOOL_LITERAL {$stack = new ExprStack{ new BoolExprItem(bool.Parse($b.text))};}
+	;  
 
 atom returns [ExprStack stack]: 
 	l=literal {$stack = $l.stack;} 
@@ -75,6 +78,9 @@ atom returns [ExprStack stack]:
 
 int_literal :	 decimal_literal;
 
+BOOL_LITERAL
+	:	'true' | 'false';
+		 
 LBRAC	:	 '(';
 RBRAC 	:	 ')';
 

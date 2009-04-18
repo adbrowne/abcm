@@ -9,5 +9,6 @@ namespace Decaf
         void EndExpression();
         void ExprString(string value);
         void ExprId(string name);
+        void ExprBool(bool i);
     }
 }

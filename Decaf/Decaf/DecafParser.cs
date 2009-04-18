@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-04-18 22:05:00
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-04-18 22:52:25
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -29,6 +29,7 @@ public partial class DecafParser : Parser
 		"MULT_OP", 
 		"DIV_OP", 
 		"REM_OP", 
+		"BOOL_LITERAL", 
 		"LBRAC", 
 		"RBRAC", 
 		"STRING_LITERAL", 
@@ -39,20 +40,21 @@ public partial class DecafParser : Parser
 		"CHAR_LITERAL"
     };
 
-    public const int ALPHA_NUM = 14;
+    public const int ALPHA_NUM = 15;
     public const int MULT_OP = 6;
-    public const int STRING_LITERAL = 11;
-    public const int CHAR_LITERAL = 16;
+    public const int STRING_LITERAL = 12;
+    public const int CHAR_LITERAL = 17;
     public const int DIV_OP = 7;
-    public const int RBRAC = 10;
+    public const int RBRAC = 11;
     public const int ARITH_OP = 4;
     public const int REM_OP = 8;
     public const int MINUS_OP = 5;
-    public const int DIGIT = 15;
-    public const int ID = 12;
+    public const int BOOL_LITERAL = 9;
+    public const int DIGIT = 16;
+    public const int ID = 13;
     public const int EOF = -1;
-    public const int LBRAC = 9;
-    public const int ALPHA = 13;
+    public const int LBRAC = 10;
+    public const int ALPHA = 14;
 
     // delegates
     // delegators
@@ -100,7 +102,7 @@ public partial class DecafParser : Parser
             	    int alt1 = 2;
             	    int LA1_0 = input.LA(1);
 
-            	    if ( (LA1_0 == MINUS_OP || LA1_0 == LBRAC || (LA1_0 >= STRING_LITERAL && LA1_0 <= ID) || LA1_0 == DIGIT) )
+            	    if ( (LA1_0 == MINUS_OP || (LA1_0 >= BOOL_LITERAL && LA1_0 <= LBRAC) || (LA1_0 >= STRING_LITERAL && LA1_0 <= ID) || LA1_0 == DIGIT) )
             	    {
             	        alt1 = 1;
             	    }
@@ -490,33 +492,65 @@ public partial class DecafParser : Parser
 
 
     // $ANTLR start "literal"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:1: literal returns [ExprStack stack] : ( int_literal ) ;
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:1: literal returns [ExprStack stack] : ( ( int_literal ) | b= BOOL_LITERAL );
     public ExprStack literal() // throws RecognitionException [1]
     {   
         ExprStack stack = default(ExprStack);
 
+        IToken b = null;
         DecafParser.int_literal_return int_literal1 = default(DecafParser.int_literal_return);
 
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:34: ( ( int_literal ) )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:37: ( int_literal )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:34: ( ( int_literal ) | b= BOOL_LITERAL )
+            int alt6 = 2;
+            int LA6_0 = input.LA(1);
+
+            if ( (LA6_0 == MINUS_OP || LA6_0 == DIGIT) )
             {
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:37: ( int_literal )
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:38: int_literal
-            	{
-            		PushFollow(FOLLOW_int_literal_in_literal238);
-            		int_literal1 = int_literal();
-            		state.followingStackPointer--;
+                alt6 = 1;
+            }
+            else if ( (LA6_0 == BOOL_LITERAL) )
+            {
+                alt6 = 2;
+            }
+            else 
+            {
+                NoViableAltException nvae_d6s0 =
+                    new NoViableAltException("", 6, 0, input);
 
-            		 stack =  new ExprStack{ new NumericExprItem(int.Parse(((int_literal1 != null) ? input.ToString((IToken)(int_literal1.Start),(IToken)(int_literal1.Stop)) : null)))};
+                throw nvae_d6s0;
+            }
+            switch (alt6) 
+            {
+                case 1 :
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:37: ( int_literal )
+                    {
+                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:37: ( int_literal )
+                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:38: int_literal
+                    	{
+                    		PushFollow(FOLLOW_int_literal_in_literal238);
+                    		int_literal1 = int_literal();
+                    		state.followingStackPointer--;
 
-            	}
+                    		 stack =  new ExprStack{ new NumericExprItem(int.Parse(((int_literal1 != null) ? input.ToString((IToken)(int_literal1.Start),(IToken)(int_literal1.Stop)) : null)))};
 
+                    	}
+
+
+                    }
+                    break;
+                case 2 :
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:62:2: b= BOOL_LITERAL
+                    {
+                    	b=(IToken)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_literal249); 
+                    	stack =  new ExprStack{ new BoolExprItem(bool.Parse(((b != null) ? b.Text : null)))};
+
+                    }
+                    break;
 
             }
-
         }
         catch (RecognitionException re) 
     	{
@@ -532,7 +566,7 @@ public partial class DecafParser : Parser
 
 
     // $ANTLR start "atom"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:62:1: atom returns [ExprStack stack] : (l= literal | ( LBRAC )+ (e= expr )+ RBRAC | s= STRING_LITERAL | id= ID );
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:1: atom returns [ExprStack stack] : (l= literal | ( LBRAC )+ (e= expr )+ RBRAC | s= STRING_LITERAL | id= ID );
     public ExprStack atom() // throws RecognitionException [1]
     {   
         ExprStack stack = default(ExprStack);
@@ -546,44 +580,45 @@ public partial class DecafParser : Parser
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:62:31: (l= literal | ( LBRAC )+ (e= expr )+ RBRAC | s= STRING_LITERAL | id= ID )
-            int alt8 = 4;
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:31: (l= literal | ( LBRAC )+ (e= expr )+ RBRAC | s= STRING_LITERAL | id= ID )
+            int alt9 = 4;
             switch ( input.LA(1) ) 
             {
             case MINUS_OP:
+            case BOOL_LITERAL:
             case DIGIT:
             	{
-                alt8 = 1;
+                alt9 = 1;
                 }
                 break;
             case LBRAC:
             	{
-                alt8 = 2;
+                alt9 = 2;
                 }
                 break;
             case STRING_LITERAL:
             	{
-                alt8 = 3;
+                alt9 = 3;
                 }
                 break;
             case ID:
             	{
-                alt8 = 4;
+                alt9 = 4;
                 }
                 break;
             	default:
-            	    NoViableAltException nvae_d8s0 =
-            	        new NoViableAltException("", 8, 0, input);
+            	    NoViableAltException nvae_d9s0 =
+            	        new NoViableAltException("", 9, 0, input);
 
-            	    throw nvae_d8s0;
+            	    throw nvae_d9s0;
             }
 
-            switch (alt8) 
+            switch (alt9) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:63:2: l= literal
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:66:2: l= literal
                     {
-                    	PushFollow(FOLLOW_literal_in_atom258);
+                    	PushFollow(FOLLOW_literal_in_atom270);
                     	l = literal();
                     	state.followingStackPointer--;
 
@@ -592,51 +627,16 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:2: ( LBRAC )+ (e= expr )+ RBRAC
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:68:2: ( LBRAC )+ (e= expr )+ RBRAC
                     {
-                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:2: ( LBRAC )+
-                    	int cnt6 = 0;
-                    	do 
-                    	{
-                    	    int alt6 = 2;
-                    	    int LA6_0 = input.LA(1);
-
-                    	    if ( (LA6_0 == LBRAC) )
-                    	    {
-                    	        alt6 = 1;
-                    	    }
-
-
-                    	    switch (alt6) 
-                    		{
-                    			case 1 :
-                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:2: LBRAC
-                    			    {
-                    			    	Match(input,LBRAC,FOLLOW_LBRAC_in_atom268); 
-
-                    			    }
-                    			    break;
-
-                    			default:
-                    			    if ( cnt6 >= 1 ) goto loop6;
-                    		            EarlyExitException eee6 =
-                    		                new EarlyExitException(6, input);
-                    		            throw eee6;
-                    	    }
-                    	    cnt6++;
-                    	} while (true);
-
-                    	loop6:
-                    		;	// Stops C# compiler whinging that label 'loop6' has no statements
-
-                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:11: (e= expr )+
+                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:68:2: ( LBRAC )+
                     	int cnt7 = 0;
                     	do 
                     	{
                     	    int alt7 = 2;
                     	    int LA7_0 = input.LA(1);
 
-                    	    if ( (LA7_0 == MINUS_OP || LA7_0 == LBRAC || (LA7_0 >= STRING_LITERAL && LA7_0 <= ID) || LA7_0 == DIGIT) )
+                    	    if ( (LA7_0 == LBRAC) )
                     	    {
                     	        alt7 = 1;
                     	    }
@@ -645,12 +645,9 @@ public partial class DecafParser : Parser
                     	    switch (alt7) 
                     		{
                     			case 1 :
-                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:65:11: e= expr
+                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:68:2: LBRAC
                     			    {
-                    			    	PushFollow(FOLLOW_expr_in_atom274);
-                    			    	e = expr();
-                    			    	state.followingStackPointer--;
-
+                    			    	Match(input,LBRAC,FOLLOW_LBRAC_in_atom280); 
 
                     			    }
                     			    break;
@@ -667,15 +664,53 @@ public partial class DecafParser : Parser
                     	loop7:
                     		;	// Stops C# compiler whinging that label 'loop7' has no statements
 
-                    	Match(input,RBRAC,FOLLOW_RBRAC_in_atom278); 
+                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:68:11: (e= expr )+
+                    	int cnt8 = 0;
+                    	do 
+                    	{
+                    	    int alt8 = 2;
+                    	    int LA8_0 = input.LA(1);
+
+                    	    if ( (LA8_0 == MINUS_OP || (LA8_0 >= BOOL_LITERAL && LA8_0 <= LBRAC) || (LA8_0 >= STRING_LITERAL && LA8_0 <= ID) || LA8_0 == DIGIT) )
+                    	    {
+                    	        alt8 = 1;
+                    	    }
+
+
+                    	    switch (alt8) 
+                    		{
+                    			case 1 :
+                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:68:11: e= expr
+                    			    {
+                    			    	PushFollow(FOLLOW_expr_in_atom286);
+                    			    	e = expr();
+                    			    	state.followingStackPointer--;
+
+
+                    			    }
+                    			    break;
+
+                    			default:
+                    			    if ( cnt8 >= 1 ) goto loop8;
+                    		            EarlyExitException eee8 =
+                    		                new EarlyExitException(8, input);
+                    		            throw eee8;
+                    	    }
+                    	    cnt8++;
+                    	} while (true);
+
+                    	loop8:
+                    		;	// Stops C# compiler whinging that label 'loop8' has no statements
+
+                    	Match(input,RBRAC,FOLLOW_RBRAC_in_atom290); 
                     	stack =  e;
 
                     }
                     break;
                 case 3 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:67:2: s= STRING_LITERAL
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:70:2: s= STRING_LITERAL
                     {
-                    	s=(IToken)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_atom288); 
+                    	s=(IToken)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_atom300); 
 
                     			stack =  new ExprStack{ new StringExprItem(((s != null) ? s.Text : null))};
                     		
@@ -683,9 +718,9 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 4 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:71:2: id= ID
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:74:2: id= ID
                     {
-                    	id=(IToken)Match(input,ID,FOLLOW_ID_in_atom297); 
+                    	id=(IToken)Match(input,ID,FOLLOW_ID_in_atom309); 
 
                     			stack =  new ExprStack{ new IdExprItem(((id != null) ? id.Text : null))};
                     		
@@ -712,7 +747,7 @@ public partial class DecafParser : Parser
     };
 
     // $ANTLR start "int_literal"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:76:1: int_literal : decimal_literal ;
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:79:1: int_literal : decimal_literal ;
     public DecafParser.int_literal_return int_literal() // throws RecognitionException [1]
     {   
         DecafParser.int_literal_return retval = new DecafParser.int_literal_return();
@@ -720,10 +755,10 @@ public partial class DecafParser : Parser
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:76:13: ( decimal_literal )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:76:16: decimal_literal
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:79:13: ( decimal_literal )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:79:16: decimal_literal
             {
-            	PushFollow(FOLLOW_decimal_literal_in_int_literal309);
+            	PushFollow(FOLLOW_decimal_literal_in_int_literal321);
             	decimal_literal();
             	state.followingStackPointer--;
 
@@ -747,7 +782,7 @@ public partial class DecafParser : Parser
 
 
     // $ANTLR start "decimal_literal"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:88:1: decimal_literal returns [int value] : ( '-' ( DIGIT )+ | ( DIGIT )+ );
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:94:1: decimal_literal returns [int value] : ( '-' ( DIGIT )+ | ( DIGIT )+ );
     public int decimal_literal() // throws RecognitionException [1]
     {   
         int value = default(int);
@@ -757,74 +792,32 @@ public partial class DecafParser : Parser
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:89:2: ( '-' ( DIGIT )+ | ( DIGIT )+ )
-            int alt11 = 2;
-            int LA11_0 = input.LA(1);
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:95:2: ( '-' ( DIGIT )+ | ( DIGIT )+ )
+            int alt12 = 2;
+            int LA12_0 = input.LA(1);
 
-            if ( (LA11_0 == MINUS_OP) )
+            if ( (LA12_0 == MINUS_OP) )
             {
-                alt11 = 1;
+                alt12 = 1;
             }
-            else if ( (LA11_0 == DIGIT) )
+            else if ( (LA12_0 == DIGIT) )
             {
-                alt11 = 2;
+                alt12 = 2;
             }
             else 
             {
-                NoViableAltException nvae_d11s0 =
-                    new NoViableAltException("", 11, 0, input);
+                NoViableAltException nvae_d12s0 =
+                    new NoViableAltException("", 12, 0, input);
 
-                throw nvae_d11s0;
+                throw nvae_d12s0;
             }
-            switch (alt11) 
+            switch (alt12) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:89:4: '-' ( DIGIT )+
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:95:4: '-' ( DIGIT )+
                     {
-                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_decimal_literal396); 
-                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:89:8: ( DIGIT )+
-                    	int cnt9 = 0;
-                    	do 
-                    	{
-                    	    int alt9 = 2;
-                    	    int LA9_0 = input.LA(1);
-
-                    	    if ( (LA9_0 == DIGIT) )
-                    	    {
-                    	        alt9 = 1;
-                    	    }
-
-
-                    	    switch (alt9) 
-                    		{
-                    			case 1 :
-                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:89:8: DIGIT
-                    			    {
-                    			    	DIGIT2=(IToken)Match(input,DIGIT,FOLLOW_DIGIT_in_decimal_literal398); 
-
-                    			    }
-                    			    break;
-
-                    			default:
-                    			    if ( cnt9 >= 1 ) goto loop9;
-                    		            EarlyExitException eee9 =
-                    		                new EarlyExitException(9, input);
-                    		            throw eee9;
-                    	    }
-                    	    cnt9++;
-                    	} while (true);
-
-                    	loop9:
-                    		;	// Stops C# compiler whinging that label 'loop9' has no statements
-
-                    	value =  -int.Parse(((DIGIT2 != null) ? DIGIT2.Text : null));
-
-                    }
-                    break;
-                case 2 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:90:4: ( DIGIT )+
-                    {
-                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:90:4: ( DIGIT )+
+                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_decimal_literal424); 
+                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:95:8: ( DIGIT )+
                     	int cnt10 = 0;
                     	do 
                     	{
@@ -840,9 +833,9 @@ public partial class DecafParser : Parser
                     	    switch (alt10) 
                     		{
                     			case 1 :
-                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:90:4: DIGIT
+                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:95:8: DIGIT
                     			    {
-                    			    	DIGIT3=(IToken)Match(input,DIGIT,FOLLOW_DIGIT_in_decimal_literal406); 
+                    			    	DIGIT2=(IToken)Match(input,DIGIT,FOLLOW_DIGIT_in_decimal_literal426); 
 
                     			    }
                     			    break;
@@ -858,6 +851,48 @@ public partial class DecafParser : Parser
 
                     	loop10:
                     		;	// Stops C# compiler whinging that label 'loop10' has no statements
+
+                    	value =  -int.Parse(((DIGIT2 != null) ? DIGIT2.Text : null));
+
+                    }
+                    break;
+                case 2 :
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:96:4: ( DIGIT )+
+                    {
+                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:96:4: ( DIGIT )+
+                    	int cnt11 = 0;
+                    	do 
+                    	{
+                    	    int alt11 = 2;
+                    	    int LA11_0 = input.LA(1);
+
+                    	    if ( (LA11_0 == DIGIT) )
+                    	    {
+                    	        alt11 = 1;
+                    	    }
+
+
+                    	    switch (alt11) 
+                    		{
+                    			case 1 :
+                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:96:4: DIGIT
+                    			    {
+                    			    	DIGIT3=(IToken)Match(input,DIGIT,FOLLOW_DIGIT_in_decimal_literal434); 
+
+                    			    }
+                    			    break;
+
+                    			default:
+                    			    if ( cnt11 >= 1 ) goto loop11;
+                    		            EarlyExitException eee11 =
+                    		                new EarlyExitException(11, input);
+                    		            throw eee11;
+                    	    }
+                    	    cnt11++;
+                    	} while (true);
+
+                    	loop11:
+                    		;	// Stops C# compiler whinging that label 'loop11' has no statements
 
                     	value =  int.Parse(((DIGIT3 != null) ? DIGIT3.Text : null));
 
@@ -887,9 +922,9 @@ public partial class DecafParser : Parser
 
  
 
-    public static readonly BitSet FOLLOW_expr_in_prog49 = new BitSet(new ulong[]{0x0000000000009A22UL});
+    public static readonly BitSet FOLLOW_expr_in_prog49 = new BitSet(new ulong[]{0x0000000000013622UL});
     public static readonly BitSet FOLLOW_multExpr_in_expr68 = new BitSet(new ulong[]{0x0000000000000032UL});
-    public static readonly BitSet FOLLOW_arithop_in_expr73 = new BitSet(new ulong[]{0x0000000000009A30UL});
+    public static readonly BitSet FOLLOW_arithop_in_expr73 = new BitSet(new ulong[]{0x0000000000013630UL});
     public static readonly BitSet FOLLOW_expr_in_expr77 = new BitSet(new ulong[]{0x0000000000000032UL});
     public static readonly BitSet FOLLOW_ARITH_OP_in_arithop99 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_MINUS_OP_in_arithop105 = new BitSet(new ulong[]{0x0000000000000002UL});
@@ -897,19 +932,20 @@ public partial class DecafParser : Parser
     public static readonly BitSet FOLLOW_DIV_OP_in_multop129 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_REM_OP_in_multop138 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_atom_in_multExpr155 = new BitSet(new ulong[]{0x00000000000001C2UL});
-    public static readonly BitSet FOLLOW_multop_in_multExpr160 = new BitSet(new ulong[]{0x0000000000009BE0UL});
+    public static readonly BitSet FOLLOW_multop_in_multExpr160 = new BitSet(new ulong[]{0x00000000000137E0UL});
     public static readonly BitSet FOLLOW_multExpr_in_multExpr164 = new BitSet(new ulong[]{0x00000000000001C2UL});
     public static readonly BitSet FOLLOW_int_literal_in_literal238 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_literal_in_atom258 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_LBRAC_in_atom268 = new BitSet(new ulong[]{0x0000000000009E20UL});
-    public static readonly BitSet FOLLOW_expr_in_atom274 = new BitSet(new ulong[]{0x0000000000009E20UL});
-    public static readonly BitSet FOLLOW_RBRAC_in_atom278 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_STRING_LITERAL_in_atom288 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_ID_in_atom297 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_decimal_literal_in_int_literal309 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_decimal_literal396 = new BitSet(new ulong[]{0x0000000000008000UL});
-    public static readonly BitSet FOLLOW_DIGIT_in_decimal_literal398 = new BitSet(new ulong[]{0x0000000000008002UL});
-    public static readonly BitSet FOLLOW_DIGIT_in_decimal_literal406 = new BitSet(new ulong[]{0x0000000000008002UL});
+    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_literal249 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_literal_in_atom270 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_LBRAC_in_atom280 = new BitSet(new ulong[]{0x0000000000013E20UL});
+    public static readonly BitSet FOLLOW_expr_in_atom286 = new BitSet(new ulong[]{0x0000000000013E20UL});
+    public static readonly BitSet FOLLOW_RBRAC_in_atom290 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_STRING_LITERAL_in_atom300 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_atom309 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_decimal_literal_in_int_literal321 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_decimal_literal424 = new BitSet(new ulong[]{0x0000000000010000UL});
+    public static readonly BitSet FOLLOW_DIGIT_in_decimal_literal426 = new BitSet(new ulong[]{0x0000000000010002UL});
+    public static readonly BitSet FOLLOW_DIGIT_in_decimal_literal434 = new BitSet(new ulong[]{0x0000000000010002UL});
 
 }
 }
