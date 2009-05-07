@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-04-18 23:19:55
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-04-19 09:11:32
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -800,22 +800,25 @@ public partial class DecafParser : Parser
 
 
     // $ANTLR start "method_call"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:83:1: method_call returns [ExprStack stack] : CALLOUT LBRAC m= STRING_LITERAL ( ',' callout_arg )* RBRAC ;
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:83:1: method_call returns [ExprStack stack] : CALLOUT LBRAC m= STRING_LITERAL ( ',' a= callout_arg )* RBRAC ;
     public ExprStack method_call() // throws RecognitionException [1]
     {   
         ExprStack stack = default(ExprStack);
 
         IToken m = null;
+        ExprStack a = default(ExprStack);
+
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:83:38: ( CALLOUT LBRAC m= STRING_LITERAL ( ',' callout_arg )* RBRAC )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:84:4: CALLOUT LBRAC m= STRING_LITERAL ( ',' callout_arg )* RBRAC
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:83:38: ( CALLOUT LBRAC m= STRING_LITERAL ( ',' a= callout_arg )* RBRAC )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:84:3: CALLOUT LBRAC m= STRING_LITERAL ( ',' a= callout_arg )* RBRAC
             {
-            	Match(input,CALLOUT,FOLLOW_CALLOUT_in_method_call346); 
-            	Match(input,LBRAC,FOLLOW_LBRAC_in_method_call348); 
-            	m=(IToken)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_method_call352); 
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:84:35: ( ',' callout_arg )*
+            	CodeGenerator.BeginMethodArguments();
+            	Match(input,CALLOUT,FOLLOW_CALLOUT_in_method_call350); 
+            	Match(input,LBRAC,FOLLOW_LBRAC_in_method_call352); 
+            	m=(IToken)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_method_call356); 
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:85:35: ( ',' a= callout_arg )*
             	do 
             	{
             	    int alt11 = 2;
@@ -830,13 +833,14 @@ public partial class DecafParser : Parser
             	    switch (alt11) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:84:36: ',' callout_arg
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:85:36: ',' a= callout_arg
             			    {
-            			    	Match(input,19,FOLLOW_19_in_method_call355); 
-            			    	PushFollow(FOLLOW_callout_arg_in_method_call357);
-            			    	callout_arg();
+            			    	Match(input,19,FOLLOW_19_in_method_call359); 
+            			    	PushFollow(FOLLOW_callout_arg_in_method_call363);
+            			    	a = callout_arg();
             			    	state.followingStackPointer--;
 
+            			    			GenerateExpression(a); 
 
             			    }
             			    break;
@@ -849,7 +853,7 @@ public partial class DecafParser : Parser
             	loop11:
             		;	// Stops C# compiler whining that label 'loop11' has no statements
 
-            	Match(input,RBRAC,FOLLOW_RBRAC_in_method_call362); 
+            	Match(input,RBRAC,FOLLOW_RBRAC_in_method_call374); 
 
             			stack =  new ExprStack{ new MethodCallExprItem(((m != null) ? m.Text : null))};
             		
@@ -871,18 +875,24 @@ public partial class DecafParser : Parser
 
 
     // $ANTLR start "callout_arg"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:89:1: callout_arg : expr ;
-    public void callout_arg() // throws RecognitionException [1]
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:91:1: callout_arg returns [ExprStack stack] : e= expr ;
+    public ExprStack callout_arg() // throws RecognitionException [1]
     {   
+        ExprStack stack = default(ExprStack);
+
+        ExprStack e = default(ExprStack);
+
+
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:90:2: ( expr )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:90:4: expr
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:92:2: (e= expr )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:92:4: e= expr
             {
-            	PushFollow(FOLLOW_expr_in_callout_arg375);
-            	expr();
+            	PushFollow(FOLLOW_expr_in_callout_arg393);
+            	e = expr();
             	state.followingStackPointer--;
 
+            	 stack =  e; 
 
             }
 
@@ -895,7 +905,7 @@ public partial class DecafParser : Parser
         finally 
     	{
         }
-        return ;
+        return stack;
     }
     // $ANTLR end "callout_arg"
 
@@ -904,7 +914,7 @@ public partial class DecafParser : Parser
     };
 
     // $ANTLR start "int_literal"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:92:1: int_literal : decimal_literal ;
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:94:1: int_literal : decimal_literal ;
     public DecafParser.int_literal_return int_literal() // throws RecognitionException [1]
     {   
         DecafParser.int_literal_return retval = new DecafParser.int_literal_return();
@@ -912,10 +922,10 @@ public partial class DecafParser : Parser
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:92:13: ( decimal_literal )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:92:16: decimal_literal
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:94:13: ( decimal_literal )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:94:16: decimal_literal
             {
-            	PushFollow(FOLLOW_decimal_literal_in_int_literal385);
+            	PushFollow(FOLLOW_decimal_literal_in_int_literal405);
             	decimal_literal();
             	state.followingStackPointer--;
 
@@ -939,7 +949,7 @@ public partial class DecafParser : Parser
 
 
     // $ANTLR start "decimal_literal"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:110:1: decimal_literal returns [int value] : ( '-' ( DIGIT )+ | ( DIGIT )+ );
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:112:1: decimal_literal returns [int value] : ( '-' ( DIGIT )+ | ( DIGIT )+ );
     public int decimal_literal() // throws RecognitionException [1]
     {   
         int value = default(int);
@@ -949,7 +959,7 @@ public partial class DecafParser : Parser
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:111:2: ( '-' ( DIGIT )+ | ( DIGIT )+ )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:113:2: ( '-' ( DIGIT )+ | ( DIGIT )+ )
             int alt14 = 2;
             int LA14_0 = input.LA(1);
 
@@ -971,10 +981,10 @@ public partial class DecafParser : Parser
             switch (alt14) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:111:4: '-' ( DIGIT )+
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:113:4: '-' ( DIGIT )+
                     {
-                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_decimal_literal497); 
-                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:111:8: ( DIGIT )+
+                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_decimal_literal517); 
+                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:113:8: ( DIGIT )+
                     	int cnt12 = 0;
                     	do 
                     	{
@@ -990,9 +1000,9 @@ public partial class DecafParser : Parser
                     	    switch (alt12) 
                     		{
                     			case 1 :
-                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:111:8: DIGIT
+                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:113:8: DIGIT
                     			    {
-                    			    	DIGIT2=(IToken)Match(input,DIGIT,FOLLOW_DIGIT_in_decimal_literal499); 
+                    			    	DIGIT2=(IToken)Match(input,DIGIT,FOLLOW_DIGIT_in_decimal_literal519); 
 
                     			    }
                     			    break;
@@ -1014,9 +1024,9 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:112:4: ( DIGIT )+
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:114:4: ( DIGIT )+
                     {
-                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:112:4: ( DIGIT )+
+                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:114:4: ( DIGIT )+
                     	int cnt13 = 0;
                     	do 
                     	{
@@ -1032,9 +1042,9 @@ public partial class DecafParser : Parser
                     	    switch (alt13) 
                     		{
                     			case 1 :
-                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:112:4: DIGIT
+                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:114:4: DIGIT
                     			    {
-                    			    	DIGIT3=(IToken)Match(input,DIGIT,FOLLOW_DIGIT_in_decimal_literal507); 
+                    			    	DIGIT3=(IToken)Match(input,DIGIT,FOLLOW_DIGIT_in_decimal_literal527); 
 
                     			    }
                     			    break;
@@ -1101,17 +1111,17 @@ public partial class DecafParser : Parser
     public static readonly BitSet FOLLOW_RBRAC_in_atom310 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_STRING_LITERAL_in_atom320 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_ID_in_atom329 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CALLOUT_in_method_call346 = new BitSet(new ulong[]{0x0000000000000800UL});
-    public static readonly BitSet FOLLOW_LBRAC_in_method_call348 = new BitSet(new ulong[]{0x0000000000002000UL});
-    public static readonly BitSet FOLLOW_STRING_LITERAL_in_method_call352 = new BitSet(new ulong[]{0x0000000000081000UL});
-    public static readonly BitSet FOLLOW_19_in_method_call355 = new BitSet(new ulong[]{0x000000000004EE20UL});
-    public static readonly BitSet FOLLOW_callout_arg_in_method_call357 = new BitSet(new ulong[]{0x0000000000081000UL});
-    public static readonly BitSet FOLLOW_RBRAC_in_method_call362 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_expr_in_callout_arg375 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_decimal_literal_in_int_literal385 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_decimal_literal497 = new BitSet(new ulong[]{0x0000000000040000UL});
-    public static readonly BitSet FOLLOW_DIGIT_in_decimal_literal499 = new BitSet(new ulong[]{0x0000000000040002UL});
-    public static readonly BitSet FOLLOW_DIGIT_in_decimal_literal507 = new BitSet(new ulong[]{0x0000000000040002UL});
+    public static readonly BitSet FOLLOW_CALLOUT_in_method_call350 = new BitSet(new ulong[]{0x0000000000000800UL});
+    public static readonly BitSet FOLLOW_LBRAC_in_method_call352 = new BitSet(new ulong[]{0x0000000000002000UL});
+    public static readonly BitSet FOLLOW_STRING_LITERAL_in_method_call356 = new BitSet(new ulong[]{0x0000000000081000UL});
+    public static readonly BitSet FOLLOW_19_in_method_call359 = new BitSet(new ulong[]{0x000000000004EE20UL});
+    public static readonly BitSet FOLLOW_callout_arg_in_method_call363 = new BitSet(new ulong[]{0x0000000000081000UL});
+    public static readonly BitSet FOLLOW_RBRAC_in_method_call374 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_expr_in_callout_arg393 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_decimal_literal_in_int_literal405 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_decimal_literal517 = new BitSet(new ulong[]{0x0000000000040000UL});
+    public static readonly BitSet FOLLOW_DIGIT_in_decimal_literal519 = new BitSet(new ulong[]{0x0000000000040002UL});
+    public static readonly BitSet FOLLOW_DIGIT_in_decimal_literal527 = new BitSet(new ulong[]{0x0000000000040002UL});
 
 }
 }

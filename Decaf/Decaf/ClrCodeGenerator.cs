@@ -11,17 +11,35 @@ namespace Decaf
         private ModuleBuilder mainModuleBuilder;
         AssemblyBuilder assemblyBuilder;
         private TypeBuilder currentType;
+        private MethodBuilder currentMethod;
         private ILGenerator ilGenerator;
+        private string assemblyName;
 
         public ClrCodeGenerator(string outputFileName)
+            : this(outputFileName, false)
+        {
+        }
+
+        public ClrCodeGenerator(string outputFileName, bool inMemory)
         {
             this.outputFileName = outputFileName;
             string name = Path.GetFileNameWithoutExtension(outputFileName);
+            this.assemblyName = name;
             var assemblyName = new AssemblyName(name);
-            assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName,
-                                                                        AssemblyBuilderAccess.Save);
 
-            mainModuleBuilder = assemblyBuilder.DefineDynamicModule(outputFileName);    
+            AssemblyBuilderAccess accessType = AssemblyBuilderAccess.Save;
+
+            if (inMemory) accessType = AssemblyBuilderAccess.Run;
+
+            assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName,
+                                                                        accessType);
+
+            mainModuleBuilder = assemblyBuilder.DefineDynamicModule(outputFileName, true);
+        }
+
+        public string Name
+        {
+            get { return assemblyName; }
         }
 
         public TypeBuilder StartModule(string id)
@@ -38,8 +56,8 @@ namespace Decaf
 
         public void BeginExpression()
         {
-            var methodBuilder = currentType.DefineMethod("Main", MethodAttributes.Static, typeof(void), System.Type.EmptyTypes);
-            ilGenerator = methodBuilder.GetILGenerator();
+            currentMethod = currentType.DefineMethod("Test", MethodAttributes.Static | MethodAttributes.Public, typeof(object), System.Type.EmptyTypes);
+            ilGenerator = currentMethod.GetILGenerator();
         }
 
         public void ExprNumber(int i)
@@ -49,10 +67,10 @@ namespace Decaf
 
         public void Operation(string operationName)
         {
-         if(operationName == "Multiplication")
-         {
-             ilGenerator.Emit(OpCodes.Mul);
-         }
+            if (operationName == "Multiplication")
+            {
+                ilGenerator.Emit(OpCodes.Mul);
+            }
         }
 
         public void Comment(string comment)
@@ -62,13 +80,18 @@ namespace Decaf
 
         public void EndExpression()
         {
-            ilGenerator.Emit(OpCodes.Call, typeof(System.Console).GetMethod("WriteLine", new System.Type[] { typeof(int) }));
+            //ilGenerator.Emit(OpCodes.Call, typeof(System.Console).GetMethod("WriteLine", new System.Type[] { typeof(int) }));
+
+            ilGenerator.Emit(OpCodes.Box, typeof(int));
+
+            //ilGenerator.Emit(OpCodes.Stloc_0);
+            //ilGenerator.Emit(OpCodes.Ldloc_0);
             ilGenerator.Emit(OpCodes.Ret);
         }
 
         public void ExprString(string value)
         {
-            throw new System.NotImplementedException();
+            ilGenerator.Emit(OpCodes.Ldstr, value);
         }
 
         public void ExprId(string name)
@@ -89,6 +112,17 @@ namespace Decaf
         public void MethodCall(string name)
         {
             throw new NotImplementedException();
+        }
+
+        public void BeginMethodArguments()
+        {
+            throw new NotImplementedException();
+        }
+
+        public MethodInfo GetCurrentMethod()
+        {
+            mainModuleBuilder.CreateGlobalFunctions();
+            return currentMethod;
         }
     }
 }

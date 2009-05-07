@@ -81,13 +81,15 @@ atom returns [ExprStack stack]:
 	;
 
 method_call returns [ExprStack stack]:
-		 CALLOUT LBRAC m=STRING_LITERAL (',' callout_arg )* RBRAC
+		{CodeGenerator.BeginMethodArguments();}
+		 CALLOUT LBRAC m=STRING_LITERAL (',' a=callout_arg 
+		 {		GenerateExpression(a); } )* RBRAC
 	{
 		$stack = new ExprStack{ new MethodCallExprItem($m.text)};
 	};
 	
-callout_arg
-	: expr;
+callout_arg returns [ExprStack stack]
+	: e=expr { $stack = $e.stack; };
 	
 int_literal :	 decimal_literal;
 

@@ -14,13 +14,13 @@ namespace Decaf.Tests
         public void SingleDigitExpressionTest()
         {
             var repository = new MockRepository();
-            
+
             var sampleInput = SurroundWithProgram("9");
             var generator = repository.DynamicMock<ICodeGenerator>();
 
             generator.Expect(x => x.BeginExpression());
             generator.Expect(x => x.ExprNumber(9));
-            
+
             var parser = CreateParser(sampleInput, generator);
             parser.prog();
 
@@ -63,7 +63,7 @@ EndExpression()
         public void TwoAdditionsExpressionTest()
         {
             var input = "9+8+10";
-            var output = GetOutput(input);  
+            var output = GetOutput(input);
 
             var expected =
                 @"BeginExpression()
@@ -232,6 +232,23 @@ EndExpression()
 
             var expected =
                 @"BeginExpression()
+BeginMethodArguments()
+MethodCall(name=""test"")
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
+        public void CalloutMethodWithArguments()
+        {
+            var input = @"callout(""test"",""nothing"")";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+BeginMethodArguments()
+ExprString(value=""nothing"")
 MethodCall(name=""test"")
 EndExpression()
 ";
@@ -266,7 +283,7 @@ EndExpression()
             Assert.AreEqual(expected, output);
         }
 
-        [Test] 
+        [Test]
         public void BooleanFalseExpressionTest()
         {
             var input = "false";
