@@ -63,10 +63,6 @@ namespace Decaf.Tests
             Assert.AreEqual(18, output);
         }
 
-        public static object Test()
-        {
-            return "Nothing";
-        }
         [Test]
         public void StringExpressionTest()
         {

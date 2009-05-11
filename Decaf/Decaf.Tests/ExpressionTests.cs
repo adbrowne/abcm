@@ -225,6 +225,26 @@ EndExpression()
         }
 
         [Test]
+        public void CalloutMethodWithExpressionTest()
+        {
+            var input = @"callout(""test"",3+4)";
+            var output = GetOutput(input);
+
+            var expected =
+                @"BeginExpression()
+BeginMethodArguments()
+BeginExpression()
+ExprNumber(i=3)
+ExprNumber(i=4)
+Operation(operationName=Addition)
+EndExpression()
+MethodCall(name=""test"")
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
         public void CalloutMethodExpressionTest()
         {
             var input = @"callout(""test"")";
