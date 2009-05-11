@@ -3,6 +3,8 @@ grammar Decaf;
 options
 {
     language=CSharp2;
+    output=AST;
+    ASTLabelType=CommonTree;
 }
 
 @lexer::namespace {
@@ -13,42 +15,42 @@ options
     Decaf
 }
 
-prog:   ( {CodeGenerator.BeginExpression();} e=expr { GenerateExpression(e); CodeGenerator.EndExpression(); })+ ;
+prog: ( stat )
+    ;
 
-expr	returns [ExprStack stack]: (m=multExpr (b=arithop e=expr  )* { 
-		if($b.value == null){
-			$stack = $m.stack;
-		}
-		else{
-			$stack = new ExprStack {new OperationExprItem($b.value)};
-			$stack.Prepend($e.stack);
-			$stack.Prepend($m.stack);
-		}
-	
-	})
+stat:   expr;
+
+expr:   multExpr (('+'^|'-'^) multExpr)*
+    ;
+
+multExpr
+    :   atom (('*'|'/'|'%')^ atom)*
+    ;
+
+atom:   MINUS_OP INT
 	|
-	m=method_call { $stack = $m.stack; }
+	INT
+	|
+	LBRAC + expr + RBRAC -> expr
+	|
+	STRING_LITERAL
+	|
+	CHAR_LITERAL
+	|
+	BOOL_LITERAL
+	|
+	ID
 	;
 
-arithop	returns [string value] :	 ARITH_OP {$value = "Addition";} | MINUS_OP{$value = "Subtraction";};
+//expr: (multExpr (arithop^ expr  )*)
+//	|
+//       method_call;
 
-multop	returns [string value] : MULT_OP { $value = "Multiplication"; } 
-				| DIV_OP{$value = "Division";}
-				| REM_OP{$value = "Remainder";};
+//arithop:	 ARITH_OP | MINUS_OP;
 
-multExpr returns [ExprStack stack]:   (l=atom (b=multop e=multExpr)* 
-    { 
-    
-    	if($b.value == null){
-		$stack = $l.stack;
-	}
-	else{
-		$stack = new ExprStack {new OperationExprItem($b.value)};
-		$stack.Prepend($e.stack);
-		$stack.Prepend($l.stack);
-	}    
-    })
-    ; 
+//multop: MULT_OP	| DIV_OP | REM_OP;
+
+//multExpr:   (atom (multop^ multExpr)*); 
 
 ARITH_OP 
 	:	 '+';
@@ -59,39 +61,30 @@ MULT_OP :	 '*';
 DIV_OP 	:	 '/';
 REM_OP 	:	'%';
 
-literal	returns [ExprStack stack]:	 (int_literal { $stack = new ExprStack{ new NumericExprItem(int.Parse($int_literal.text))};})
-	|
-	b=BOOL_LITERAL {$stack = new ExprStack{ new BoolExprItem(bool.Parse($b.text))};}
-	|
-	c=CHAR_LITERAL {$stack = new ExprStack{ new CharExprItem(char.Parse($c.text.Replace("'","")))};}
-	;  
+//literal:	 (int_literal)
+//	|
+//		BOOL_LITERAL
+//	|
+//		CHAR_LITERAL 
+//	;  
 
-atom returns [ExprStack stack]: 
-	l=literal {$stack = $l.stack;} 
-	| 
-	LBRAC + e=expr + RBRAC {$stack = $e.stack;}
-	|
-	s=STRING_LITERAL{
-		$stack = new ExprStack{ new StringExprItem($s.text)};
-	}
-	|
-	id=ID{
-		$stack = new ExprStack{ new IdExprItem($id.text)};
-	}
-	;
+//atom: 
+//	literal
+//	| 
+//	LBRAC + expr + RBRAC
+//	|
+//	STRING_LITERAL
+//	|
+//	id=ID
+//	;
 
-method_call returns [ExprStack stack]:
-		{CodeGenerator.BeginMethodArguments();}
-		 CALLOUT LBRAC m=STRING_LITERAL (',' a=callout_arg 
-		 {		GenerateExpression(a); } )* RBRAC
-	{
-		$stack = new ExprStack{ new MethodCallExprItem($m.text)};
-	};
+//method_call:
+//	CALLOUT LBRAC STRING_LITERAL (',' callout_arg )* RBRAC
+//	;
 	
-callout_arg returns [ExprStack stack]
-	: e=expr { $stack = $e.stack; };
+//callout_arg: expr;
 	
-int_literal :	 decimal_literal;
+//int_literal :	 decimal_literal;
 
 
 CALLOUT	:	'callout';
@@ -105,16 +98,13 @@ RBRAC 	:	 ')';
 ID	:	ALPHA ALPHA_NUM*;
 
 fragment ALPHA_NUM
-	:	 ALPHA | DIGIT;
+	:	 ALPHA | INT;
 
 fragment ALPHA 	:	'a'..'z' | 'A'..'Z' | '_' | '.';
-		
-decimal_literal returns [int value]
-	: '-' DIGIT+ {$value = -int.Parse($DIGIT.text);}
-	| DIGIT+ {$value = int.Parse($DIGIT.text);};
 	
-DIGIT: '0'..'9';
-	 
+INT :   '0'..'9'+
+    ;
+		 
 STRING_LITERAL : '\"' .* '\"';
   
 CHAR_LITERAL

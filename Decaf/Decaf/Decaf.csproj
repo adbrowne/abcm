@@ -54,9 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClrCodeGenerator.cs" />
-    <Compile Include="DecafParser.Static.cs" />
+    <Compile Include="DecafTree.Static.cs" />
     <Compile Include="DecafLexer.cs" />
     <Compile Include="DecafParser.cs" />
+    <Compile Include="DecafTree.cs" />
     <Compile Include="ExpressionType.cs" />
     <Compile Include="ExprStack.cs" />
     <Compile Include="ICodeGenerator.cs" />

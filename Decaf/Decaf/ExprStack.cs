@@ -140,6 +140,6 @@ namespace Decaf
         public override void Generate(ICodeGenerator codeGenerator)
         {
             codeGenerator.ExprNumber(Value);
-        }
+            }
     }
 }

@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-04-19 09:11:32
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-05-12 01:31:12
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -17,23 +17,22 @@ using Stack 		= Antlr.Runtime.Collections.StackList;
 
 
 public partial class DecafLexer : Lexer {
-    public const int ALPHA_NUM = 17;
-    public const int MULT_OP = 6;
-    public const int DIV_OP = 7;
-    public const int ARITH_OP = 4;
-    public const int REM_OP = 8;
-    public const int BOOL_LITERAL = 9;
-    public const int ID = 14;
+    public const int ALPHA_NUM = 18;
+    public const int MULT_OP = 13;
+    public const int STRING_LITERAL = 8;
+    public const int CHAR_LITERAL = 9;
+    public const int DIV_OP = 14;
+    public const int RBRAC = 7;
+    public const int ARITH_OP = 12;
+    public const int REM_OP = 15;
+    public const int INT = 5;
+    public const int MINUS_OP = 4;
+    public const int BOOL_LITERAL = 10;
+    public const int ID = 11;
     public const int EOF = -1;
-    public const int LBRAC = 11;
-    public const int ALPHA = 16;
-    public const int T__19 = 19;
-    public const int STRING_LITERAL = 13;
-    public const int CHAR_LITERAL = 10;
-    public const int RBRAC = 12;
-    public const int MINUS_OP = 5;
-    public const int DIGIT = 18;
-    public const int CALLOUT = 15;
+    public const int LBRAC = 6;
+    public const int ALPHA = 17;
+    public const int CALLOUT = 16;
 
     // delegates
     // delegators
@@ -56,29 +55,6 @@ public partial class DecafLexer : Lexer {
     	get { return "C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g";} 
     }
 
-    // $ANTLR start "T__19"
-    public void mT__19() // throws RecognitionException [2]
-    {
-    		try
-    		{
-            int _type = T__19;
-    	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:11:7: ( ',' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:11:9: ','
-            {
-            	Match(','); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally 
-    	{
-        }
-    }
-    // $ANTLR end "T__19"
-
     // $ANTLR start "ARITH_OP"
     public void mARITH_OP() // throws RecognitionException [2]
     {
@@ -86,8 +62,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = ARITH_OP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:54:2: ( '+' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:54:5: '+'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:56:2: ( '+' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:56:5: '+'
             {
             	Match('+'); 
 
@@ -109,8 +85,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = MINUS_OP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:56:9: ( '-' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:56:12: '-'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:58:9: ( '-' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:58:12: '-'
             {
             	Match('-'); 
 
@@ -132,8 +108,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = MULT_OP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:58:9: ( '*' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:58:12: '*'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:9: ( '*' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:12: '*'
             {
             	Match('*'); 
 
@@ -155,8 +131,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = DIV_OP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:59:9: ( '/' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:59:12: '/'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:61:9: ( '/' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:61:12: '/'
             {
             	Match('/'); 
 
@@ -178,8 +154,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = REM_OP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:9: ( '%' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:60:11: '%'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:62:9: ( '%' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:62:11: '%'
             {
             	Match('%'); 
 
@@ -201,8 +177,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = CALLOUT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:97:9: ( 'callout' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:97:11: 'callout'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:90:9: ( 'callout' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:90:11: 'callout'
             {
             	Match("callout"); 
 
@@ -225,7 +201,7 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = BOOL_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:100:2: ( 'true' | 'false' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:93:2: ( 'true' | 'false' )
             int alt1 = 2;
             int LA1_0 = input.LA(1);
 
@@ -247,7 +223,7 @@ public partial class DecafLexer : Lexer {
             switch (alt1) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:100:4: 'true'
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:93:4: 'true'
                     {
                     	Match("true"); 
 
@@ -255,7 +231,7 @@ public partial class DecafLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:100:13: 'false'
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:93:13: 'false'
                     {
                     	Match("false"); 
 
@@ -280,8 +256,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = LBRAC;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:102:7: ( '(' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:102:10: '('
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:95:7: ( '(' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:95:10: '('
             {
             	Match('('); 
 
@@ -303,8 +279,8 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = RBRAC;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:103:8: ( ')' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:103:11: ')'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:96:8: ( ')' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:96:11: ')'
             {
             	Match(')'); 
 
@@ -326,11 +302,11 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = ID;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:4: ( ALPHA ( ALPHA_NUM )* )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:6: ALPHA ( ALPHA_NUM )*
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:98:4: ( ALPHA ( ALPHA_NUM )* )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:98:6: ALPHA ( ALPHA_NUM )*
             {
             	mALPHA(); 
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:12: ( ALPHA_NUM )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:98:12: ( ALPHA_NUM )*
             	do 
             	{
             	    int alt2 = 2;
@@ -345,7 +321,7 @@ public partial class DecafLexer : Lexer {
             	    switch (alt2) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:12: ALPHA_NUM
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:98:12: ALPHA_NUM
             			    {
             			    	mALPHA_NUM(); 
 
@@ -377,23 +353,43 @@ public partial class DecafLexer : Lexer {
     {
     		try
     		{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:108:2: ( ALPHA | DIGIT )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:101:2: ( ALPHA | INT )
+            int alt3 = 2;
+            int LA3_0 = input.LA(1);
+
+            if ( (LA3_0 == '.' || (LA3_0 >= 'A' && LA3_0 <= 'Z') || LA3_0 == '_' || (LA3_0 >= 'a' && LA3_0 <= 'z')) )
             {
-            	if ( input.LA(1) == '.' || (input.LA(1) >= '0' && input.LA(1) <= '9') || (input.LA(1) >= 'A' && input.LA(1) <= 'Z') || input.LA(1) == '_' || (input.LA(1) >= 'a' && input.LA(1) <= 'z') ) 
-            	{
-            	    input.Consume();
+                alt3 = 1;
+            }
+            else if ( ((LA3_0 >= '0' && LA3_0 <= '9')) )
+            {
+                alt3 = 2;
+            }
+            else 
+            {
+                NoViableAltException nvae_d3s0 =
+                    new NoViableAltException("", 3, 0, input);
 
-            	}
-            	else 
-            	{
-            	    MismatchedSetException mse = new MismatchedSetException(null,input);
-            	    Recover(mse);
-            	    throw mse;}
+                throw nvae_d3s0;
+            }
+            switch (alt3) 
+            {
+                case 1 :
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:101:5: ALPHA
+                    {
+                    	mALPHA(); 
 
+                    }
+                    break;
+                case 2 :
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:101:13: INT
+                    {
+                    	mINT(); 
+
+                    }
+                    break;
 
             }
-
         }
         finally 
     	{
@@ -406,7 +402,7 @@ public partial class DecafLexer : Lexer {
     {
     		try
     		{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:110:17: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:103:17: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' )
             // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:
             {
             	if ( input.LA(1) == '.' || (input.LA(1) >= 'A' && input.LA(1) <= 'Z') || input.LA(1) == '_' || (input.LA(1) >= 'a' && input.LA(1) <= 'z') ) 
@@ -430,17 +426,51 @@ public partial class DecafLexer : Lexer {
     }
     // $ANTLR end "ALPHA"
 
-    // $ANTLR start "DIGIT"
-    public void mDIGIT() // throws RecognitionException [2]
+    // $ANTLR start "INT"
+    public void mINT() // throws RecognitionException [2]
     {
     		try
     		{
-            int _type = DIGIT;
+            int _type = INT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:116:6: ( '0' .. '9' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:116:8: '0' .. '9'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:5: ( ( '0' .. '9' )+ )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:9: ( '0' .. '9' )+
             {
-            	MatchRange('0','9'); 
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:9: ( '0' .. '9' )+
+            	int cnt4 = 0;
+            	do 
+            	{
+            	    int alt4 = 2;
+            	    int LA4_0 = input.LA(1);
+
+            	    if ( ((LA4_0 >= '0' && LA4_0 <= '9')) )
+            	    {
+            	        alt4 = 1;
+            	    }
+
+
+            	    switch (alt4) 
+            		{
+            			case 1 :
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:105:9: '0' .. '9'
+            			    {
+            			    	MatchRange('0','9'); 
+
+            			    }
+            			    break;
+
+            			default:
+            			    if ( cnt4 >= 1 ) goto loop4;
+            		            EarlyExitException eee4 =
+            		                new EarlyExitException(4, input);
+            		            throw eee4;
+            	    }
+            	    cnt4++;
+            	} while (true);
+
+            	loop4:
+            		;	// Stops C# compiler whinging that label 'loop4' has no statements
+
 
             }
 
@@ -451,7 +481,7 @@ public partial class DecafLexer : Lexer {
     	{
         }
     }
-    // $ANTLR end "DIGIT"
+    // $ANTLR end "INT"
 
     // $ANTLR start "STRING_LITERAL"
     public void mSTRING_LITERAL() // throws RecognitionException [2]
@@ -460,30 +490,30 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = STRING_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:118:16: ( '\\\"' ( . )* '\\\"' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:118:18: '\\\"' ( . )* '\\\"'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:108:16: ( '\\\"' ( . )* '\\\"' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:108:18: '\\\"' ( . )* '\\\"'
             {
             	Match('\"'); 
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:118:23: ( . )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:108:23: ( . )*
             	do 
             	{
-            	    int alt3 = 2;
-            	    int LA3_0 = input.LA(1);
+            	    int alt5 = 2;
+            	    int LA5_0 = input.LA(1);
 
-            	    if ( (LA3_0 == '\"') )
+            	    if ( (LA5_0 == '\"') )
             	    {
-            	        alt3 = 2;
+            	        alt5 = 2;
             	    }
-            	    else if ( ((LA3_0 >= '\u0000' && LA3_0 <= '!') || (LA3_0 >= '#' && LA3_0 <= '\uFFFF')) )
+            	    else if ( ((LA5_0 >= '\u0000' && LA5_0 <= '!') || (LA5_0 >= '#' && LA5_0 <= '\uFFFF')) )
             	    {
-            	        alt3 = 1;
+            	        alt5 = 1;
             	    }
 
 
-            	    switch (alt3) 
+            	    switch (alt5) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:118:23: .
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:108:23: .
             			    {
             			    	MatchAny(); 
 
@@ -491,12 +521,12 @@ public partial class DecafLexer : Lexer {
             			    break;
 
             			default:
-            			    goto loop3;
+            			    goto loop5;
             	    }
             	} while (true);
 
-            	loop3:
-            		;	// Stops C# compiler whining that label 'loop3' has no statements
+            	loop5:
+            		;	// Stops C# compiler whining that label 'loop5' has no statements
 
             	Match('\"'); 
 
@@ -518,26 +548,26 @@ public partial class DecafLexer : Lexer {
     		{
             int _type = CHAR_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:121:2: ( ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\'' )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:121:5: ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\''
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:111:2: ( ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\'' )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:111:5: ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\''
             {
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:121:5: ( '\\'' )+
-            	int cnt4 = 0;
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:111:5: ( '\\'' )+
+            	int cnt6 = 0;
             	do 
             	{
-            	    int alt4 = 2;
-            	    int LA4_0 = input.LA(1);
+            	    int alt6 = 2;
+            	    int LA6_0 = input.LA(1);
 
-            	    if ( (LA4_0 == '\'') )
+            	    if ( (LA6_0 == '\'') )
             	    {
-            	        alt4 = 1;
+            	        alt6 = 1;
             	    }
 
 
-            	    switch (alt4) 
+            	    switch (alt6) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:121:5: '\\''
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:111:5: '\\''
             			    {
             			    	Match('\''); 
 
@@ -545,16 +575,16 @@ public partial class DecafLexer : Lexer {
             			    break;
 
             			default:
-            			    if ( cnt4 >= 1 ) goto loop4;
-            		            EarlyExitException eee4 =
-            		                new EarlyExitException(4, input);
-            		            throw eee4;
+            			    if ( cnt6 >= 1 ) goto loop6;
+            		            EarlyExitException eee6 =
+            		                new EarlyExitException(6, input);
+            		            throw eee6;
             	    }
-            	    cnt4++;
+            	    cnt6++;
             	} while (true);
 
-            	loop4:
-            		;	// Stops C# compiler whinging that label 'loop4' has no statements
+            	loop6:
+            		;	// Stops C# compiler whinging that label 'loop6' has no statements
 
             	if ( (input.LA(1) >= '0' && input.LA(1) <= '9') || (input.LA(1) >= 'A' && input.LA(1) <= 'Z') || (input.LA(1) >= 'a' && input.LA(1) <= 'z') ) 
             	{
@@ -582,104 +612,97 @@ public partial class DecafLexer : Lexer {
 
     override public void mTokens() // throws RecognitionException 
     {
-        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:8: ( T__19 | ARITH_OP | MINUS_OP | MULT_OP | DIV_OP | REM_OP | CALLOUT | BOOL_LITERAL | LBRAC | RBRAC | ID | DIGIT | STRING_LITERAL | CHAR_LITERAL )
-        int alt5 = 14;
-        alt5 = dfa5.Predict(input);
-        switch (alt5) 
+        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:8: ( ARITH_OP | MINUS_OP | MULT_OP | DIV_OP | REM_OP | CALLOUT | BOOL_LITERAL | LBRAC | RBRAC | ID | INT | STRING_LITERAL | CHAR_LITERAL )
+        int alt7 = 13;
+        alt7 = dfa7.Predict(input);
+        switch (alt7) 
         {
             case 1 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:10: T__19
-                {
-                	mT__19(); 
-
-                }
-                break;
-            case 2 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:16: ARITH_OP
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:10: ARITH_OP
                 {
                 	mARITH_OP(); 
 
                 }
                 break;
-            case 3 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:25: MINUS_OP
+            case 2 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:19: MINUS_OP
                 {
                 	mMINUS_OP(); 
 
                 }
                 break;
-            case 4 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:34: MULT_OP
+            case 3 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:28: MULT_OP
                 {
                 	mMULT_OP(); 
 
                 }
                 break;
-            case 5 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:42: DIV_OP
+            case 4 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:36: DIV_OP
                 {
                 	mDIV_OP(); 
 
                 }
                 break;
-            case 6 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:49: REM_OP
+            case 5 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:43: REM_OP
                 {
                 	mREM_OP(); 
 
                 }
                 break;
-            case 7 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:56: CALLOUT
+            case 6 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:50: CALLOUT
                 {
                 	mCALLOUT(); 
 
                 }
                 break;
-            case 8 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:64: BOOL_LITERAL
+            case 7 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:58: BOOL_LITERAL
                 {
                 	mBOOL_LITERAL(); 
 
                 }
                 break;
-            case 9 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:77: LBRAC
+            case 8 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:71: LBRAC
                 {
                 	mLBRAC(); 
 
                 }
                 break;
-            case 10 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:83: RBRAC
+            case 9 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:77: RBRAC
                 {
                 	mRBRAC(); 
 
                 }
                 break;
-            case 11 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:89: ID
+            case 10 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:83: ID
                 {
                 	mID(); 
 
                 }
                 break;
-            case 12 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:92: DIGIT
+            case 11 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:86: INT
                 {
-                	mDIGIT(); 
+                	mINT(); 
 
                 }
                 break;
-            case 13 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:98: STRING_LITERAL
+            case 12 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:90: STRING_LITERAL
                 {
                 	mSTRING_LITERAL(); 
 
                 }
                 break;
-            case 14 :
-                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:113: CHAR_LITERAL
+            case 13 :
+                // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:1:105: CHAR_LITERAL
                 {
                 	mCHAR_LITERAL(); 
 
@@ -691,98 +714,97 @@ public partial class DecafLexer : Lexer {
     }
 
 
-    protected DFA5 dfa5;
+    protected DFA7 dfa7;
 	private void InitializeCyclicDFAs()
 	{
-	    this.dfa5 = new DFA5(this);
+	    this.dfa7 = new DFA7(this);
 	}
 
-    const string DFA5_eotS =
-        "\x07\uffff\x03\x0c\x06\uffff\x07\x0c\x01\x1a\x02\x0c\x01\uffff"+
-        "\x01\x1a\x01\x0c\x01\x1e\x01\uffff";
-    const string DFA5_eofS =
-        "\x1f\uffff";
-    const string DFA5_minS =
-        "\x01\x22\x06\uffff\x01\x61\x01\x72\x01\x61\x06\uffff\x01\x6c\x01"+
+    const string DFA7_eotS =
+        "\x06\uffff\x03\x0b\x06\uffff\x07\x0b\x01\x19\x02\x0b\x01\uffff"+
+        "\x01\x19\x01\x0b\x01\x1d\x01\uffff";
+    const string DFA7_eofS =
+        "\x1e\uffff";
+    const string DFA7_minS =
+        "\x01\x22\x05\uffff\x01\x61\x01\x72\x01\x61\x06\uffff\x01\x6c\x01"+
         "\x75\x02\x6c\x01\x65\x01\x73\x01\x6f\x01\x2e\x01\x65\x01\x75\x01"+
         "\uffff\x01\x2e\x01\x74\x01\x2e\x01\uffff";
-    const string DFA5_maxS =
-        "\x01\x7a\x06\uffff\x01\x61\x01\x72\x01\x61\x06\uffff\x01\x6c\x01"+
+    const string DFA7_maxS =
+        "\x01\x7a\x05\uffff\x01\x61\x01\x72\x01\x61\x06\uffff\x01\x6c\x01"+
         "\x75\x02\x6c\x01\x65\x01\x73\x01\x6f\x01\x7a\x01\x65\x01\x75\x01"+
         "\uffff\x01\x7a\x01\x74\x01\x7a\x01\uffff";
-    const string DFA5_acceptS =
-        "\x01\uffff\x01\x01\x01\x02\x01\x03\x01\x04\x01\x05\x01\x06\x03"+
-        "\uffff\x01\x09\x01\x0a\x01\x0b\x01\x0c\x01\x0d\x01\x0e\x0a\uffff"+
-        "\x01\x08\x03\uffff\x01\x07";
-    const string DFA5_specialS =
-        "\x1f\uffff}>";
-    static readonly string[] DFA5_transitionS = {
-            "\x01\x0e\x02\uffff\x01\x06\x01\uffff\x01\x0f\x01\x0a\x01\x0b"+
-            "\x01\x04\x01\x02\x01\x01\x01\x03\x01\x0c\x01\x05\x0a\x0d\x07"+
-            "\uffff\x1a\x0c\x04\uffff\x01\x0c\x01\uffff\x02\x0c\x01\x07\x02"+
-            "\x0c\x01\x09\x0d\x0c\x01\x08\x06\x0c",
+    const string DFA7_acceptS =
+        "\x01\uffff\x01\x01\x01\x02\x01\x03\x01\x04\x01\x05\x03\uffff\x01"+
+        "\x08\x01\x09\x01\x0a\x01\x0b\x01\x0c\x01\x0d\x0a\uffff\x01\x07\x03"+
+        "\uffff\x01\x06";
+    const string DFA7_specialS =
+        "\x1e\uffff}>";
+    static readonly string[] DFA7_transitionS = {
+            "\x01\x0d\x02\uffff\x01\x05\x01\uffff\x01\x0e\x01\x09\x01\x0a"+
+            "\x01\x03\x01\x01\x01\uffff\x01\x02\x01\x0b\x01\x04\x0a\x0c\x07"+
+            "\uffff\x1a\x0b\x04\uffff\x01\x0b\x01\uffff\x02\x0b\x01\x06\x02"+
+            "\x0b\x01\x08\x0d\x0b\x01\x07\x06\x0b",
             "",
             "",
             "",
             "",
             "",
-            "",
+            "\x01\x0f",
             "\x01\x10",
             "\x01\x11",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\x01\x12",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\x01\x13",
             "\x01\x14",
             "\x01\x15",
             "\x01\x16",
             "\x01\x17",
             "\x01\x18",
-            "\x01\x19",
-            "\x01\x0c\x01\uffff\x0a\x0c\x07\uffff\x1a\x0c\x04\uffff\x01"+
-            "\x0c\x01\uffff\x1a\x0c",
+            "\x01\x0b\x01\uffff\x0a\x0b\x07\uffff\x1a\x0b\x04\uffff\x01"+
+            "\x0b\x01\uffff\x1a\x0b",
+            "\x01\x1a",
             "\x01\x1b",
-            "\x01\x1c",
             "",
-            "\x01\x0c\x01\uffff\x0a\x0c\x07\uffff\x1a\x0c\x04\uffff\x01"+
-            "\x0c\x01\uffff\x1a\x0c",
-            "\x01\x1d",
-            "\x01\x0c\x01\uffff\x0a\x0c\x07\uffff\x1a\x0c\x04\uffff\x01"+
-            "\x0c\x01\uffff\x1a\x0c",
+            "\x01\x0b\x01\uffff\x0a\x0b\x07\uffff\x1a\x0b\x04\uffff\x01"+
+            "\x0b\x01\uffff\x1a\x0b",
+            "\x01\x1c",
+            "\x01\x0b\x01\uffff\x0a\x0b\x07\uffff\x1a\x0b\x04\uffff\x01"+
+            "\x0b\x01\uffff\x1a\x0b",
             ""
     };
 
-    static readonly short[] DFA5_eot = DFA.UnpackEncodedString(DFA5_eotS);
-    static readonly short[] DFA5_eof = DFA.UnpackEncodedString(DFA5_eofS);
-    static readonly char[] DFA5_min = DFA.UnpackEncodedStringToUnsignedChars(DFA5_minS);
-    static readonly char[] DFA5_max = DFA.UnpackEncodedStringToUnsignedChars(DFA5_maxS);
-    static readonly short[] DFA5_accept = DFA.UnpackEncodedString(DFA5_acceptS);
-    static readonly short[] DFA5_special = DFA.UnpackEncodedString(DFA5_specialS);
-    static readonly short[][] DFA5_transition = DFA.UnpackEncodedStringArray(DFA5_transitionS);
+    static readonly short[] DFA7_eot = DFA.UnpackEncodedString(DFA7_eotS);
+    static readonly short[] DFA7_eof = DFA.UnpackEncodedString(DFA7_eofS);
+    static readonly char[] DFA7_min = DFA.UnpackEncodedStringToUnsignedChars(DFA7_minS);
+    static readonly char[] DFA7_max = DFA.UnpackEncodedStringToUnsignedChars(DFA7_maxS);
+    static readonly short[] DFA7_accept = DFA.UnpackEncodedString(DFA7_acceptS);
+    static readonly short[] DFA7_special = DFA.UnpackEncodedString(DFA7_specialS);
+    static readonly short[][] DFA7_transition = DFA.UnpackEncodedStringArray(DFA7_transitionS);
 
-    protected class DFA5 : DFA
+    protected class DFA7 : DFA
     {
-        public DFA5(BaseRecognizer recognizer)
+        public DFA7(BaseRecognizer recognizer)
         {
             this.recognizer = recognizer;
-            this.decisionNumber = 5;
-            this.eot = DFA5_eot;
-            this.eof = DFA5_eof;
-            this.min = DFA5_min;
-            this.max = DFA5_max;
-            this.accept = DFA5_accept;
-            this.special = DFA5_special;
-            this.transition = DFA5_transition;
+            this.decisionNumber = 7;
+            this.eot = DFA7_eot;
+            this.eof = DFA7_eof;
+            this.min = DFA7_min;
+            this.max = DFA7_max;
+            this.accept = DFA7_accept;
+            this.special = DFA7_special;
+            this.transition = DFA7_transition;
 
         }
 
         override public string Description
         {
-            get { return "1:1: Tokens : ( T__19 | ARITH_OP | MINUS_OP | MULT_OP | DIV_OP | REM_OP | CALLOUT | BOOL_LITERAL | LBRAC | RBRAC | ID | DIGIT | STRING_LITERAL | CHAR_LITERAL );"; }
+            get { return "1:1: Tokens : ( ARITH_OP | MINUS_OP | MULT_OP | DIV_OP | REM_OP | CALLOUT | BOOL_LITERAL | LBRAC | RBRAC | ID | INT | STRING_LITERAL | CHAR_LITERAL );"; }
         }
 
     }

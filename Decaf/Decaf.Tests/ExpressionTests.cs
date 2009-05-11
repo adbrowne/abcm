@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using Antlr.Runtime;
+using Antlr.Runtime.Tree;
 using Castle.DynamicProxy;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -22,8 +23,7 @@ namespace Decaf.Tests
             generator.Expect(x => x.ExprNumber(9));
 
             var parser = CreateParser(sampleInput, generator);
-            parser.prog();
-
+            
             generator.VerifyAllExpectations();
         }
 
@@ -69,8 +69,8 @@ EndExpression()
                 @"BeginExpression()
 ExprNumber(i=9)
 ExprNumber(i=8)
-ExprNumber(i=10)
 Operation(operationName=Addition)
+ExprNumber(i=10)
 Operation(operationName=Addition)
 EndExpression()
 ";
@@ -154,8 +154,8 @@ EndExpression()
                 @"BeginExpression()
 ExprNumber(i=9)
 ExprNumber(i=8)
-ExprNumber(i=3)
 Operation(operationName=Multiplication)
+ExprNumber(i=3)
 Operation(operationName=Multiplication)
 EndExpression()
 ";
@@ -227,7 +227,7 @@ EndExpression()
         [Test]
         public void CalloutMethodWithExpressionTest()
         {
-            var input = @"callout(""test"",3+4)";
+            var input = @"test(3+4)";
             var output = GetOutput(input);
 
             var expected =
@@ -247,7 +247,7 @@ EndExpression()
         [Test]
         public void CalloutMethodExpressionTest()
         {
-            var input = @"callout(""test"")";
+            var input = @"test()";
             var output = GetOutput(input);
 
             var expected =
@@ -262,7 +262,7 @@ EndExpression()
         [Test]
         public void CalloutMethodWithArguments()
         {
-            var input = @"callout(""test"",""nothing"")";
+            var input = @"test(""nothing"")";
             var output = GetOutput(input);
 
             var expected =
@@ -344,13 +344,20 @@ EndExpression()
             return output.ToString();
         }
 
-        private DecafParser CreateParser(string input, ICodeGenerator codeGenerator)
+        private DecafTree CreateParser(string input, ICodeGenerator codeGenerator)
         {
             var antlrStringStream = new ANTLRStringStream(input);
             var lexter = new DecafLexer(antlrStringStream);
             var tokens = new CommonTokenStream(lexter);
-            var parser = new DecafParser(tokens, codeGenerator);
-            return parser;
+            var parser = new DecafParser(tokens);
+
+            var tree = parser.prog().Tree;
+
+            var nodes = new CommonTreeNodeStream(tree);
+            var walker = new DecafTree(nodes, codeGenerator);
+            walker.prog();
+
+            return walker;
         }
 
         private static string SurroundWithProgram(string s)

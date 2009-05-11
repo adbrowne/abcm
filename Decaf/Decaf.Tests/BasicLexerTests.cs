@@ -45,14 +45,7 @@ namespace Decaf.Tests
         public void DigitTest()
         {
             const string sampleInput = @"9";
-            AssertThat(sampleInput).ResultsIn("9", DecafLexer.DIGIT, 1);
-        }
-
-        [Test]
-        public void MultipleDigitTest()
-        {
-            const string sampleInput = @"98";
-            AssertThat(sampleInput).ResultsIn("9", DecafLexer.DIGIT, 2);
+            AssertThat(sampleInput).ResultsIn("9", DecafLexer.INT, 1);
         }
 
         [Test]
@@ -66,7 +59,7 @@ namespace Decaf.Tests
         public void AdditionTest()
         {
             const string sampleInput = @"9+8";
-            AssertThat(sampleInput).ResultsIn("9", DecafLexer.DIGIT).Then("+", DecafLexer.ARITH_OP).Then("8",DecafLexer.DIGIT);
+            AssertThat(sampleInput).ResultsIn("9", DecafLexer.INT).Then("+", DecafLexer.ARITH_OP).Then("8",DecafLexer.INT);
         }
 
         [Test]
