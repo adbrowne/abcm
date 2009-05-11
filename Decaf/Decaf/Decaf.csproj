@@ -57,6 +57,7 @@
     <Compile Include="DecafParser.Static.cs" />
     <Compile Include="DecafLexer.cs" />
     <Compile Include="DecafParser.cs" />
+    <Compile Include="ExpressionType.cs" />
     <Compile Include="ExprStack.cs" />
     <Compile Include="ICodeGenerator.cs" />
     <Compile Include="Program.cs" />

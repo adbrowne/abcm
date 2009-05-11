@@ -15,6 +15,8 @@ namespace Decaf
         private ILGenerator ilGenerator;
         private string assemblyName;
 
+        private ExpressionType currentExpressionType;
+
         public ClrCodeGenerator(string outputFileName)
             : this(outputFileName, false)
         {
@@ -80,17 +82,15 @@ namespace Decaf
 
         public void EndExpression()
         {
-            //ilGenerator.Emit(OpCodes.Call, typeof(System.Console).GetMethod("WriteLine", new System.Type[] { typeof(int) }));
+            if(currentExpressionType == ExpressionType.Value)
+                ilGenerator.Emit(OpCodes.Box, typeof(int));
 
-            ilGenerator.Emit(OpCodes.Box, typeof(int));
-
-            //ilGenerator.Emit(OpCodes.Stloc_0);
-            //ilGenerator.Emit(OpCodes.Ldloc_0);
             ilGenerator.Emit(OpCodes.Ret);
         }
 
         public void ExprString(string value)
         {
+            currentExpressionType = ExpressionType.Object;
             ilGenerator.Emit(OpCodes.Ldstr, value);
         }
 
