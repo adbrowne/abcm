@@ -62,7 +62,9 @@
     <Compile Include="ClrCodeGenExpressionTests.cs" />
     <Compile Include="ConsoleInterceptor.cs" />
     <Compile Include="ClrCodeGenStatementTests.cs" />
-    <Compile Include="StatementTests.cs" />
+    <Compile Include="ClrCodeGenClassAndMethodTests.cs" />
+    <Compile Include="ReflectionTestHelpers.cs" />
+    <Compile Include="ClassMethodStatementTests.cs" />
     <Compile Include="ExpressionTests.cs" />
     <Compile Include="LexResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

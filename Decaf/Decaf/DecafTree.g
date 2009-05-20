@@ -10,7 +10,7 @@ options {
     Decaf
 }
 
-prog:   stat*
+prog: ^('class' name=ID {CodeGenerator.StartModule($name.text);} stat* {CodeGenerator.EndModule();})
     ;
     
 stat:   {CodeGenerator.BeginExpression();} e=expr {CodeGenerator.EndExpression();}

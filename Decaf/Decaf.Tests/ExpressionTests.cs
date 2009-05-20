@@ -14,17 +14,16 @@ namespace Decaf.Tests
         [Test]
         public void SingleDigitExpressionTest()
         {
-            var repository = new MockRepository();
+            var input = "9";
+            var output = GetOutput(input);
 
-            var sampleInput = SurroundWithProgram("9");
-            var generator = repository.DynamicMock<ICodeGenerator>();
-
-            generator.Expect(x => x.BeginExpression());
-            generator.Expect(x => x.ExprNumber(9));
-
-            var parser = CreateParser(sampleInput, generator);
-            
-            generator.VerifyAllExpectations();
+            var expected =
+                @"BeginExpression()
+ExprNumber(i=9)
+EndExpression()
+";
+            Assert.AreEqual(expected, output);
+        
         }
 
         [Test]
@@ -341,7 +340,7 @@ EndExpression()
 
             var parser = CreateParser(sampleInput, generator);
             parser.prog();
-            return output.ToString();
+            return output.ToString().Replace("StartModule(id=Test)\r\n", "").Replace("EndModule()\r\n","");
         }
 
         private DecafTree CreateParser(string input, ICodeGenerator codeGenerator)
@@ -355,14 +354,13 @@ EndExpression()
 
             var nodes = new CommonTreeNodeStream(tree);
             var walker = new DecafTree(nodes, codeGenerator);
-            walker.prog();
-
+            
             return walker;
         }
 
         private static string SurroundWithProgram(string s)
         {
-            return s;
+            return "public class Test {" + s + ";}";
         }
     }
 }

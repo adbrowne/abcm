@@ -9,12 +9,12 @@ using Rhino.Mocks;
 namespace Decaf.Tests
 {
     [TestFixture]
-    public class StatementTests
+    public class ClassMethodStatementTests
     {
         [Test]
         public void DefineIntegerWithValue()
         {
-            var input = "int a=9;";
+            var input = "public class Test { int a=9; }";
             var output = GetOutput(input);
 
             var expected =
@@ -24,13 +24,35 @@ ExprNumber(i=9)
 EndExpression()
 AssignExpression(name=a)
 ";
-            Assert.AreEqual(expected, output);
+
+            Assert.That(output.Contains(expected));
+        }
+
+        [Test]
+        public void MultipleStatementTest()
+        {
+            var input = @"public class Test { int a=9;int b=10; }";
+            var output = GetOutput(input);
+
+            var expected =
+                @"DefineVariable(name=a,type=int)
+BeginExpression()
+ExprNumber(i=9)
+EndExpression()
+AssignExpression(name=a)
+DefineVariable(name=b,type=int)
+BeginExpression()
+ExprNumber(i=10)
+EndExpression()
+AssignExpression(name=b)
+";
+            Assert.That(output.Contains(expected));
         }
 
         [Test]
         public void DefineIntegerWithExpression()
         {
-            var input = "int a=9*2+4;";
+            var input = "public class Test { int a=9*2+4; }";
             var output = GetOutput(input);
 
             var expected =
@@ -43,6 +65,19 @@ ExprNumber(i=4)
 Operation(operationName=Addition)
 EndExpression()
 AssignExpression(name=a)
+";
+            Assert.That(output.Contains(expected));
+        }
+
+        [Test]
+        public void DefineClass()
+        {
+            var input = @"public class Test {}";
+            var output = GetOutput(input);
+
+            var expected =
+                @"StartModule(id=Test)
+EndModule()
 ";
             Assert.AreEqual(expected, output);
         }
@@ -71,8 +106,7 @@ AssignExpression(name=a)
 
             var nodes = new CommonTreeNodeStream(tree);
             var walker = new DecafTree(nodes, codeGenerator);
-            walker.prog();
-
+            
             return walker;
         }
 

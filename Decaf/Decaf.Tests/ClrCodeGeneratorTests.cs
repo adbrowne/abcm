@@ -13,8 +13,8 @@ namespace Decaf.Tests
         public void EmptyAssemblyTest()
         {
             var clrCodeGenerator = new ClrCodeGenerator("Output.exe");
-            var type = clrCodeGenerator.StartModule("Foo");
-            type.CreateType();
+            clrCodeGenerator.StartModule("Foo");
+            clrCodeGenerator.EndModule();
             clrCodeGenerator.Save();
         }
     }

@@ -76,6 +76,13 @@ namespace Decaf.Tests
             AssertThat(sampleInput).ResultsIn("int", DecafLexer.ID).Then("a", DecafLexer.ID).Then("=", DecafLexer.EQUALS).Then("9", DecafLexer.INT).Then(";", DecafLexer.EOS);
         }
 
+        [Test]
+        public void DefineClassTest()
+        {
+            const string sampleInput = @"start Test end";
+            AssertThat(sampleInput).ResultsIn("start", DecafLexer.START).Then("Test", DecafLexer.ID).Then("end", DecafLexer.END);
+        }
+
         private static LexResult AssertThat(string input)
         {
             var antlrStringStream = new ANTLRStringStream(input);

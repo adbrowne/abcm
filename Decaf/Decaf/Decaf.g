@@ -15,12 +15,12 @@ options
     Decaf
 }
 
-prog: ( stat )
+prog: 'public' 'class' ID '{' stat* '}' -> ^('class' ID stat*)
     ;
 
-stat:   expr -> expr
+stat:   expr EOS-> expr
 	|
-	t=ID name=ID EQUALS expr -> ^(EQUALS ^($t $name) expr);
+	t=ID name=ID EQUALS expr EOS -> ^(EQUALS ^($t $name) expr);
 
 expr:   multExpr (('+'^|'-'^) multExpr)*
     ;
@@ -53,6 +53,9 @@ atom:   MINUS_OP INT
 //multop: MULT_OP	| DIV_OP | REM_OP;
 
 //multExpr:   (atom (multop^ multExpr)*); 
+
+START 	:	 'start';
+END	:	'end';
 
 ARITH_OP 
 	:	 '+';

@@ -16,5 +16,7 @@ namespace Decaf
         void AssignExpression(string name);
         void DefineVariable(string name, string type);
         void Return(string name);
+        void StartModule(string id);
+        void EndModule();
     }
 }

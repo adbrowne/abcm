@@ -8,19 +8,17 @@ namespace Decaf.Tests
     [TestFixture]
     public class ClrCodeGenStatementTests
     {
-        private TypeBuilder currentType;
-
         ClrCodeGenerator GetGeneratorForStatement()
         {
             string name = "Output_" + Guid.NewGuid().ToString("N") + ".exe";
             var clrCodeGenerator = new ClrCodeGenerator(name);
-            currentType = clrCodeGenerator.StartModule("Foo");
+            clrCodeGenerator.StartModule("Foo");
             return clrCodeGenerator;
         }
 
         private object GetStatementResult(ClrCodeGenerator clrCodeGenerator)
         {
-            currentType.CreateType();
+            clrCodeGenerator.EndModule();
             clrCodeGenerator.Save();
             Assembly a = Assembly.Load(clrCodeGenerator.Name);
 

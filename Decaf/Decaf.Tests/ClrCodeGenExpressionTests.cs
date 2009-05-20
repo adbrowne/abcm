@@ -8,13 +8,11 @@ namespace Decaf.Tests
     [TestFixture]
     public class ClrCodeGenExpressionTests
     {
-        private TypeBuilder currentType;
-
         ClrCodeGenerator GetGeneratorForExpression()
         {
             string name = "Output_" + Guid.NewGuid().ToString("N") + ".exe";
             var clrCodeGenerator = new ClrCodeGenerator(name);
-            currentType = clrCodeGenerator.StartModule("Foo");
+            clrCodeGenerator.StartModule("Foo");
             clrCodeGenerator.BeginMethod("Test");
             return clrCodeGenerator;
         }
@@ -22,7 +20,7 @@ namespace Decaf.Tests
         private object GetExpressionResult(ClrCodeGenerator clrCodeGenerator)
         {
             clrCodeGenerator.ReturnExpression();
-            currentType.CreateType();
+            clrCodeGenerator.EndModule();
             clrCodeGenerator.Save();
             Assembly a = Assembly.Load(clrCodeGenerator.Name);
 

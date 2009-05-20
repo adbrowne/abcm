@@ -45,10 +45,14 @@ namespace Decaf
             get { return assemblyName; }
         }
 
-        public TypeBuilder StartModule(string id)
+        public void StartModule(string id)
         {
             currentType = mainModuleBuilder.DefineType(id);
-            return currentType;
+        }
+
+        public void EndModule()
+        {
+            currentType.CreateType();
         }
 
         public void Save()
@@ -60,7 +64,7 @@ namespace Decaf
         public void BeginMethod(string name)
         {
             currentMethod = currentType.DefineMethod(name, MethodAttributes.Static | MethodAttributes.Public, typeof(object), System.Type.EmptyTypes);
-            ilGenerator = currentMethod.GetILGenerator();  
+            ilGenerator = currentMethod.GetILGenerator();
         }
 
         public void BeginExpression()
@@ -127,7 +131,7 @@ namespace Decaf
 
         public void DefineVariable(string name, string type)
         {
-            var localBuilder = ilGenerator.DeclareLocal(typeof (int));
+            var localBuilder = ilGenerator.DeclareLocal(typeof(int));
             methodVariables.Add(name, localBuilder);
         }
 
@@ -142,7 +146,7 @@ namespace Decaf
             if (currentExpressionType == ExpressionType.Value)
                 ilGenerator.Emit(OpCodes.Box, typeof(int));
 
-            ilGenerator.Emit(OpCodes.Ret);    
+            ilGenerator.Emit(OpCodes.Ret);
         }
 
         public void Return(string name)
