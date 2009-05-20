@@ -12,14 +12,6 @@ namespace Decaf
         {
             CodeGenerator = codeGenerator;
         }
-
-        private void GenerateExpression(ExprStack e)
-        {
-            foreach (var item in e)
-            {
-                item.Generate(CodeGenerator);
-            }
-        }
     }
 
 }
