@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -14,7 +15,7 @@ namespace Decaf
         private MethodBuilder currentMethod;
         private ILGenerator ilGenerator;
         private string assemblyName;
-
+        private Dictionary<string, LocalBuilder> methodVariables = new Dictionary<string, LocalBuilder>();
         private ExpressionType currentExpressionType;
 
         public ClrCodeGenerator(string outputFileName)
@@ -56,10 +57,14 @@ namespace Decaf
             assemblyBuilder.Save(outputFileName);
         }
 
+        public void BeginMethod(string name)
+        {
+            currentMethod = currentType.DefineMethod(name, MethodAttributes.Static | MethodAttributes.Public, typeof(object), System.Type.EmptyTypes);
+            ilGenerator = currentMethod.GetILGenerator();  
+        }
+
         public void BeginExpression()
         {
-            currentMethod = currentType.DefineMethod("Test", MethodAttributes.Static | MethodAttributes.Public, typeof(object), System.Type.EmptyTypes);
-            ilGenerator = currentMethod.GetILGenerator();
         }
 
         public void ExprNumber(int i)
@@ -82,10 +87,6 @@ namespace Decaf
 
         public void EndExpression()
         {
-            if(currentExpressionType == ExpressionType.Value)
-                ilGenerator.Emit(OpCodes.Box, typeof(int));
-
-            ilGenerator.Emit(OpCodes.Ret);
         }
 
         public void ExprString(string value)
@@ -119,10 +120,39 @@ namespace Decaf
             throw new NotImplementedException();
         }
 
+        public void AssignExpression(string name)
+        {
+            ilGenerator.Emit(OpCodes.Stloc, methodVariables[name].LocalIndex);
+        }
+
+        public void DefineVariable(string name, string type)
+        {
+            var localBuilder = ilGenerator.DeclareLocal(typeof (int));
+            methodVariables.Add(name, localBuilder);
+        }
+
         public MethodInfo GetCurrentMethod()
         {
             mainModuleBuilder.CreateGlobalFunctions();
             return currentMethod;
+        }
+
+        public void ReturnExpression()
+        {
+            if (currentExpressionType == ExpressionType.Value)
+                ilGenerator.Emit(OpCodes.Box, typeof(int));
+
+            ilGenerator.Emit(OpCodes.Ret);    
+        }
+
+        public void Return(string name)
+        {
+            var variable = methodVariables[name];
+            ilGenerator.Emit(OpCodes.Ldloc, variable.LocalIndex);
+
+            ilGenerator.Emit(OpCodes.Box, typeof(int));
+
+            ilGenerator.Emit(OpCodes.Ret);
         }
     }
 }

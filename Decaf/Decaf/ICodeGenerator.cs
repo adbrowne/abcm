@@ -13,5 +13,8 @@ namespace Decaf
         void ExprChar(char value);
         void MethodCall(string name);
         void BeginMethodArguments();
+        void AssignExpression(string name);
+        void DefineVariable(string name, string type);
+        void Return(string name);
     }
 }

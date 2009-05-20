@@ -69,6 +69,13 @@ namespace Decaf.Tests
             AssertThat(sampleInput).ResultsIn("varName", DecafLexer.ID, 1);
         }
 
+        [Test]
+        public void DefineVariableTest()
+        {
+            const string sampleInput = @"int a=9;";
+            AssertThat(sampleInput).ResultsIn("int", DecafLexer.ID).Then("a", DecafLexer.ID).Then("=", DecafLexer.EQUALS).Then("9", DecafLexer.INT).Then(";", DecafLexer.EOS);
+        }
+
         private static LexResult AssertThat(string input)
         {
             var antlrStringStream = new ANTLRStringStream(input);

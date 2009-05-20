@@ -13,7 +13,9 @@ options {
 prog:   stat*
     ;
     
-stat:   {CodeGenerator.BeginExpression();} e=expr {CodeGenerator.EndExpression();};
+stat:   {CodeGenerator.BeginExpression();} e=expr {CodeGenerator.EndExpression();}
+	|
+	^(EQUALS ^(t=ID name=ID) {CodeGenerator.DefineVariable($name.text, $t.text); CodeGenerator.BeginExpression();} expr {CodeGenerator.EndExpression(); CodeGenerator.AssignExpression($name.text); });
 
 expr
     :   ^('+' a=expr b=expr)       { CodeGenerator.Operation("Addition"); }

@@ -59,7 +59,10 @@
   <ItemGroup>
     <Compile Include="BasicLexerTests.cs" />
     <Compile Include="ClrCodeGeneratorTests.cs" />
+    <Compile Include="ClrCodeGenExpressionTests.cs" />
     <Compile Include="ConsoleInterceptor.cs" />
+    <Compile Include="ClrCodeGenStatementTests.cs" />
+    <Compile Include="StatementTests.cs" />
     <Compile Include="ExpressionTests.cs" />
     <Compile Include="LexResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

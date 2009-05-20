@@ -18,7 +18,9 @@ options
 prog: ( stat )
     ;
 
-stat:   expr;
+stat:   expr -> expr
+	|
+	t=ID name=ID EQUALS expr -> ^(EQUALS ^($t $name) expr);
 
 expr:   multExpr (('+'^|'-'^) multExpr)*
     ;
@@ -61,6 +63,9 @@ MULT_OP :	 '*';
 DIV_OP 	:	 '/';
 REM_OP 	:	'%';
 
+EQUALS 	:	'=';
+
+EOS	:	';';
 //literal:	 (int_literal)
 //	|
 //		BOOL_LITERAL
@@ -109,3 +114,6 @@ STRING_LITERAL : '\"' .* '\"';
   
 CHAR_LITERAL
 	:	 '\'' + ('a'..'z'|'A'..'Z'|'0'..'9') '\'';
+
+WS  :   (' '|'\t')+ { Skip(); }
+    ;
