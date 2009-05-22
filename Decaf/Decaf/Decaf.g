@@ -51,17 +51,7 @@ atom:   MINUS_OP INT
 	ID
 	;
 
-//expr: (multExpr (arithop^ expr  )*)
-//	|
-//       method_call;
-
-//arithop:	 ARITH_OP | MINUS_OP;
-
-//multop: MULT_OP	| DIV_OP | REM_OP;
-
-//multExpr:   (atom (multop^ multExpr)*); 
-
-START 	:	 'start';
+START 	:	'start';
 END	:	'end';
 
 ARITH_OP 
@@ -76,31 +66,6 @@ REM_OP 	:	'%';
 EQUALS 	:	'=';
 
 EOS	:	';';
-//literal:	 (int_literal)
-//	|
-//		BOOL_LITERAL
-//	|
-//		CHAR_LITERAL 
-//	;  
-
-//atom: 
-//	literal
-//	| 
-//	LBRAC + expr + RBRAC
-//	|
-//	STRING_LITERAL
-//	|
-//	id=ID
-//	;
-
-//method_call:
-//	CALLOUT LBRAC STRING_LITERAL (',' callout_arg )* RBRAC
-//	;
-	
-//callout_arg: expr;
-	
-//int_literal :	 decimal_literal;
-
 
 CALLOUT	:	'callout';
 
