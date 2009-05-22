@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-05-22 12:56:47
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-05-22 12:57:58
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -39,8 +39,6 @@ public partial class DecafParser : Parser
 		"STRING_LITERAL", 
 		"CHAR_LITERAL", 
 		"BOOL_LITERAL", 
-		"START", 
-		"END", 
 		"ARITH_OP", 
 		"MULT_OP", 
 		"DIV_OP", 
@@ -55,33 +53,31 @@ public partial class DecafParser : Parser
 		"'(){'"
     };
 
-    public const int ALPHA_NUM = 24;
-    public const int MULT_OP = 19;
+    public const int ALPHA_NUM = 22;
+    public const int MULT_OP = 17;
     public const int CLASS = 5;
-    public const int T__29 = 29;
-    public const int T__28 = 28;
     public const int T__27 = 27;
     public const int T__26 = 26;
-    public const int DIV_OP = 20;
-    public const int ARITH_OP = 18;
-    public const int REM_OP = 21;
+    public const int T__25 = 25;
+    public const int DIV_OP = 18;
+    public const int T__24 = 24;
+    public const int ARITH_OP = 16;
+    public const int REM_OP = 19;
     public const int EQUALS = 8;
     public const int INT = 10;
     public const int BOOL_LITERAL = 15;
     public const int ID = 6;
     public const int EOF = -1;
     public const int LBRAC = 11;
-    public const int ALPHA = 23;
-    public const int WS = 25;
+    public const int ALPHA = 21;
+    public const int WS = 23;
     public const int STRING_LITERAL = 13;
     public const int CHAR_LITERAL = 14;
     public const int RBRAC = 12;
     public const int EOS = 7;
-    public const int START = 16;
     public const int MINUS_OP = 9;
-    public const int END = 17;
     public const int METHOD = 4;
-    public const int CALLOUT = 22;
+    public const int CALLOUT = 20;
 
     // delegates
     // delegators
@@ -152,17 +148,17 @@ public partial class DecafParser : Parser
         CommonTree char_literal6_tree=null;
         RewriteRuleTokenStream stream_CLASS = new RewriteRuleTokenStream(adaptor,"token CLASS");
         RewriteRuleTokenStream stream_ID = new RewriteRuleTokenStream(adaptor,"token ID");
+        RewriteRuleTokenStream stream_24 = new RewriteRuleTokenStream(adaptor,"token 24");
+        RewriteRuleTokenStream stream_25 = new RewriteRuleTokenStream(adaptor,"token 25");
         RewriteRuleTokenStream stream_26 = new RewriteRuleTokenStream(adaptor,"token 26");
-        RewriteRuleTokenStream stream_27 = new RewriteRuleTokenStream(adaptor,"token 27");
-        RewriteRuleTokenStream stream_28 = new RewriteRuleTokenStream(adaptor,"token 28");
         RewriteRuleSubtreeStream stream_method = new RewriteRuleSubtreeStream(adaptor,"rule method");
         try 
     	{
             // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:22:5: ( 'public' CLASS ID '{' ( method )* '}' -> ^( CLASS ID ( method )* ) )
             // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:22:7: 'public' CLASS ID '{' ( method )* '}'
             {
-            	string_literal1=(IToken)Match(input,26,FOLLOW_26_in_prog71);  
-            	stream_26.Add(string_literal1);
+            	string_literal1=(IToken)Match(input,24,FOLLOW_24_in_prog71);  
+            	stream_24.Add(string_literal1);
 
             	CLASS2=(IToken)Match(input,CLASS,FOLLOW_CLASS_in_prog73);  
             	stream_CLASS.Add(CLASS2);
@@ -170,8 +166,8 @@ public partial class DecafParser : Parser
             	ID3=(IToken)Match(input,ID,FOLLOW_ID_in_prog75);  
             	stream_ID.Add(ID3);
 
-            	char_literal4=(IToken)Match(input,27,FOLLOW_27_in_prog77);  
-            	stream_27.Add(char_literal4);
+            	char_literal4=(IToken)Match(input,25,FOLLOW_25_in_prog77);  
+            	stream_25.Add(char_literal4);
 
             	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:22:29: ( method )*
             	do 
@@ -179,7 +175,7 @@ public partial class DecafParser : Parser
             	    int alt1 = 2;
             	    int LA1_0 = input.LA(1);
 
-            	    if ( (LA1_0 == 26) )
+            	    if ( (LA1_0 == 24) )
             	    {
             	        alt1 = 1;
             	    }
@@ -207,13 +203,13 @@ public partial class DecafParser : Parser
             	loop1:
             		;	// Stops C# compiler whining that label 'loop1' has no statements
 
-            	char_literal6=(IToken)Match(input,28,FOLLOW_28_in_prog82);  
-            	stream_28.Add(char_literal6);
+            	char_literal6=(IToken)Match(input,26,FOLLOW_26_in_prog82);  
+            	stream_26.Add(char_literal6);
 
 
 
             	// AST REWRITE
-            	// elements:          CLASS, ID, method
+            	// elements:          method, ID, CLASS
             	// token labels:      
             	// rule labels:       retval
             	// token list labels: 
@@ -298,23 +294,23 @@ public partial class DecafParser : Parser
         CommonTree string_literal9_tree=null;
         CommonTree char_literal11_tree=null;
         RewriteRuleTokenStream stream_ID = new RewriteRuleTokenStream(adaptor,"token ID");
+        RewriteRuleTokenStream stream_24 = new RewriteRuleTokenStream(adaptor,"token 24");
         RewriteRuleTokenStream stream_26 = new RewriteRuleTokenStream(adaptor,"token 26");
-        RewriteRuleTokenStream stream_28 = new RewriteRuleTokenStream(adaptor,"token 28");
-        RewriteRuleTokenStream stream_29 = new RewriteRuleTokenStream(adaptor,"token 29");
+        RewriteRuleTokenStream stream_27 = new RewriteRuleTokenStream(adaptor,"token 27");
         RewriteRuleSubtreeStream stream_stat = new RewriteRuleSubtreeStream(adaptor,"rule stat");
         try 
     	{
             // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:25:8: ( 'public' ID '(){' ( stat )* '}' -> ^( METHOD ID ( stat )* ) )
             // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:25:10: 'public' ID '(){' ( stat )* '}'
             {
-            	string_literal7=(IToken)Match(input,26,FOLLOW_26_in_method106);  
-            	stream_26.Add(string_literal7);
+            	string_literal7=(IToken)Match(input,24,FOLLOW_24_in_method106);  
+            	stream_24.Add(string_literal7);
 
             	ID8=(IToken)Match(input,ID,FOLLOW_ID_in_method108);  
             	stream_ID.Add(ID8);
 
-            	string_literal9=(IToken)Match(input,29,FOLLOW_29_in_method110);  
-            	stream_29.Add(string_literal9);
+            	string_literal9=(IToken)Match(input,27,FOLLOW_27_in_method110);  
+            	stream_27.Add(string_literal9);
 
             	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:25:28: ( stat )*
             	do 
@@ -350,8 +346,8 @@ public partial class DecafParser : Parser
             	loop2:
             		;	// Stops C# compiler whining that label 'loop2' has no statements
 
-            	char_literal11=(IToken)Match(input,28,FOLLOW_28_in_method115);  
-            	stream_28.Add(char_literal11);
+            	char_literal11=(IToken)Match(input,26,FOLLOW_26_in_method115);  
+            	stream_26.Add(char_literal11);
 
 
 
@@ -543,7 +539,7 @@ public partial class DecafParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          expr, EQUALS, name, t
+                    	// elements:          EQUALS, expr, t, name
                     	// token labels:      t, name
                     	// rule labels:       retval
                     	// token list labels: 
@@ -1170,17 +1166,17 @@ public partial class DecafParser : Parser
 
  
 
-    public static readonly BitSet FOLLOW_26_in_prog71 = new BitSet(new ulong[]{0x0000000000000020UL});
+    public static readonly BitSet FOLLOW_24_in_prog71 = new BitSet(new ulong[]{0x0000000000000020UL});
     public static readonly BitSet FOLLOW_CLASS_in_prog73 = new BitSet(new ulong[]{0x0000000000000040UL});
-    public static readonly BitSet FOLLOW_ID_in_prog75 = new BitSet(new ulong[]{0x0000000008000000UL});
-    public static readonly BitSet FOLLOW_27_in_prog77 = new BitSet(new ulong[]{0x0000000014000000UL});
-    public static readonly BitSet FOLLOW_method_in_prog79 = new BitSet(new ulong[]{0x0000000014000000UL});
-    public static readonly BitSet FOLLOW_28_in_prog82 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_26_in_method106 = new BitSet(new ulong[]{0x0000000000000040UL});
-    public static readonly BitSet FOLLOW_ID_in_method108 = new BitSet(new ulong[]{0x0000000020000000UL});
-    public static readonly BitSet FOLLOW_29_in_method110 = new BitSet(new ulong[]{0x000000001000EE40UL});
-    public static readonly BitSet FOLLOW_stat_in_method112 = new BitSet(new ulong[]{0x000000001000EE40UL});
-    public static readonly BitSet FOLLOW_28_in_method115 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_prog75 = new BitSet(new ulong[]{0x0000000002000000UL});
+    public static readonly BitSet FOLLOW_25_in_prog77 = new BitSet(new ulong[]{0x0000000005000000UL});
+    public static readonly BitSet FOLLOW_method_in_prog79 = new BitSet(new ulong[]{0x0000000005000000UL});
+    public static readonly BitSet FOLLOW_26_in_prog82 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_24_in_method106 = new BitSet(new ulong[]{0x0000000000000040UL});
+    public static readonly BitSet FOLLOW_ID_in_method108 = new BitSet(new ulong[]{0x0000000008000000UL});
+    public static readonly BitSet FOLLOW_27_in_method110 = new BitSet(new ulong[]{0x000000000400EE40UL});
+    public static readonly BitSet FOLLOW_stat_in_method112 = new BitSet(new ulong[]{0x000000000400EE40UL});
+    public static readonly BitSet FOLLOW_26_in_method115 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_expr_in_stat135 = new BitSet(new ulong[]{0x0000000000000080UL});
     public static readonly BitSet FOLLOW_EOS_in_stat137 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_ID_in_stat148 = new BitSet(new ulong[]{0x0000000000000040UL});
@@ -1188,13 +1184,13 @@ public partial class DecafParser : Parser
     public static readonly BitSet FOLLOW_EQUALS_in_stat154 = new BitSet(new ulong[]{0x000000000000EE40UL});
     public static readonly BitSet FOLLOW_expr_in_stat156 = new BitSet(new ulong[]{0x0000000000000080UL});
     public static readonly BitSet FOLLOW_EOS_in_stat158 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_multExpr_in_expr183 = new BitSet(new ulong[]{0x0000000000040202UL});
+    public static readonly BitSet FOLLOW_multExpr_in_expr183 = new BitSet(new ulong[]{0x0000000000010202UL});
     public static readonly BitSet FOLLOW_ARITH_OP_in_expr187 = new BitSet(new ulong[]{0x000000000000EE40UL});
     public static readonly BitSet FOLLOW_MINUS_OP_in_expr190 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_multExpr_in_expr194 = new BitSet(new ulong[]{0x0000000000040202UL});
-    public static readonly BitSet FOLLOW_atom_in_multExpr215 = new BitSet(new ulong[]{0x0000000000380002UL});
+    public static readonly BitSet FOLLOW_multExpr_in_expr194 = new BitSet(new ulong[]{0x0000000000010202UL});
+    public static readonly BitSet FOLLOW_atom_in_multExpr215 = new BitSet(new ulong[]{0x00000000000E0002UL});
     public static readonly BitSet FOLLOW_set_in_multExpr218 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_atom_in_multExpr227 = new BitSet(new ulong[]{0x0000000000380002UL});
+    public static readonly BitSet FOLLOW_atom_in_multExpr227 = new BitSet(new ulong[]{0x00000000000E0002UL});
     public static readonly BitSet FOLLOW_MINUS_OP_in_atom243 = new BitSet(new ulong[]{0x0000000000000400UL});
     public static readonly BitSet FOLLOW_INT_in_atom245 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_INT_in_atom251 = new BitSet(new ulong[]{0x0000000000000002UL});

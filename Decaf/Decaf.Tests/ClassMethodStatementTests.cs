@@ -14,7 +14,7 @@ namespace Decaf.Tests
         [Test]
         public void DefineIntegerWithValue()
         {
-            var input = "public class Test { int a=9; }";
+            var input = "public class Test { public TestMethod(){ int a=9; }}";
             var output = GetOutput(input);
 
             var expected =

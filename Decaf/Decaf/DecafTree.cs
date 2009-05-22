@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g 2009-05-22 12:57:01
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g 2009-05-22 12:58:04
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -36,8 +36,6 @@ public partial class DecafTree : TreeParser
 		"STRING_LITERAL", 
 		"CHAR_LITERAL", 
 		"BOOL_LITERAL", 
-		"START", 
-		"END", 
 		"ARITH_OP", 
 		"MULT_OP", 
 		"DIV_OP", 
@@ -52,33 +50,31 @@ public partial class DecafTree : TreeParser
 		"'(){'"
     };
 
-    public const int ALPHA_NUM = 24;
+    public const int ALPHA_NUM = 22;
     public const int CLASS = 5;
-    public const int MULT_OP = 19;
-    public const int T__29 = 29;
-    public const int T__28 = 28;
+    public const int MULT_OP = 17;
     public const int T__27 = 27;
     public const int T__26 = 26;
-    public const int DIV_OP = 20;
-    public const int ARITH_OP = 18;
-    public const int REM_OP = 21;
+    public const int T__25 = 25;
+    public const int DIV_OP = 18;
+    public const int T__24 = 24;
+    public const int ARITH_OP = 16;
+    public const int REM_OP = 19;
     public const int EQUALS = 8;
     public const int INT = 10;
     public const int BOOL_LITERAL = 15;
     public const int ID = 6;
     public const int EOF = -1;
     public const int LBRAC = 11;
-    public const int ALPHA = 23;
+    public const int ALPHA = 21;
     public const int STRING_LITERAL = 13;
-    public const int WS = 25;
+    public const int WS = 23;
     public const int CHAR_LITERAL = 14;
     public const int RBRAC = 12;
     public const int EOS = 7;
-    public const int START = 16;
     public const int MINUS_OP = 9;
-    public const int END = 17;
     public const int METHOD = 4;
-    public const int CALLOUT = 22;
+    public const int CALLOUT = 20;
 
     // delegates
     // delegators
@@ -198,7 +194,7 @@ public partial class DecafTree : TreeParser
             	    int alt2 = 2;
             	    int LA2_0 = input.LA(1);
 
-            	    if ( (LA2_0 == ID || (LA2_0 >= EQUALS && LA2_0 <= INT) || (LA2_0 >= STRING_LITERAL && LA2_0 <= BOOL_LITERAL) || (LA2_0 >= ARITH_OP && LA2_0 <= REM_OP)) )
+            	    if ( (LA2_0 == ID || (LA2_0 >= EQUALS && LA2_0 <= INT) || (LA2_0 >= STRING_LITERAL && LA2_0 <= REM_OP)) )
             	    {
             	        alt2 = 1;
             	    }
@@ -258,7 +254,7 @@ public partial class DecafTree : TreeParser
             int alt3 = 2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0 == ID || (LA3_0 >= MINUS_OP && LA3_0 <= INT) || (LA3_0 >= STRING_LITERAL && LA3_0 <= BOOL_LITERAL) || (LA3_0 >= ARITH_OP && LA3_0 <= REM_OP)) )
+            if ( (LA3_0 == ID || (LA3_0 >= MINUS_OP && LA3_0 <= INT) || (LA3_0 >= STRING_LITERAL && LA3_0 <= REM_OP)) )
             {
                 alt3 = 1;
             }
@@ -524,7 +520,7 @@ public partial class DecafTree : TreeParser
     const string DFA4_minS =
         "\x01\x06\x01\uffff\x01\x02\x0a\uffff";
     const string DFA4_maxS =
-        "\x01\x15\x01\uffff\x01\x0a\x0a\uffff";
+        "\x01\x13\x01\uffff\x01\x0a\x0a\uffff";
     const string DFA4_acceptS =
         "\x01\uffff\x01\x01\x01\uffff\x01\x03\x01\x04\x01\x05\x01\x06\x01"+
         "\x07\x01\x08\x01\x0a\x01\x0b\x01\x02\x01\x09";
@@ -532,7 +528,7 @@ public partial class DecafTree : TreeParser
         "\x0d\uffff}>";
     static readonly string[] DFA4_transitionS = {
             "\x01\x09\x02\uffff\x01\x02\x01\x08\x02\uffff\x01\x06\x01\x07"+
-            "\x01\x0a\x02\uffff\x01\x01\x01\x03\x01\x04\x01\x05",
+            "\x01\x0a\x01\x01\x01\x03\x01\x04\x01\x05",
             "",
             "\x01\x0b\x07\uffff\x01\x0c",
             "",
@@ -584,27 +580,27 @@ public partial class DecafTree : TreeParser
     public static readonly BitSet FOLLOW_ID_in_prog54 = new BitSet(new ulong[]{0x0000000000000018UL});
     public static readonly BitSet FOLLOW_method_in_prog58 = new BitSet(new ulong[]{0x0000000000000018UL});
     public static readonly BitSet FOLLOW_METHOD_in_method80 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_method84 = new BitSet(new ulong[]{0x00000000003CE748UL});
-    public static readonly BitSet FOLLOW_stat_in_method88 = new BitSet(new ulong[]{0x00000000003CE748UL});
+    public static readonly BitSet FOLLOW_ID_in_method84 = new BitSet(new ulong[]{0x00000000000FE748UL});
+    public static readonly BitSet FOLLOW_stat_in_method88 = new BitSet(new ulong[]{0x00000000000FE748UL});
     public static readonly BitSet FOLLOW_expr_in_stat107 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_EQUALS_in_stat116 = new BitSet(new ulong[]{0x0000000000000004UL});
     public static readonly BitSet FOLLOW_ID_in_stat121 = new BitSet(new ulong[]{0x0000000000000004UL});
     public static readonly BitSet FOLLOW_ID_in_stat125 = new BitSet(new ulong[]{0x0000000000000008UL});
     public static readonly BitSet FOLLOW_expr_in_stat130 = new BitSet(new ulong[]{0x0000000000000008UL});
     public static readonly BitSet FOLLOW_ARITH_OP_in_expr148 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr152 = new BitSet(new ulong[]{0x00000000003CE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr152 = new BitSet(new ulong[]{0x00000000000FE640UL});
     public static readonly BitSet FOLLOW_expr_in_expr156 = new BitSet(new ulong[]{0x0000000000000008UL});
     public static readonly BitSet FOLLOW_MINUS_OP_in_expr175 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr179 = new BitSet(new ulong[]{0x00000000003CE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr179 = new BitSet(new ulong[]{0x00000000000FE640UL});
     public static readonly BitSet FOLLOW_expr_in_expr183 = new BitSet(new ulong[]{0x0000000000000008UL});
     public static readonly BitSet FOLLOW_MULT_OP_in_expr202 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr206 = new BitSet(new ulong[]{0x00000000003CE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr206 = new BitSet(new ulong[]{0x00000000000FE640UL});
     public static readonly BitSet FOLLOW_expr_in_expr210 = new BitSet(new ulong[]{0x0000000000000008UL});
     public static readonly BitSet FOLLOW_DIV_OP_in_expr229 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr233 = new BitSet(new ulong[]{0x00000000003CE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr233 = new BitSet(new ulong[]{0x00000000000FE640UL});
     public static readonly BitSet FOLLOW_expr_in_expr237 = new BitSet(new ulong[]{0x0000000000000008UL});
     public static readonly BitSet FOLLOW_REM_OP_in_expr256 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr260 = new BitSet(new ulong[]{0x00000000003CE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr260 = new BitSet(new ulong[]{0x00000000000FE640UL});
     public static readonly BitSet FOLLOW_expr_in_expr264 = new BitSet(new ulong[]{0x0000000000000008UL});
     public static readonly BitSet FOLLOW_STRING_LITERAL_in_expr283 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_CHAR_LITERAL_in_expr305 = new BitSet(new ulong[]{0x0000000000000002UL});

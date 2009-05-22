@@ -51,8 +51,6 @@ atom:   MINUS_OP INT
 	;
 
 CLASS	:	'class';
-START 	:	'start';
-END	:	'end';
 
 ARITH_OP 
 	:	 '+';
