@@ -9,7 +9,6 @@ options
 
 tokens {
     METHOD;
-    CLASS;
 }
 
 @lexer::namespace {
@@ -20,7 +19,7 @@ tokens {
     Decaf
 }
 
-prog: 'public' 'class' ID '{' method* '}' -> ^(CLASS ID method*)
+prog: 'public' CLASS ID '{' method* '}' -> ^(CLASS ID method*)
     ;
 
 method	: 'public' ID '(){' stat* '}' -> ^(METHOD ID stat*);
@@ -51,6 +50,7 @@ atom:   MINUS_OP INT
 	ID
 	;
 
+CLASS	:	'class';
 START 	:	'start';
 END	:	'end';
 

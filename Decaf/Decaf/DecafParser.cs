@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-05-22 12:51:05
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-05-22 12:56:47
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -50,7 +50,6 @@ public partial class DecafParser : Parser
 		"ALPHA_NUM", 
 		"WS", 
 		"'public'", 
-		"'class'", 
 		"'{'", 
 		"'}'", 
 		"'(){'"
@@ -73,7 +72,6 @@ public partial class DecafParser : Parser
     public const int EOF = -1;
     public const int LBRAC = 11;
     public const int ALPHA = 23;
-    public const int T__30 = 30;
     public const int WS = 25;
     public const int STRING_LITERAL = 13;
     public const int CHAR_LITERAL = 14;
@@ -131,7 +129,7 @@ public partial class DecafParser : Parser
     };
 
     // $ANTLR start "prog"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:23:1: prog : 'public' 'class' ID '{' ( method )* '}' -> ^( CLASS ID ( method )* ) ;
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:22:1: prog : 'public' CLASS ID '{' ( method )* '}' -> ^( CLASS ID ( method )* ) ;
     public DecafParser.prog_return prog() // throws RecognitionException [1]
     {   
         DecafParser.prog_return retval = new DecafParser.prog_return();
@@ -140,7 +138,7 @@ public partial class DecafParser : Parser
         CommonTree root_0 = null;
 
         IToken string_literal1 = null;
-        IToken string_literal2 = null;
+        IToken CLASS2 = null;
         IToken ID3 = null;
         IToken char_literal4 = null;
         IToken char_literal6 = null;
@@ -148,34 +146,34 @@ public partial class DecafParser : Parser
 
 
         CommonTree string_literal1_tree=null;
-        CommonTree string_literal2_tree=null;
+        CommonTree CLASS2_tree=null;
         CommonTree ID3_tree=null;
         CommonTree char_literal4_tree=null;
         CommonTree char_literal6_tree=null;
+        RewriteRuleTokenStream stream_CLASS = new RewriteRuleTokenStream(adaptor,"token CLASS");
         RewriteRuleTokenStream stream_ID = new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_26 = new RewriteRuleTokenStream(adaptor,"token 26");
         RewriteRuleTokenStream stream_27 = new RewriteRuleTokenStream(adaptor,"token 27");
         RewriteRuleTokenStream stream_28 = new RewriteRuleTokenStream(adaptor,"token 28");
-        RewriteRuleTokenStream stream_29 = new RewriteRuleTokenStream(adaptor,"token 29");
         RewriteRuleSubtreeStream stream_method = new RewriteRuleSubtreeStream(adaptor,"rule method");
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:23:5: ( 'public' 'class' ID '{' ( method )* '}' -> ^( CLASS ID ( method )* ) )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:23:7: 'public' 'class' ID '{' ( method )* '}'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:22:5: ( 'public' CLASS ID '{' ( method )* '}' -> ^( CLASS ID ( method )* ) )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:22:7: 'public' CLASS ID '{' ( method )* '}'
             {
-            	string_literal1=(IToken)Match(input,26,FOLLOW_26_in_prog78);  
+            	string_literal1=(IToken)Match(input,26,FOLLOW_26_in_prog71);  
             	stream_26.Add(string_literal1);
 
-            	string_literal2=(IToken)Match(input,27,FOLLOW_27_in_prog80);  
-            	stream_27.Add(string_literal2);
+            	CLASS2=(IToken)Match(input,CLASS,FOLLOW_CLASS_in_prog73);  
+            	stream_CLASS.Add(CLASS2);
 
-            	ID3=(IToken)Match(input,ID,FOLLOW_ID_in_prog82);  
+            	ID3=(IToken)Match(input,ID,FOLLOW_ID_in_prog75);  
             	stream_ID.Add(ID3);
 
-            	char_literal4=(IToken)Match(input,28,FOLLOW_28_in_prog84);  
-            	stream_28.Add(char_literal4);
+            	char_literal4=(IToken)Match(input,27,FOLLOW_27_in_prog77);  
+            	stream_27.Add(char_literal4);
 
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:23:31: ( method )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:22:29: ( method )*
             	do 
             	{
             	    int alt1 = 2;
@@ -190,9 +188,9 @@ public partial class DecafParser : Parser
             	    switch (alt1) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:23:31: method
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:22:29: method
             			    {
-            			    	PushFollow(FOLLOW_method_in_prog86);
+            			    	PushFollow(FOLLOW_method_in_prog79);
             			    	method5 = method();
             			    	state.followingStackPointer--;
 
@@ -209,13 +207,13 @@ public partial class DecafParser : Parser
             	loop1:
             		;	// Stops C# compiler whining that label 'loop1' has no statements
 
-            	char_literal6=(IToken)Match(input,29,FOLLOW_29_in_prog89);  
-            	stream_29.Add(char_literal6);
+            	char_literal6=(IToken)Match(input,28,FOLLOW_28_in_prog82);  
+            	stream_28.Add(char_literal6);
 
 
 
             	// AST REWRITE
-            	// elements:          method, ID
+            	// elements:          CLASS, ID, method
             	// token labels:      
             	// rule labels:       retval
             	// token list labels: 
@@ -225,15 +223,15 @@ public partial class DecafParser : Parser
             	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
             	root_0 = (CommonTree)adaptor.GetNilNode();
-            	// 23:43: -> ^( CLASS ID ( method )* )
+            	// 22:41: -> ^( CLASS ID ( method )* )
             	{
-            	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:23:46: ^( CLASS ID ( method )* )
+            	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:22:44: ^( CLASS ID ( method )* )
             	    {
             	    CommonTree root_1 = (CommonTree)adaptor.GetNilNode();
-            	    root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(CLASS, "CLASS"), root_1);
+            	    root_1 = (CommonTree)adaptor.BecomeRoot(stream_CLASS.NextNode(), root_1);
 
             	    adaptor.AddChild(root_1, stream_ID.NextNode());
-            	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:23:57: ( method )*
+            	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:22:55: ( method )*
             	    while ( stream_method.HasNext() )
             	    {
             	        adaptor.AddChild(root_1, stream_method.NextTree());
@@ -280,7 +278,7 @@ public partial class DecafParser : Parser
     };
 
     // $ANTLR start "method"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:26:1: method : 'public' ID '(){' ( stat )* '}' -> ^( METHOD ID ( stat )* ) ;
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:25:1: method : 'public' ID '(){' ( stat )* '}' -> ^( METHOD ID ( stat )* ) ;
     public DecafParser.method_return method() // throws RecognitionException [1]
     {   
         DecafParser.method_return retval = new DecafParser.method_return();
@@ -299,26 +297,26 @@ public partial class DecafParser : Parser
         CommonTree ID8_tree=null;
         CommonTree string_literal9_tree=null;
         CommonTree char_literal11_tree=null;
-        RewriteRuleTokenStream stream_30 = new RewriteRuleTokenStream(adaptor,"token 30");
         RewriteRuleTokenStream stream_ID = new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_26 = new RewriteRuleTokenStream(adaptor,"token 26");
+        RewriteRuleTokenStream stream_28 = new RewriteRuleTokenStream(adaptor,"token 28");
         RewriteRuleTokenStream stream_29 = new RewriteRuleTokenStream(adaptor,"token 29");
         RewriteRuleSubtreeStream stream_stat = new RewriteRuleSubtreeStream(adaptor,"rule stat");
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:26:8: ( 'public' ID '(){' ( stat )* '}' -> ^( METHOD ID ( stat )* ) )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:26:10: 'public' ID '(){' ( stat )* '}'
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:25:8: ( 'public' ID '(){' ( stat )* '}' -> ^( METHOD ID ( stat )* ) )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:25:10: 'public' ID '(){' ( stat )* '}'
             {
-            	string_literal7=(IToken)Match(input,26,FOLLOW_26_in_method113);  
+            	string_literal7=(IToken)Match(input,26,FOLLOW_26_in_method106);  
             	stream_26.Add(string_literal7);
 
-            	ID8=(IToken)Match(input,ID,FOLLOW_ID_in_method115);  
+            	ID8=(IToken)Match(input,ID,FOLLOW_ID_in_method108);  
             	stream_ID.Add(ID8);
 
-            	string_literal9=(IToken)Match(input,30,FOLLOW_30_in_method117);  
-            	stream_30.Add(string_literal9);
+            	string_literal9=(IToken)Match(input,29,FOLLOW_29_in_method110);  
+            	stream_29.Add(string_literal9);
 
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:26:28: ( stat )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:25:28: ( stat )*
             	do 
             	{
             	    int alt2 = 2;
@@ -333,9 +331,9 @@ public partial class DecafParser : Parser
             	    switch (alt2) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:26:28: stat
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:25:28: stat
             			    {
-            			    	PushFollow(FOLLOW_stat_in_method119);
+            			    	PushFollow(FOLLOW_stat_in_method112);
             			    	stat10 = stat();
             			    	state.followingStackPointer--;
 
@@ -352,13 +350,13 @@ public partial class DecafParser : Parser
             	loop2:
             		;	// Stops C# compiler whining that label 'loop2' has no statements
 
-            	char_literal11=(IToken)Match(input,29,FOLLOW_29_in_method122);  
-            	stream_29.Add(char_literal11);
+            	char_literal11=(IToken)Match(input,28,FOLLOW_28_in_method115);  
+            	stream_28.Add(char_literal11);
 
 
 
             	// AST REWRITE
-            	// elements:          ID, stat
+            	// elements:          stat, ID
             	// token labels:      
             	// rule labels:       retval
             	// token list labels: 
@@ -368,15 +366,15 @@ public partial class DecafParser : Parser
             	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
             	root_0 = (CommonTree)adaptor.GetNilNode();
-            	// 26:38: -> ^( METHOD ID ( stat )* )
+            	// 25:38: -> ^( METHOD ID ( stat )* )
             	{
-            	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:26:41: ^( METHOD ID ( stat )* )
+            	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:25:41: ^( METHOD ID ( stat )* )
             	    {
             	    CommonTree root_1 = (CommonTree)adaptor.GetNilNode();
             	    root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(METHOD, "METHOD"), root_1);
 
             	    adaptor.AddChild(root_1, stream_ID.NextNode());
-            	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:26:53: ( stat )*
+            	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:25:53: ( stat )*
             	    while ( stream_stat.HasNext() )
             	    {
             	        adaptor.AddChild(root_1, stream_stat.NextTree());
@@ -423,7 +421,7 @@ public partial class DecafParser : Parser
     };
 
     // $ANTLR start "stat"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:28:1: stat : ( expr EOS -> expr | t= ID name= ID EQUALS expr EOS -> ^( EQUALS ^( $t $name) expr ) );
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:27:1: stat : ( expr EOS -> expr | t= ID name= ID EQUALS expr EOS -> ^( EQUALS ^( $t $name) expr ) );
     public DecafParser.stat_return stat() // throws RecognitionException [1]
     {   
         DecafParser.stat_return retval = new DecafParser.stat_return();
@@ -452,7 +450,7 @@ public partial class DecafParser : Parser
         RewriteRuleSubtreeStream stream_expr = new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:28:5: ( expr EOS -> expr | t= ID name= ID EQUALS expr EOS -> ^( EQUALS ^( $t $name) expr ) )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:27:5: ( expr EOS -> expr | t= ID name= ID EQUALS expr EOS -> ^( EQUALS ^( $t $name) expr ) )
             int alt3 = 2;
             int LA3_0 = input.LA(1);
 
@@ -490,14 +488,14 @@ public partial class DecafParser : Parser
             switch (alt3) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:28:9: expr EOS
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:27:9: expr EOS
                     {
-                    	PushFollow(FOLLOW_expr_in_stat142);
+                    	PushFollow(FOLLOW_expr_in_stat135);
                     	expr12 = expr();
                     	state.followingStackPointer--;
 
                     	stream_expr.Add(expr12.Tree);
-                    	EOS13=(IToken)Match(input,EOS,FOLLOW_EOS_in_stat144);  
+                    	EOS13=(IToken)Match(input,EOS,FOLLOW_EOS_in_stat137);  
                     	stream_EOS.Add(EOS13);
 
 
@@ -513,7 +511,7 @@ public partial class DecafParser : Parser
                     	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
                     	root_0 = (CommonTree)adaptor.GetNilNode();
-                    	// 28:17: -> expr
+                    	// 27:17: -> expr
                     	{
                     	    adaptor.AddChild(root_0, stream_expr.NextTree());
 
@@ -523,29 +521,29 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:30:2: t= ID name= ID EQUALS expr EOS
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:29:2: t= ID name= ID EQUALS expr EOS
                     {
-                    	t=(IToken)Match(input,ID,FOLLOW_ID_in_stat155);  
+                    	t=(IToken)Match(input,ID,FOLLOW_ID_in_stat148);  
                     	stream_ID.Add(t);
 
-                    	name=(IToken)Match(input,ID,FOLLOW_ID_in_stat159);  
+                    	name=(IToken)Match(input,ID,FOLLOW_ID_in_stat152);  
                     	stream_ID.Add(name);
 
-                    	EQUALS14=(IToken)Match(input,EQUALS,FOLLOW_EQUALS_in_stat161);  
+                    	EQUALS14=(IToken)Match(input,EQUALS,FOLLOW_EQUALS_in_stat154);  
                     	stream_EQUALS.Add(EQUALS14);
 
-                    	PushFollow(FOLLOW_expr_in_stat163);
+                    	PushFollow(FOLLOW_expr_in_stat156);
                     	expr15 = expr();
                     	state.followingStackPointer--;
 
                     	stream_expr.Add(expr15.Tree);
-                    	EOS16=(IToken)Match(input,EOS,FOLLOW_EOS_in_stat165);  
+                    	EOS16=(IToken)Match(input,EOS,FOLLOW_EOS_in_stat158);  
                     	stream_EOS.Add(EOS16);
 
 
 
                     	// AST REWRITE
-                    	// elements:          name, EQUALS, t, expr
+                    	// elements:          expr, EQUALS, name, t
                     	// token labels:      t, name
                     	// rule labels:       retval
                     	// token list labels: 
@@ -557,14 +555,14 @@ public partial class DecafParser : Parser
                     	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
                     	root_0 = (CommonTree)adaptor.GetNilNode();
-                    	// 30:31: -> ^( EQUALS ^( $t $name) expr )
+                    	// 29:31: -> ^( EQUALS ^( $t $name) expr )
                     	{
-                    	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:30:34: ^( EQUALS ^( $t $name) expr )
+                    	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:29:34: ^( EQUALS ^( $t $name) expr )
                     	    {
                     	    CommonTree root_1 = (CommonTree)adaptor.GetNilNode();
                     	    root_1 = (CommonTree)adaptor.BecomeRoot(stream_EQUALS.NextNode(), root_1);
 
-                    	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:30:43: ^( $t $name)
+                    	    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:29:43: ^( $t $name)
                     	    {
                     	    CommonTree root_2 = (CommonTree)adaptor.GetNilNode();
                     	    root_2 = (CommonTree)adaptor.BecomeRoot(stream_t.NextNode(), root_2);
@@ -616,7 +614,7 @@ public partial class DecafParser : Parser
     };
 
     // $ANTLR start "expr"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:1: expr : multExpr ( ( '+' | '-' ) multExpr )* ;
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:1: expr : multExpr ( ( '+' | '-' ) multExpr )* ;
     public DecafParser.expr_return expr() // throws RecognitionException [1]
     {   
         DecafParser.expr_return retval = new DecafParser.expr_return();
@@ -636,17 +634,17 @@ public partial class DecafParser : Parser
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:5: ( multExpr ( ( '+' | '-' ) multExpr )* )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:9: multExpr ( ( '+' | '-' ) multExpr )*
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:5: ( multExpr ( ( '+' | '-' ) multExpr )* )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:9: multExpr ( ( '+' | '-' ) multExpr )*
             {
             	root_0 = (CommonTree)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_multExpr_in_expr190);
+            	PushFollow(FOLLOW_multExpr_in_expr183);
             	multExpr17 = multExpr();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, multExpr17.Tree);
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:18: ( ( '+' | '-' ) multExpr )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:18: ( ( '+' | '-' ) multExpr )*
             	do 
             	{
             	    int alt5 = 2;
@@ -672,9 +670,9 @@ public partial class DecafParser : Parser
             	    switch (alt5) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:19: ( '+' | '-' ) multExpr
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:19: ( '+' | '-' ) multExpr
             			    {
-            			    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:19: ( '+' | '-' )
+            			    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:19: ( '+' | '-' )
             			    	int alt4 = 2;
             			    	int LA4_0 = input.LA(1);
 
@@ -696,9 +694,9 @@ public partial class DecafParser : Parser
             			    	switch (alt4) 
             			    	{
             			    	    case 1 :
-            			    	        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:20: '+'
+            			    	        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:20: '+'
             			    	        {
-            			    	        	char_literal18=(IToken)Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_expr194); 
+            			    	        	char_literal18=(IToken)Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_expr187); 
             			    	        		char_literal18_tree = (CommonTree)adaptor.Create(char_literal18);
             			    	        		root_0 = (CommonTree)adaptor.BecomeRoot(char_literal18_tree, root_0);
 
@@ -706,9 +704,9 @@ public partial class DecafParser : Parser
             			    	        }
             			    	        break;
             			    	    case 2 :
-            			    	        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:25: '-'
+            			    	        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:25: '-'
             			    	        {
-            			    	        	char_literal19=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr197); 
+            			    	        	char_literal19=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr190); 
             			    	        		char_literal19_tree = (CommonTree)adaptor.Create(char_literal19);
             			    	        		root_0 = (CommonTree)adaptor.BecomeRoot(char_literal19_tree, root_0);
 
@@ -718,7 +716,7 @@ public partial class DecafParser : Parser
 
             			    	}
 
-            			    	PushFollow(FOLLOW_multExpr_in_expr201);
+            			    	PushFollow(FOLLOW_multExpr_in_expr194);
             			    	multExpr20 = multExpr();
             			    	state.followingStackPointer--;
 
@@ -769,7 +767,7 @@ public partial class DecafParser : Parser
     };
 
     // $ANTLR start "multExpr"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:35:1: multExpr : atom ( ( '*' | '/' | '%' ) atom )* ;
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:34:1: multExpr : atom ( ( '*' | '/' | '%' ) atom )* ;
     public DecafParser.multExpr_return multExpr() // throws RecognitionException [1]
     {   
         DecafParser.multExpr_return retval = new DecafParser.multExpr_return();
@@ -787,17 +785,17 @@ public partial class DecafParser : Parser
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:36:5: ( atom ( ( '*' | '/' | '%' ) atom )* )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:36:9: atom ( ( '*' | '/' | '%' ) atom )*
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:35:5: ( atom ( ( '*' | '/' | '%' ) atom )* )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:35:9: atom ( ( '*' | '/' | '%' ) atom )*
             {
             	root_0 = (CommonTree)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_atom_in_multExpr222);
+            	PushFollow(FOLLOW_atom_in_multExpr215);
             	atom21 = atom();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, atom21.Tree);
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:36:14: ( ( '*' | '/' | '%' ) atom )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:35:14: ( ( '*' | '/' | '%' ) atom )*
             	do 
             	{
             	    int alt6 = 2;
@@ -812,7 +810,7 @@ public partial class DecafParser : Parser
             	    switch (alt6) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:36:15: ( '*' | '/' | '%' ) atom
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:35:15: ( '*' | '/' | '%' ) atom
             			    {
             			    	set22=(IToken)input.LT(1);
             			    	set22 = (IToken)input.LT(1);
@@ -828,7 +826,7 @@ public partial class DecafParser : Parser
             			    	    throw mse;
             			    	}
 
-            			    	PushFollow(FOLLOW_atom_in_multExpr234);
+            			    	PushFollow(FOLLOW_atom_in_multExpr227);
             			    	atom23 = atom();
             			    	state.followingStackPointer--;
 
@@ -879,7 +877,7 @@ public partial class DecafParser : Parser
     };
 
     // $ANTLR start "atom"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:39:1: atom : ( MINUS_OP INT | INT | ( LBRAC )+ ( expr )+ RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID );
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:38:1: atom : ( MINUS_OP INT | INT | ( LBRAC )+ ( expr )+ RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID );
     public DecafParser.atom_return atom() // throws RecognitionException [1]
     {   
         DecafParser.atom_return retval = new DecafParser.atom_return();
@@ -913,7 +911,7 @@ public partial class DecafParser : Parser
         RewriteRuleSubtreeStream stream_expr = new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:39:5: ( MINUS_OP INT | INT | ( LBRAC )+ ( expr )+ RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:38:5: ( MINUS_OP INT | INT | ( LBRAC )+ ( expr )+ RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID )
             int alt9 = 7;
             switch ( input.LA(1) ) 
             {
@@ -962,15 +960,15 @@ public partial class DecafParser : Parser
             switch (alt9) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:39:9: MINUS_OP INT
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:38:9: MINUS_OP INT
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	MINUS_OP24=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_atom250); 
+                    	MINUS_OP24=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_atom243); 
                     		MINUS_OP24_tree = (CommonTree)adaptor.Create(MINUS_OP24);
                     		adaptor.AddChild(root_0, MINUS_OP24_tree);
 
-                    	INT25=(IToken)Match(input,INT,FOLLOW_INT_in_atom252); 
+                    	INT25=(IToken)Match(input,INT,FOLLOW_INT_in_atom245); 
                     		INT25_tree = (CommonTree)adaptor.Create(INT25);
                     		adaptor.AddChild(root_0, INT25_tree);
 
@@ -978,11 +976,11 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:41:2: INT
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:40:2: INT
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	INT26=(IToken)Match(input,INT,FOLLOW_INT_in_atom258); 
+                    	INT26=(IToken)Match(input,INT,FOLLOW_INT_in_atom251); 
                     		INT26_tree = (CommonTree)adaptor.Create(INT26);
                     		adaptor.AddChild(root_0, INT26_tree);
 
@@ -990,9 +988,9 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 3 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:43:2: ( LBRAC )+ ( expr )+ RBRAC
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:42:2: ( LBRAC )+ ( expr )+ RBRAC
                     {
-                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:43:2: ( LBRAC )+
+                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:42:2: ( LBRAC )+
                     	int cnt7 = 0;
                     	do 
                     	{
@@ -1008,9 +1006,9 @@ public partial class DecafParser : Parser
                     	    switch (alt7) 
                     		{
                     			case 1 :
-                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:43:2: LBRAC
+                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:42:2: LBRAC
                     			    {
-                    			    	LBRAC27=(IToken)Match(input,LBRAC,FOLLOW_LBRAC_in_atom264);  
+                    			    	LBRAC27=(IToken)Match(input,LBRAC,FOLLOW_LBRAC_in_atom257);  
                     			    	stream_LBRAC.Add(LBRAC27);
 
 
@@ -1029,7 +1027,7 @@ public partial class DecafParser : Parser
                     	loop7:
                     		;	// Stops C# compiler whinging that label 'loop7' has no statements
 
-                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:43:10: ( expr )+
+                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:42:10: ( expr )+
                     	int cnt8 = 0;
                     	do 
                     	{
@@ -1045,9 +1043,9 @@ public partial class DecafParser : Parser
                     	    switch (alt8) 
                     		{
                     			case 1 :
-                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:43:10: expr
+                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:42:10: expr
                     			    {
-                    			    	PushFollow(FOLLOW_expr_in_atom268);
+                    			    	PushFollow(FOLLOW_expr_in_atom261);
                     			    	expr28 = expr();
                     			    	state.followingStackPointer--;
 
@@ -1068,7 +1066,7 @@ public partial class DecafParser : Parser
                     	loop8:
                     		;	// Stops C# compiler whinging that label 'loop8' has no statements
 
-                    	RBRAC29=(IToken)Match(input,RBRAC,FOLLOW_RBRAC_in_atom272);  
+                    	RBRAC29=(IToken)Match(input,RBRAC,FOLLOW_RBRAC_in_atom265);  
                     	stream_RBRAC.Add(RBRAC29);
 
 
@@ -1084,7 +1082,7 @@ public partial class DecafParser : Parser
                     	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
                     	root_0 = (CommonTree)adaptor.GetNilNode();
-                    	// 43:23: -> expr
+                    	// 42:23: -> expr
                     	{
                     	    adaptor.AddChild(root_0, stream_expr.NextTree());
 
@@ -1094,11 +1092,11 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 4 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:45:2: STRING_LITERAL
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:44:2: STRING_LITERAL
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	STRING_LITERAL30=(IToken)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_atom282); 
+                    	STRING_LITERAL30=(IToken)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_atom275); 
                     		STRING_LITERAL30_tree = (CommonTree)adaptor.Create(STRING_LITERAL30);
                     		adaptor.AddChild(root_0, STRING_LITERAL30_tree);
 
@@ -1106,11 +1104,11 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 5 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:47:2: CHAR_LITERAL
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:46:2: CHAR_LITERAL
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	CHAR_LITERAL31=(IToken)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_atom288); 
+                    	CHAR_LITERAL31=(IToken)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_atom281); 
                     		CHAR_LITERAL31_tree = (CommonTree)adaptor.Create(CHAR_LITERAL31);
                     		adaptor.AddChild(root_0, CHAR_LITERAL31_tree);
 
@@ -1118,11 +1116,11 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 6 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:49:2: BOOL_LITERAL
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:48:2: BOOL_LITERAL
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	BOOL_LITERAL32=(IToken)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_atom294); 
+                    	BOOL_LITERAL32=(IToken)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_atom287); 
                     		BOOL_LITERAL32_tree = (CommonTree)adaptor.Create(BOOL_LITERAL32);
                     		adaptor.AddChild(root_0, BOOL_LITERAL32_tree);
 
@@ -1130,11 +1128,11 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 7 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:51:2: ID
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:50:2: ID
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	ID33=(IToken)Match(input,ID,FOLLOW_ID_in_atom300); 
+                    	ID33=(IToken)Match(input,ID,FOLLOW_ID_in_atom293); 
                     		ID33_tree = (CommonTree)adaptor.Create(ID33);
                     		adaptor.AddChild(root_0, ID33_tree);
 
@@ -1172,41 +1170,41 @@ public partial class DecafParser : Parser
 
  
 
-    public static readonly BitSet FOLLOW_26_in_prog78 = new BitSet(new ulong[]{0x0000000008000000UL});
-    public static readonly BitSet FOLLOW_27_in_prog80 = new BitSet(new ulong[]{0x0000000000000040UL});
-    public static readonly BitSet FOLLOW_ID_in_prog82 = new BitSet(new ulong[]{0x0000000010000000UL});
-    public static readonly BitSet FOLLOW_28_in_prog84 = new BitSet(new ulong[]{0x0000000024000000UL});
-    public static readonly BitSet FOLLOW_method_in_prog86 = new BitSet(new ulong[]{0x0000000024000000UL});
-    public static readonly BitSet FOLLOW_29_in_prog89 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_26_in_method113 = new BitSet(new ulong[]{0x0000000000000040UL});
-    public static readonly BitSet FOLLOW_ID_in_method115 = new BitSet(new ulong[]{0x0000000040000000UL});
-    public static readonly BitSet FOLLOW_30_in_method117 = new BitSet(new ulong[]{0x000000002000EE40UL});
-    public static readonly BitSet FOLLOW_stat_in_method119 = new BitSet(new ulong[]{0x000000002000EE40UL});
-    public static readonly BitSet FOLLOW_29_in_method122 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_expr_in_stat142 = new BitSet(new ulong[]{0x0000000000000080UL});
-    public static readonly BitSet FOLLOW_EOS_in_stat144 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_ID_in_stat155 = new BitSet(new ulong[]{0x0000000000000040UL});
-    public static readonly BitSet FOLLOW_ID_in_stat159 = new BitSet(new ulong[]{0x0000000000000100UL});
-    public static readonly BitSet FOLLOW_EQUALS_in_stat161 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_expr_in_stat163 = new BitSet(new ulong[]{0x0000000000000080UL});
-    public static readonly BitSet FOLLOW_EOS_in_stat165 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_multExpr_in_expr190 = new BitSet(new ulong[]{0x0000000000040202UL});
-    public static readonly BitSet FOLLOW_ARITH_OP_in_expr194 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_expr197 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_multExpr_in_expr201 = new BitSet(new ulong[]{0x0000000000040202UL});
-    public static readonly BitSet FOLLOW_atom_in_multExpr222 = new BitSet(new ulong[]{0x0000000000380002UL});
-    public static readonly BitSet FOLLOW_set_in_multExpr225 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_atom_in_multExpr234 = new BitSet(new ulong[]{0x0000000000380002UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_atom250 = new BitSet(new ulong[]{0x0000000000000400UL});
-    public static readonly BitSet FOLLOW_INT_in_atom252 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_INT_in_atom258 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_LBRAC_in_atom264 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_expr_in_atom268 = new BitSet(new ulong[]{0x000000000000FE40UL});
-    public static readonly BitSet FOLLOW_RBRAC_in_atom272 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_STRING_LITERAL_in_atom282 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_atom288 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_atom294 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_ID_in_atom300 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_26_in_prog71 = new BitSet(new ulong[]{0x0000000000000020UL});
+    public static readonly BitSet FOLLOW_CLASS_in_prog73 = new BitSet(new ulong[]{0x0000000000000040UL});
+    public static readonly BitSet FOLLOW_ID_in_prog75 = new BitSet(new ulong[]{0x0000000008000000UL});
+    public static readonly BitSet FOLLOW_27_in_prog77 = new BitSet(new ulong[]{0x0000000014000000UL});
+    public static readonly BitSet FOLLOW_method_in_prog79 = new BitSet(new ulong[]{0x0000000014000000UL});
+    public static readonly BitSet FOLLOW_28_in_prog82 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_26_in_method106 = new BitSet(new ulong[]{0x0000000000000040UL});
+    public static readonly BitSet FOLLOW_ID_in_method108 = new BitSet(new ulong[]{0x0000000020000000UL});
+    public static readonly BitSet FOLLOW_29_in_method110 = new BitSet(new ulong[]{0x000000001000EE40UL});
+    public static readonly BitSet FOLLOW_stat_in_method112 = new BitSet(new ulong[]{0x000000001000EE40UL});
+    public static readonly BitSet FOLLOW_28_in_method115 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_expr_in_stat135 = new BitSet(new ulong[]{0x0000000000000080UL});
+    public static readonly BitSet FOLLOW_EOS_in_stat137 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_stat148 = new BitSet(new ulong[]{0x0000000000000040UL});
+    public static readonly BitSet FOLLOW_ID_in_stat152 = new BitSet(new ulong[]{0x0000000000000100UL});
+    public static readonly BitSet FOLLOW_EQUALS_in_stat154 = new BitSet(new ulong[]{0x000000000000EE40UL});
+    public static readonly BitSet FOLLOW_expr_in_stat156 = new BitSet(new ulong[]{0x0000000000000080UL});
+    public static readonly BitSet FOLLOW_EOS_in_stat158 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_multExpr_in_expr183 = new BitSet(new ulong[]{0x0000000000040202UL});
+    public static readonly BitSet FOLLOW_ARITH_OP_in_expr187 = new BitSet(new ulong[]{0x000000000000EE40UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_expr190 = new BitSet(new ulong[]{0x000000000000EE40UL});
+    public static readonly BitSet FOLLOW_multExpr_in_expr194 = new BitSet(new ulong[]{0x0000000000040202UL});
+    public static readonly BitSet FOLLOW_atom_in_multExpr215 = new BitSet(new ulong[]{0x0000000000380002UL});
+    public static readonly BitSet FOLLOW_set_in_multExpr218 = new BitSet(new ulong[]{0x000000000000EE40UL});
+    public static readonly BitSet FOLLOW_atom_in_multExpr227 = new BitSet(new ulong[]{0x0000000000380002UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_atom243 = new BitSet(new ulong[]{0x0000000000000400UL});
+    public static readonly BitSet FOLLOW_INT_in_atom245 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_INT_in_atom251 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_LBRAC_in_atom257 = new BitSet(new ulong[]{0x000000000000EE40UL});
+    public static readonly BitSet FOLLOW_expr_in_atom261 = new BitSet(new ulong[]{0x000000000000FE40UL});
+    public static readonly BitSet FOLLOW_RBRAC_in_atom265 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_STRING_LITERAL_in_atom275 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_atom281 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_atom287 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_atom293 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }
 }

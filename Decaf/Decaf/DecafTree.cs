@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g 2009-05-21 00:38:29
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g 2009-05-22 12:57:01
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -47,7 +47,6 @@ public partial class DecafTree : TreeParser
 		"ALPHA_NUM", 
 		"WS", 
 		"'public'", 
-		"'class'", 
 		"'{'", 
 		"'}'", 
 		"'(){'"
@@ -70,7 +69,6 @@ public partial class DecafTree : TreeParser
     public const int EOF = -1;
     public const int LBRAC = 11;
     public const int ALPHA = 23;
-    public const int T__30 = 30;
     public const int STRING_LITERAL = 13;
     public const int WS = 25;
     public const int CHAR_LITERAL = 14;
