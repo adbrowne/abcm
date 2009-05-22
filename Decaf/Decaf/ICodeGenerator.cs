@@ -18,5 +18,8 @@ namespace Decaf
         void Return(string name);
         void StartModule(string id);
         void EndModule();
+        void BeginMethod(string name);
+        void ReturnExpression();
+        void EndMethod();
     }
 }

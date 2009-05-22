@@ -31,11 +31,13 @@ AssignExpression(name=a)
         [Test]
         public void MultipleStatementTest()
         {
-            var input = @"public class Test { int a=9;int b=10; }";
+            var input = @"public class Test { public TestMethodName(){int a=9;int b=10; }}";
             var output = GetOutput(input);
 
             var expected =
-                @"DefineVariable(name=a,type=int)
+                @"StartModule(id=Test)
+BeginMethod(name=TestMethodName)
+DefineVariable(name=a,type=int)
 BeginExpression()
 ExprNumber(i=9)
 EndExpression()
@@ -45,6 +47,8 @@ BeginExpression()
 ExprNumber(i=10)
 EndExpression()
 AssignExpression(name=b)
+EndMethod()
+EndModule()
 ";
             Assert.That(output.Contains(expected));
         }
@@ -52,11 +56,13 @@ AssignExpression(name=b)
         [Test]
         public void DefineIntegerWithExpression()
         {
-            var input = "public class Test { int a=9*2+4; }";
+            var input = "public class Test { public TestMethodName(){int a=9*2+4;} }";
             var output = GetOutput(input);
 
             var expected =
-                @"DefineVariable(name=a,type=int)
+                @"StartModule(id=Test)
+BeginMethod(name=TestMethodName)
+DefineVariable(name=a,type=int)
 BeginExpression()
 ExprNumber(i=9)
 ExprNumber(i=2)
@@ -65,6 +71,8 @@ ExprNumber(i=4)
 Operation(operationName=Addition)
 EndExpression()
 AssignExpression(name=a)
+EndMethod()
+EndModule()
 ";
             Assert.That(output.Contains(expected));
         }
@@ -77,6 +85,21 @@ AssignExpression(name=a)
 
             var expected =
                 @"StartModule(id=Test)
+EndModule()
+";
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
+        public void DefineMethod()
+        {
+            var input = @"public class Test { public TestMethodName(){} }";
+            var output = GetOutput(input);
+
+            var expected =
+                @"StartModule(id=Test)
+BeginMethod(name=TestMethodName)
+EndMethod()
 EndModule()
 ";
             Assert.AreEqual(expected, output);

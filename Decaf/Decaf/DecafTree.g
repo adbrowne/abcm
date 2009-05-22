@@ -10,9 +10,11 @@ options {
     Decaf
 }
 
-prog: ^('class' name=ID {CodeGenerator.StartModule($name.text);} stat* {CodeGenerator.EndModule();})
+prog: ^(CLASS name=ID {CodeGenerator.StartModule($name.text);} method* {CodeGenerator.EndModule();})
     ;
     
+method	: ^(METHOD name=ID { CodeGenerator.BeginMethod($name.text);} stat* {CodeGenerator.EndMethod();});
+	 
 stat:   {CodeGenerator.BeginExpression();} e=expr {CodeGenerator.EndExpression();}
 	|
 	^(EQUALS ^(t=ID name=ID) {CodeGenerator.DefineVariable($name.text, $t.text); CodeGenerator.BeginExpression();} expr {CodeGenerator.EndExpression(); CodeGenerator.AssignExpression($name.text); });

@@ -340,7 +340,11 @@ EndExpression()
 
             var parser = CreateParser(sampleInput, generator);
             parser.prog();
-            return output.ToString().Replace("StartModule(id=Test)\r\n", "").Replace("EndModule()\r\n","");
+            return output.ToString()
+                .Replace("StartModule(id=Test)\r\n", "")
+                .Replace("EndModule()\r\n","")
+                .Replace("BeginMethod(name=Test)\r\n","")
+                .Replace("EndMethod()\r\n","");
         }
 
         private DecafTree CreateParser(string input, ICodeGenerator codeGenerator)
@@ -360,7 +364,7 @@ EndExpression()
 
         private static string SurroundWithProgram(string s)
         {
-            return "public class Test {" + s + ";}";
+            return "public class Test { public Test(){" + s + ";}}";
         }
     }
 }

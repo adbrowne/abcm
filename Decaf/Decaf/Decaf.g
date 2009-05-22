@@ -7,6 +7,11 @@ options
     ASTLabelType=CommonTree;
 }
 
+tokens {
+    METHOD;
+    CLASS;
+}
+
 @lexer::namespace {
     Decaf
 }
@@ -15,8 +20,10 @@ options
     Decaf
 }
 
-prog: 'public' 'class' ID '{' stat* '}' -> ^('class' ID stat*)
+prog: 'public' 'class' ID '{' method* '}' -> ^(CLASS ID method*)
     ;
+
+method	: 'public' ID '(){' stat* '}' -> ^(METHOD ID stat*);
 
 stat:   expr EOS-> expr
 	|

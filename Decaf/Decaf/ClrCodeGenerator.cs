@@ -149,6 +149,11 @@ namespace Decaf
             ilGenerator.Emit(OpCodes.Ret);
         }
 
+        public void EndMethod()
+        {
+            ilGenerator.Emit(OpCodes.Ret);
+        }
+
         public void Return(string name)
         {
             var variable = methodVariables[name];
