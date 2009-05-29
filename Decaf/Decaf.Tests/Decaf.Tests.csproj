@@ -63,6 +63,8 @@
     <Compile Include="ConsoleInterceptor.cs" />
     <Compile Include="ClrCodeGenStatementTests.cs" />
     <Compile Include="ClrCodeGenClassAndMethodTests.cs" />
+    <Compile Include="ClrCodeGenIfThenElseTests.cs" />
+    <Compile Include="IfThenElseTests.cs" />
     <Compile Include="ReflectionTestHelpers.cs" />
     <Compile Include="ClassMethodStatementTests.cs" />
     <Compile Include="ExpressionTests.cs" />

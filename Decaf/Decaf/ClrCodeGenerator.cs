@@ -17,6 +17,7 @@ namespace Decaf
         private string assemblyName;
         private Dictionary<string, LocalBuilder> methodVariables = new Dictionary<string, LocalBuilder>();
         private ExpressionType currentExpressionType;
+        private Stack<Label> ifLabels = new Stack<Label>();
 
         public ClrCodeGenerator(string outputFileName)
             : this(outputFileName, false)
@@ -106,7 +107,10 @@ namespace Decaf
 
         public void ExprBool(bool i)
         {
-            throw new System.NotImplementedException();
+            if (i)
+                ilGenerator.Emit(OpCodes.Ldc_I4_1);
+            else
+                ilGenerator.Emit(OpCodes.Ldc_I4_0);
         }
 
         public void ExprChar(char value)
@@ -162,6 +166,19 @@ namespace Decaf
             ilGenerator.Emit(OpCodes.Box, typeof(int));
 
             ilGenerator.Emit(OpCodes.Ret);
+        }
+
+        public void BeginIf()
+        {
+            var afterIf = ilGenerator.DefineLabel();
+            ilGenerator.Emit(OpCodes.Brfalse, afterIf);
+            ifLabels.Push(afterIf);
+        }
+
+        public void EndIf()
+        {
+            var afterIf = ifLabels.Pop();
+            ilGenerator.MarkLabel(afterIf);
         }
     }
 }

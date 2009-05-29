@@ -21,5 +21,7 @@ namespace Decaf
         void BeginMethod(string name);
         void ReturnExpression();
         void EndMethod();
+        void BeginIf();
+        void EndIf();
     }
 }
