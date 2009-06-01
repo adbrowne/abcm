@@ -28,7 +28,8 @@ stat:   expr EOS-> expr
 	|
 	t=ID name=ID EQUALS expr EOS -> ^(EQUALS ^($t $name) expr);
 
-expr:   multExpr (('+'^|'-'^) multExpr)*
+expr:   multExpr 
+(('+'^|'-'^) multExpr)*
     ;
 
 multExpr
@@ -39,7 +40,7 @@ atom:   MINUS_OP INT
 	|
 	INT
 	|
-	LBRAC + expr + RBRAC -> expr
+	LBRAC expr RBRAC -> expr
 	|
 	STRING_LITERAL
 	|

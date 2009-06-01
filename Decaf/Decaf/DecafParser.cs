@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-06-01 17:56:55
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-06-02 01:03:06
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -209,7 +209,7 @@ public partial class DecafParser : Parser
 
 
             	// AST REWRITE
-            	// elements:          ID, CLASS, method
+            	// elements:          method, CLASS, ID
             	// token labels:      
             	// rule labels:       retval
             	// token list labels: 
@@ -352,7 +352,7 @@ public partial class DecafParser : Parser
 
 
             	// AST REWRITE
-            	// elements:          ID, stat
+            	// elements:          stat, ID
             	// token labels:      
             	// rule labels:       retval
             	// token list labels: 
@@ -539,7 +539,7 @@ public partial class DecafParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          name, expr, t, EQUALS
+                    	// elements:          EQUALS, expr, name, t
                     	// token labels:      t, name
                     	// rule labels:       retval
                     	// token list labels: 
@@ -640,24 +640,13 @@ public partial class DecafParser : Parser
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, multExpr17.Tree);
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:18: ( ( '+' | '-' ) multExpr )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:1: ( ( '+' | '-' ) multExpr )*
             	do 
             	{
             	    int alt5 = 2;
             	    int LA5_0 = input.LA(1);
 
-            	    if ( (LA5_0 == MINUS_OP) )
-            	    {
-            	        int LA5_2 = input.LA(2);
-
-            	        if ( (LA5_2 == ID || (LA5_2 >= MINUS_OP && LA5_2 <= LBRAC) || (LA5_2 >= STRING_LITERAL && LA5_2 <= BOOL_LITERAL)) )
-            	        {
-            	            alt5 = 1;
-            	        }
-
-
-            	    }
-            	    else if ( (LA5_0 == ARITH_OP) )
+            	    if ( (LA5_0 == MINUS_OP || LA5_0 == ARITH_OP) )
             	    {
             	        alt5 = 1;
             	    }
@@ -666,9 +655,9 @@ public partial class DecafParser : Parser
             	    switch (alt5) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:19: ( '+' | '-' ) multExpr
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:2: ( '+' | '-' ) multExpr
             			    {
-            			    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:19: ( '+' | '-' )
+            			    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:2: ( '+' | '-' )
             			    	int alt4 = 2;
             			    	int LA4_0 = input.LA(1);
 
@@ -690,9 +679,9 @@ public partial class DecafParser : Parser
             			    	switch (alt4) 
             			    	{
             			    	    case 1 :
-            			    	        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:20: '+'
+            			    	        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:3: '+'
             			    	        {
-            			    	        	char_literal18=(IToken)Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_expr187); 
+            			    	        	char_literal18=(IToken)Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_expr188); 
             			    	        		char_literal18_tree = (CommonTree)adaptor.Create(char_literal18);
             			    	        		root_0 = (CommonTree)adaptor.BecomeRoot(char_literal18_tree, root_0);
 
@@ -700,9 +689,9 @@ public partial class DecafParser : Parser
             			    	        }
             			    	        break;
             			    	    case 2 :
-            			    	        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:31:25: '-'
+            			    	        // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:32:8: '-'
             			    	        {
-            			    	        	char_literal19=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr190); 
+            			    	        	char_literal19=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr191); 
             			    	        		char_literal19_tree = (CommonTree)adaptor.Create(char_literal19);
             			    	        		root_0 = (CommonTree)adaptor.BecomeRoot(char_literal19_tree, root_0);
 
@@ -712,7 +701,7 @@ public partial class DecafParser : Parser
 
             			    	}
 
-            			    	PushFollow(FOLLOW_multExpr_in_expr194);
+            			    	PushFollow(FOLLOW_multExpr_in_expr195);
             			    	multExpr20 = multExpr();
             			    	state.followingStackPointer--;
 
@@ -763,7 +752,7 @@ public partial class DecafParser : Parser
     };
 
     // $ANTLR start "multExpr"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:34:1: multExpr : atom ( ( '*' | '/' | '%' ) atom )* ;
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:35:1: multExpr : atom ( ( '*' | '/' | '%' ) atom )* ;
     public DecafParser.multExpr_return multExpr() // throws RecognitionException [1]
     {   
         DecafParser.multExpr_return retval = new DecafParser.multExpr_return();
@@ -781,17 +770,17 @@ public partial class DecafParser : Parser
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:35:5: ( atom ( ( '*' | '/' | '%' ) atom )* )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:35:9: atom ( ( '*' | '/' | '%' ) atom )*
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:36:5: ( atom ( ( '*' | '/' | '%' ) atom )* )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:36:9: atom ( ( '*' | '/' | '%' ) atom )*
             {
             	root_0 = (CommonTree)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_atom_in_multExpr215);
+            	PushFollow(FOLLOW_atom_in_multExpr216);
             	atom21 = atom();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, atom21.Tree);
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:35:14: ( ( '*' | '/' | '%' ) atom )*
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:36:14: ( ( '*' | '/' | '%' ) atom )*
             	do 
             	{
             	    int alt6 = 2;
@@ -806,7 +795,7 @@ public partial class DecafParser : Parser
             	    switch (alt6) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:35:15: ( '*' | '/' | '%' ) atom
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:36:15: ( '*' | '/' | '%' ) atom
             			    {
             			    	set22=(IToken)input.LT(1);
             			    	set22 = (IToken)input.LT(1);
@@ -822,7 +811,7 @@ public partial class DecafParser : Parser
             			    	    throw mse;
             			    	}
 
-            			    	PushFollow(FOLLOW_atom_in_multExpr227);
+            			    	PushFollow(FOLLOW_atom_in_multExpr228);
             			    	atom23 = atom();
             			    	state.followingStackPointer--;
 
@@ -873,7 +862,7 @@ public partial class DecafParser : Parser
     };
 
     // $ANTLR start "atom"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:38:1: atom : ( MINUS_OP INT | INT | ( LBRAC )+ ( expr )+ RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID );
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:39:1: atom : ( MINUS_OP INT | INT | LBRAC expr RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID );
     public DecafParser.atom_return atom() // throws RecognitionException [1]
     {   
         DecafParser.atom_return retval = new DecafParser.atom_return();
@@ -907,64 +896,64 @@ public partial class DecafParser : Parser
         RewriteRuleSubtreeStream stream_expr = new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:38:5: ( MINUS_OP INT | INT | ( LBRAC )+ ( expr )+ RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID )
-            int alt9 = 7;
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:39:5: ( MINUS_OP INT | INT | LBRAC expr RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID )
+            int alt7 = 7;
             switch ( input.LA(1) ) 
             {
             case MINUS_OP:
             	{
-                alt9 = 1;
+                alt7 = 1;
                 }
                 break;
             case INT:
             	{
-                alt9 = 2;
+                alt7 = 2;
                 }
                 break;
             case LBRAC:
             	{
-                alt9 = 3;
+                alt7 = 3;
                 }
                 break;
             case STRING_LITERAL:
             	{
-                alt9 = 4;
+                alt7 = 4;
                 }
                 break;
             case CHAR_LITERAL:
             	{
-                alt9 = 5;
+                alt7 = 5;
                 }
                 break;
             case BOOL_LITERAL:
             	{
-                alt9 = 6;
+                alt7 = 6;
                 }
                 break;
             case ID:
             	{
-                alt9 = 7;
+                alt7 = 7;
                 }
                 break;
             	default:
-            	    NoViableAltException nvae_d9s0 =
-            	        new NoViableAltException("", 9, 0, input);
+            	    NoViableAltException nvae_d7s0 =
+            	        new NoViableAltException("", 7, 0, input);
 
-            	    throw nvae_d9s0;
+            	    throw nvae_d7s0;
             }
 
-            switch (alt9) 
+            switch (alt7) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:38:9: MINUS_OP INT
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:39:9: MINUS_OP INT
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	MINUS_OP24=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_atom243); 
+                    	MINUS_OP24=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_atom244); 
                     		MINUS_OP24_tree = (CommonTree)adaptor.Create(MINUS_OP24);
                     		adaptor.AddChild(root_0, MINUS_OP24_tree);
 
-                    	INT25=(IToken)Match(input,INT,FOLLOW_INT_in_atom245); 
+                    	INT25=(IToken)Match(input,INT,FOLLOW_INT_in_atom246); 
                     		INT25_tree = (CommonTree)adaptor.Create(INT25);
                     		adaptor.AddChild(root_0, INT25_tree);
 
@@ -972,11 +961,11 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:40:2: INT
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:41:2: INT
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	INT26=(IToken)Match(input,INT,FOLLOW_INT_in_atom251); 
+                    	INT26=(IToken)Match(input,INT,FOLLOW_INT_in_atom252); 
                     		INT26_tree = (CommonTree)adaptor.Create(INT26);
                     		adaptor.AddChild(root_0, INT26_tree);
 
@@ -984,85 +973,17 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 3 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:42:2: ( LBRAC )+ ( expr )+ RBRAC
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:43:2: LBRAC expr RBRAC
                     {
-                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:42:2: ( LBRAC )+
-                    	int cnt7 = 0;
-                    	do 
-                    	{
-                    	    int alt7 = 2;
-                    	    int LA7_0 = input.LA(1);
+                    	LBRAC27=(IToken)Match(input,LBRAC,FOLLOW_LBRAC_in_atom258);  
+                    	stream_LBRAC.Add(LBRAC27);
 
-                    	    if ( (LA7_0 == LBRAC) )
-                    	    {
-                    	        alt7 = 1;
-                    	    }
+                    	PushFollow(FOLLOW_expr_in_atom260);
+                    	expr28 = expr();
+                    	state.followingStackPointer--;
 
-
-                    	    switch (alt7) 
-                    		{
-                    			case 1 :
-                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:42:2: LBRAC
-                    			    {
-                    			    	LBRAC27=(IToken)Match(input,LBRAC,FOLLOW_LBRAC_in_atom257);  
-                    			    	stream_LBRAC.Add(LBRAC27);
-
-
-                    			    }
-                    			    break;
-
-                    			default:
-                    			    if ( cnt7 >= 1 ) goto loop7;
-                    		            EarlyExitException eee7 =
-                    		                new EarlyExitException(7, input);
-                    		            throw eee7;
-                    	    }
-                    	    cnt7++;
-                    	} while (true);
-
-                    	loop7:
-                    		;	// Stops C# compiler whinging that label 'loop7' has no statements
-
-                    	// C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:42:10: ( expr )+
-                    	int cnt8 = 0;
-                    	do 
-                    	{
-                    	    int alt8 = 2;
-                    	    int LA8_0 = input.LA(1);
-
-                    	    if ( (LA8_0 == ID || (LA8_0 >= MINUS_OP && LA8_0 <= LBRAC) || (LA8_0 >= STRING_LITERAL && LA8_0 <= BOOL_LITERAL)) )
-                    	    {
-                    	        alt8 = 1;
-                    	    }
-
-
-                    	    switch (alt8) 
-                    		{
-                    			case 1 :
-                    			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:42:10: expr
-                    			    {
-                    			    	PushFollow(FOLLOW_expr_in_atom261);
-                    			    	expr28 = expr();
-                    			    	state.followingStackPointer--;
-
-                    			    	stream_expr.Add(expr28.Tree);
-
-                    			    }
-                    			    break;
-
-                    			default:
-                    			    if ( cnt8 >= 1 ) goto loop8;
-                    		            EarlyExitException eee8 =
-                    		                new EarlyExitException(8, input);
-                    		            throw eee8;
-                    	    }
-                    	    cnt8++;
-                    	} while (true);
-
-                    	loop8:
-                    		;	// Stops C# compiler whinging that label 'loop8' has no statements
-
-                    	RBRAC29=(IToken)Match(input,RBRAC,FOLLOW_RBRAC_in_atom265);  
+                    	stream_expr.Add(expr28.Tree);
+                    	RBRAC29=(IToken)Match(input,RBRAC,FOLLOW_RBRAC_in_atom262);  
                     	stream_RBRAC.Add(RBRAC29);
 
 
@@ -1078,7 +999,7 @@ public partial class DecafParser : Parser
                     	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
                     	root_0 = (CommonTree)adaptor.GetNilNode();
-                    	// 42:23: -> expr
+                    	// 43:19: -> expr
                     	{
                     	    adaptor.AddChild(root_0, stream_expr.NextTree());
 
@@ -1088,11 +1009,11 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 4 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:44:2: STRING_LITERAL
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:45:2: STRING_LITERAL
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	STRING_LITERAL30=(IToken)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_atom275); 
+                    	STRING_LITERAL30=(IToken)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_atom272); 
                     		STRING_LITERAL30_tree = (CommonTree)adaptor.Create(STRING_LITERAL30);
                     		adaptor.AddChild(root_0, STRING_LITERAL30_tree);
 
@@ -1100,11 +1021,11 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 5 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:46:2: CHAR_LITERAL
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:47:2: CHAR_LITERAL
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	CHAR_LITERAL31=(IToken)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_atom281); 
+                    	CHAR_LITERAL31=(IToken)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_atom278); 
                     		CHAR_LITERAL31_tree = (CommonTree)adaptor.Create(CHAR_LITERAL31);
                     		adaptor.AddChild(root_0, CHAR_LITERAL31_tree);
 
@@ -1112,11 +1033,11 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 6 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:48:2: BOOL_LITERAL
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:49:2: BOOL_LITERAL
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	BOOL_LITERAL32=(IToken)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_atom287); 
+                    	BOOL_LITERAL32=(IToken)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_atom284); 
                     		BOOL_LITERAL32_tree = (CommonTree)adaptor.Create(BOOL_LITERAL32);
                     		adaptor.AddChild(root_0, BOOL_LITERAL32_tree);
 
@@ -1124,11 +1045,11 @@ public partial class DecafParser : Parser
                     }
                     break;
                 case 7 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:50:2: ID
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g:51:2: ID
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	ID33=(IToken)Match(input,ID,FOLLOW_ID_in_atom293); 
+                    	ID33=(IToken)Match(input,ID,FOLLOW_ID_in_atom290); 
                     		ID33_tree = (CommonTree)adaptor.Create(ID33);
                     		adaptor.AddChild(root_0, ID33_tree);
 
@@ -1185,22 +1106,22 @@ public partial class DecafParser : Parser
     public static readonly BitSet FOLLOW_expr_in_stat156 = new BitSet(new ulong[]{0x0000000000000080UL});
     public static readonly BitSet FOLLOW_EOS_in_stat158 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_multExpr_in_expr183 = new BitSet(new ulong[]{0x0000000000010202UL});
-    public static readonly BitSet FOLLOW_ARITH_OP_in_expr187 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_expr190 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_multExpr_in_expr194 = new BitSet(new ulong[]{0x0000000000010202UL});
-    public static readonly BitSet FOLLOW_atom_in_multExpr215 = new BitSet(new ulong[]{0x00000000000E0002UL});
-    public static readonly BitSet FOLLOW_set_in_multExpr218 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_atom_in_multExpr227 = new BitSet(new ulong[]{0x00000000000E0002UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_atom243 = new BitSet(new ulong[]{0x0000000000000400UL});
-    public static readonly BitSet FOLLOW_INT_in_atom245 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_INT_in_atom251 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_LBRAC_in_atom257 = new BitSet(new ulong[]{0x000000000000EE40UL});
-    public static readonly BitSet FOLLOW_expr_in_atom261 = new BitSet(new ulong[]{0x000000000000FE40UL});
-    public static readonly BitSet FOLLOW_RBRAC_in_atom265 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_STRING_LITERAL_in_atom275 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_atom281 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_atom287 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_ID_in_atom293 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ARITH_OP_in_expr188 = new BitSet(new ulong[]{0x000000000000EE40UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_expr191 = new BitSet(new ulong[]{0x000000000000EE40UL});
+    public static readonly BitSet FOLLOW_multExpr_in_expr195 = new BitSet(new ulong[]{0x0000000000010202UL});
+    public static readonly BitSet FOLLOW_atom_in_multExpr216 = new BitSet(new ulong[]{0x00000000000E0002UL});
+    public static readonly BitSet FOLLOW_set_in_multExpr219 = new BitSet(new ulong[]{0x000000000000EE40UL});
+    public static readonly BitSet FOLLOW_atom_in_multExpr228 = new BitSet(new ulong[]{0x00000000000E0002UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_atom244 = new BitSet(new ulong[]{0x0000000000000400UL});
+    public static readonly BitSet FOLLOW_INT_in_atom246 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_INT_in_atom252 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_LBRAC_in_atom258 = new BitSet(new ulong[]{0x000000000000EE40UL});
+    public static readonly BitSet FOLLOW_expr_in_atom260 = new BitSet(new ulong[]{0x0000000000001000UL});
+    public static readonly BitSet FOLLOW_RBRAC_in_atom262 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_STRING_LITERAL_in_atom272 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_atom278 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_atom284 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_atom290 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }
 }
