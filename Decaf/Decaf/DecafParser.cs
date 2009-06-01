@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-05-22 12:57:58
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\Decaf.g 2009-06-01 17:56:55
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -209,7 +209,7 @@ public partial class DecafParser : Parser
 
 
             	// AST REWRITE
-            	// elements:          method, ID, CLASS
+            	// elements:          ID, CLASS, method
             	// token labels:      
             	// rule labels:       retval
             	// token list labels: 
@@ -352,7 +352,7 @@ public partial class DecafParser : Parser
 
 
             	// AST REWRITE
-            	// elements:          stat, ID
+            	// elements:          ID, stat
             	// token labels:      
             	// rule labels:       retval
             	// token list labels: 
@@ -539,7 +539,7 @@ public partial class DecafParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          EQUALS, expr, t, name
+                    	// elements:          name, expr, t, EQUALS
                     	// token labels:      t, name
                     	// rule labels:       retval
                     	// token list labels: 

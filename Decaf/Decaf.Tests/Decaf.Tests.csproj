@@ -64,6 +64,8 @@
     <Compile Include="ClrCodeGenStatementTests.cs" />
     <Compile Include="ClrCodeGenClassAndMethodTests.cs" />
     <Compile Include="ClrCodeGenIfThenElseTests.cs" />
+    <Compile Include="Unit\Tree\TreeStructureTests.cs" />
+    <Compile Include="Unit\Tree\TreeExpressionTests.cs" />
     <Compile Include="TypeTests.cs" />
     <Compile Include="IfThenElseTests.cs" />
     <Compile Include="ReflectionTestHelpers.cs" />

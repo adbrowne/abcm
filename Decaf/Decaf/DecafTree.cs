@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g 2009-05-22 12:58:04
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g 2009-06-01 23:32:23
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -8,6 +8,9 @@ namespace
     Decaf
 
 {
+
+using Decaf.Tree;
+
 
 using System;
 using Antlr.Runtime;
@@ -104,22 +107,26 @@ public partial class DecafTree : TreeParser
 
 
     // $ANTLR start "prog"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:13:1: prog : ^( CLASS name= ID ( method )* ) ;
-    public void prog() // throws RecognitionException [1]
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:17:1: prog returns [Class c] : ^( CLASS name= ID (m= method )* ) ;
+    public Class prog() // throws RecognitionException [1]
     {   
+        Class c = default(Class);
+
         CommonTree name = null;
+        Method m = default(Method);
+
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:13:5: ( ^( CLASS name= ID ( method )* ) )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:13:7: ^( CLASS name= ID ( method )* )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:17:23: ( ^( CLASS name= ID (m= method )* ) )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:17:25: ^( CLASS name= ID (m= method )* )
             {
-            	Match(input,CLASS,FOLLOW_CLASS_in_prog50); 
+            	Match(input,CLASS,FOLLOW_CLASS_in_prog59); 
 
             	Match(input, Token.DOWN, null); 
-            	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_prog54); 
-            	CodeGenerator.StartModule(((name != null) ? name.Text : null));
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:13:64: ( method )*
+            	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_prog63); 
+            	c =  TB.Class(((name != null) ? name.Text : null)); CodeGenerator.StartModule(((name != null) ? name.Text : null));
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:17:109: (m= method )*
             	do 
             	{
             	    int alt1 = 2;
@@ -134,12 +141,13 @@ public partial class DecafTree : TreeParser
             	    switch (alt1) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:13:64: method
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:17:110: m= method
             			    {
-            			    	PushFollow(FOLLOW_method_in_prog58);
-            			    	method();
+            			    	PushFollow(FOLLOW_method_in_prog70);
+            			    	m = method();
             			    	state.followingStackPointer--;
 
+            			    	 c.AddMethod(m);
 
             			    }
             			    break;
@@ -167,28 +175,32 @@ public partial class DecafTree : TreeParser
         finally 
     	{
         }
-        return ;
+        return c;
     }
     // $ANTLR end "prog"
 
 
     // $ANTLR start "method"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:16:1: method : ^( METHOD name= ID ( stat )* ) ;
-    public void method() // throws RecognitionException [1]
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:20:1: method returns [Method m] : ^( METHOD name= ID (s= stat )* ) ;
+    public Method method() // throws RecognitionException [1]
     {   
+        Method m = default(Method);
+
         CommonTree name = null;
+        Statement s = default(Statement);
+
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:16:8: ( ^( METHOD name= ID ( stat )* ) )
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:16:10: ^( METHOD name= ID ( stat )* )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:20:26: ( ^( METHOD name= ID (s= stat )* ) )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:20:28: ^( METHOD name= ID (s= stat )* )
             {
-            	Match(input,METHOD,FOLLOW_METHOD_in_method80); 
+            	Match(input,METHOD,FOLLOW_METHOD_in_method94); 
 
             	Match(input, Token.DOWN, null); 
-            	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_method84); 
-            	 CodeGenerator.BeginMethod(((name != null) ? name.Text : null));
-            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:16:69: ( stat )*
+            	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_method98); 
+            	 CodeGenerator.BeginMethod(((name != null) ? name.Text : null)); m =  TB.Method(((name != null) ? name.Text : null));
+            	// C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:20:115: (s= stat )*
             	do 
             	{
             	    int alt2 = 2;
@@ -203,12 +215,13 @@ public partial class DecafTree : TreeParser
             	    switch (alt2) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:16:69: stat
+            			    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:20:116: s= stat
             			    {
-            			    	PushFollow(FOLLOW_stat_in_method88);
-            			    	stat();
+            			    	PushFollow(FOLLOW_stat_in_method105);
+            			    	s = stat();
             			    	state.followingStackPointer--;
 
+            			    	 m.Statements.Add(s); 
 
             			    }
             			    break;
@@ -236,21 +249,25 @@ public partial class DecafTree : TreeParser
         finally 
     	{
         }
-        return ;
+        return m;
     }
     // $ANTLR end "method"
 
 
     // $ANTLR start "stat"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:18:1: stat : (e= expr | ^( EQUALS ^(t= ID name= ID ) expr ) );
-    public void stat() // throws RecognitionException [1]
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:22:1: stat returns [Statement s] : (e= expr | ^( EQUALS ^(t= ID name= ID ) expr ) );
+    public Statement stat() // throws RecognitionException [1]
     {   
+        Statement s = default(Statement);
+
         CommonTree t = null;
         CommonTree name = null;
+        Expression e = default(Expression);
+
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:18:5: (e= expr | ^( EQUALS ^(t= ID name= ID ) expr ) )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:22:27: (e= expr | ^( EQUALS ^(t= ID name= ID ) expr ) )
             int alt3 = 2;
             int LA3_0 = input.LA(1);
 
@@ -272,31 +289,31 @@ public partial class DecafTree : TreeParser
             switch (alt3) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:18:9: e= expr
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:22:31: e= expr
                     {
                     	CodeGenerator.BeginExpression();
-                    	PushFollow(FOLLOW_expr_in_stat107);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_stat136);
+                    	e = expr();
                     	state.followingStackPointer--;
 
-                    	CodeGenerator.EndExpression();
+                    	 s =  TB.Statement(); s.Expression = e; CodeGenerator.EndExpression();
 
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:20:2: ^( EQUALS ^(t= ID name= ID ) expr )
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:24:2: ^( EQUALS ^(t= ID name= ID ) expr )
                     {
-                    	Match(input,EQUALS,FOLLOW_EQUALS_in_stat116); 
+                    	Match(input,EQUALS,FOLLOW_EQUALS_in_stat145); 
 
                     	Match(input, Token.DOWN, null); 
-                    	t=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat121); 
+                    	t=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat150); 
 
                     	Match(input, Token.DOWN, null); 
-                    	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat125); 
+                    	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat154); 
 
                     	Match(input, Token.UP, null); 
                     	CodeGenerator.DefineVariable(((name != null) ? name.Text : null), ((t != null) ? t.Text : null)); CodeGenerator.BeginExpression();
-                    	PushFollow(FOLLOW_expr_in_stat130);
+                    	PushFollow(FOLLOW_expr_in_stat159);
                     	expr();
                     	state.followingStackPointer--;
 
@@ -317,175 +334,182 @@ public partial class DecafTree : TreeParser
         finally 
     	{
         }
-        return ;
+        return s;
     }
     // $ANTLR end "stat"
 
 
     // $ANTLR start "expr"
-    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:22:1: expr : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL );
-    public void expr() // throws RecognitionException [1]
+    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:26:1: expr returns [Expression e] : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL );
+    public Expression expr() // throws RecognitionException [1]
     {   
+        Expression e = default(Expression);
+
         CommonTree STRING_LITERAL1 = null;
         CommonTree CHAR_LITERAL2 = null;
         CommonTree INT3 = null;
         CommonTree INT4 = null;
         CommonTree ID5 = null;
         CommonTree BOOL_LITERAL6 = null;
+        Expression a = default(Expression);
+
+        Expression b = default(Expression);
+
 
         try 
     	{
-            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:23:5: ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL )
+            // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:27:5: ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL )
             int alt4 = 11;
             alt4 = dfa4.Predict(input);
             switch (alt4) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:23:9: ^( '+' a= expr b= expr )
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:27:9: ^( '+' a= expr b= expr )
                     {
-                    	Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_expr148); 
+                    	Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_expr181); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr152);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_expr185);
+                    	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr156);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_expr189);
+                    	b = expr();
                     	state.followingStackPointer--;
 
 
                     	Match(input, Token.UP, null); 
-                    	 CodeGenerator.Operation("Addition"); 
+                    	 CodeGenerator.Operation("Addition"); e =  TB.AdditionExpression(a, b);
 
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:24:8: ^( '-' a= expr b= expr )
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:28:8: ^( '-' a= expr b= expr )
                     {
-                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr175); 
+                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr208); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr179);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_expr212);
+                    	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr183);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_expr216);
+                    	b = expr();
                     	state.followingStackPointer--;
 
 
                     	Match(input, Token.UP, null); 
-                    	 CodeGenerator.Operation("Subtraction"); 
+                    	 CodeGenerator.Operation("Subtraction"); e =  TB.SubtractionExpression(a, b);
 
                     }
                     break;
                 case 3 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:25:8: ^( '*' a= expr b= expr )
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:29:8: ^( '*' a= expr b= expr )
                     {
-                    	Match(input,MULT_OP,FOLLOW_MULT_OP_in_expr202); 
+                    	Match(input,MULT_OP,FOLLOW_MULT_OP_in_expr235); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr206);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_expr239);
+                    	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr210);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_expr243);
+                    	b = expr();
                     	state.followingStackPointer--;
 
 
                     	Match(input, Token.UP, null); 
-                    	 CodeGenerator.Operation("Multiplication"); 
+                    	 CodeGenerator.Operation("Multiplication"); e =  TB.MultiplicationExpression(a, b); 
 
                     }
                     break;
                 case 4 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:26:8: ^( '/' a= expr b= expr )
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:30:8: ^( '/' a= expr b= expr )
                     {
-                    	Match(input,DIV_OP,FOLLOW_DIV_OP_in_expr229); 
+                    	Match(input,DIV_OP,FOLLOW_DIV_OP_in_expr262); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr233);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_expr266);
+                    	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr237);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_expr270);
+                    	b = expr();
                     	state.followingStackPointer--;
 
 
                     	Match(input, Token.UP, null); 
-                    	 CodeGenerator.Operation("Division"); 
+                    	 CodeGenerator.Operation("Division"); e =  TB.DivisionExpression(a, b); 
 
                     }
                     break;
                 case 5 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:27:8: ^( '%' a= expr b= expr )
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:31:8: ^( '%' a= expr b= expr )
                     {
-                    	Match(input,REM_OP,FOLLOW_REM_OP_in_expr256); 
+                    	Match(input,REM_OP,FOLLOW_REM_OP_in_expr289); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr260);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_expr293);
+                    	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr264);
-                    	expr();
+                    	PushFollow(FOLLOW_expr_in_expr297);
+                    	b = expr();
                     	state.followingStackPointer--;
 
 
                     	Match(input, Token.UP, null); 
-                    	 CodeGenerator.Operation("Remainder"); 
+                    	 CodeGenerator.Operation("Remainder"); e =  TB.RemainderExpression(a, b);
 
                     }
                     break;
                 case 6 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:28:9: STRING_LITERAL
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:32:9: STRING_LITERAL
                     {
-                    	STRING_LITERAL1=(CommonTree)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_expr283); 
-                    	 CodeGenerator.ExprString(((STRING_LITERAL1 != null) ? STRING_LITERAL1.Text : null)); 
+                    	STRING_LITERAL1=(CommonTree)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_expr316); 
+                    	 CodeGenerator.ExprString(((STRING_LITERAL1 != null) ? STRING_LITERAL1.Text : null)); e =  TB.StringExpression(((STRING_LITERAL1 != null) ? STRING_LITERAL1.Text : null));
 
                     }
                     break;
                 case 7 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:29:7: CHAR_LITERAL
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:33:7: CHAR_LITERAL
                     {
-                    	CHAR_LITERAL2=(CommonTree)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_expr305); 
-                    	 CodeGenerator.ExprChar(char.Parse(((CHAR_LITERAL2 != null) ? CHAR_LITERAL2.Text : null).Replace("'",""))); 
+                    	CHAR_LITERAL2=(CommonTree)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_expr338); 
+                    	 CodeGenerator.ExprChar(char.Parse(((CHAR_LITERAL2 != null) ? CHAR_LITERAL2.Text : null).Replace("'","")));  
+                    	    				     e =  TB.CharExpression(((CHAR_LITERAL2 != null) ? CHAR_LITERAL2.Text : null).Replace("'",""));
 
                     }
                     break;
                 case 8 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:30:9: INT
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:35:9: INT
                     {
-                    	INT3=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr321); 
-                    	 CodeGenerator.ExprNumber(int.Parse(((INT3 != null) ? INT3.Text : null))); 
+                    	INT3=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr354); 
+                    	 CodeGenerator.ExprNumber(int.Parse(((INT3 != null) ? INT3.Text : null))); e =  TB.IntegerExpression(((INT3 != null) ? INT3.Text : null));
 
                     }
                     break;
                 case 9 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:31:9: MINUS_OP INT
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:36:9: MINUS_OP INT
                     {
-                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr356); 
-                    	INT4=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr358); 
-                    	 CodeGenerator.ExprNumber(-int.Parse(((INT4 != null) ? INT4.Text : null))); 
+                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr389); 
+                    	INT4=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr391); 
+                    	 CodeGenerator.ExprNumber(-int.Parse(((INT4 != null) ? INT4.Text : null))); e =  TB.IntegerExpression("-" + ((INT4 != null) ? INT4.Text : null));
 
                     }
                     break;
                 case 10 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:32:7: ID
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:37:7: ID
                     {
-                    	ID5=(CommonTree)Match(input,ID,FOLLOW_ID_in_expr382); 
-                    	 CodeGenerator.ExprId(((ID5 != null) ? ID5.Text : null)); 
+                    	ID5=(CommonTree)Match(input,ID,FOLLOW_ID_in_expr415); 
+                    	 CodeGenerator.ExprId(((ID5 != null) ? ID5.Text : null)); e =  TB.IdExpression(((ID5 != null) ? ID5.Text : null));
 
                     }
                     break;
                 case 11 :
-                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:33:7: BOOL_LITERAL
+                    // C:\\data\\code\\abcm\\Decaf\\Decaf\\DecafTree.g:38:7: BOOL_LITERAL
                     {
-                    	BOOL_LITERAL6=(CommonTree)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_expr397); 
-                    	 CodeGenerator.ExprBool(bool.Parse(((BOOL_LITERAL6 != null) ? BOOL_LITERAL6.Text : null))); 
+                    	BOOL_LITERAL6=(CommonTree)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_expr430); 
+                    	 CodeGenerator.ExprBool(bool.Parse(((BOOL_LITERAL6 != null) ? BOOL_LITERAL6.Text : null))); e =  TB.BooleanExpression(((BOOL_LITERAL6 != null) ? BOOL_LITERAL6.Text : null));
 
                     }
                     break;
@@ -500,7 +524,7 @@ public partial class DecafTree : TreeParser
         finally 
     	{
         }
-        return ;
+        return e;
     }
     // $ANTLR end "expr"
 
@@ -569,46 +593,46 @@ public partial class DecafTree : TreeParser
 
         override public string Description
         {
-            get { return "22:1: expr : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL );"; }
+            get { return "26:1: expr returns [Expression e] : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL );"; }
         }
 
     }
 
  
 
-    public static readonly BitSet FOLLOW_CLASS_in_prog50 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_prog54 = new BitSet(new ulong[]{0x0000000000000018UL});
-    public static readonly BitSet FOLLOW_method_in_prog58 = new BitSet(new ulong[]{0x0000000000000018UL});
-    public static readonly BitSet FOLLOW_METHOD_in_method80 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_method84 = new BitSet(new ulong[]{0x00000000000FE748UL});
-    public static readonly BitSet FOLLOW_stat_in_method88 = new BitSet(new ulong[]{0x00000000000FE748UL});
-    public static readonly BitSet FOLLOW_expr_in_stat107 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_EQUALS_in_stat116 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_stat121 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_stat125 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_expr_in_stat130 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_ARITH_OP_in_expr148 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr152 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr156 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_expr175 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr179 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr183 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_MULT_OP_in_expr202 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr206 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr210 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_DIV_OP_in_expr229 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr233 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr237 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_REM_OP_in_expr256 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr260 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr264 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_STRING_LITERAL_in_expr283 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_expr305 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_INT_in_expr321 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_expr356 = new BitSet(new ulong[]{0x0000000000000400UL});
-    public static readonly BitSet FOLLOW_INT_in_expr358 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_ID_in_expr382 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_expr397 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CLASS_in_prog59 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_ID_in_prog63 = new BitSet(new ulong[]{0x0000000000000018UL});
+    public static readonly BitSet FOLLOW_method_in_prog70 = new BitSet(new ulong[]{0x0000000000000018UL});
+    public static readonly BitSet FOLLOW_METHOD_in_method94 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_ID_in_method98 = new BitSet(new ulong[]{0x00000000000FE748UL});
+    public static readonly BitSet FOLLOW_stat_in_method105 = new BitSet(new ulong[]{0x00000000000FE748UL});
+    public static readonly BitSet FOLLOW_expr_in_stat136 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_EQUALS_in_stat145 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_ID_in_stat150 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_ID_in_stat154 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_expr_in_stat159 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_ARITH_OP_in_expr181 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr185 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr189 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_expr208 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr212 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr216 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_MULT_OP_in_expr235 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr239 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr243 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_DIV_OP_in_expr262 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr266 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr270 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_REM_OP_in_expr289 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr293 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr297 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_STRING_LITERAL_in_expr316 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_expr338 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_INT_in_expr354 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_expr389 = new BitSet(new ulong[]{0x0000000000000400UL});
+    public static readonly BitSet FOLLOW_INT_in_expr391 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_expr415 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_expr430 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }
 }

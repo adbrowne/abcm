@@ -6,28 +6,33 @@ options {
     ASTLabelType=CommonTree;
 }
 
+@header{
+using Decaf.Tree;
+}
 @namespace {
     Decaf
 }
 
-prog: ^(CLASS name=ID {CodeGenerator.StartModule($name.text);} method* {CodeGenerator.EndModule();})
+
+prog returns [Class c]: ^(CLASS name=ID {$c = TB.Class($name.text); CodeGenerator.StartModule($name.text);} (m=method{ $c.AddMethod(m);})*  {CodeGenerator.EndModule();})
     ;
-    
-method	: ^(METHOD name=ID { CodeGenerator.BeginMethod($name.text);} stat* {CodeGenerator.EndMethod();});
+
+method	returns [Method m]: ^(METHOD name=ID { CodeGenerator.BeginMethod($name.text); $m = TB.Method($name.text);} (s=stat { $m.Statements.Add(s); } )* {CodeGenerator.EndMethod();});    
 	 
-stat:   {CodeGenerator.BeginExpression();} e=expr {CodeGenerator.EndExpression();}
+stat returns [Statement s]:   {CodeGenerator.BeginExpression();} e=expr { $s = TB.Statement(); $s.Expression = e; CodeGenerator.EndExpression();}
 	|
 	^(EQUALS ^(t=ID name=ID) {CodeGenerator.DefineVariable($name.text, $t.text); CodeGenerator.BeginExpression();} expr {CodeGenerator.EndExpression(); CodeGenerator.AssignExpression($name.text); });
 
-expr
-    :   ^('+' a=expr b=expr)       { CodeGenerator.Operation("Addition"); }
-    | 	^('-' a=expr b=expr)       { CodeGenerator.Operation("Subtraction"); }
-    | 	^('*' a=expr b=expr)       { CodeGenerator.Operation("Multiplication"); }
-    | 	^('/' a=expr b=expr)       { CodeGenerator.Operation("Division"); }
-    | 	^('%' a=expr b=expr)       { CodeGenerator.Operation("Remainder"); }
-    |   STRING_LITERAL             { CodeGenerator.ExprString($STRING_LITERAL.text); }
-    |	CHAR_LITERAL		   { CodeGenerator.ExprChar(char.Parse($CHAR_LITERAL.text.Replace("'",""))); }
-    |   INT                        { CodeGenerator.ExprNumber(int.Parse($INT.text)); }
-    |   MINUS_OP INT               { CodeGenerator.ExprNumber(-int.Parse($INT.text)); }
-    |	ID			   { CodeGenerator.ExprId($ID.text); }
-    |	BOOL_LITERAL		   { CodeGenerator.ExprBool(bool.Parse($BOOL_LITERAL.text)); };
+expr returns [Expression e]
+    :   ^('+' a=expr b=expr)       { CodeGenerator.Operation("Addition"); $e = TB.AdditionExpression(a, b);}
+    | 	^('-' a=expr b=expr)       { CodeGenerator.Operation("Subtraction"); $e = TB.SubtractionExpression(a, b);}
+    | 	^('*' a=expr b=expr)       { CodeGenerator.Operation("Multiplication"); $e = TB.MultiplicationExpression(a, b); }
+    | 	^('/' a=expr b=expr)       { CodeGenerator.Operation("Division"); $e = TB.DivisionExpression(a, b); }
+    | 	^('%' a=expr b=expr)       { CodeGenerator.Operation("Remainder"); $e = TB.RemainderExpression(a, b);}
+    |   STRING_LITERAL             { CodeGenerator.ExprString($STRING_LITERAL.text); $e = TB.StringExpression($STRING_LITERAL.text);}
+    |	CHAR_LITERAL		   { CodeGenerator.ExprChar(char.Parse($CHAR_LITERAL.text.Replace("'","")));  
+    				     $e = TB.CharExpression($CHAR_LITERAL.text.Replace("'",""));}
+    |   INT                        { CodeGenerator.ExprNumber(int.Parse($INT.text)); $e = TB.IntegerExpression($INT.text);}
+    |   MINUS_OP INT               { CodeGenerator.ExprNumber(-int.Parse($INT.text)); $e = TB.IntegerExpression("-" + $INT.text);}
+    |	ID			   { CodeGenerator.ExprId($ID.text); $e = TB.IdExpression($ID.text);}
+    |	BOOL_LITERAL		   { CodeGenerator.ExprBool(bool.Parse($BOOL_LITERAL.text)); $e = TB.BooleanExpression($BOOL_LITERAL.text);};
