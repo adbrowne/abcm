@@ -53,10 +53,5 @@ namespace Decaf.Tests
             
             return walker;
         }
-
-        private static string SurroundWithProgram(string s)
-        {
-            return s;
-        }
     }
 }
