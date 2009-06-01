@@ -1,9 +1,9 @@
 using System;
 using System.Reflection;
-using System.Reflection.Emit;
+using Decaf.Tests.Helper;
 using NUnit.Framework;
 
-namespace Decaf.Tests
+namespace Decaf.Tests.Unit.ClrCodeGen
 {
     [TestFixture]
     public class ClrCodeGenClassAndMethodTests
@@ -53,5 +53,5 @@ namespace Decaf.Tests
 
             Assert.That(outputAssembly.ContainsTypeWithMethod("Test", "Test"));
         }
-   }
+    }
 }

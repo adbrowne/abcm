@@ -1,7 +1,7 @@
 using Antlr.Runtime;
 using NUnit.Framework;
 
-namespace Decaf.Tests
+namespace Decaf.Tests.Helper
 {
     internal class LexResult
     {

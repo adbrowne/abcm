@@ -1,9 +1,8 @@
 using System;
 using System.Reflection;
-using System.Reflection.Emit;
 using NUnit.Framework;
 
-namespace Decaf.Tests
+namespace Decaf.Tests.Unit.ClrCodeGen
 {
     [TestFixture]
     public class ClrCodeGenStatementTests
@@ -48,5 +47,5 @@ namespace Decaf.Tests
             var output = GetStatementResult(clrCodeGenerator);
             Assert.AreEqual(9, output);
         }
-   }
+    }
 }

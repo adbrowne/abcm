@@ -58,21 +58,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicLexerTests.cs" />
-    <Compile Include="ClrCodeGeneratorTests.cs" />
-    <Compile Include="ClrCodeGenExpressionTests.cs" />
+    <Compile Include="Unit\ClrCodeGen\ClrCodeGeneratorTests.cs" />
+    <Compile Include="Unit\ClrCodeGen\ClrCodeGenExpressionTests.cs" />
     <Compile Include="ConsoleInterceptor.cs" />
-    <Compile Include="ClrCodeGenStatementTests.cs" />
-    <Compile Include="ClrCodeGenClassAndMethodTests.cs" />
-    <Compile Include="ClrCodeGenIfThenElseTests.cs" />
+    <Compile Include="Unit\ClrCodeGen\ClrCodeGenStatementTests.cs" />
+    <Compile Include="Unit\ClrCodeGen\ClrCodeGenClassAndMethodTests.cs" />
+    <Compile Include="Unit\ClrCodeGen\ClrCodeGenIfThenElseTests.cs" />
     <Compile Include="Unit\Tree\ExpressionTypeTests.cs" />
     <Compile Include="Unit\Tree\TreeStructureTests.cs" />
     <Compile Include="Unit\Tree\TreeExpressionTests.cs" />
     <Compile Include="TypeTests.cs" />
     <Compile Include="IfThenElseTests.cs" />
-    <Compile Include="ReflectionTestHelpers.cs" />
+    <Compile Include="Helper\ReflectionTestHelpers.cs" />
     <Compile Include="ClassMethodStatementTests.cs" />
     <Compile Include="ExpressionTests.cs" />
-    <Compile Include="LexResult.cs" />
+    <Compile Include="Helper\LexResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

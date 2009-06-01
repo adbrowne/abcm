@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Decaf.Tests
+namespace Decaf.Tests.Helper
 {
     public static class ReflectionTestHelpers
     {

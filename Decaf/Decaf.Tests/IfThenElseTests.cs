@@ -1,10 +1,8 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using Antlr.Runtime;
 using Antlr.Runtime.Tree;
 using Castle.DynamicProxy;
 using NUnit.Framework;
-using Rhino.Mocks;
 
 namespace Decaf.Tests
 {

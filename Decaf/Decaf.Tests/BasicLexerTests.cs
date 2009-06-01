@@ -1,4 +1,5 @@
 ﻿using Antlr.Runtime;
+using Decaf.Tests.Helper;
 using NUnit.Framework;
 
 namespace Decaf.Tests
