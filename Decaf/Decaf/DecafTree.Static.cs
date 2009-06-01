@@ -8,7 +8,7 @@ namespace Decaf
     {
         private ICodeGenerator CodeGenerator { get; set; }
 
-        public DecafTree(ITreeNodeStream input, ICodeGenerator codeGenerator) : this(input)
+        public DecafTree(ITreeNodeStream input, ICodeGenerator codeGenerator, ErrorSet errorSet) : this(input)
         {
             CodeGenerator = codeGenerator;
         }

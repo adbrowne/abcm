@@ -54,10 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClrCodeGenerator.cs" />
+    <Compile Include="CompileError.cs" />
+    <Compile Include="CompileErrorType.cs" />
     <Compile Include="DecafTree.Static.cs" />
     <Compile Include="DecafLexer.cs" />
     <Compile Include="DecafParser.cs" />
     <Compile Include="DecafTree.cs" />
+    <Compile Include="ErrorSet.cs" />
     <Compile Include="ExpressionType.cs" />
     <Compile Include="ICodeGenerator.cs" />
     <Compile Include="Program.cs" />

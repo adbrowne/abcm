@@ -357,7 +357,7 @@ EndExpression()
             var tree = parser.prog().Tree;
 
             var nodes = new CommonTreeNodeStream(tree);
-            var walker = new DecafTree(nodes, codeGenerator);
+            var walker = new DecafTree(nodes, codeGenerator, new ErrorSet());
             
             return walker;
         }
