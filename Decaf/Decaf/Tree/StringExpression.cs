@@ -8,5 +8,10 @@ namespace Decaf.Tree
         {
             Value = value.Substring(1).Substring(0,value.Length - 2);
         }
+
+        public override Types Type
+        {
+            get { return Types.String; }
+        }
     }
 }

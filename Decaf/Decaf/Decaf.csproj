@@ -64,6 +64,7 @@
     <Compile Include="Tree\BinOpExpression.cs" />
     <Compile Include="Tree\BooleanExpression.cs" />
     <Compile Include="Tree\CharExpression.cs" />
+    <Compile Include="Tree\DeclarationStatement.cs" />
     <Compile Include="Tree\DivisionExpression.cs" />
     <Compile Include="Tree\Expression.cs" />
     <Compile Include="ExpressionType.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Tree\StringExpression.cs" />
     <Compile Include="Tree\SubtractionExpression.cs" />
     <Compile Include="Tree\TreeBuilder.cs" />
+    <Compile Include="Types.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

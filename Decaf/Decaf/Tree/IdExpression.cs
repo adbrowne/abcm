@@ -8,5 +8,10 @@ namespace Decaf.Tree
         {
             Name = name;
         }
+
+        public override Types Type
+        {
+            get { throw new System.NotImplementedException(); }
+        }
     }
 }

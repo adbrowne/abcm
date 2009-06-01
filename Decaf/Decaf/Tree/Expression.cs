@@ -1,6 +1,7 @@
 namespace Decaf.Tree
 {
-    public class Expression : ITreeNode
+    public abstract class Expression : ITreeNode
     {
+        public abstract Types Type { get; }
     }
 }

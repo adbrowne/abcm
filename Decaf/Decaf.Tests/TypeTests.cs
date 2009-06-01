@@ -18,7 +18,7 @@ namespace Decaf.Tests
             var input = "public class Test { public TestMethod(){ bool a = 9; }}";
             var output = GetErrors(input);
 
-            Assert.Equals(CompileErrorType.ExpectingBoolean, output[0].Type);
+            Assert.AreEqual(CompileErrorType.TypeMismatch, output[0].Type);
         }
 
         private ErrorSet GetErrors(string input)
@@ -27,7 +27,8 @@ namespace Decaf.Tests
 
             var errorSet = new ErrorSet();
             var parser = CreateParser(input, generator, errorSet);
-            parser.prog();
+            var @class = parser.prog();
+            @class.Compile(errorSet);
             return errorSet;
         }
 

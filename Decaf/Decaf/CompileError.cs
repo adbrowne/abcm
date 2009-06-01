@@ -1,7 +1,12 @@
 namespace Decaf
 {
-    public struct CompileError
+    public class CompileError
     {
-        public CompileErrorType Type {get;set;}
+        public CompileError(CompileErrorType type)
+        {
+            Type = type;
+        }
+
+        public CompileErrorType Type {get; private set;}
     }
 }

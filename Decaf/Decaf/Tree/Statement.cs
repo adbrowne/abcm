@@ -1,10 +1,22 @@
+using System;
+
 namespace Decaf.Tree
 {
     public class Statement
     {
-        public ITreeNode Expression
+        public Statement(Expression expression)
         {
-            get;set;
+            Expression = expression;
+        }
+
+        public Expression Expression
+        {
+            get;private set;
+        }
+
+        public virtual void Compile(ErrorSet errorSet)
+        {
+            
         }
     }
 }

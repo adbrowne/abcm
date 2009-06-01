@@ -3,6 +3,7 @@ using System.Text;
 using Antlr.Runtime;
 using Antlr.Runtime.Tree;
 using Castle.DynamicProxy;
+using Decaf.Tree;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -11,21 +12,38 @@ namespace Decaf.Tests
     [TestFixture]
     public class ClassMethodStatementTests
     {
+
+        private ITreeNode GetExpressionTree(string input)
+        {
+            var sampleInput = SurroundWithProgram(input);
+
+            var proxyGenerator = new ProxyGenerator();
+            var output = new StringBuilder();
+            var generator = proxyGenerator.CreateInterfaceProxyWithoutTarget<ICodeGenerator>(new ConsoleInterceptor(output));
+
+            var parser = CreateParser(sampleInput, generator);
+            return parser.prog();
+        }
+
         [Test]
         public void DefineIntegerWithValue()
         {
             var input = "public class Test { public TestMethod(){ int a=9; }}";
-            var output = GetOutput(input);
+            var @class = GetExpressionTree(input);
 
-            var expected =
-                @"DefineVariable(name=a,type=int)
-BeginExpression()
-ExprNumber(i=9)
-EndExpression()
-AssignExpression(name=a)
-";
+            var statement = ((Class) @class)["TestMethod"].Statements[0];
 
-            Assert.That(output.Contains(expected));
+            Assert.IsInstanceOfType(typeof(DeclarationStatement), statement);
+            var declarationStatement = (DeclarationStatement) statement;
+
+            Assert.AreEqual("a", declarationStatement.VariableName);
+            Assert.AreEqual(Types.Int, declarationStatement.Type);
+            var expression = declarationStatement.Expression;
+
+            Assert.IsInstanceOfType(typeof(IntegerExpression), expression);
+            var integerExpression = (IntegerExpression) expression;
+
+            Assert.AreEqual(9, integerExpression.Value);
         }
 
         [Test]

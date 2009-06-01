@@ -2,6 +2,6 @@ namespace Decaf
 {
     public enum CompileErrorType
     {
-        ExpectingBoolean = 0
+        TypeMismatch = 0
     }
 }

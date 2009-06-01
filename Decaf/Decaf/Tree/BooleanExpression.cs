@@ -10,5 +10,10 @@ namespace Decaf.Tree
         {
             Value = Convert.ToBoolean(value);
         }
+
+        public override Types Type
+        {
+            get { return Types.Bool; }
+        }
     }
 }

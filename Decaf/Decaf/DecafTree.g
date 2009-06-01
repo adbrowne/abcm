@@ -19,9 +19,9 @@ prog returns [Class c]: ^(CLASS name=ID {$c = TB.Class($name.text); CodeGenerato
 
 method	returns [Method m]: ^(METHOD name=ID { CodeGenerator.BeginMethod($name.text); $m = TB.Method($name.text);} (s=stat { $m.Statements.Add(s); } )* {CodeGenerator.EndMethod();});    
 	 
-stat returns [Statement s]:   {CodeGenerator.BeginExpression();} e=expr { $s = TB.Statement(); $s.Expression = e; CodeGenerator.EndExpression();}
+stat returns [Statement s]:   {CodeGenerator.BeginExpression();} e=expr { $s = TB.Statement(e); CodeGenerator.EndExpression();}
 	|
-	^(EQUALS ^(t=ID name=ID) {CodeGenerator.DefineVariable($name.text, $t.text); CodeGenerator.BeginExpression();} expr {CodeGenerator.EndExpression(); CodeGenerator.AssignExpression($name.text); });
+	^(EQUALS ^(t=ID name=ID) {CodeGenerator.DefineVariable($name.text, $t.text); CodeGenerator.BeginExpression();} e=expr {$s = TB.DeclarationStatement($t.text, $name.text, e); CodeGenerator.EndExpression(); CodeGenerator.AssignExpression($name.text); });
 
 expr returns [Expression e]
     :   ^('+' a=expr b=expr)       { CodeGenerator.Operation("Addition"); $e = TB.AdditionExpression(a, b);}

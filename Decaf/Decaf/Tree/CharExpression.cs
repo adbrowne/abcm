@@ -10,5 +10,10 @@ namespace Decaf.Tree
         {
             Value = Convert.ToChar(value);
         }
+
+        public override Types Type
+        {
+            get { throw new System.NotImplementedException(); }
+        }
     }
 }

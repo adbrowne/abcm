@@ -21,5 +21,13 @@ namespace Decaf.Tree
         {
             get { return methodList[methodName]; }
         }
+
+        public void Compile(ErrorSet errorSet)
+        {
+            foreach (var method in methodList)
+            {
+                method.Value.Compile(errorSet);
+            }
+        }
     }
 }

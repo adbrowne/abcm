@@ -22,9 +22,9 @@ namespace Decaf.Tree
             return new Method(name);
         }
 
-        public Statement Statement()
+        public Statement Statement(Expression e)
         {
-            return new Statement();
+            return new Statement(e);
         }
 
         public Expression SubtractionExpression(Expression expr1, Expression expr2)
@@ -65,6 +65,11 @@ namespace Decaf.Tree
         public Expression BooleanExpression(string value)
         {
             return new BooleanExpression(value);
+        }
+
+        public Statement DeclarationStatement(string typeName, string name, Expression expression)
+        {
+            return new DeclarationStatement(typeName, name, expression);
         }
     }
 }

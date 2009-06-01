@@ -13,5 +13,10 @@ namespace Decaf.Tree
         {
             get; private set;
         }
+
+        public override Types Type
+        {
+            get { return Types.Int; }
+        }
     }
 }

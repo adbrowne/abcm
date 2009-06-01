@@ -6,7 +6,7 @@ namespace Decaf.Tree
         AdditionExpression AdditionExpression(Expression expr1, Expression expr2);
         Class Class(string name);
         Method Method(string name);
-        Statement Statement();
+        Statement Statement(Expression e);
         Expression SubtractionExpression(Expression expr1, Expression expr2);
         Expression MultiplicationExpression(Expression expr1, Expression expr2);
         Expression DivisionExpression(Expression expr1, Expression expr2);
@@ -15,5 +15,6 @@ namespace Decaf.Tree
         Expression StringExpression(string value);
         Expression IdExpression(string name);
         Expression BooleanExpression(string value);
+        Statement DeclarationStatement(string typeName, string name, Expression expression);
     }
 }

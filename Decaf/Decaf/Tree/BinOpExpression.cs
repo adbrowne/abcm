@@ -1,6 +1,6 @@
 namespace Decaf.Tree
 {
-    public class BinOpExpression : Expression
+    public abstract class BinOpExpression : Expression
     {
         public Expression Expr1 { get; private set; }
         public Expression Expr2 { get; private set; }

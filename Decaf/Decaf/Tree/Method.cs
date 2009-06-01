@@ -13,5 +13,13 @@ namespace Decaf.Tree
         }
 
         public List<Statement> Statements { get; private set; }
+
+        public void Compile(ErrorSet errorSet)
+        {
+            foreach (var statement in Statements)
+            {
+                statement.Compile(errorSet);
+            }
+        }
     }
 }
