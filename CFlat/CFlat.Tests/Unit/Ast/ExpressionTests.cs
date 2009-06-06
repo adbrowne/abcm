@@ -1,14 +1,10 @@
-﻿using System.Text;
-using Antlr.Runtime;
-using Antlr.Runtime.Tree;
-using Castle.DynamicProxy;
-using CFlat.Tree;
+﻿using CFlat.Tree;
 using NUnit.Framework;
 
-namespace CFlat.Tests
+namespace CFlat.Tests.Unit.AST
 {
     [TestFixture]
-    public class ExpressionTests
+    public class ExpressionTests : AstTestBase
     {
         [Test]
         public void SingleDigitExpressionTest()
@@ -23,14 +19,7 @@ namespace CFlat.Tests
 
         private ITreeNode GetExpressionTree(string input)
         {
-            var sampleInput = SurroundWithProgram(input);
-
-            var proxyGenerator = new ProxyGenerator();
-            var output = new StringBuilder();
-            var generator = proxyGenerator.CreateInterfaceProxyWithoutTarget<ICodeGenerator>(new ConsoleInterceptor(output));
-
-            var parser = CreateParser(sampleInput, generator, new TreeBuilder());
-            var @class = parser.prog();
+            var @class = (Class)GetAst(SurroundWithProgram(input));
             var method = @class["Test"];
             return method.Statements[0].Expression;
         }
@@ -251,21 +240,7 @@ namespace CFlat.Tests
             Assert.AreEqual(true, booleanExpression.Value);
         }
 
-        private CFlatTree CreateParser(string input, ICodeGenerator codeGenerator, TreeBuilder @param)
-        {
-            var antlrStringStream = new ANTLRStringStream(input);
-            var lexter = new CFlatLexer(antlrStringStream);
-            var tokens = new CommonTokenStream(lexter);
-            var parser = new CFlatParser(tokens);
-
-            var tree = parser.prog().Tree;
-
-            var nodes = new CommonTreeNodeStream(tree);
-            var walker = new CFlatTree(nodes, codeGenerator, new ErrorSet());
-            
-            return walker;
-        }
-
+       
         private static string SurroundWithProgram(string s)
         {
             return "public class Test { public Test(){" + s + ";}}";

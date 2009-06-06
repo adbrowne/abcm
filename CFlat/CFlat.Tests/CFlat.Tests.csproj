@@ -57,7 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicLexerTests.cs" />
+    <Compile Include="Unit\Ast\AstTestBase.cs" />
+    <Compile Include="Unit\Lexer\BasicLexerTests.cs" />
     <Compile Include="Unit\ClrCodeGen\ClrCodeGeneratorTests.cs" />
     <Compile Include="Unit\ClrCodeGen\ClrCodeGenExpressionTests.cs" />
     <Compile Include="ConsoleInterceptor.cs" />
@@ -67,11 +68,11 @@
     <Compile Include="Unit\Tree\ExpressionTypeTests.cs" />
     <Compile Include="Unit\Tree\TreeStructureTests.cs" />
     <Compile Include="Unit\Tree\TreeExpressionTests.cs" />
-    <Compile Include="TypeTests.cs" />
-    <Compile Include="IfThenElseTests.cs" />
+    <Compile Include="Integration\TypeTests.cs" />
+    <Compile Include="Unit\Ast\IfThenElseTests.cs" />
     <Compile Include="Helper\ReflectionTestHelpers.cs" />
-    <Compile Include="ClassMethodStatementTests.cs" />
-    <Compile Include="ExpressionTests.cs" />
+    <Compile Include="Unit\Ast\ClassMethodStatementTests.cs" />
+    <Compile Include="Unit\Ast\ExpressionTests.cs" />
     <Compile Include="Helper\LexResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

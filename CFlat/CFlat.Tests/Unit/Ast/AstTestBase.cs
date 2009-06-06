@@ -1,32 +1,17 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Antlr.Runtime;
 using Antlr.Runtime.Tree;
 using Castle.DynamicProxy;
-using NUnit.Framework;
+using CFlat.Tree;
 
-namespace CFlat.Tests
+namespace CFlat.Tests.Unit.AST
 {
-    [TestFixture]
-    public class IfThenElseTests
+    public class AstTestBase
     {
-        [Test]
-        public void DefineIntegerWithValue()
-        {
-            var input = "public class Test { public TestMethod(){ int a=9; }}";
-            var output = GetOutput(input);
-
-            var expected =
-                @"DefineVariable(name=a,type=int)
-BeginExpression()
-ExprNumber(i=9)
-EndExpression()
-AssignExpression(name=a)
-";
-
-            Assert.That(output.Contains(expected));
-        }
-
-        private string GetOutput(string input)
+        protected ITreeNode GetAst(string input)
         {
             var sampleInput = SurroundWithProgram(input);
 
@@ -35,8 +20,7 @@ AssignExpression(name=a)
             var generator = proxyGenerator.CreateInterfaceProxyWithoutTarget<ICodeGenerator>(new ConsoleInterceptor(output));
 
             var parser = CreateParser(sampleInput, generator);
-            parser.prog();
-            return output.ToString();
+            return parser.prog();
         }
 
         private CFlatTree CreateParser(string input, ICodeGenerator codeGenerator)
