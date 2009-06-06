@@ -1,0 +1,10 @@
+CFlat/bin/
+CFlat/obj/
+CFlat.Tests/obj
+CFlat.Tests/bin
+_ReSharper.CFlat/
+CFlat/Oberon-0.csproj.user
+CFlat.4.0.resharper.user
+CFlat.4.1.resharper.user
+CFlat.suo
+CFlat.sln.cache
