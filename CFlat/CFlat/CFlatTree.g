@@ -10,7 +10,7 @@ options {
 using CFlat.Tree;
 }
 @namespace {
-    Decaf
+    CFlat
 }
 
 
