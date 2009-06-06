@@ -22,7 +22,7 @@ namespace CFlat.Tests
             var errorSet = new ErrorSet();
             var parser = CreateParser(input, errorSet);
             var @class = parser.prog();
-            @class.Compile(errorSet);
+            @class.Compile(errorSet, new CompilerContext(new ClrCodeGenerator("TestOut")));
             return errorSet;
         }
 

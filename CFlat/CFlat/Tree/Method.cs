@@ -15,12 +15,16 @@ namespace CFlat.Tree
 
         public List<Statement> Statements { get; private set; }
 
-        public void Compile(ErrorSet errorSet)
+        public void Compile(ErrorSet errorSet, CompilerContext context)
         {
+            context.CodeGenerator.BeginMethod(Name);
+
             foreach (var statement in Statements)
             {
                 statement.Compile(errorSet);
             }
+
+            context.CodeGenerator.EndMethod();
         }
     }
 }

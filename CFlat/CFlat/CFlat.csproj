@@ -64,6 +64,7 @@
     <Compile Include="Tree\BinOpExpression.cs" />
     <Compile Include="Tree\BooleanExpression.cs" />
     <Compile Include="Tree\CharExpression.cs" />
+    <Compile Include="CompilerContext.cs" />
     <Compile Include="Tree\DeclarationStatement.cs" />
     <Compile Include="Tree\DivisionExpression.cs" />
     <Compile Include="Tree\Expression.cs" />

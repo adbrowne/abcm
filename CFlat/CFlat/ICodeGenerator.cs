@@ -23,5 +23,7 @@ namespace CFlat
         void EndMethod();
         void BeginIf();
         void EndIf();
+        void Save();
+        string Name { get; }
     }
 }

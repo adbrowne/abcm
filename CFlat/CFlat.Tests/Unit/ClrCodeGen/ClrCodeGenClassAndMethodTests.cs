@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using CFlat;
 using CFlat.Tests.Helper;
 using NUnit.Framework;
 

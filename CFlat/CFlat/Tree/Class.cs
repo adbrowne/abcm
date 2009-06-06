@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using CFlat;
 
 namespace CFlat.Tree
 {
@@ -23,12 +22,16 @@ namespace CFlat.Tree
             get { return methodList[methodName]; }
         }
 
-        public void Compile(ErrorSet errorSet)
+        public void Compile(ErrorSet errorSet, CompilerContext context)
         {
+            context.CodeGenerator.StartModule(Name);
+            
             foreach (var method in methodList)
             {
-                method.Value.Compile(errorSet);
+                method.Value.Compile(errorSet, context);
             }
+            
+            context.CodeGenerator.EndModule();
         }
     }
 }
