@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g 2009-06-06 20:53:48
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g 2009-06-06 22:55:10
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -125,8 +125,8 @@ public partial class CFlatTree : TreeParser
 
             	Match(input, Token.DOWN, null); 
             	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_prog63); 
-            	c =  TB.Class(((name != null) ? name.Text : null)); CodeGenerator.StartModule(((name != null) ? name.Text : null));
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:17:109: (m= method )*
+            	c =  TB.Class(((name != null) ? name.Text : null)); 
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:17:71: (m= method )*
             	do 
             	{
             	    int alt1 = 2;
@@ -141,7 +141,7 @@ public partial class CFlatTree : TreeParser
             	    switch (alt1) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:17:110: m= method
+            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:17:72: m= method
             			    {
             			    	PushFollow(FOLLOW_method_in_prog70);
             			    	m = method();
@@ -160,7 +160,6 @@ public partial class CFlatTree : TreeParser
             	loop1:
             		;	// Stops C# compiler whining that label 'loop1' has no statements
 
-            	CodeGenerator.EndModule();
 
             	Match(input, Token.UP, null); 
 
@@ -195,12 +194,12 @@ public partial class CFlatTree : TreeParser
             // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:26: ( ^( METHOD name= ID (s= stat )* ) )
             // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:28: ^( METHOD name= ID (s= stat )* )
             {
-            	Match(input,METHOD,FOLLOW_METHOD_in_method94); 
+            	Match(input,METHOD,FOLLOW_METHOD_in_method92); 
 
             	Match(input, Token.DOWN, null); 
-            	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_method98); 
-            	 CodeGenerator.BeginMethod(((name != null) ? name.Text : null)); m =  TB.Method(((name != null) ? name.Text : null));
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:115: (s= stat )*
+            	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_method96); 
+            	 m =  TB.Method(((name != null) ? name.Text : null));
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:76: (s= stat )*
             	do 
             	{
             	    int alt2 = 2;
@@ -215,9 +214,9 @@ public partial class CFlatTree : TreeParser
             	    switch (alt2) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:116: s= stat
+            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:77: s= stat
             			    {
-            			    	PushFollow(FOLLOW_stat_in_method105);
+            			    	PushFollow(FOLLOW_stat_in_method103);
             			    	s = stat();
             			    	state.followingStackPointer--;
 
@@ -234,7 +233,6 @@ public partial class CFlatTree : TreeParser
             	loop2:
             		;	// Stops C# compiler whining that label 'loop2' has no statements
 
-            	CodeGenerator.EndMethod();
 
             	Match(input, Token.UP, null); 
 
@@ -289,35 +287,33 @@ public partial class CFlatTree : TreeParser
             switch (alt3) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:22:31: e= expr
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:22:30: e= expr
                     {
-                    	CodeGenerator.BeginExpression();
-                    	PushFollow(FOLLOW_expr_in_stat136);
+                    	PushFollow(FOLLOW_expr_in_stat130);
                     	e = expr();
                     	state.followingStackPointer--;
 
-                    	 s =  TB.Statement(e); CodeGenerator.EndExpression();
+                    	 s =  TB.Statement(e); 
 
                     }
                     break;
                 case 2 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:24:2: ^( EQUALS ^(t= ID name= ID ) e= expr )
                     {
-                    	Match(input,EQUALS,FOLLOW_EQUALS_in_stat145); 
+                    	Match(input,EQUALS,FOLLOW_EQUALS_in_stat139); 
 
                     	Match(input, Token.DOWN, null); 
-                    	t=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat150); 
+                    	t=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat144); 
 
                     	Match(input, Token.DOWN, null); 
-                    	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat154); 
+                    	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat148); 
 
                     	Match(input, Token.UP, null); 
-                    	CodeGenerator.DefineVariable(((name != null) ? name.Text : null), ((t != null) ? t.Text : null)); CodeGenerator.BeginExpression();
-                    	PushFollow(FOLLOW_expr_in_stat161);
+                    	PushFollow(FOLLOW_expr_in_stat153);
                     	e = expr();
                     	state.followingStackPointer--;
 
-                    	s =  TB.DeclarationStatement(((t != null) ? t.Text : null), ((name != null) ? name.Text : null), e); CodeGenerator.EndExpression(); CodeGenerator.AssignExpression(((name != null) ? name.Text : null)); 
+                    	s =  TB.DeclarationStatement(((t != null) ? t.Text : null), ((name != null) ? name.Text : null), e); 
 
                     	Match(input, Token.UP, null); 
 
@@ -366,150 +362,149 @@ public partial class CFlatTree : TreeParser
                 case 1 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:27:9: ^( '+' a= expr b= expr )
                     {
-                    	Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_expr183); 
+                    	Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_expr175); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr187);
+                    	PushFollow(FOLLOW_expr_in_expr179);
                     	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr191);
+                    	PushFollow(FOLLOW_expr_in_expr183);
                     	b = expr();
                     	state.followingStackPointer--;
 
 
                     	Match(input, Token.UP, null); 
-                    	 CodeGenerator.Operation("Addition"); e =  TB.AdditionExpression(a, b);
+                    	 e =  TB.AdditionExpression(a, b);
 
                     }
                     break;
                 case 2 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:28:8: ^( '-' a= expr b= expr )
                     {
-                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr210); 
+                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr202); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr214);
+                    	PushFollow(FOLLOW_expr_in_expr206);
                     	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr218);
+                    	PushFollow(FOLLOW_expr_in_expr210);
                     	b = expr();
                     	state.followingStackPointer--;
 
 
                     	Match(input, Token.UP, null); 
-                    	 CodeGenerator.Operation("Subtraction"); e =  TB.SubtractionExpression(a, b);
+                    	 e =  TB.SubtractionExpression(a, b);
 
                     }
                     break;
                 case 3 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:29:8: ^( '*' a= expr b= expr )
                     {
-                    	Match(input,MULT_OP,FOLLOW_MULT_OP_in_expr237); 
+                    	Match(input,MULT_OP,FOLLOW_MULT_OP_in_expr229); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr241);
+                    	PushFollow(FOLLOW_expr_in_expr233);
                     	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr245);
+                    	PushFollow(FOLLOW_expr_in_expr237);
                     	b = expr();
                     	state.followingStackPointer--;
 
 
                     	Match(input, Token.UP, null); 
-                    	 CodeGenerator.Operation("Multiplication"); e =  TB.MultiplicationExpression(a, b); 
+                    	 e =  TB.MultiplicationExpression(a, b); 
 
                     }
                     break;
                 case 4 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:30:8: ^( '/' a= expr b= expr )
                     {
-                    	Match(input,DIV_OP,FOLLOW_DIV_OP_in_expr264); 
+                    	Match(input,DIV_OP,FOLLOW_DIV_OP_in_expr256); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr268);
+                    	PushFollow(FOLLOW_expr_in_expr260);
                     	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr272);
+                    	PushFollow(FOLLOW_expr_in_expr264);
                     	b = expr();
                     	state.followingStackPointer--;
 
 
                     	Match(input, Token.UP, null); 
-                    	 CodeGenerator.Operation("Division"); e =  TB.DivisionExpression(a, b); 
+                    	 e =  TB.DivisionExpression(a, b); 
 
                     }
                     break;
                 case 5 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:31:8: ^( '%' a= expr b= expr )
                     {
-                    	Match(input,REM_OP,FOLLOW_REM_OP_in_expr291); 
+                    	Match(input,REM_OP,FOLLOW_REM_OP_in_expr283); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr295);
+                    	PushFollow(FOLLOW_expr_in_expr287);
                     	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr299);
+                    	PushFollow(FOLLOW_expr_in_expr291);
                     	b = expr();
                     	state.followingStackPointer--;
 
 
                     	Match(input, Token.UP, null); 
-                    	 CodeGenerator.Operation("Remainder"); e =  TB.RemainderExpression(a, b);
+                    	 e =  TB.RemainderExpression(a, b);
 
                     }
                     break;
                 case 6 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:32:9: STRING_LITERAL
                     {
-                    	STRING_LITERAL1=(CommonTree)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_expr318); 
-                    	 CodeGenerator.ExprString(((STRING_LITERAL1 != null) ? STRING_LITERAL1.Text : null)); e =  TB.StringExpression(((STRING_LITERAL1 != null) ? STRING_LITERAL1.Text : null));
+                    	STRING_LITERAL1=(CommonTree)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_expr310); 
+                    	 e =  TB.StringExpression(((STRING_LITERAL1 != null) ? STRING_LITERAL1.Text : null));
 
                     }
                     break;
                 case 7 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:33:7: CHAR_LITERAL
                     {
-                    	CHAR_LITERAL2=(CommonTree)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_expr340); 
-                    	 CodeGenerator.ExprChar(char.Parse(((CHAR_LITERAL2 != null) ? CHAR_LITERAL2.Text : null).Replace("'","")));  
-                    	    				     e =  TB.CharExpression(((CHAR_LITERAL2 != null) ? CHAR_LITERAL2.Text : null).Replace("'",""));
+                    	CHAR_LITERAL2=(CommonTree)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_expr332); 
+                    	 e =  TB.CharExpression(((CHAR_LITERAL2 != null) ? CHAR_LITERAL2.Text : null).Replace("'",""));
 
                     }
                     break;
                 case 8 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:35:9: INT
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:34:9: INT
                     {
-                    	INT3=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr356); 
-                    	 CodeGenerator.ExprNumber(int.Parse(((INT3 != null) ? INT3.Text : null))); e =  TB.IntegerExpression(((INT3 != null) ? INT3.Text : null));
+                    	INT3=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr348); 
+                    	 e =  TB.IntegerExpression(((INT3 != null) ? INT3.Text : null));
 
                     }
                     break;
                 case 9 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:36:9: MINUS_OP INT
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:35:9: MINUS_OP INT
                     {
-                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr391); 
-                    	INT4=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr393); 
-                    	 CodeGenerator.ExprNumber(-int.Parse(((INT4 != null) ? INT4.Text : null))); e =  TB.IntegerExpression("-" + ((INT4 != null) ? INT4.Text : null));
+                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr383); 
+                    	INT4=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr385); 
+                    	 e =  TB.IntegerExpression("-" + ((INT4 != null) ? INT4.Text : null));
 
                     }
                     break;
                 case 10 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:37:7: ID
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:36:7: ID
                     {
-                    	ID5=(CommonTree)Match(input,ID,FOLLOW_ID_in_expr417); 
-                    	 CodeGenerator.ExprId(((ID5 != null) ? ID5.Text : null)); e =  TB.IdExpression(((ID5 != null) ? ID5.Text : null));
+                    	ID5=(CommonTree)Match(input,ID,FOLLOW_ID_in_expr409); 
+                    	 e =  TB.IdExpression(((ID5 != null) ? ID5.Text : null));
 
                     }
                     break;
                 case 11 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:38:7: BOOL_LITERAL
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:37:7: BOOL_LITERAL
                     {
-                    	BOOL_LITERAL6=(CommonTree)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_expr432); 
-                    	 CodeGenerator.ExprBool(bool.Parse(((BOOL_LITERAL6 != null) ? BOOL_LITERAL6.Text : null))); e =  TB.BooleanExpression(((BOOL_LITERAL6 != null) ? BOOL_LITERAL6.Text : null));
+                    	BOOL_LITERAL6=(CommonTree)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_expr424); 
+                    	 e =  TB.BooleanExpression(((BOOL_LITERAL6 != null) ? BOOL_LITERAL6.Text : null));
 
                     }
                     break;
@@ -603,36 +598,36 @@ public partial class CFlatTree : TreeParser
     public static readonly BitSet FOLLOW_CLASS_in_prog59 = new BitSet(new ulong[]{0x0000000000000004UL});
     public static readonly BitSet FOLLOW_ID_in_prog63 = new BitSet(new ulong[]{0x0000000000000018UL});
     public static readonly BitSet FOLLOW_method_in_prog70 = new BitSet(new ulong[]{0x0000000000000018UL});
-    public static readonly BitSet FOLLOW_METHOD_in_method94 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_method98 = new BitSet(new ulong[]{0x00000000000FE748UL});
-    public static readonly BitSet FOLLOW_stat_in_method105 = new BitSet(new ulong[]{0x00000000000FE748UL});
-    public static readonly BitSet FOLLOW_expr_in_stat136 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_EQUALS_in_stat145 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_stat150 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_stat154 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_expr_in_stat161 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_ARITH_OP_in_expr183 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr187 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr191 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_expr210 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr214 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr218 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_MULT_OP_in_expr237 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr241 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr245 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_DIV_OP_in_expr264 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr268 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr272 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_REM_OP_in_expr291 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr295 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr299 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_STRING_LITERAL_in_expr318 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_expr340 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_INT_in_expr356 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_expr391 = new BitSet(new ulong[]{0x0000000000000400UL});
-    public static readonly BitSet FOLLOW_INT_in_expr393 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_ID_in_expr417 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_expr432 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_METHOD_in_method92 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_ID_in_method96 = new BitSet(new ulong[]{0x00000000000FE748UL});
+    public static readonly BitSet FOLLOW_stat_in_method103 = new BitSet(new ulong[]{0x00000000000FE748UL});
+    public static readonly BitSet FOLLOW_expr_in_stat130 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_EQUALS_in_stat139 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_ID_in_stat144 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_ID_in_stat148 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_expr_in_stat153 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_ARITH_OP_in_expr175 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr179 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr183 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_expr202 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr206 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr210 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_MULT_OP_in_expr229 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr233 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr237 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_DIV_OP_in_expr256 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr260 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr264 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_REM_OP_in_expr283 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr287 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr291 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_STRING_LITERAL_in_expr310 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_expr332 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_INT_in_expr348 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_expr383 = new BitSet(new ulong[]{0x0000000000000400UL});
+    public static readonly BitSet FOLLOW_INT_in_expr385 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_expr409 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_expr424 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }
 }

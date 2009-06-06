@@ -19,23 +19,14 @@ namespace CFlat.Tests
 
         private ErrorSet GetErrors(string input)
         {
-            var generator = GetGenerator();
-
             var errorSet = new ErrorSet();
-            var parser = CreateParser(input, generator, errorSet);
+            var parser = CreateParser(input, errorSet);
             var @class = parser.prog();
             @class.Compile(errorSet);
             return errorSet;
         }
 
-        ClrCodeGenerator GetGenerator()
-        {
-            string name = "Output_" + Guid.NewGuid().ToString("N") + ".exe";
-            var clrCodeGenerator = new ClrCodeGenerator(name);
-            return clrCodeGenerator;
-        }
-
-        private CFlatTree CreateParser(string input, ICodeGenerator codeGenerator, ErrorSet errorSet)
+        private CFlatTree CreateParser(string input, ErrorSet errorSet)
         {
             var antlrStringStream = new ANTLRStringStream(input);
             var lexter = new CFlatLexer(antlrStringStream);
@@ -45,7 +36,7 @@ namespace CFlat.Tests
             var tree = parser.prog().Tree;
 
             var nodes = new CommonTreeNodeStream(tree);
-            var walker = new CFlatTree(nodes, codeGenerator, errorSet);
+            var walker = new CFlatTree(nodes, errorSet);
             
             return walker;
         }

@@ -61,7 +61,6 @@
     <Compile Include="Unit\Lexer\BasicLexerTests.cs" />
     <Compile Include="Unit\ClrCodeGen\ClrCodeGeneratorTests.cs" />
     <Compile Include="Unit\ClrCodeGen\ClrCodeGenExpressionTests.cs" />
-    <Compile Include="ConsoleInterceptor.cs" />
     <Compile Include="Unit\ClrCodeGen\ClrCodeGenStatementTests.cs" />
     <Compile Include="Unit\ClrCodeGen\ClrCodeGenClassAndMethodTests.cs" />
     <Compile Include="Unit\ClrCodeGen\ClrCodeGenIfThenElseTests.cs" />

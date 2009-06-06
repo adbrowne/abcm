@@ -17,13 +17,12 @@ namespace CFlat.Tests.Unit.AST
 
             var proxyGenerator = new ProxyGenerator();
             var output = new StringBuilder();
-            var generator = proxyGenerator.CreateInterfaceProxyWithoutTarget<ICodeGenerator>(new ConsoleInterceptor(output));
-
-            var parser = CreateParser(sampleInput, generator);
+            
+            var parser = CreateParser(sampleInput);
             return parser.prog();
         }
 
-        private CFlatTree CreateParser(string input, ICodeGenerator codeGenerator)
+        private CFlatTree CreateParser(string input)
         {
             var antlrStringStream = new ANTLRStringStream(input);
             var lexter = new CFlatLexer(antlrStringStream);
@@ -33,7 +32,7 @@ namespace CFlat.Tests.Unit.AST
             var tree = parser.prog().Tree;
 
             var nodes = new CommonTreeNodeStream(tree);
-            var walker = new CFlatTree(nodes, codeGenerator, new ErrorSet());
+            var walker = new CFlatTree(nodes, new ErrorSet());
             
             return walker;
         }

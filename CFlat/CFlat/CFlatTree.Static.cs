@@ -6,12 +6,10 @@ namespace CFlat
 
     public partial class CFlatTree
     {
-        private ICodeGenerator CodeGenerator { get; set; }
         private ITreeBuilder TB { get; set; }
-        public CFlatTree(ITreeNodeStream input, ICodeGenerator codeGenerator, ErrorSet errorSet)
+        public CFlatTree(ITreeNodeStream input, ErrorSet errorSet)
             : this(input)
         {
-            CodeGenerator = codeGenerator;
             TB = new TreeBuilder();
         }
     }
