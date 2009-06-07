@@ -46,9 +46,9 @@ namespace CFlat.Tests.Integration
             var @class = parser.prog();
 
             var assemblyName = ("Output_" + Guid.NewGuid().ToString("N") + ".exe");
-            var compilerContext = new CompilerContext(new ClrCodeGenerator(assemblyName));
+            var compilerContext = new CompilerContext(new ClrCodeGenerator(assemblyName), new ErrorSet());
 
-            @class.Compile(new ErrorSet(), compilerContext);
+            @class.Compile(compilerContext);
 
             compilerContext.Save();
             var outputAssembly =  Assembly.Load(compilerContext.CodeGenerator.Name);

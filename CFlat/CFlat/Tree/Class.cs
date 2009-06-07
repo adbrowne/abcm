@@ -22,13 +22,13 @@ namespace CFlat.Tree
             get { return methodList[methodName]; }
         }
 
-        public void Compile(ErrorSet errorSet, CompilerContext context)
+        public void Compile(CompilerContext context)
         {
             context.CodeGenerator.StartModule(Name);
             
             foreach (var method in methodList)
             {
-                method.Value.Compile(errorSet, context);
+                method.Value.Compile(context.ErrorSet, context);
             }
             
             context.CodeGenerator.EndModule();
