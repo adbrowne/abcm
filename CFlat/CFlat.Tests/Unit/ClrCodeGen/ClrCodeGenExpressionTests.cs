@@ -68,6 +68,19 @@ namespace CFlat.Tests.Unit.ClrCodeGen
         }
 
         [Test]
+        public void SubtractionExpressionTest()
+        {
+            var clrCodeGenerator = GetGeneratorForExpression();
+            clrCodeGenerator.BeginExpression();
+            clrCodeGenerator.ExprNumber(9);
+            clrCodeGenerator.ExprNumber(2);
+            clrCodeGenerator.Operation("Subtraction");
+            clrCodeGenerator.EndExpression();
+            var output = GetExpressionResult(clrCodeGenerator);
+            Assert.AreEqual(7, output);
+        }
+
+        [Test]
         public void StringExpressionTest()
         {
             var clrCodeGenerator = GetGeneratorForExpression();

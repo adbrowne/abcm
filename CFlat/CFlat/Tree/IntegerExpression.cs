@@ -20,9 +20,9 @@ namespace CFlat.Tree
             get { return Types.Int; }
         }
 
-        public override void Compile(ErrorSet set, CompilerContext context)
+        public override void Compile(CompilerContext context)
         {
-            base.Compile(set, context);
+            base.Compile(context);
             context.CodeGenerator.ExprNumber(Value);
         }
     }

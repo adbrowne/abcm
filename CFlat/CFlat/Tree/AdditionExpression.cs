@@ -14,12 +14,12 @@ namespace CFlat.Tree
             get { throw new System.NotImplementedException(); }
         }
 
-        public override void Compile(ErrorSet set, CompilerContext context)
+        public override void Compile(CompilerContext context)
         {
-            base.Compile(set, context);
+            base.Compile(context);
 
-            Expr1.Compile(set, context);
-            Expr2.Compile(set, context);
+            Expr1.Compile(context);
+            Expr2.Compile(context);
             context.CodeGenerator.Operation("Addition");
         }
     }

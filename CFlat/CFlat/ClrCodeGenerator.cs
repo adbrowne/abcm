@@ -87,6 +87,10 @@ namespace CFlat
             {
                 ilGenerator.Emit(OpCodes.Add);
             }
+            else if (operationName == "Subtraction")
+            {
+                ilGenerator.Emit(OpCodes.Sub);
+            }
         }
 
         public void Comment(string comment)

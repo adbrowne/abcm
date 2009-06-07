@@ -38,6 +38,16 @@ namespace CFlat.Tests.Integration
             Assert.AreEqual(27, @return);
         }
 
+        [Test]
+        public void SubtractionExpressionTest()
+        {
+
+            var expression = "9 - 3";
+            var @return = GetResult(expression);
+
+            Assert.AreEqual(6, @return);
+        }
+
         private static int GetResult(string expression)
         {
             var input = @"public class Test { public int TestMethodName(){ return " + expression + ";} }";

@@ -15,7 +15,7 @@ namespace CFlat.Tree
 
             context.CodeGenerator.BeginExpression();
 
-            Expression.Compile(errorSet, context);
+            Expression.Compile(context);
             
             context.CodeGenerator.EndExpression();
 
