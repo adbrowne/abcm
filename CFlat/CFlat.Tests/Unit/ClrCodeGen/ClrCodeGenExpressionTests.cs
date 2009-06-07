@@ -55,6 +55,19 @@ namespace CFlat.Tests.Unit.ClrCodeGen
         }
 
         [Test]
+        public void AdditionExpressionTest()
+        {
+            var clrCodeGenerator = GetGeneratorForExpression();
+            clrCodeGenerator.BeginExpression();
+            clrCodeGenerator.ExprNumber(9);
+            clrCodeGenerator.ExprNumber(2);
+            clrCodeGenerator.Operation("Addition");
+            clrCodeGenerator.EndExpression();
+            var output = GetExpressionResult(clrCodeGenerator);
+            Assert.AreEqual(11, output);
+        }
+
+        [Test]
         public void StringExpressionTest()
         {
             var clrCodeGenerator = GetGeneratorForExpression();

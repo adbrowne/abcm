@@ -83,6 +83,10 @@ namespace CFlat
             {
                 ilGenerator.Emit(OpCodes.Mul);
             }
+            else if(operationName == "Addition")
+            {
+                ilGenerator.Emit(OpCodes.Add);
+            }
         }
 
         public void Comment(string comment)

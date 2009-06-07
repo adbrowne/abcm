@@ -15,8 +15,27 @@ namespace CFlat.Tests.Integration
             var expression = "9";
             var @return = GetResult(expression);
 
-            
             Assert.AreEqual(9, @return);
+        }
+
+        [Test]
+        public void AdditionExpressionTest()
+        {
+
+            var expression = "9 + 9";
+            var @return = GetResult(expression);
+
+            Assert.AreEqual(18, @return);
+        }
+
+        [Test]
+        public void MultiplicationExpressionTest()
+        {
+
+            var expression = "9 * 3";
+            var @return = GetResult(expression);
+
+            Assert.AreEqual(27, @return);
         }
 
         private static int GetResult(string expression)
