@@ -92,6 +92,8 @@ namespace CFlat.Tree
                     return Types.Char;
                 case "bool":
                     return Types.Bool;
+                case "void":
+                    return Types.Void;
                 default:
                     throw new ArgumentException("Unknown type: " + typeName);
             }

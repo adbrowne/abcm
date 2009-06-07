@@ -26,6 +26,17 @@ namespace CFlat.Tests.Unit.AST
         }
 
         [Test]
+        public void VoidMethod()
+        {
+            var input = "public class Test { public void TestMethod(){ }}";
+            var @class = GetAst(input);
+
+            var method = ((Class)@class)["TestMethod"];
+
+            Assert.AreEqual(Types.Void, method.ReturnType);
+        }
+
+        [Test]
         public void MethodWithReturn()
         {
             var input = "public class Test { public int TestMethod(){ return 9; }}";

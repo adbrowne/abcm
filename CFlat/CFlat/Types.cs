@@ -2,10 +2,12 @@ namespace CFlat
 {
     public enum Types
     {
-        Error,
+        Error = -1,
+        Void = 0,
         Int,
         Bool,
         String,
         Char
+        
     }
 }
