@@ -243,7 +243,7 @@ namespace CFlat.Tests.Unit.AST
        
         private static string SurroundWithProgram(string s)
         {
-            return "public class Test { public Test(){" + s + ";}}";
+            return "public class Test { public int Test(){" + s + ";}}";
         }
     }
 }

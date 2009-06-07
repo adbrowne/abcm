@@ -17,7 +17,7 @@ using CFlat.Tree;
 prog returns [Class c]: ^(CLASS name=ID {$c = TB.Class($name.text); } (m=method{ $c.AddMethod(m);})* )
     ;
 
-method	returns [Method m]: ^(METHOD name=ID { $m = TB.Method($name.text);} (s=stat { $m.Statements.Add(s); } )* );    
+method	returns [Method m]: ^(METHOD t=ID name=ID { $m = TB.Method($name.text, $t.text);} (s=stat { $m.Statements.Add(s); } )* );    
 	 
 stat returns [Statement s]:  e=expr { $s = TB.Statement(e); }
 	|

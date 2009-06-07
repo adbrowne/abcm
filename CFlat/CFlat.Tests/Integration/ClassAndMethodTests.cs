@@ -21,7 +21,7 @@ namespace CFlat.Tests.Integration
         [Test]
         public void SimpleClassAndMethodTest()
         {
-            var input = @"public class Test { public TestMethodName(){} }";
+            var input = @"public class Test { public int TestMethodName(){} }";
             
             var outputAssembly = GetResult(input);
 

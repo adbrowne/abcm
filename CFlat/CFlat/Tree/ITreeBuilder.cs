@@ -7,7 +7,7 @@ namespace CFlat.Tree
         IntegerExpression IntegerExpression(string value);
         AdditionExpression AdditionExpression(Expression expr1, Expression expr2);
         Class Class(string name);
-        Method Method(string name);
+        Method Method(string name, string returnTypeName);
         Statement Statement(Expression e);
         Expression SubtractionExpression(Expression expr1, Expression expr2);
         Expression MultiplicationExpression(Expression expr1, Expression expr2);

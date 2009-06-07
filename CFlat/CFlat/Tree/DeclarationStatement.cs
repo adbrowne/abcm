@@ -4,24 +4,9 @@ namespace CFlat.Tree
 {
     public class DeclarationStatement : Statement
     {
-        public DeclarationStatement(string typeName, string name, Expression expression) : base(expression)
+        public DeclarationStatement(Types type, string name, Expression expression) : base(expression)
         {
-            switch (typeName)
-            {
-                case "int":
-                    Type = Types.Int;
-                    break;
-                case "string":
-                    Type = Types.String;
-                    break;
-                case "char":
-                    Type = Types.Char;
-                    break;
-                case "bool":
-                    Type = Types.Bool;
-                    break;
-            }
-
+            Type = type;
             VariableName = name;
         }
 

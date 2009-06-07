@@ -9,7 +9,7 @@ namespace CFlat.Tests.Unit.AST
         [Test]
         public void DefineIntegerWithValue()
         {
-            var input = "public class Test { public TestMethod(){ int a=9; }}";
+            var input = "public class Test { public int TestMethod(){ int a=9; }}";
             var @class = GetAst(input);
 
             var statement = ((Class) @class)["TestMethod"].Statements[0];
@@ -28,7 +28,7 @@ namespace CFlat.Tests.Unit.AST
         [Test]
         public void MultipleStatementTest()
         {
-            var input = @"public class Test { public TestMethodName(){int a=9;int b=10; }}";
+            var input = @"public class Test { public int TestMethodName(){int a=9;int b=10; }}";
             var @class = GetAst(input);
 
             var method = ((Class)@class)["TestMethodName"];
@@ -58,7 +58,7 @@ namespace CFlat.Tests.Unit.AST
         [Test]
         public void DefineIntegerWithExpression()
         {
-            var input = "public class Test { public TestMethodName(){int a=9*2+4;} }";
+            var input = "public class Test { public int TestMethodName(){int a=9*2+4;} }";
             var @class = GetAst(input);
 
             var method = ((Class)@class)["TestMethodName"];
@@ -92,12 +92,13 @@ namespace CFlat.Tests.Unit.AST
         [Test]
         public void DefineMethod()
         {
-            var input = @"public class Test { public TestMethodName(){} }";
+            var input = @"public class Test { public int TestMethodName(){} }";
             var @class = (Class)GetAst(input);
 
             var method = @class["TestMethodName"];
             
             Assert.AreEqual("TestMethodName", method.Name);
+            Assert.AreEqual(Types.Int, method.ReturnType);
         }
     }
 }

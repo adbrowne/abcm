@@ -11,7 +11,7 @@ namespace CFlat.Tests
         [Test]
         public void ExpectingBooleanExpression()
         {
-            var input = "public class Test { public TestMethod(){ bool a = 9; }}";
+            var input = "public class Test { public int TestMethod(){ bool a = 9; }}";
             var output = GetErrors(input);
 
             Assert.AreEqual(CompileErrorType.TypeMismatch, output[0].Type);

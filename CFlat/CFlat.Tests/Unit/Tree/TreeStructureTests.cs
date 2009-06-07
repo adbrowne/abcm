@@ -26,7 +26,7 @@ namespace CFlat.Tests.Unit.Tree
         [Test]
         public void MethodTest()
         {
-            var node = tb.Method("TestMethod");
+            var node = tb.Method("TestMethod", "int");
 
             Assert.IsInstanceOfType(typeof(Method), node);
             Assert.AreEqual("TestMethod", node.Name);
@@ -37,7 +37,7 @@ namespace CFlat.Tests.Unit.Tree
         {
             var @class = tb.Class("TestClass");
 
-            var method = tb.Method("TestMethod");
+            var method = tb.Method("TestMethod", "int");
 
             @class.AddMethod(method);
 

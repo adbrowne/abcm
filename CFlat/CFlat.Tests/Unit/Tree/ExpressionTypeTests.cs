@@ -25,28 +25,28 @@ namespace CFlat.Tests.Unit.Tree
         [Test]
         public void DeclarationTypeIntTest()
         {
-            var stmt = new DeclarationStatement("int", null, null);
+            var stmt = (DeclarationStatement)tb.DeclarationStatement("int", null, null);
             Assert.AreEqual(Types.Int, stmt.Type);
         }
 
         [Test]
         public void DeclarationTypeStringTest()
         {
-            var stmt = new DeclarationStatement("string", null, null);
+            var stmt = (DeclarationStatement) tb.DeclarationStatement("string", null, null);
             Assert.AreEqual(Types.String, stmt.Type);
         }
 
         [Test]
         public void DeclarationTypeCharTest()
         {
-            var stmt = new DeclarationStatement("char", null, null);
+            var stmt = (DeclarationStatement) tb.DeclarationStatement("char", null, null);
             Assert.AreEqual(Types.Char, stmt.Type);
         }
 
         [Test]
         public void DeclarationTypeBoolTest()
         {
-            var stmt = new DeclarationStatement("bool", null, null);
+            var stmt = (DeclarationStatement) tb.DeclarationStatement("bool", null, null);
             Assert.AreEqual(Types.Bool, stmt.Type);
         }
     }

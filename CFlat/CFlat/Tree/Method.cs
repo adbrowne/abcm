@@ -7,13 +7,19 @@ namespace CFlat.Tree
     {
         public string Name { get; private set; }
 
-        public Method(string name)
+        public Method(string name, Types returnType)
         {
             Name = name;
+            ReturnType = returnType;
             Statements = new List<Statement>();
         }
 
         public List<Statement> Statements { get; private set; }
+
+        public Types ReturnType
+        {
+            get; private set;
+        }
 
         public void Compile(ErrorSet errorSet, CompilerContext context)
         {

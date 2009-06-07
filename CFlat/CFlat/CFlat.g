@@ -22,7 +22,7 @@ tokens {
 prog: 'public' CLASS ID '{' method* '}' -> ^(CLASS ID method*)
     ;
 
-method	: 'public' ID '(){' stat* '}' -> ^(METHOD ID stat*);
+method	: 'public' t=ID name=ID '(){' stat* '}' -> ^(METHOD $t $name stat*);
 
 stat:   expr EOS-> expr
 	|

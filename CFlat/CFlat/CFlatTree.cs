@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g 2009-06-06 22:55:10
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g 2009-06-07 21:23:35
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -180,26 +180,28 @@ public partial class CFlatTree : TreeParser
 
 
     // $ANTLR start "method"
-    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:1: method returns [Method m] : ^( METHOD name= ID (s= stat )* ) ;
+    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:1: method returns [Method m] : ^( METHOD t= ID name= ID (s= stat )* ) ;
     public Method method() // throws RecognitionException [1]
     {   
         Method m = default(Method);
 
+        CommonTree t = null;
         CommonTree name = null;
         Statement s = default(Statement);
 
 
         try 
     	{
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:26: ( ^( METHOD name= ID (s= stat )* ) )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:28: ^( METHOD name= ID (s= stat )* )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:26: ( ^( METHOD t= ID name= ID (s= stat )* ) )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:28: ^( METHOD t= ID name= ID (s= stat )* )
             {
             	Match(input,METHOD,FOLLOW_METHOD_in_method92); 
 
             	Match(input, Token.DOWN, null); 
-            	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_method96); 
-            	 m =  TB.Method(((name != null) ? name.Text : null));
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:76: (s= stat )*
+            	t=(CommonTree)Match(input,ID,FOLLOW_ID_in_method96); 
+            	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_method100); 
+            	 m =  TB.Method(((name != null) ? name.Text : null), ((t != null) ? t.Text : null));
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:90: (s= stat )*
             	do 
             	{
             	    int alt2 = 2;
@@ -214,9 +216,9 @@ public partial class CFlatTree : TreeParser
             	    switch (alt2) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:77: s= stat
+            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:20:91: s= stat
             			    {
-            			    	PushFollow(FOLLOW_stat_in_method103);
+            			    	PushFollow(FOLLOW_stat_in_method107);
             			    	s = stat();
             			    	state.followingStackPointer--;
 
@@ -289,7 +291,7 @@ public partial class CFlatTree : TreeParser
                 case 1 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:22:30: e= expr
                     {
-                    	PushFollow(FOLLOW_expr_in_stat130);
+                    	PushFollow(FOLLOW_expr_in_stat134);
                     	e = expr();
                     	state.followingStackPointer--;
 
@@ -300,16 +302,16 @@ public partial class CFlatTree : TreeParser
                 case 2 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:24:2: ^( EQUALS ^(t= ID name= ID ) e= expr )
                     {
-                    	Match(input,EQUALS,FOLLOW_EQUALS_in_stat139); 
+                    	Match(input,EQUALS,FOLLOW_EQUALS_in_stat143); 
 
                     	Match(input, Token.DOWN, null); 
-                    	t=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat144); 
+                    	t=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat148); 
 
                     	Match(input, Token.DOWN, null); 
-                    	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat148); 
+                    	name=(CommonTree)Match(input,ID,FOLLOW_ID_in_stat152); 
 
                     	Match(input, Token.UP, null); 
-                    	PushFollow(FOLLOW_expr_in_stat153);
+                    	PushFollow(FOLLOW_expr_in_stat157);
                     	e = expr();
                     	state.followingStackPointer--;
 
@@ -362,14 +364,14 @@ public partial class CFlatTree : TreeParser
                 case 1 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:27:9: ^( '+' a= expr b= expr )
                     {
-                    	Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_expr175); 
+                    	Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_expr179); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr179);
+                    	PushFollow(FOLLOW_expr_in_expr183);
                     	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr183);
+                    	PushFollow(FOLLOW_expr_in_expr187);
                     	b = expr();
                     	state.followingStackPointer--;
 
@@ -382,14 +384,14 @@ public partial class CFlatTree : TreeParser
                 case 2 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:28:8: ^( '-' a= expr b= expr )
                     {
-                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr202); 
+                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr206); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr206);
+                    	PushFollow(FOLLOW_expr_in_expr210);
                     	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr210);
+                    	PushFollow(FOLLOW_expr_in_expr214);
                     	b = expr();
                     	state.followingStackPointer--;
 
@@ -402,14 +404,14 @@ public partial class CFlatTree : TreeParser
                 case 3 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:29:8: ^( '*' a= expr b= expr )
                     {
-                    	Match(input,MULT_OP,FOLLOW_MULT_OP_in_expr229); 
+                    	Match(input,MULT_OP,FOLLOW_MULT_OP_in_expr233); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr233);
+                    	PushFollow(FOLLOW_expr_in_expr237);
                     	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr237);
+                    	PushFollow(FOLLOW_expr_in_expr241);
                     	b = expr();
                     	state.followingStackPointer--;
 
@@ -422,14 +424,14 @@ public partial class CFlatTree : TreeParser
                 case 4 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:30:8: ^( '/' a= expr b= expr )
                     {
-                    	Match(input,DIV_OP,FOLLOW_DIV_OP_in_expr256); 
+                    	Match(input,DIV_OP,FOLLOW_DIV_OP_in_expr260); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr260);
+                    	PushFollow(FOLLOW_expr_in_expr264);
                     	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr264);
+                    	PushFollow(FOLLOW_expr_in_expr268);
                     	b = expr();
                     	state.followingStackPointer--;
 
@@ -442,14 +444,14 @@ public partial class CFlatTree : TreeParser
                 case 5 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:31:8: ^( '%' a= expr b= expr )
                     {
-                    	Match(input,REM_OP,FOLLOW_REM_OP_in_expr283); 
+                    	Match(input,REM_OP,FOLLOW_REM_OP_in_expr287); 
 
                     	Match(input, Token.DOWN, null); 
-                    	PushFollow(FOLLOW_expr_in_expr287);
+                    	PushFollow(FOLLOW_expr_in_expr291);
                     	a = expr();
                     	state.followingStackPointer--;
 
-                    	PushFollow(FOLLOW_expr_in_expr291);
+                    	PushFollow(FOLLOW_expr_in_expr295);
                     	b = expr();
                     	state.followingStackPointer--;
 
@@ -462,7 +464,7 @@ public partial class CFlatTree : TreeParser
                 case 6 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:32:9: STRING_LITERAL
                     {
-                    	STRING_LITERAL1=(CommonTree)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_expr310); 
+                    	STRING_LITERAL1=(CommonTree)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_expr314); 
                     	 e =  TB.StringExpression(((STRING_LITERAL1 != null) ? STRING_LITERAL1.Text : null));
 
                     }
@@ -470,7 +472,7 @@ public partial class CFlatTree : TreeParser
                 case 7 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:33:7: CHAR_LITERAL
                     {
-                    	CHAR_LITERAL2=(CommonTree)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_expr332); 
+                    	CHAR_LITERAL2=(CommonTree)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_expr336); 
                     	 e =  TB.CharExpression(((CHAR_LITERAL2 != null) ? CHAR_LITERAL2.Text : null).Replace("'",""));
 
                     }
@@ -478,7 +480,7 @@ public partial class CFlatTree : TreeParser
                 case 8 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:34:9: INT
                     {
-                    	INT3=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr348); 
+                    	INT3=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr352); 
                     	 e =  TB.IntegerExpression(((INT3 != null) ? INT3.Text : null));
 
                     }
@@ -486,8 +488,8 @@ public partial class CFlatTree : TreeParser
                 case 9 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:35:9: MINUS_OP INT
                     {
-                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr383); 
-                    	INT4=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr385); 
+                    	Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_expr387); 
+                    	INT4=(CommonTree)Match(input,INT,FOLLOW_INT_in_expr389); 
                     	 e =  TB.IntegerExpression("-" + ((INT4 != null) ? INT4.Text : null));
 
                     }
@@ -495,7 +497,7 @@ public partial class CFlatTree : TreeParser
                 case 10 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:36:7: ID
                     {
-                    	ID5=(CommonTree)Match(input,ID,FOLLOW_ID_in_expr409); 
+                    	ID5=(CommonTree)Match(input,ID,FOLLOW_ID_in_expr413); 
                     	 e =  TB.IdExpression(((ID5 != null) ? ID5.Text : null));
 
                     }
@@ -503,7 +505,7 @@ public partial class CFlatTree : TreeParser
                 case 11 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:37:7: BOOL_LITERAL
                     {
-                    	BOOL_LITERAL6=(CommonTree)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_expr424); 
+                    	BOOL_LITERAL6=(CommonTree)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_expr428); 
                     	 e =  TB.BooleanExpression(((BOOL_LITERAL6 != null) ? BOOL_LITERAL6.Text : null));
 
                     }
@@ -599,35 +601,36 @@ public partial class CFlatTree : TreeParser
     public static readonly BitSet FOLLOW_ID_in_prog63 = new BitSet(new ulong[]{0x0000000000000018UL});
     public static readonly BitSet FOLLOW_method_in_prog70 = new BitSet(new ulong[]{0x0000000000000018UL});
     public static readonly BitSet FOLLOW_METHOD_in_method92 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_method96 = new BitSet(new ulong[]{0x00000000000FE748UL});
-    public static readonly BitSet FOLLOW_stat_in_method103 = new BitSet(new ulong[]{0x00000000000FE748UL});
-    public static readonly BitSet FOLLOW_expr_in_stat130 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_EQUALS_in_stat139 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_stat144 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_stat148 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_expr_in_stat153 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_ARITH_OP_in_expr175 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr179 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr183 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_expr202 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr206 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr210 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_MULT_OP_in_expr229 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr233 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr237 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_DIV_OP_in_expr256 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr260 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr264 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_REM_OP_in_expr283 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expr_in_expr287 = new BitSet(new ulong[]{0x00000000000FE640UL});
-    public static readonly BitSet FOLLOW_expr_in_expr291 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_STRING_LITERAL_in_expr310 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_expr332 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_INT_in_expr348 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_expr383 = new BitSet(new ulong[]{0x0000000000000400UL});
-    public static readonly BitSet FOLLOW_INT_in_expr385 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_ID_in_expr409 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_expr424 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_method96 = new BitSet(new ulong[]{0x0000000000000040UL});
+    public static readonly BitSet FOLLOW_ID_in_method100 = new BitSet(new ulong[]{0x00000000000FE748UL});
+    public static readonly BitSet FOLLOW_stat_in_method107 = new BitSet(new ulong[]{0x00000000000FE748UL});
+    public static readonly BitSet FOLLOW_expr_in_stat134 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_EQUALS_in_stat143 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_ID_in_stat148 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_ID_in_stat152 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_expr_in_stat157 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_ARITH_OP_in_expr179 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr183 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr187 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_expr206 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr210 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr214 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_MULT_OP_in_expr233 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr237 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr241 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_DIV_OP_in_expr260 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr264 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr268 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_REM_OP_in_expr287 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expr_in_expr291 = new BitSet(new ulong[]{0x00000000000FE640UL});
+    public static readonly BitSet FOLLOW_expr_in_expr295 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_STRING_LITERAL_in_expr314 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_expr336 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_INT_in_expr352 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_expr387 = new BitSet(new ulong[]{0x0000000000000400UL});
+    public static readonly BitSet FOLLOW_INT_in_expr389 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_expr413 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_expr428 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }
 }

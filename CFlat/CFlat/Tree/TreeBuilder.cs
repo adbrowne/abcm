@@ -1,3 +1,4 @@
+using System;
 using CFlat.Tree;
 
 namespace CFlat.Tree
@@ -19,9 +20,9 @@ namespace CFlat.Tree
             return new Class(name);
         }
 
-        public Method Method(string name)
+        public Method Method(string name, string returnTypeName)
         {
-            return new Method(name);
+            return new Method(name, GetTypeFromName(returnTypeName));
         }
 
         public Statement Statement(Expression e)
@@ -71,7 +72,24 @@ namespace CFlat.Tree
 
         public Statement DeclarationStatement(string typeName, string name, Expression expression)
         {
-            return new DeclarationStatement(typeName, name, expression);
+            return new DeclarationStatement(GetTypeFromName(typeName), name, expression);
+        }
+
+        public Types GetTypeFromName(string typeName)
+        {
+            switch (typeName)
+            {
+                case "int":
+                    return Types.Int;
+                case "string":
+                    return Types.String;
+                case "char":
+                    return Types.Char;
+                case "bool":
+                    return Types.Bool;
+                default:
+                    throw new ArgumentException("Unknown type: " + typeName);
+            }
         }
     }
 }
