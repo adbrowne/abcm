@@ -28,6 +28,21 @@ namespace CFlat.Tests.Integration
             Assert.That(outputAssembly.ContainsTypeWithMethod("Test", "TestMethodName"));
         }
 
+        [Test]
+        public void SimpleMethodReturnTest()
+        {
+            var input = @"public class Test { public int TestMethodName(){ return 9;} }";
+
+            var outputAssembly = GetResult(input);
+
+            Type type = outputAssembly.GetType("Test");
+            MethodInfo main = type.GetMethod("TestMethodName");
+
+            var @return = (int) main.Invoke(null, null);
+        
+            Assert.AreEqual(9, @return);
+        }
+
         private static Assembly GetResult(string input)
         {
             var parser = Parser.CreateParser(input);

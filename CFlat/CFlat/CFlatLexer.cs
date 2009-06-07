@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g 2009-06-07 21:18:57
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g 2009-06-07 21:39:39
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -17,31 +17,32 @@ using Stack 		= Antlr.Runtime.Collections.StackList;
 
 
 public partial class CFlatLexer : Lexer {
-    public const int ALPHA_NUM = 22;
+    public const int ALPHA_NUM = 23;
     public const int CLASS = 5;
-    public const int MULT_OP = 17;
+    public const int MULT_OP = 18;
+    public const int T__28 = 28;
     public const int T__27 = 27;
     public const int T__26 = 26;
     public const int T__25 = 25;
-    public const int DIV_OP = 18;
-    public const int T__24 = 24;
-    public const int ARITH_OP = 16;
-    public const int REM_OP = 19;
+    public const int DIV_OP = 19;
+    public const int ARITH_OP = 17;
+    public const int REM_OP = 20;
     public const int EQUALS = 8;
-    public const int INT = 10;
-    public const int BOOL_LITERAL = 15;
+    public const int INT = 11;
+    public const int BOOL_LITERAL = 16;
     public const int ID = 6;
     public const int EOF = -1;
-    public const int LBRAC = 11;
-    public const int ALPHA = 21;
-    public const int STRING_LITERAL = 13;
-    public const int WS = 23;
-    public const int CHAR_LITERAL = 14;
-    public const int RBRAC = 12;
+    public const int LBRAC = 12;
+    public const int ALPHA = 22;
+    public const int STRING_LITERAL = 14;
+    public const int WS = 24;
+    public const int CHAR_LITERAL = 15;
+    public const int RBRAC = 13;
+    public const int RETURN = 9;
     public const int EOS = 7;
-    public const int MINUS_OP = 9;
+    public const int MINUS_OP = 10;
     public const int METHOD = 4;
-    public const int CALLOUT = 20;
+    public const int CALLOUT = 21;
 
     // delegates
     // delegators
@@ -64,30 +65,6 @@ public partial class CFlatLexer : Lexer {
     	get { return "C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g";} 
     }
 
-    // $ANTLR start "T__24"
-    public void mT__24() // throws RecognitionException [2]
-    {
-    		try
-    		{
-            int _type = T__24;
-    	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:11:7: ( 'public' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:11:9: 'public'
-            {
-            	Match("public"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally 
-    	{
-        }
-    }
-    // $ANTLR end "T__24"
-
     // $ANTLR start "T__25"
     public void mT__25() // throws RecognitionException [2]
     {
@@ -95,10 +72,11 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = T__25;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:12:7: ( '{' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:12:9: '{'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:11:7: ( 'public' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:11:9: 'public'
             {
-            	Match('{'); 
+            	Match("public"); 
+
 
             }
 
@@ -118,10 +96,10 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = T__26;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:13:7: ( '}' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:13:9: '}'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:12:7: ( '{' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:12:9: '{'
             {
-            	Match('}'); 
+            	Match('{'); 
 
             }
 
@@ -141,6 +119,29 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = T__27;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:13:7: ( '}' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:13:9: '}'
+            {
+            	Match('}'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally 
+    	{
+        }
+    }
+    // $ANTLR end "T__27"
+
+    // $ANTLR start "T__28"
+    public void mT__28() // throws RecognitionException [2]
+    {
+    		try
+    		{
+            int _type = T__28;
+    	int _channel = DEFAULT_TOKEN_CHANNEL;
             // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:14:7: ( '(){' )
             // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:14:9: '(){'
             {
@@ -156,7 +157,7 @@ public partial class CFlatLexer : Lexer {
     	{
         }
     }
-    // $ANTLR end "T__27"
+    // $ANTLR end "T__28"
 
     // $ANTLR start "CLASS"
     public void mCLASS() // throws RecognitionException [2]
@@ -165,8 +166,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = CLASS;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:54:7: ( 'class' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:54:9: 'class'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:56:7: ( 'class' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:56:9: 'class'
             {
             	Match("class"); 
 
@@ -182,6 +183,30 @@ public partial class CFlatLexer : Lexer {
     }
     // $ANTLR end "CLASS"
 
+    // $ANTLR start "RETURN"
+    public void mRETURN() // throws RecognitionException [2]
+    {
+    		try
+    		{
+            int _type = RETURN;
+    	int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:58:9: ( 'return' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:58:11: 'return'
+            {
+            	Match("return"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally 
+    	{
+        }
+    }
+    // $ANTLR end "RETURN"
+
     // $ANTLR start "ARITH_OP"
     public void mARITH_OP() // throws RecognitionException [2]
     {
@@ -189,8 +214,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = ARITH_OP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:57:2: ( '+' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:57:5: '+'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:61:2: ( '+' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:61:5: '+'
             {
             	Match('+'); 
 
@@ -212,8 +237,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = MINUS_OP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:59:9: ( '-' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:59:12: '-'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:63:9: ( '-' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:63:12: '-'
             {
             	Match('-'); 
 
@@ -235,8 +260,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = MULT_OP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:61:9: ( '*' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:61:12: '*'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:65:9: ( '*' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:65:12: '*'
             {
             	Match('*'); 
 
@@ -258,8 +283,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = DIV_OP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:62:9: ( '/' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:62:12: '/'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:66:9: ( '/' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:66:12: '/'
             {
             	Match('/'); 
 
@@ -281,8 +306,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = REM_OP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:63:9: ( '%' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:63:11: '%'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:67:9: ( '%' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:67:11: '%'
             {
             	Match('%'); 
 
@@ -304,8 +329,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = EQUALS;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:65:9: ( '=' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:65:11: '='
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:69:9: ( '=' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:69:11: '='
             {
             	Match('='); 
 
@@ -327,8 +352,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = EOS;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:67:5: ( ';' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:67:7: ';'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:71:5: ( ';' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:71:7: ';'
             {
             	Match(';'); 
 
@@ -350,8 +375,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = CALLOUT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:69:9: ( 'callout' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:69:11: 'callout'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:73:9: ( 'callout' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:73:11: 'callout'
             {
             	Match("callout"); 
 
@@ -374,7 +399,7 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = BOOL_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:72:2: ( 'true' | 'false' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:76:2: ( 'true' | 'false' )
             int alt1 = 2;
             int LA1_0 = input.LA(1);
 
@@ -396,7 +421,7 @@ public partial class CFlatLexer : Lexer {
             switch (alt1) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:72:4: 'true'
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:76:4: 'true'
                     {
                     	Match("true"); 
 
@@ -404,7 +429,7 @@ public partial class CFlatLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:72:13: 'false'
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:76:13: 'false'
                     {
                     	Match("false"); 
 
@@ -429,8 +454,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = LBRAC;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:74:7: ( '(' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:74:10: '('
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:78:7: ( '(' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:78:10: '('
             {
             	Match('('); 
 
@@ -452,8 +477,8 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = RBRAC;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:75:8: ( ')' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:75:11: ')'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:79:8: ( ')' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:79:11: ')'
             {
             	Match(')'); 
 
@@ -475,11 +500,11 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = ID;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:77:4: ( ALPHA ( ALPHA_NUM )* )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:77:6: ALPHA ( ALPHA_NUM )*
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:81:4: ( ALPHA ( ALPHA_NUM )* )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:81:6: ALPHA ( ALPHA_NUM )*
             {
             	mALPHA(); 
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:77:12: ( ALPHA_NUM )*
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:81:12: ( ALPHA_NUM )*
             	do 
             	{
             	    int alt2 = 2;
@@ -494,7 +519,7 @@ public partial class CFlatLexer : Lexer {
             	    switch (alt2) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:77:12: ALPHA_NUM
+            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:81:12: ALPHA_NUM
             			    {
             			    	mALPHA_NUM(); 
 
@@ -526,7 +551,7 @@ public partial class CFlatLexer : Lexer {
     {
     		try
     		{
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:80:2: ( ALPHA | INT )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:84:2: ( ALPHA | INT )
             int alt3 = 2;
             int LA3_0 = input.LA(1);
 
@@ -548,14 +573,14 @@ public partial class CFlatLexer : Lexer {
             switch (alt3) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:80:5: ALPHA
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:84:5: ALPHA
                     {
                     	mALPHA(); 
 
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:80:13: INT
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:84:13: INT
                     {
                     	mINT(); 
 
@@ -575,7 +600,7 @@ public partial class CFlatLexer : Lexer {
     {
     		try
     		{
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:82:17: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:86:17: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' )
             // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:
             {
             	if ( input.LA(1) == '.' || (input.LA(1) >= 'A' && input.LA(1) <= 'Z') || input.LA(1) == '_' || (input.LA(1) >= 'a' && input.LA(1) <= 'z') ) 
@@ -606,10 +631,10 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = INT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:84:5: ( ( '0' .. '9' )+ )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:84:9: ( '0' .. '9' )+
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:88:5: ( ( '0' .. '9' )+ )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:88:9: ( '0' .. '9' )+
             {
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:84:9: ( '0' .. '9' )+
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:88:9: ( '0' .. '9' )+
             	int cnt4 = 0;
             	do 
             	{
@@ -625,7 +650,7 @@ public partial class CFlatLexer : Lexer {
             	    switch (alt4) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:84:9: '0' .. '9'
+            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:88:9: '0' .. '9'
             			    {
             			    	MatchRange('0','9'); 
 
@@ -663,11 +688,11 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = STRING_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:87:16: ( '\\\"' ( . )* '\\\"' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:87:18: '\\\"' ( . )* '\\\"'
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:91:16: ( '\\\"' ( . )* '\\\"' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:91:18: '\\\"' ( . )* '\\\"'
             {
             	Match('\"'); 
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:87:23: ( . )*
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:91:23: ( . )*
             	do 
             	{
             	    int alt5 = 2;
@@ -686,7 +711,7 @@ public partial class CFlatLexer : Lexer {
             	    switch (alt5) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:87:23: .
+            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:91:23: .
             			    {
             			    	MatchAny(); 
 
@@ -721,10 +746,10 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = CHAR_LITERAL;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:90:2: ( ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\'' )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:90:5: ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\''
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:94:2: ( ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\'' )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:94:5: ( '\\'' )+ ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) '\\''
             {
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:90:5: ( '\\'' )+
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:94:5: ( '\\'' )+
             	int cnt6 = 0;
             	do 
             	{
@@ -740,7 +765,7 @@ public partial class CFlatLexer : Lexer {
             	    switch (alt6) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:90:5: '\\''
+            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:94:5: '\\''
             			    {
             			    	Match('\''); 
 
@@ -790,10 +815,10 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = WS;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:92:5: ( ( ' ' | '\\t' )+ )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:92:9: ( ' ' | '\\t' )+
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:96:5: ( ( ' ' | '\\t' )+ )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:96:9: ( ' ' | '\\t' )+
             {
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:92:9: ( ' ' | '\\t' )+
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:96:9: ( ' ' | '\\t' )+
             	int cnt7 = 0;
             	do 
             	{
@@ -853,36 +878,36 @@ public partial class CFlatLexer : Lexer {
 
     override public void mTokens() // throws RecognitionException 
     {
-        // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:8: ( T__24 | T__25 | T__26 | T__27 | CLASS | ARITH_OP | MINUS_OP | MULT_OP | DIV_OP | REM_OP | EQUALS | EOS | CALLOUT | BOOL_LITERAL | LBRAC | RBRAC | ID | INT | STRING_LITERAL | CHAR_LITERAL | WS )
-        int alt8 = 21;
+        // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:8: ( T__25 | T__26 | T__27 | T__28 | CLASS | RETURN | ARITH_OP | MINUS_OP | MULT_OP | DIV_OP | REM_OP | EQUALS | EOS | CALLOUT | BOOL_LITERAL | LBRAC | RBRAC | ID | INT | STRING_LITERAL | CHAR_LITERAL | WS )
+        int alt8 = 22;
         alt8 = dfa8.Predict(input);
         switch (alt8) 
         {
             case 1 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:10: T__24
-                {
-                	mT__24(); 
-
-                }
-                break;
-            case 2 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:16: T__25
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:10: T__25
                 {
                 	mT__25(); 
 
                 }
                 break;
-            case 3 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:22: T__26
+            case 2 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:16: T__26
                 {
                 	mT__26(); 
 
                 }
                 break;
-            case 4 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:28: T__27
+            case 3 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:22: T__27
                 {
                 	mT__27(); 
+
+                }
+                break;
+            case 4 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:28: T__28
+                {
+                	mT__28(); 
 
                 }
                 break;
@@ -894,112 +919,119 @@ public partial class CFlatLexer : Lexer {
                 }
                 break;
             case 6 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:40: ARITH_OP
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:40: RETURN
+                {
+                	mRETURN(); 
+
+                }
+                break;
+            case 7 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:47: ARITH_OP
                 {
                 	mARITH_OP(); 
 
                 }
                 break;
-            case 7 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:49: MINUS_OP
+            case 8 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:56: MINUS_OP
                 {
                 	mMINUS_OP(); 
 
                 }
                 break;
-            case 8 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:58: MULT_OP
+            case 9 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:65: MULT_OP
                 {
                 	mMULT_OP(); 
 
                 }
                 break;
-            case 9 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:66: DIV_OP
+            case 10 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:73: DIV_OP
                 {
                 	mDIV_OP(); 
 
                 }
                 break;
-            case 10 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:73: REM_OP
+            case 11 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:80: REM_OP
                 {
                 	mREM_OP(); 
 
                 }
                 break;
-            case 11 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:80: EQUALS
+            case 12 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:87: EQUALS
                 {
                 	mEQUALS(); 
 
                 }
                 break;
-            case 12 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:87: EOS
+            case 13 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:94: EOS
                 {
                 	mEOS(); 
 
                 }
                 break;
-            case 13 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:91: CALLOUT
+            case 14 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:98: CALLOUT
                 {
                 	mCALLOUT(); 
 
                 }
                 break;
-            case 14 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:99: BOOL_LITERAL
+            case 15 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:106: BOOL_LITERAL
                 {
                 	mBOOL_LITERAL(); 
 
                 }
                 break;
-            case 15 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:112: LBRAC
+            case 16 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:119: LBRAC
                 {
                 	mLBRAC(); 
 
                 }
                 break;
-            case 16 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:118: RBRAC
+            case 17 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:125: RBRAC
                 {
                 	mRBRAC(); 
 
                 }
                 break;
-            case 17 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:124: ID
+            case 18 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:131: ID
                 {
                 	mID(); 
 
                 }
                 break;
-            case 18 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:127: INT
+            case 19 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:134: INT
                 {
                 	mINT(); 
 
                 }
                 break;
-            case 19 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:131: STRING_LITERAL
+            case 20 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:138: STRING_LITERAL
                 {
                 	mSTRING_LITERAL(); 
 
                 }
                 break;
-            case 20 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:146: CHAR_LITERAL
+            case 21 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:153: CHAR_LITERAL
                 {
                 	mCHAR_LITERAL(); 
 
                 }
                 break;
-            case 21 :
-                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:159: WS
+            case 22 :
+                // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:1:166: WS
                 {
                 	mWS(); 
 
@@ -1018,51 +1050,45 @@ public partial class CFlatLexer : Lexer {
 	}
 
     const string DFA8_eotS =
-        "\x01\uffff\x01\x10\x02\uffff\x01\x17\x01\x10\x07\uffff\x02\x10"+
-        "\x06\uffff\x01\x10\x02\uffff\x0c\x10\x01\x29\x02\x10\x01\x2c\x01"+
-        "\x10\x01\uffff\x01\x29\x01\x2e\x01\uffff\x01\x10\x01\uffff\x01\x30"+
-        "\x01\uffff";
+        "\x01\uffff\x01\x11\x02\uffff\x01\x18\x02\x11\x07\uffff\x02\x11"+
+        "\x06\uffff\x01\x11\x02\uffff\x0f\x11\x01\x2e\x02\x11\x01\x31\x02"+
+        "\x11\x01\uffff\x01\x2e\x01\x34\x01\uffff\x01\x11\x01\x36\x01\uffff"+
+        "\x01\x37\x02\uffff";
     const string DFA8_eofS =
-        "\x31\uffff";
+        "\x38\uffff";
     const string DFA8_minS =
-        "\x01\x09\x01\x75\x02\uffff\x01\x29\x01\x61\x07\uffff\x01\x72\x01"+
-        "\x61\x06\uffff\x01\x62\x02\uffff\x01\x61\x01\x6c\x01\x75\x02\x6c"+
-        "\x01\x73\x01\x6c\x01\x65\x01\x73\x01\x69\x01\x73\x01\x6f\x01\x2e"+
-        "\x01\x65\x01\x63\x01\x2e\x01\x75\x01\uffff\x02\x2e\x01\uffff\x01"+
-        "\x74\x01\uffff\x01\x2e\x01\uffff";
+        "\x01\x09\x01\x75\x02\uffff\x01\x29\x01\x61\x01\x65\x07\uffff\x01"+
+        "\x72\x01\x61\x06\uffff\x01\x62\x02\uffff\x01\x61\x01\x6c\x01\x74"+
+        "\x01\x75\x02\x6c\x01\x73\x01\x6c\x01\x75\x01\x65\x01\x73\x01\x69"+
+        "\x01\x73\x01\x6f\x01\x72\x01\x2e\x01\x65\x01\x63\x01\x2e\x01\x75"+
+        "\x01\x6e\x01\uffff\x02\x2e\x01\uffff\x01\x74\x01\x2e\x01\uffff\x01"+
+        "\x2e\x02\uffff";
     const string DFA8_maxS =
-        "\x01\x7d\x01\x75\x02\uffff\x01\x29\x01\x6c\x07\uffff\x01\x72\x01"+
-        "\x61\x06\uffff\x01\x62\x02\uffff\x01\x61\x01\x6c\x01\x75\x02\x6c"+
-        "\x01\x73\x01\x6c\x01\x65\x01\x73\x01\x69\x01\x73\x01\x6f\x01\x7a"+
-        "\x01\x65\x01\x63\x01\x7a\x01\x75\x01\uffff\x02\x7a\x01\uffff\x01"+
-        "\x74\x01\uffff\x01\x7a\x01\uffff";
+        "\x01\x7d\x01\x75\x02\uffff\x01\x29\x01\x6c\x01\x65\x07\uffff\x01"+
+        "\x72\x01\x61\x06\uffff\x01\x62\x02\uffff\x01\x61\x01\x6c\x01\x74"+
+        "\x01\x75\x02\x6c\x01\x73\x01\x6c\x01\x75\x01\x65\x01\x73\x01\x69"+
+        "\x01\x73\x01\x6f\x01\x72\x01\x7a\x01\x65\x01\x63\x01\x7a\x01\x75"+
+        "\x01\x6e\x01\uffff\x02\x7a\x01\uffff\x01\x74\x01\x7a\x01\uffff\x01"+
+        "\x7a\x02\uffff";
     const string DFA8_acceptS =
-        "\x02\uffff\x01\x02\x01\x03\x02\uffff\x01\x06\x01\x07\x01\x08\x01"+
-        "\x09\x01\x0a\x01\x0b\x01\x0c\x02\uffff\x01\x10\x01\x11\x01\x12\x01"+
-        "\x13\x01\x14\x01\x15\x01\uffff\x01\x04\x01\x0f\x11\uffff\x01\x0e"+
-        "\x02\uffff\x01\x05\x01\uffff\x01\x01\x01\uffff\x01\x0d";
+        "\x02\uffff\x01\x02\x01\x03\x03\uffff\x01\x07\x01\x08\x01\x09\x01"+
+        "\x0a\x01\x0b\x01\x0c\x01\x0d\x02\uffff\x01\x11\x01\x12\x01\x13\x01"+
+        "\x14\x01\x15\x01\x16\x01\uffff\x01\x04\x01\x10\x15\uffff\x01\x0f"+
+        "\x02\uffff\x01\x05\x02\uffff\x01\x01\x01\uffff\x01\x06\x01\x0e";
     const string DFA8_specialS =
-        "\x31\uffff}>";
+        "\x38\uffff}>";
     static readonly string[] DFA8_transitionS = {
-            "\x01\x14\x16\uffff\x01\x14\x01\uffff\x01\x12\x02\uffff\x01"+
-            "\x0a\x01\uffff\x01\x13\x01\x04\x01\x0f\x01\x08\x01\x06\x01\uffff"+
-            "\x01\x07\x01\x10\x01\x09\x0a\x11\x01\uffff\x01\x0c\x01\uffff"+
-            "\x01\x0b\x03\uffff\x1a\x10\x04\uffff\x01\x10\x01\uffff\x02\x10"+
-            "\x01\x05\x02\x10\x01\x0e\x09\x10\x01\x01\x03\x10\x01\x0d\x06"+
-            "\x10\x01\x02\x01\uffff\x01\x03",
-            "\x01\x15",
-            "",
-            "",
+            "\x01\x15\x16\uffff\x01\x15\x01\uffff\x01\x13\x02\uffff\x01"+
+            "\x0b\x01\uffff\x01\x14\x01\x04\x01\x10\x01\x09\x01\x07\x01\uffff"+
+            "\x01\x08\x01\x11\x01\x0a\x0a\x12\x01\uffff\x01\x0d\x01\uffff"+
+            "\x01\x0c\x03\uffff\x1a\x11\x04\uffff\x01\x11\x01\uffff\x02\x11"+
+            "\x01\x05\x02\x11\x01\x0f\x09\x11\x01\x01\x01\x11\x01\x06\x01"+
+            "\x11\x01\x0e\x06\x11\x01\x02\x01\uffff\x01\x03",
             "\x01\x16",
-            "\x01\x19\x0a\uffff\x01\x18",
             "",
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\x01\x1a",
+            "\x01\x17",
+            "\x01\x1a\x0a\uffff\x01\x19",
             "\x01\x1b",
             "",
             "",
@@ -1070,11 +1096,18 @@ public partial class CFlatLexer : Lexer {
             "",
             "",
             "",
+            "",
             "\x01\x1c",
-            "",
-            "",
             "\x01\x1d",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\x01\x1e",
+            "",
+            "",
             "\x01\x1f",
             "\x01\x20",
             "\x01\x21",
@@ -1085,23 +1118,32 @@ public partial class CFlatLexer : Lexer {
             "\x01\x26",
             "\x01\x27",
             "\x01\x28",
-            "\x01\x10\x01\uffff\x0a\x10\x07\uffff\x1a\x10\x04\uffff\x01"+
-            "\x10\x01\uffff\x1a\x10",
+            "\x01\x29",
             "\x01\x2a",
             "\x01\x2b",
-            "\x01\x10\x01\uffff\x0a\x10\x07\uffff\x1a\x10\x04\uffff\x01"+
-            "\x10\x01\uffff\x1a\x10",
+            "\x01\x2c",
             "\x01\x2d",
-            "",
-            "\x01\x10\x01\uffff\x0a\x10\x07\uffff\x1a\x10\x04\uffff\x01"+
-            "\x10\x01\uffff\x1a\x10",
-            "\x01\x10\x01\uffff\x0a\x10\x07\uffff\x1a\x10\x04\uffff\x01"+
-            "\x10\x01\uffff\x1a\x10",
-            "",
+            "\x01\x11\x01\uffff\x0a\x11\x07\uffff\x1a\x11\x04\uffff\x01"+
+            "\x11\x01\uffff\x1a\x11",
             "\x01\x2f",
+            "\x01\x30",
+            "\x01\x11\x01\uffff\x0a\x11\x07\uffff\x1a\x11\x04\uffff\x01"+
+            "\x11\x01\uffff\x1a\x11",
+            "\x01\x32",
+            "\x01\x33",
             "",
-            "\x01\x10\x01\uffff\x0a\x10\x07\uffff\x1a\x10\x04\uffff\x01"+
-            "\x10\x01\uffff\x1a\x10",
+            "\x01\x11\x01\uffff\x0a\x11\x07\uffff\x1a\x11\x04\uffff\x01"+
+            "\x11\x01\uffff\x1a\x11",
+            "\x01\x11\x01\uffff\x0a\x11\x07\uffff\x1a\x11\x04\uffff\x01"+
+            "\x11\x01\uffff\x1a\x11",
+            "",
+            "\x01\x35",
+            "\x01\x11\x01\uffff\x0a\x11\x07\uffff\x1a\x11\x04\uffff\x01"+
+            "\x11\x01\uffff\x1a\x11",
+            "",
+            "\x01\x11\x01\uffff\x0a\x11\x07\uffff\x1a\x11\x04\uffff\x01"+
+            "\x11\x01\uffff\x1a\x11",
+            "",
             ""
     };
 
@@ -1131,7 +1173,7 @@ public partial class CFlatLexer : Lexer {
 
         override public string Description
         {
-            get { return "1:1: Tokens : ( T__24 | T__25 | T__26 | T__27 | CLASS | ARITH_OP | MINUS_OP | MULT_OP | DIV_OP | REM_OP | EQUALS | EOS | CALLOUT | BOOL_LITERAL | LBRAC | RBRAC | ID | INT | STRING_LITERAL | CHAR_LITERAL | WS );"; }
+            get { return "1:1: Tokens : ( T__25 | T__26 | T__27 | T__28 | CLASS | RETURN | ARITH_OP | MINUS_OP | MULT_OP | DIV_OP | REM_OP | EQUALS | EOS | CALLOUT | BOOL_LITERAL | LBRAC | RBRAC | ID | INT | STRING_LITERAL | CHAR_LITERAL | WS );"; }
         }
 
     }

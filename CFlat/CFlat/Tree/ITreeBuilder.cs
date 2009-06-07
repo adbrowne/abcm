@@ -18,5 +18,6 @@ namespace CFlat.Tree
         Expression IdExpression(string name);
         Expression BooleanExpression(string value);
         Statement DeclarationStatement(string typeName, string name, Expression expression);
+        Statement ReturnStatement(Expression expression);
     }
 }

@@ -18,9 +18,9 @@ namespace CFlat.Tree
             get; private set;
         }
 
-        public override void Compile(ErrorSet errorSet)
+        public override void Compile(ErrorSet errorSet, CompilerContext context)
         {
-            base.Compile(errorSet);
+            base.Compile(errorSet, context);
 
             if(Type != Expression.Type)
                 errorSet.Add(new CompileError(CompileErrorType.TypeMismatch));

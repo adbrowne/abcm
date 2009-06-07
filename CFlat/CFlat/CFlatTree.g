@@ -21,7 +21,9 @@ method	returns [Method m]: ^(METHOD t=ID name=ID { $m = TB.Method($name.text, $t
 	 
 stat returns [Statement s]:  e=expr { $s = TB.Statement(e); }
 	|
-	^(EQUALS ^(t=ID name=ID) e=expr {$s = TB.DeclarationStatement($t.text, $name.text, e); });
+	^(EQUALS ^(t=ID name=ID) e=expr {$s = TB.DeclarationStatement($t.text, $name.text, e); })
+	|
+	^(RETURN e=expr) { $s = TB.ReturnStatement(e); };
 
 expr returns [Expression e]
     :   ^('+' a=expr b=expr)       { $e = TB.AdditionExpression(a, b);}

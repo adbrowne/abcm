@@ -19,5 +19,11 @@ namespace CFlat.Tree
         {
             get { return Types.Int; }
         }
+
+        public override void Compile(ErrorSet set, CompilerContext context)
+        {
+            base.Compile(set, context);
+            context.CodeGenerator.ExprNumber(Value);
+        }
     }
 }

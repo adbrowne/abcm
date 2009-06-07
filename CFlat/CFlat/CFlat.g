@@ -26,7 +26,9 @@ method	: 'public' t=ID name=ID '(){' stat* '}' -> ^(METHOD $t $name stat*);
 
 stat:   expr EOS-> expr
 	|
-	t=ID name=ID EQUALS expr EOS -> ^(EQUALS ^($t $name) expr);
+	t=ID name=ID EQUALS expr EOS -> ^(EQUALS ^($t $name) expr)
+	|
+	RETURN expr EOS -> ^(RETURN expr);
 
 expr:   multExpr 
 (('+'^|'-'^) multExpr)*
@@ -52,6 +54,8 @@ atom:   MINUS_OP INT
 	;
 
 CLASS	:	'class';
+
+RETURN 	:	'return';
 
 ARITH_OP 
 	:	 '+';

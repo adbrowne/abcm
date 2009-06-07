@@ -75,6 +75,11 @@ namespace CFlat.Tree
             return new DeclarationStatement(GetTypeFromName(typeName), name, expression);
         }
 
+        public Statement ReturnStatement(Expression expression)
+        {
+            return new ReturnStatement(expression);
+        }
+
         public Types GetTypeFromName(string typeName)
         {
             switch (typeName)

@@ -27,7 +27,7 @@ namespace CFlat.Tree
 
             foreach (var statement in Statements)
             {
-                statement.Compile(errorSet);
+                statement.Compile(errorSet, context);
             }
 
             context.CodeGenerator.EndMethod();

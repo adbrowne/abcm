@@ -26,6 +26,23 @@ namespace CFlat.Tests.Unit.AST
         }
 
         [Test]
+        public void MethodWithReturn()
+        {
+            var input = "public class Test { public int TestMethod(){ return 9; }}";
+            var @class = GetAst(input);
+
+            var statement = ((Class)@class)["TestMethod"].Statements[0];
+
+            var returnStatement = (ReturnStatement)statement;
+
+            var expression = returnStatement.Expression;
+
+            var integerExpression = (IntegerExpression)expression;
+
+            Assert.AreEqual(9, integerExpression.Value);
+        }
+
+        [Test]
         public void MultipleStatementTest()
         {
             var input = @"public class Test { public int TestMethodName(){int a=9;int b=10; }}";
