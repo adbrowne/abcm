@@ -9,6 +9,20 @@ namespace CFlat.Tests.Integration
     public class ClassAndMethodTests : BaseIntegrationTest
     {
         [Test]
+        [ExpectedException("CFlat.ParserException")]
+        public void EnsureFailureOnInvaidParse()
+        {
+            GetResult("blah");
+        }
+
+        [Test]
+        [ExpectedException("CFlat.ParserException")]
+        public void EnsureFailureOnInvaidTree()
+        {
+            GetResult("public class Test{");
+        }
+
+        [Test]
         public void SimpleClassTest()
         {
             var input = @"public class Test {}";

@@ -13,6 +13,13 @@ using CFlat.Tree;
     CFlat
 }
 
+// Alter code generation so catch-clauses get replace with
+// this action.
+@rulecatch {
+catch (RecognitionException) {
+throw;
+}
+}
 
 prog returns [Class c]: ^(CLASS name=ID {$c = TB.Class($name.text); } (m=method{ $c.AddMethod(m);})* )
     ;
