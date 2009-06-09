@@ -58,6 +58,46 @@ namespace CFlat.Tests.Integration
         }
 
         [Test]
+        public void MethodCallTest()
+        {
+            var input = @"
+public class Test { 
+    public int GetValue() 
+    { 
+        return 3; 
+    }
+
+    public int TestMethodName()
+    { 
+        return GetValue();
+    } 
+}";
+
+            var outputAssembly = GetResult(input);
+
+            Type type = outputAssembly.GetType("Test");
+            MethodInfo main = type.GetMethod("TestMethodName");
+
+            var @return = (int)main.Invoke(null, null);
+
+            Assert.AreEqual(3, @return);
+        }
+
+        [Test]
+        public void MultiLineProgramTest()
+        {
+            var input = @"
+public class Test 
+{ 
+    public int TestMethodName(){ 
+        return 9;
+    } 
+}";
+
+            GetResult(input);
+        }
+
+        [Test]
         public void DefineAndUseVariableTest()
         {
             var input = @"public class Test { public int TestMethodName(){ int a = 8; return 9 + a;} }";

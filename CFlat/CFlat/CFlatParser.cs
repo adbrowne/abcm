@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g 2009-06-09 22:01:29
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g 2009-06-09 23:53:00
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -215,7 +215,7 @@ public partial class CFlatParser : Parser
 
 
             	// AST REWRITE
-            	// elements:          CLASS, method, ID
+            	// elements:          method, ID, CLASS
             	// token labels:      
             	// rule labels:       retval
             	// token list labels: 
@@ -363,7 +363,7 @@ public partial class CFlatParser : Parser
 
 
             	// AST REWRITE
-            	// elements:          t, name, stat
+            	// elements:          stat, name, t
             	// token labels:      t, name
             	// rule labels:       retval
             	// token list labels: 
@@ -597,7 +597,7 @@ public partial class CFlatParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          name, expr, EQUALS, t
+                    	// elements:          EQUALS, expr, t, name
                     	// token labels:      t, name
                     	// rule labels:       retval
                     	// token list labels: 
@@ -739,7 +739,7 @@ public partial class CFlatParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          IF, expr, stat
+                    	// elements:          expr, IF, stat
                     	// token labels:      
                     	// rule labels:       retval
                     	// token list labels: 

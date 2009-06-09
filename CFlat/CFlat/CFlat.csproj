@@ -61,6 +61,7 @@
     <Compile Include="CompileError.cs" />
     <Compile Include="CompileErrorType.cs" />
     <Compile Include="CFlatParser.Static.cs" />
+    <Compile Include="CFlatLexer.Static.cs" />
     <Compile Include="ErrorSet.cs" />
     <Compile Include="Operator.cs" />
     <Compile Include="ParserException.cs" />

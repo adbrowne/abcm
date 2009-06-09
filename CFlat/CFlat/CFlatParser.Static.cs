@@ -7,5 +7,10 @@ namespace CFlat
         {
             throw new ParserException();
         }
+
+        public override void DisplayRecognitionError(string[] tokenNames, Antlr.Runtime.RecognitionException e)
+        {
+            base.DisplayRecognitionError(tokenNames, e);
+        }
     }
 }

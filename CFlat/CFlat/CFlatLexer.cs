@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g 2009-06-09 22:01:29
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g 2009-06-09 23:53:00
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -874,17 +874,17 @@ public partial class CFlatLexer : Lexer {
     		{
             int _type = WS;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:104:5: ( ( ' ' | '\\t' )+ )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:104:9: ( ' ' | '\\t' )+
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:104:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:104:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:104:9: ( ' ' | '\\t' )+
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:104:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             	int cnt7 = 0;
             	do 
             	{
             	    int alt7 = 2;
             	    int LA7_0 = input.LA(1);
 
-            	    if ( (LA7_0 == '\t' || LA7_0 == ' ') )
+            	    if ( ((LA7_0 >= '\t' && LA7_0 <= '\n') || LA7_0 == '\r' || LA7_0 == ' ') )
             	    {
             	        alt7 = 1;
             	    }
@@ -895,7 +895,7 @@ public partial class CFlatLexer : Lexer {
             			case 1 :
             			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:
             			    {
-            			    	if ( input.LA(1) == '\t' || input.LA(1) == ' ' ) 
+            			    	if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n') || input.LA(1) == '\r' || input.LA(1) == ' ' ) 
             			    	{
             			    	    input.Consume();
 
@@ -1152,13 +1152,13 @@ public partial class CFlatLexer : Lexer {
     const string DFA8_specialS =
         "\x3c\uffff}>";
     static readonly string[] DFA8_transitionS = {
-            "\x01\x17\x16\uffff\x01\x17\x01\uffff\x01\x15\x02\uffff\x01"+
-            "\x0c\x01\uffff\x01\x16\x01\x04\x01\x12\x01\x0a\x01\x08\x01\uffff"+
-            "\x01\x09\x01\x13\x01\x0b\x0a\x14\x01\uffff\x01\x0f\x01\x0d\x01"+
-            "\x0e\x01\x0d\x02\uffff\x1a\x13\x04\uffff\x01\x13\x01\uffff\x02"+
-            "\x13\x01\x05\x02\x13\x01\x11\x02\x13\x01\x07\x06\x13\x01\x01"+
-            "\x01\x13\x01\x06\x01\x13\x01\x10\x06\x13\x01\x02\x01\uffff\x01"+
-            "\x03",
+            "\x02\x17\x02\uffff\x01\x17\x12\uffff\x01\x17\x01\uffff\x01"+
+            "\x15\x02\uffff\x01\x0c\x01\uffff\x01\x16\x01\x04\x01\x12\x01"+
+            "\x0a\x01\x08\x01\uffff\x01\x09\x01\x13\x01\x0b\x0a\x14\x01\uffff"+
+            "\x01\x0f\x01\x0d\x01\x0e\x01\x0d\x02\uffff\x1a\x13\x04\uffff"+
+            "\x01\x13\x01\uffff\x02\x13\x01\x05\x02\x13\x01\x11\x02\x13\x01"+
+            "\x07\x06\x13\x01\x01\x01\x13\x01\x06\x01\x13\x01\x10\x06\x13"+
+            "\x01\x02\x01\uffff\x01\x03",
             "\x01\x18",
             "",
             "",
