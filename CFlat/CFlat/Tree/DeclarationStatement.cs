@@ -18,12 +18,12 @@ namespace CFlat.Tree
             get; private set;
         }
 
-        public override void Compile(ErrorSet errorSet, CompilerContext context)
+        public override void Compile(CompilerContext context)
         {
-            base.Compile(errorSet, context);
+            base.Compile(context);
 
             if(Type != Expression.Type)
-                errorSet.Add(new CompileError(CompileErrorType.TypeMismatch));
+                context.ErrorSet.Add(new CompileError(CompileErrorType.TypeMismatch));
         }
     }
 }

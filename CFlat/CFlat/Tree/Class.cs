@@ -28,7 +28,7 @@ namespace CFlat.Tree
             
             foreach (var method in methodList)
             {
-                method.Value.Compile(context.ErrorSet, context);
+                method.Value.Compile(context);
             }
             
             context.CodeGenerator.EndModule();

@@ -15,7 +15,7 @@ namespace CFlat.Tree
             get;private set;
         }
 
-        public virtual void Compile(ErrorSet errorSet, CompilerContext context)
+        public virtual void Compile(CompilerContext context)
         {
             
         }

@@ -23,7 +23,9 @@ stat returns [Statement s]:  e=expr { $s = TB.Statement(e); }
 	|
 	^(EQUALS ^(t=ID name=ID) e=expr {$s = TB.DeclarationStatement($t.text, $name.text, e); })
 	|
-	^(RETURN e=expr) { $s = TB.ReturnStatement(e); };
+	^(RETURN e=expr) { $s = TB.ReturnStatement(e); }
+	|
+	^(IF e=expr { $s = TB.IfStatement(e); } (st=stat { ((IfStatement)$s).IfBody.Add(st); })*) ;
 
 expr returns [Expression e]
     :   ^('+' a=expr b=expr)       { $e = TB.AdditionExpression(a, b);}

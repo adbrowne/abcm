@@ -9,9 +9,9 @@ namespace CFlat.Tree
 
         }
 
-        public override void Compile(ErrorSet errorSet, CompilerContext context)
+        public override void Compile(CompilerContext context)
         {
-            base.Compile(errorSet, context);
+            base.Compile(context);
 
             context.CodeGenerator.BeginExpression();
 

@@ -16,5 +16,11 @@ namespace CFlat.Tree
         {
             get { return Types.Bool; }
         }
+
+        public override void Compile(CompilerContext context)
+        {
+            base.Compile(context);
+            context.CodeGenerator.ExprBool(Value);
+        }
     }
 }

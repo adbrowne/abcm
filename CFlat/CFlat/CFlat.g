@@ -28,7 +28,9 @@ stat:   expr EOS-> expr
 	|
 	t=ID name=ID EQUALS expr EOS -> ^(EQUALS ^($t $name) expr)
 	|
-	RETURN expr EOS -> ^(RETURN expr);
+	RETURN expr EOS -> ^(RETURN expr)
+	|
+	IF LBRAC expr RBRAC '{' stat* '}' -> ^(IF expr stat*);
 
 expr:   multExpr 
 (('+'^|'-'^) multExpr)*
@@ -56,6 +58,8 @@ atom:   MINUS_OP INT
 CLASS	:	'class';
 
 RETURN 	:	'return';
+
+IF	: 	'if';
 
 ARITH_OP 
 	:	 '+';

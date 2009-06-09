@@ -66,6 +66,7 @@
     <Compile Include="Tree\BooleanExpression.cs" />
     <Compile Include="Tree\CharExpression.cs" />
     <Compile Include="CompilerContext.cs" />
+    <Compile Include="Tree\IfStatement.cs" />
     <Compile Include="Tree\ReturnStatement.cs" />
     <Compile Include="Tree\DeclarationStatement.cs" />
     <Compile Include="Tree\DivisionExpression.cs" />

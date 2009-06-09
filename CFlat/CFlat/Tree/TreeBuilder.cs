@@ -80,6 +80,11 @@ namespace CFlat.Tree
             return new ReturnStatement(expression);
         }
 
+        public Statement IfStatement(Expression expression)
+        {
+            return new IfStatement(expression);
+        }
+
         public Types GetTypeFromName(string typeName)
         {
             switch (typeName)

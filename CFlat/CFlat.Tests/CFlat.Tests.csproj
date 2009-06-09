@@ -58,7 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\Parser.cs" />
+    <Compile Include="Integration\BaseIntegrationTest.cs" />
     <Compile Include="Integration\ClassAndMethodTests.cs" />
+    <Compile Include="Integration\IfThenElseTests.cs" />
     <Compile Include="Integration\IntegerExpressionTests.cs" />
     <Compile Include="Unit\Ast\AstTestBase.cs" />
     <Compile Include="Unit\Lexer\BasicLexerTests.cs" />

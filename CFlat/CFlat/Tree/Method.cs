@@ -21,13 +21,13 @@ namespace CFlat.Tree
             get; private set;
         }
 
-        public void Compile(ErrorSet errorSet, CompilerContext context)
+        public void Compile(CompilerContext context)
         {
             context.CodeGenerator.BeginMethod(Name);
 
             foreach (var statement in Statements)
             {
-                statement.Compile(errorSet, context);
+                statement.Compile(context);
             }
 
             context.CodeGenerator.EndMethod();
