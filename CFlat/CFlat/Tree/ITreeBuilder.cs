@@ -20,5 +20,6 @@ namespace CFlat.Tree
         Statement DeclarationStatement(string typeName, string name, Expression expression);
         Statement ReturnStatement(Expression expression);
         Statement IfStatement(Expression expression);
+        Expression RelationalExpression(string op, Expression expr1, Expression expr2);
     }
 }

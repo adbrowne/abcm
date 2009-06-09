@@ -14,6 +14,10 @@ namespace CFlat.Tree
         public override void Compile(CompilerContext context)
         {
             base.Compile(context);
+
+            if (Expression.Type != Types.Bool)
+                context.ErrorSet.Add(new CompileError(CompileErrorType.TypeMismatch));
+        
             Expression.Compile(context);
             context.CodeGenerator.BeginIf();
             foreach (var statement in IfBody)

@@ -32,7 +32,9 @@ stat:   expr EOS-> expr
 	|
 	IF LBRAC expr RBRAC '{' stat* '}' -> ^(IF expr stat*);
 
-expr:   multExpr 
+expr	:	additive_expr (REL_OP^ additive_expr)*;
+
+additive_expr:   multExpr 
 (('+'^|'-'^) multExpr)*
     ;
 
@@ -69,6 +71,8 @@ MINUS_OP:	 '-';
 MULT_OP :	 '*';
 DIV_OP 	:	 '/';
 REM_OP 	:	'%';
+
+REL_OP	:	'<' | '>';
 
 EQUALS 	:	'=';
 

@@ -40,6 +40,7 @@ expr returns [Expression e]
     | 	^('*' a=expr b=expr)       { $e = TB.MultiplicationExpression(a, b); }
     | 	^('/' a=expr b=expr)       { $e = TB.DivisionExpression(a, b); }
     | 	^('%' a=expr b=expr)       { $e = TB.RemainderExpression(a, b);}
+    |	^(REL_OP a=expr b=expr)	   { $e = TB.RelationalExpression($REL_OP.text,a,b);}
     |   STRING_LITERAL             { $e = TB.StringExpression($STRING_LITERAL.text);}
     |	CHAR_LITERAL		   { $e = TB.CharExpression($CHAR_LITERAL.text.Replace("'",""));}
     |   INT                        { $e = TB.IntegerExpression($INT.text);}

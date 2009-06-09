@@ -85,6 +85,19 @@ namespace CFlat.Tree
             return new IfStatement(expression);
         }
 
+        public Expression RelationalExpression(string op, Expression expr1, Expression expr2)
+        {
+            switch (op)
+            {
+                case "<":
+                    return new LessThanExpression(expr1, expr2);
+                case ">":
+                    return new GreaterThanExpression(expr1, expr2);
+                default:
+                    throw new ArgumentException("Unknown operator: " + op);
+            }
+        }
+
         public Types GetTypeFromName(string typeName)
         {
             switch (typeName)

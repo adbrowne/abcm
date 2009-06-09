@@ -13,7 +13,7 @@ namespace CFlat.Tests.Unit.AST
             var exprTree = GetExpressionTree(input);
 
             Assert.IsInstanceOfType(typeof(IntegerExpression), exprTree);
-            var integerExpression = (IntegerExpression) exprTree;
+            var integerExpression = (IntegerExpression)exprTree;
             Assert.AreEqual(9, integerExpression.Value);
         }
 
@@ -28,7 +28,7 @@ namespace CFlat.Tests.Unit.AST
         public void SimpleAdditionExpressionTest()
         {
             var input = "9+8";
-        
+
             var exprTree = GetExpressionTree(input);
 
             Assert.IsInstanceOfType(typeof(AdditionExpression), exprTree);
@@ -57,13 +57,13 @@ namespace CFlat.Tests.Unit.AST
 
             Assert.IsInstanceOfType(typeof(AdditionExpression), exprTree);
             var additionExpression = (AdditionExpression)exprTree;
-            
+
             // First node should be sub expression for 9 + 8
             Assert.IsInstanceOfType(typeof(AdditionExpression), additionExpression.Expr1);
-            var subAdditionExpression = (AdditionExpression) additionExpression.Expr1;
+            var subAdditionExpression = (AdditionExpression)additionExpression.Expr1;
             Assert.AreEqual(9, ((IntegerExpression)subAdditionExpression.Expr1).Value);
             Assert.AreEqual(8, ((IntegerExpression)subAdditionExpression.Expr2).Value);
-            
+
             // Second node should be the 10
             Assert.AreEqual(10, ((IntegerExpression)additionExpression.Expr2).Value);
         }
@@ -240,7 +240,47 @@ namespace CFlat.Tests.Unit.AST
             Assert.AreEqual(true, booleanExpression.Value);
         }
 
-       
+        [Test]
+        public void MutiplicationRelationalPrecedenceTest()
+        {
+            var input = "9 * 3 < 10 + 2";
+            var exprTree = GetExpressionTree(input);
+
+            var lessThanExpression = (LessThanExpression)exprTree;
+            Assert.IsInstanceOfType(typeof(MultiplicationExpression), lessThanExpression.Expr1);
+
+            Assert.IsInstanceOfType(typeof(AdditionExpression), lessThanExpression.Expr2);
+
+        }
+
+        [Test]
+        public void LessThanExpressionTest()
+        {
+            var input = "9 < 10";
+            var exprTree = GetExpressionTree(input);
+
+            var lessThanExpression = (LessThanExpression)exprTree;
+            var leftSide = (IntegerExpression)lessThanExpression.Expr1;
+            var rightSide = (IntegerExpression)lessThanExpression.Expr2;
+
+            Assert.AreEqual(9, leftSide.Value);
+            Assert.AreEqual(10, rightSide.Value);
+        }
+
+        [Test]
+        public void GreaterThanExpressionTest()
+        {
+            var input = "9 > 10";
+            var exprTree = GetExpressionTree(input);
+
+            var greaterThanExpression = (GreaterThanExpression)exprTree;
+            var leftSide = (IntegerExpression)greaterThanExpression.Expr1;
+            var rightSide = (IntegerExpression)greaterThanExpression.Expr2;
+
+            Assert.AreEqual(9, leftSide.Value);
+            Assert.AreEqual(10, rightSide.Value);
+        }
+
         private static string SurroundWithProgram(string s)
         {
             return "public class Test { public int Test(){" + s + ";}}";

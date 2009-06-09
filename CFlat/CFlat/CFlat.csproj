@@ -69,6 +69,8 @@
     <Compile Include="Tree\CharExpression.cs" />
     <Compile Include="CompilerContext.cs" />
     <Compile Include="Tree\IfStatement.cs" />
+    <Compile Include="Tree\GreaterThanExpression.cs" />
+    <Compile Include="Tree\LessThanExpression.cs" />
     <Compile Include="Tree\ReturnStatement.cs" />
     <Compile Include="Tree\DeclarationStatement.cs" />
     <Compile Include="Tree\DivisionExpression.cs" />

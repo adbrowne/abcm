@@ -17,6 +17,15 @@ namespace CFlat.Tests
             Assert.AreEqual(CompileErrorType.TypeMismatch, output[0].Type);
         }
 
+        [Test]
+        public void ExpectingBooleanInIfStatement()
+        {
+            var input = "public class Test { public int TestMethod(){ if(9){ return 1;} return 2; }}";
+            var output = GetErrors(input);
+
+            Assert.AreEqual(CompileErrorType.TypeMismatch, output[0].Type);    
+        }
+
         private ErrorSet GetErrors(string input)
         {
             var errorSet = new ErrorSet();
