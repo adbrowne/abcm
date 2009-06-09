@@ -26,6 +26,21 @@ namespace CFlat.Tests.Unit.AST
         }
 
         [Test]
+        public void UseVariableInExpressionTest()
+        {
+            var input = @"public class Test { public int TestMethod(){ int a = 8; return 9 + a;} }";
+            var @class = GetAst(input);
+
+            var statement = (ReturnStatement)((Class)@class)["TestMethod"].Statements[1];
+
+            var additionExpression = (AdditionExpression) statement.Expression;
+
+            var aExpression = (IdExpression) additionExpression.Expr2;
+
+            Assert.AreEqual("a", aExpression.Name);
+        }
+
+        [Test]
         public void VoidMethod()
         {
             var input = "public class Test { public void TestMethod(){ }}";

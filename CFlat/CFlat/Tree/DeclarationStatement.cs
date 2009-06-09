@@ -22,8 +22,15 @@ namespace CFlat.Tree
         {
             base.Compile(context);
 
-            if(Type != Expression.Type)
+            if (Type != Expression.Type)
+            {
                 context.ErrorSet.Add(new CompileError(CompileErrorType.TypeMismatch));
+                return;
+            }
+
+            context.CodeGenerator.DefineVariable(VariableName, Type);
+            Expression.Compile(context);
+            context.CodeGenerator.AssignExpression(VariableName);
         }
     }
 }

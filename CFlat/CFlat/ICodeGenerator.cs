@@ -14,7 +14,7 @@ namespace CFlat
         void MethodCall(string name);
         void BeginMethodArguments();
         void AssignExpression(string name);
-        void DefineVariable(string name, string type);
+        void DefineVariable(string name, Types type);
         void Return(string name);
         void StartModule(string id);
         void EndModule();

@@ -15,5 +15,11 @@ namespace CFlat.Tree
         {
             get { throw new System.NotImplementedException(); }
         }
+
+        public override void Compile(CompilerContext context)
+        {
+            base.Compile(context);
+            context.CodeGenerator.ExprId(Name);
+        }
     }
 }

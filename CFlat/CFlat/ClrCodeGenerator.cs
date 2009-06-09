@@ -63,7 +63,7 @@ namespace CFlat
 
         public void BeginMethod(string name)
         {
-            currentMethod = currentType.DefineMethod(name, MethodAttributes.Static | MethodAttributes.Public, typeof(object), System.Type.EmptyTypes);
+            currentMethod = currentType.DefineMethod(name, MethodAttributes.Static | MethodAttributes.Public, typeof(object), Type.EmptyTypes);
             ilGenerator = currentMethod.GetILGenerator();
         }
 
@@ -126,7 +126,8 @@ namespace CFlat
 
         public void ExprId(string name)
         {
-            throw new System.NotImplementedException();
+            var variable = methodVariables[name];
+            ilGenerator.Emit(OpCodes.Ldloc, variable.LocalIndex);
         }
 
         public void ExprBool(bool i)
@@ -157,7 +158,7 @@ namespace CFlat
             ilGenerator.Emit(OpCodes.Stloc, methodVariables[name].LocalIndex);
         }
 
-        public void DefineVariable(string name, string type)
+        public void DefineVariable(string name, Types type)
         {
             var localBuilder = ilGenerator.DeclareLocal(typeof(int));
             methodVariables.Add(name, localBuilder);

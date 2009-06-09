@@ -39,7 +39,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
         {
             var clrCodeGenerator = GetGeneratorForStatement();
             clrCodeGenerator.BeginMethod("Test");
-            clrCodeGenerator.DefineVariable("a","int");
+            clrCodeGenerator.DefineVariable("a",Types.Int);
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprNumber(9);
             clrCodeGenerator.EndExpression();

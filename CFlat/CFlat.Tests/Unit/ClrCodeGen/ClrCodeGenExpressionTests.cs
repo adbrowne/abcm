@@ -40,6 +40,24 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             var output = GetExpressionResult(clrCodeGenerator, Types.Int);
             Assert.AreEqual(9, output);
         }
+
+        [Test]
+        public void SimpleVariableTest()
+        {
+            var clrCodeGenerator = GetGeneratorForExpression();
+            
+            clrCodeGenerator.DefineVariable("a", Types.Int);
+            
+            clrCodeGenerator.BeginExpression();
+            clrCodeGenerator.ExprNumber(10);
+            clrCodeGenerator.EndExpression();
+            clrCodeGenerator.AssignExpression("a");
+            
+            clrCodeGenerator.ExprId("a");
+            
+            var output = GetExpressionResult(clrCodeGenerator, Types.Int);
+            Assert.AreEqual(10, output);
+        }
         
         [Test]
         public void BooleanExpressionTest()

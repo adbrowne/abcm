@@ -56,5 +56,20 @@ namespace CFlat.Tests.Integration
         
             Assert.AreEqual(9, @return);
         }
+
+        [Test]
+        public void DefineAndUseVariableTest()
+        {
+            var input = @"public class Test { public int TestMethodName(){ int a = 8; return 9 + a;} }";
+
+            var outputAssembly = GetResult(input);
+
+            Type type = outputAssembly.GetType("Test");
+            MethodInfo main = type.GetMethod("TestMethodName");
+
+            var @return = (int)main.Invoke(null, null);
+
+            Assert.AreEqual(17, @return);    
+        }
     }
 }
