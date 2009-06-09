@@ -19,7 +19,7 @@ namespace CFlat.Tree
             
             context.CodeGenerator.EndExpression();
 
-            context.CodeGenerator.ReturnExpression();
+            context.CodeGenerator.ReturnExpression(Expression.Type);
         }
     }
 }

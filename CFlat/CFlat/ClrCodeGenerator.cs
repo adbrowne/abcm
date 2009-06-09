@@ -16,7 +16,6 @@ namespace CFlat
         private ILGenerator ilGenerator;
         private string assemblyName;
         private Dictionary<string, LocalBuilder> methodVariables = new Dictionary<string, LocalBuilder>();
-        private ExpressionType currentExpressionType;
         private Stack<Label> ifLabels = new Stack<Label>();
 
         public ClrCodeGenerator(string outputFileName)
@@ -90,6 +89,24 @@ namespace CFlat
                 case Operator.Subtract:
                     ilGenerator.Emit(OpCodes.Sub);
                     break;
+                case Operator.LessThan:
+                    {
+                        ilGenerator.Emit(OpCodes.Clt);
+                        var localBuilder = ilGenerator.DeclareLocal(typeof (bool));
+                        ilGenerator.Emit(OpCodes.Stloc, localBuilder);
+                        ilGenerator.Emit(OpCodes.Ldloc, localBuilder);
+                    }
+                    break;
+                case Operator.GreaterThan:
+                    {
+                        ilGenerator.Emit(OpCodes.Cgt);
+                        var localBuilder = ilGenerator.DeclareLocal(typeof (bool));
+                        ilGenerator.Emit(OpCodes.Stloc, localBuilder);
+                        ilGenerator.Emit(OpCodes.Ldloc, localBuilder);
+                    }
+                    break;
+                default:
+                    throw new InvalidOperationException("Invalid operation: " + operation);
             }
         }
 
@@ -104,7 +121,6 @@ namespace CFlat
 
         public void ExprString(string value)
         {
-            currentExpressionType = ExpressionType.Object;
             ilGenerator.Emit(OpCodes.Ldstr, value);
         }
 
@@ -153,11 +169,18 @@ namespace CFlat
             return currentMethod;
         }
 
-        public void ReturnExpression()
+        public void ReturnExpression(Types type)
         {
-            if (currentExpressionType == ExpressionType.Value)
-                ilGenerator.Emit(OpCodes.Box, typeof(int));
-
+            switch (type)
+            {
+                case Types.Bool:
+                    ilGenerator.Emit(OpCodes.Box, typeof(bool));
+                    break;
+                case Types.Int:
+                    ilGenerator.Emit(OpCodes.Box, typeof(int));
+                    break;
+            }
+                
             ilGenerator.Emit(OpCodes.Ret);
         }
 

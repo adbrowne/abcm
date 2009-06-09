@@ -11,5 +11,15 @@ namespace CFlat.Tree
         {
             get { return Types.Bool; }
         }
+
+        public override void Compile(CompilerContext context)
+        {
+            base.Compile(context);
+
+            Expr1.Compile(context);
+            Expr2.Compile(context);
+            context.CodeGenerator.Operation(Operator.GreaterThan);
+        
+        }
     }
 }

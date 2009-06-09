@@ -19,7 +19,7 @@ namespace CFlat
         void StartModule(string id);
         void EndModule();
         void BeginMethod(string name);
-        void ReturnExpression();
+        void ReturnExpression(Types type);
         void EndMethod();
         void BeginIf();
         void EndIf();

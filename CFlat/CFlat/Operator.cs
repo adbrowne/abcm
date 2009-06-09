@@ -5,6 +5,8 @@ namespace CFlat
         Add,
         Multiply,
         Divide,
-        Subtract
+        Subtract,
+        LessThan,
+        GreaterThan
     }
 }

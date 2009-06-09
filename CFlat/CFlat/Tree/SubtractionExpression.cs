@@ -10,7 +10,7 @@ namespace CFlat.Tree
 
         public override Types Type
         {
-            get { throw new System.NotImplementedException(); }
+            get { return Types.Int; }
         }
 
         public override void Compile(CompilerContext context)

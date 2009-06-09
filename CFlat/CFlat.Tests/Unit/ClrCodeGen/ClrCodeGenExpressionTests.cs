@@ -17,9 +17,9 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             return clrCodeGenerator;
         }
 
-        private object GetExpressionResult(ClrCodeGenerator clrCodeGenerator)
+        private object GetExpressionResult(ClrCodeGenerator clrCodeGenerator, Types types)
         {
-            clrCodeGenerator.ReturnExpression();
+            clrCodeGenerator.ReturnExpression(types);
             clrCodeGenerator.EndModule();
             clrCodeGenerator.Save();
             Assembly a = Assembly.Load(clrCodeGenerator.Name);
@@ -37,8 +37,19 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprNumber(9);
             clrCodeGenerator.EndExpression();
-            var output = GetExpressionResult(clrCodeGenerator);
+            var output = GetExpressionResult(clrCodeGenerator, Types.Int);
             Assert.AreEqual(9, output);
+        }
+        
+        [Test]
+        public void BooleanExpressionTest()
+        {
+            var clrCodeGenerator = GetGeneratorForExpression();
+            clrCodeGenerator.BeginExpression();
+            clrCodeGenerator.ExprBool(true);
+            clrCodeGenerator.EndExpression();
+            var output = GetExpressionResult(clrCodeGenerator, Types.Bool);
+            Assert.AreEqual(true, output);
         }
 
         [Test]
@@ -50,7 +61,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.ExprNumber(2);
             clrCodeGenerator.Operation(Operator.Multiply);
             clrCodeGenerator.EndExpression();
-            var output = GetExpressionResult(clrCodeGenerator);
+            var output = GetExpressionResult(clrCodeGenerator, Types.Int);
             Assert.AreEqual(18, output);
         }
 
@@ -63,7 +74,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.ExprNumber(2);
             clrCodeGenerator.Operation(Operator.Add);
             clrCodeGenerator.EndExpression();
-            var output = GetExpressionResult(clrCodeGenerator);
+            var output = GetExpressionResult(clrCodeGenerator, Types.Int);
             Assert.AreEqual(11, output);
         }
 
@@ -76,8 +87,34 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.ExprNumber(2);
             clrCodeGenerator.Operation(Operator.Subtract);
             clrCodeGenerator.EndExpression();
-            var output = GetExpressionResult(clrCodeGenerator);
+            var output = GetExpressionResult(clrCodeGenerator, Types.Int);
             Assert.AreEqual(7, output);
+        }
+
+        [Test]
+        public void LessThanExpressionTest()
+        {
+            var clrCodeGenerator = GetGeneratorForExpression();
+            clrCodeGenerator.BeginExpression();
+            clrCodeGenerator.ExprNumber(9);
+            clrCodeGenerator.ExprNumber(2);
+            clrCodeGenerator.Operation(Operator.LessThan);
+            clrCodeGenerator.EndExpression();
+            var output = GetExpressionResult(clrCodeGenerator, Types.Bool);
+            Assert.AreEqual(false, output);
+        }
+
+        [Test]
+        public void GreaterThanExpressionTest()
+        {
+            var clrCodeGenerator = GetGeneratorForExpression();
+            clrCodeGenerator.BeginExpression();
+            clrCodeGenerator.ExprNumber(9);
+            clrCodeGenerator.ExprNumber(2);
+            clrCodeGenerator.Operation(Operator.GreaterThan);
+            clrCodeGenerator.EndExpression();
+            var output = GetExpressionResult(clrCodeGenerator, Types.Bool);
+            Assert.AreEqual(true, output);
         }
 
         [Test]
@@ -87,7 +124,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprString("Nothing");
             clrCodeGenerator.EndExpression();
-            var output = GetExpressionResult(clrCodeGenerator);
+            var output = GetExpressionResult(clrCodeGenerator, Types.String);
             Assert.AreEqual("Nothing", output);
         }
 
@@ -102,7 +139,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.ExprNumber(2);
             clrCodeGenerator.Operation(Operator.Multiply);
             clrCodeGenerator.EndExpression();
-            var output = GetExpressionResult(clrCodeGenerator);
+            var output = GetExpressionResult(clrCodeGenerator, Types.Int);
             Assert.AreEqual(36, output);
         }
     }
