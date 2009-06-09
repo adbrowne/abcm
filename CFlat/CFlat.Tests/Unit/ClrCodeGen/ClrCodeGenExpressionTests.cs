@@ -48,7 +48,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprNumber(9);
             clrCodeGenerator.ExprNumber(2);
-            clrCodeGenerator.Operation("Multiplication");
+            clrCodeGenerator.Operation(Operator.Multiply);
             clrCodeGenerator.EndExpression();
             var output = GetExpressionResult(clrCodeGenerator);
             Assert.AreEqual(18, output);
@@ -61,7 +61,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprNumber(9);
             clrCodeGenerator.ExprNumber(2);
-            clrCodeGenerator.Operation("Addition");
+            clrCodeGenerator.Operation(Operator.Add);
             clrCodeGenerator.EndExpression();
             var output = GetExpressionResult(clrCodeGenerator);
             Assert.AreEqual(11, output);
@@ -74,7 +74,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprNumber(9);
             clrCodeGenerator.ExprNumber(2);
-            clrCodeGenerator.Operation("Subtraction");
+            clrCodeGenerator.Operation(Operator.Subtract);
             clrCodeGenerator.EndExpression();
             var output = GetExpressionResult(clrCodeGenerator);
             Assert.AreEqual(7, output);
@@ -98,9 +98,9 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprNumber(9);
             clrCodeGenerator.ExprNumber(2);
-            clrCodeGenerator.Operation("Multiplication");
+            clrCodeGenerator.Operation(Operator.Multiply);
             clrCodeGenerator.ExprNumber(2);
-            clrCodeGenerator.Operation("Multiplication");
+            clrCodeGenerator.Operation(Operator.Multiply);
             clrCodeGenerator.EndExpression();
             var output = GetExpressionResult(clrCodeGenerator);
             Assert.AreEqual(36, output);

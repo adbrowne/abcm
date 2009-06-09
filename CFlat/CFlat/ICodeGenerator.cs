@@ -4,7 +4,7 @@ namespace CFlat
     {
         void BeginExpression();
         void ExprNumber(int i);
-        void Operation(string operationName);
+        void Operation(Operator operation);
         void Comment(string comment);
         void EndExpression();
         void ExprString(string value);

@@ -20,7 +20,7 @@ namespace CFlat.Tree
 
             Expr1.Compile(context);
             Expr2.Compile(context);
-            context.CodeGenerator.Operation("Addition");
+            context.CodeGenerator.Operation(Operator.Add);
         }
     }
 }

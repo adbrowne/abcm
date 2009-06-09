@@ -18,7 +18,7 @@ namespace CFlat.Tree
             base.Compile(context);
             Expr1.Compile(context);
             Expr2.Compile(context);
-            context.CodeGenerator.Operation("Multiplication");
+            context.CodeGenerator.Operation(Operator.Multiply);
         }
     }
 }

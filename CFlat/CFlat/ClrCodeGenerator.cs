@@ -77,19 +77,19 @@ namespace CFlat
             ilGenerator.Emit(OpCodes.Ldc_I4_S, i);
         }
 
-        public void Operation(string operationName)
+        public void Operation(Operator operation)
         {
-            if (operationName == "Multiplication")
+            switch (operation)
             {
-                ilGenerator.Emit(OpCodes.Mul);
-            }
-            else if(operationName == "Addition")
-            {
-                ilGenerator.Emit(OpCodes.Add);
-            }
-            else if (operationName == "Subtraction")
-            {
-                ilGenerator.Emit(OpCodes.Sub);
+                case Operator.Multiply:
+                    ilGenerator.Emit(OpCodes.Mul);
+                    break;
+                case Operator.Add:
+                    ilGenerator.Emit(OpCodes.Add);
+                    break;
+                case Operator.Subtract:
+                    ilGenerator.Emit(OpCodes.Sub);
+                    break;
             }
         }
 

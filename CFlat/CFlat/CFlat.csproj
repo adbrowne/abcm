@@ -61,6 +61,7 @@
     <Compile Include="CompileError.cs" />
     <Compile Include="CompileErrorType.cs" />
     <Compile Include="ErrorSet.cs" />
+    <Compile Include="Operator.cs" />
     <Compile Include="Tree\BinOpExpression.cs" />
     <Compile Include="Tree\BooleanExpression.cs" />
     <Compile Include="Tree\CharExpression.cs" />
