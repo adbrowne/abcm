@@ -67,7 +67,7 @@ public class Test {
         return 3; 
     }
 
-    public int TestMethodName()
+    public int Main()
     { 
         return GetValue();
     } 
@@ -76,7 +76,7 @@ public class Test {
             var outputAssembly = GetResult(input);
 
             Type type = outputAssembly.GetType("Test");
-            MethodInfo main = type.GetMethod("TestMethodName");
+            MethodInfo main = type.GetMethod("Main");
 
             var @return = (int)main.Invoke(null, null);
 
