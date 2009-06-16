@@ -67,9 +67,9 @@
     <Compile Include="Integration\IfThenElseTests.cs" />
     <Compile Include="Integration\IntegerExpressionTests.cs" />
     <Compile Include="Integration\ShellTests.cs" />
-    <Content Include="Integration\SimpleTest.cflat">
+    <None Include="Integration\SimpleTest.cflat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
     <Compile Include="Unit\Ast\AstTestBase.cs" />
     <Compile Include="Unit\Lexer\BasicLexerTests.cs" />
     <Compile Include="Unit\ClrCodeGen\ClrCodeGeneratorTests.cs" />

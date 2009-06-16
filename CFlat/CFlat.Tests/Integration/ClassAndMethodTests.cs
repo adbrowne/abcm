@@ -111,5 +111,20 @@ public class Test
 
             Assert.AreEqual(17, @return);    
         }
+
+        [Test]
+        public void AssignVariableTest()
+        {
+            var input = @"public class Test { public int TestMethodName(){ int a = 8; a = 9;  return a;} }";
+
+            var outputAssembly = GetResult(input);
+
+            Type type = outputAssembly.GetType("Test");
+            MethodInfo main = type.GetMethod("TestMethodName");
+
+            var @return = (int)main.Invoke(null, null);
+
+            Assert.AreEqual(9, @return);    
+        }
     }
 }
