@@ -25,7 +25,12 @@ namespace CFlat.Tree
         public void Compile(CompilerContext context)
         {
             context.CodeGenerator.StartModule(Name);
-            
+
+            foreach (var method in methodList)
+            {
+                method.Value.Register(context);
+            }
+
             foreach (var method in methodList)
             {
                 method.Value.Compile(context);

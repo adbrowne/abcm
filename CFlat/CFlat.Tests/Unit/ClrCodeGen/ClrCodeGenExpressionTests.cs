@@ -13,6 +13,16 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             string name = "Output_" + Guid.NewGuid().ToString("N") + ".exe";
             var clrCodeGenerator = new ClrCodeGenerator(name);
             clrCodeGenerator.StartModule("Foo");
+
+            clrCodeGenerator.RegisterMethod("GetValue");
+            clrCodeGenerator.RegisterMethod("Test");
+
+            clrCodeGenerator.BeginMethod("GetValue");
+            clrCodeGenerator.BeginExpression();
+            clrCodeGenerator.ExprNumber(9);
+            clrCodeGenerator.EndExpression();
+            clrCodeGenerator.ReturnExpression(Types.Int);
+            
             clrCodeGenerator.BeginMethod("Test");
             return clrCodeGenerator;
         }
@@ -58,7 +68,20 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             var output = GetExpressionResult(clrCodeGenerator, Types.Int);
             Assert.AreEqual(10, output);
         }
-        
+
+        [Test]
+        public void MethodCallTest()
+        {
+            var clrCodeGenerator = GetGeneratorForExpression();
+
+            clrCodeGenerator.BeginExpression();
+            clrCodeGenerator.MethodCall("GetValue");
+            clrCodeGenerator.EndExpression();
+            
+            var output = GetExpressionResult(clrCodeGenerator, Types.Int);
+            Assert.AreEqual(9, output);
+        }
+
         [Test]
         public void BooleanExpressionTest()
         {

@@ -25,5 +25,6 @@ namespace CFlat
         void EndIf();
         void Save();
         string Name { get; }
+        void RegisterMethod(string name);
     }
 }

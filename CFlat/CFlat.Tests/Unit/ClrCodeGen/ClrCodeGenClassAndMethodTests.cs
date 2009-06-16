@@ -40,7 +40,9 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             var clrCodeGenerator = GetGeneratorForClass();
 
             clrCodeGenerator.StartModule("Test");
-
+            
+            clrCodeGenerator.RegisterMethod("Test");
+            
             clrCodeGenerator.BeginMethod("Test");
             clrCodeGenerator.DefineVariable("a", Types.Int);
             clrCodeGenerator.BeginExpression();
@@ -52,6 +54,37 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             var outputAssembly = GetResult(clrCodeGenerator);
 
             Assert.That(outputAssembly.ContainsTypeWithMethod("Test", "Test"));
+        }
+
+        [Test]
+        public void MultipleMethodTest()
+        {
+            var clrCodeGenerator = GetGeneratorForClass();
+
+            clrCodeGenerator.StartModule("Test");
+
+            clrCodeGenerator.RegisterMethod("FirstMethod");
+            clrCodeGenerator.BeginMethod("FirstMethod");
+            clrCodeGenerator.DefineVariable("a", Types.Int);
+            clrCodeGenerator.BeginExpression();
+            clrCodeGenerator.ExprNumber(9);
+            clrCodeGenerator.EndExpression();
+            clrCodeGenerator.Return("a");
+
+            clrCodeGenerator.RegisterMethod("SecondMethod");
+            clrCodeGenerator.BeginMethod("SecondMethod");
+            clrCodeGenerator.DefineVariable("a", Types.Int);
+            clrCodeGenerator.BeginExpression();
+            clrCodeGenerator.ExprNumber(9);
+            clrCodeGenerator.EndExpression();
+            clrCodeGenerator.Return("a");
+           
+            clrCodeGenerator.EndModule();
+
+            var outputAssembly = GetResult(clrCodeGenerator);
+
+            Assert.That(outputAssembly.ContainsTypeWithMethod("Test", "FirstMethod"));
+            Assert.That(outputAssembly.ContainsTypeWithMethod("Test", "SecondMethod"));
         }
     }
 }

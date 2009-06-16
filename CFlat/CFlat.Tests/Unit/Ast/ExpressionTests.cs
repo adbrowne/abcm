@@ -219,6 +219,18 @@ namespace CFlat.Tests.Unit.AST
         }
 
         [Test]
+        public void MethodCallTest()
+        {
+            var input = @"GetValue()";
+            var exprTree = GetExpressionTree(input);
+
+            Assert.IsInstanceOfType(typeof(MethodCall), exprTree);
+            var methodCall = (MethodCall)exprTree;
+            Assert.AreEqual("GetValue", methodCall.Name);
+            
+        }
+
+        [Test]
         public void BooleanFalseExpressionTest()
         {
             var input = "false";

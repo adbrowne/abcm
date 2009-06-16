@@ -4,7 +4,7 @@ namespace CFlat
     {
         public override void ReportError(Antlr.Runtime.RecognitionException e)
         {
-            throw new ParserException();
+            throw new ParserException(e.Message, e);
         }
     }
 }

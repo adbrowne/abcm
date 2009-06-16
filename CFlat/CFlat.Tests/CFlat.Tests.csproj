@@ -39,6 +39,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\References\nunit\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Output_e64b84266b7e49f6a73cc4d70fa47dbe, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <ExecutableExtension>.exe</ExecutableExtension>
+    </Reference>
     <Reference Include="Rhino.Mocks, Version=3.5.0.1, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\References\rhinomocks\Rhino.Mocks.dll</HintPath>

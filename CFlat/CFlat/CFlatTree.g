@@ -46,4 +46,5 @@ expr returns [Expression e]
     |   INT                        { $e = TB.IntegerExpression($INT.text);}
     |   MINUS_OP INT               { $e = TB.IntegerExpression("-" + $INT.text);}
     |	ID			   { $e = TB.IdExpression($ID.text);}
-    |	BOOL_LITERAL		   { $e = TB.BooleanExpression($BOOL_LITERAL.text);};
+    |	BOOL_LITERAL		   { $e = TB.BooleanExpression($BOOL_LITERAL.text);}
+    |	^(CALL n=ID)		   { $e = TB.MethodCall($n.text);};

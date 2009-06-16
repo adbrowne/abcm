@@ -137,7 +137,8 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             var clrCodeGenerator = GetGenerator();
 
             clrCodeGenerator.StartModule("Test");
-
+            
+            clrCodeGenerator.RegisterMethod("Test");
             clrCodeGenerator.BeginMethod("Test");
 
             clrCodeGenerator.DefineVariable("a", Types.Int);

@@ -5,12 +5,8 @@ namespace CFlat
     {
         protected override object RecoverFromMismatchedToken(Antlr.Runtime.IIntStream input, int ttype, Antlr.Runtime.BitSet follow)
         {
+            base.RecoverFromMismatchedToken(input, ttype, follow);
             throw new ParserException();
-        }
-
-        public override void DisplayRecognitionError(string[] tokenNames, Antlr.Runtime.RecognitionException e)
-        {
-            base.DisplayRecognitionError(tokenNames, e);
         }
     }
 }

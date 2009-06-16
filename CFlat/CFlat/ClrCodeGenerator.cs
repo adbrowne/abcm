@@ -17,6 +17,7 @@ namespace CFlat
         private string assemblyName;
         private Dictionary<string, LocalBuilder> methodVariables = new Dictionary<string, LocalBuilder>();
         private Stack<Label> ifLabels = new Stack<Label>();
+        private Dictionary<string, MethodBuilder> classMethods = new Dictionary<string, MethodBuilder>();
 
         public ClrCodeGenerator(string outputFileName)
             : this(outputFileName, false)
@@ -61,9 +62,16 @@ namespace CFlat
             assemblyBuilder.Save(outputFileName);
         }
 
+        public void RegisterMethod(string name)
+        {
+            var method = currentType.DefineMethod(name, MethodAttributes.Static | MethodAttributes.Public, typeof(object), Type.EmptyTypes);
+            classMethods.Add(name, method);
+        }
+
         public void BeginMethod(string name)
         {
-            currentMethod = currentType.DefineMethod(name, MethodAttributes.Static | MethodAttributes.Public, typeof(object), Type.EmptyTypes);
+            methodVariables.Clear();
+            currentMethod = classMethods[name];
             ilGenerator = currentMethod.GetILGenerator();
         }
 
@@ -92,7 +100,7 @@ namespace CFlat
                 case Operator.LessThan:
                     {
                         ilGenerator.Emit(OpCodes.Clt);
-                        var localBuilder = ilGenerator.DeclareLocal(typeof (bool));
+                        var localBuilder = ilGenerator.DeclareLocal(typeof(bool));
                         ilGenerator.Emit(OpCodes.Stloc, localBuilder);
                         ilGenerator.Emit(OpCodes.Ldloc, localBuilder);
                     }
@@ -100,7 +108,7 @@ namespace CFlat
                 case Operator.GreaterThan:
                     {
                         ilGenerator.Emit(OpCodes.Cgt);
-                        var localBuilder = ilGenerator.DeclareLocal(typeof (bool));
+                        var localBuilder = ilGenerator.DeclareLocal(typeof(bool));
                         ilGenerator.Emit(OpCodes.Stloc, localBuilder);
                         ilGenerator.Emit(OpCodes.Ldloc, localBuilder);
                     }
@@ -145,7 +153,9 @@ namespace CFlat
 
         public void MethodCall(string name)
         {
-            throw new NotImplementedException();
+            var method = classMethods[name];
+            ilGenerator.Emit(OpCodes.Call, method);
+            ilGenerator.Emit(OpCodes.Unbox_Any, typeof(int));
         }
 
         public void BeginMethodArguments()
@@ -181,7 +191,7 @@ namespace CFlat
                     ilGenerator.Emit(OpCodes.Box, typeof(int));
                     break;
             }
-                
+
             ilGenerator.Emit(OpCodes.Ret);
         }
 

@@ -98,6 +98,11 @@ namespace CFlat.Tree
             }
         }
 
+        public Expression MethodCall(string name)
+        {
+            return new MethodCall(name);
+        }
+
         public Types GetTypeFromName(string typeName)
         {
             switch (typeName)

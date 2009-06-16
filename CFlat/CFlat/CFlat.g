@@ -9,6 +9,7 @@ options
 
 tokens {
     METHOD;
+    CALL;
 }
 
 @lexer::namespace {
@@ -22,7 +23,7 @@ tokens {
 prog: 'public' CLASS ID '{' method* '}' -> ^(CLASS ID method*)
     ;
 
-method	: 'public' t=ID name=ID '(){' stat* '}' -> ^(METHOD $t $name stat*);
+method	: 'public' t=ID name=ID '()' '{' stat* '}' -> ^(METHOD $t $name stat*);
 
 stat:   expr EOS-> expr
 	|
@@ -30,8 +31,9 @@ stat:   expr EOS-> expr
 	|
 	RETURN expr EOS -> ^(RETURN expr)
 	|
-	IF LBRAC expr RBRAC '{' stat* '}' -> ^(IF expr stat*);
-
+	IF LBRAC expr RBRAC '{' stat* '}' -> ^(IF expr stat*)
+	;
+	
 expr	:	additive_expr (REL_OP^ additive_expr)*;
 
 additive_expr:   multExpr 
@@ -53,6 +55,8 @@ atom:   MINUS_OP INT
 	CHAR_LITERAL
 	|
 	BOOL_LITERAL
+	|
+	ID '()' -> ^(CALL ID)
 	|
 	ID
 	;

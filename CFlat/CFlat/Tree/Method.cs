@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CFlat;
 
@@ -31,6 +32,11 @@ namespace CFlat.Tree
             }
 
             context.CodeGenerator.EndMethod();
+        }
+
+        public void Register(CompilerContext context)
+        {
+            context.CodeGenerator.RegisterMethod(Name);
         }
     }
 }
