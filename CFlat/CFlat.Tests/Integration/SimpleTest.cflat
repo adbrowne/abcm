@@ -1,0 +1,16 @@
+public class SimpleTest
+{
+    public int GetValue()
+    {
+        return 1;
+    }
+
+    public int Main()
+    {
+		int a = 2;
+		if(true){
+			return a + GetValue();
+		}
+		return a;
+	}
+}
