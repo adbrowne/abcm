@@ -36,5 +36,20 @@ namespace CFlat.Tests.Integration
 
             Assert.AreEqual(4, @return);
         }
+
+        [Test]
+        public void BinaryOperationIfStatementTest()
+        {
+            var input = @"public class Test { public int TestMethod(){ if(3 < 4){return 3;} return 4; }}";
+
+            var outputAssembly = GetResult(input);
+
+            Type type = outputAssembly.GetType("Test");
+            MethodInfo main = type.GetMethod("TestMethod");
+
+            var @return = (int)main.Invoke(null, null);
+
+            Assert.AreEqual(3, @return);
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace CFlat.Tests.Integration
         [Test]
         public void CompileSimpleTest()
         {
-            string outputFile = "SimpleTest" + Guid.NewGuid().ToString("N")+ ".dll";
+            string outputFile = "SimpleTest_" + Guid.NewGuid().ToString("N")+ ".dll";
             
             Program.Main(new[]{"Integration\\SimpleTest.cflat", "-o", outputFile});
 
@@ -31,7 +31,7 @@ namespace CFlat.Tests.Integration
         [Test]
         public void CommandLineCompileSimpleTest()
         {
-            string outputFile = "SimpleTest" + Guid.NewGuid().ToString("N") + ".dll";
+            string outputFile = "SimpleTest_" + Guid.NewGuid().ToString("N") + ".dll";
             
             var process = Process.Start("cflat.exe", @"Integration\\SimpleTest.cflat -o " + outputFile);
             process.WaitForExit();
