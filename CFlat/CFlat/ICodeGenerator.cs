@@ -26,5 +26,8 @@ namespace CFlat
         void Save();
         string Name { get; }
         void RegisterMethod(string name);
+        void BeginWhileBody();
+        void EndWhile();
+        void BeginWhileExpression();
     }
 }

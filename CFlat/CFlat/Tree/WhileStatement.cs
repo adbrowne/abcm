@@ -10,6 +10,21 @@ namespace CFlat.Tree
                 : base(expression)
             {
                 Body = new List<Statement>();
-            }    
+            }
+
+            public override void Compile(CompilerContext context)
+            {
+                base.Compile(context);
+                context.CodeGenerator.BeginWhileExpression();
+                Expression.Compile(context);
+                context.CodeGenerator.BeginWhileBody();
+
+                foreach (var statement in Body)
+                {
+                    statement.Compile(context);
+                }
+
+                context.CodeGenerator.EndWhile();
+            }
         }
 }

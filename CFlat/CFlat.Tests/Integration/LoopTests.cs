@@ -29,7 +29,7 @@ public class Test {
 
             var @return = (int)main.Invoke(null, null);
 
-            Assert.AreEqual(4, @return);
+            Assert.AreEqual(5, @return);
         }
     }
 }
