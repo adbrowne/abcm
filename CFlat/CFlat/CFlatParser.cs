@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g 2009-06-19 17:41:42
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g 2009-06-19 18:23:25
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -37,6 +37,7 @@ public partial class CFlatParser : Parser
 		"IF", 
 		"LBRAC", 
 		"RBRAC", 
+		"WHILE", 
 		"REL_OP", 
 		"MINUS_OP", 
 		"INT", 
@@ -57,35 +58,36 @@ public partial class CFlatParser : Parser
 		"'()'"
     };
 
-    public const int ALPHA_NUM = 26;
-    public const int MULT_OP = 21;
+    public const int ALPHA_NUM = 27;
+    public const int MULT_OP = 22;
     public const int CLASS = 6;
     public const int T__29 = 29;
-    public const int T__28 = 28;
-    public const int DIV_OP = 22;
-    public const int ARITH_OP = 20;
-    public const int REM_OP = 23;
-    public const int INT = 16;
+    public const int WHILE = 14;
+    public const int DIV_OP = 23;
+    public const int ARITH_OP = 21;
+    public const int REM_OP = 24;
+    public const int INT = 17;
     public const int EQUALS = 9;
-    public const int BOOL_LITERAL = 19;
+    public const int BOOL_LITERAL = 20;
     public const int ID = 7;
     public const int EOF = -1;
     public const int LBRAC = 12;
-    public const int ALPHA = 25;
+    public const int ALPHA = 26;
     public const int IF = 11;
     public const int T__30 = 30;
     public const int T__31 = 31;
-    public const int WS = 27;
-    public const int STRING_LITERAL = 17;
-    public const int CHAR_LITERAL = 18;
-    public const int REL_OP = 14;
+    public const int T__32 = 32;
+    public const int WS = 28;
+    public const int STRING_LITERAL = 18;
+    public const int CHAR_LITERAL = 19;
+    public const int REL_OP = 15;
     public const int RBRAC = 13;
     public const int EOS = 8;
     public const int RETURN = 10;
-    public const int MINUS_OP = 15;
+    public const int MINUS_OP = 16;
     public const int CALL = 5;
     public const int METHOD = 4;
-    public const int CALLOUT = 24;
+    public const int CALLOUT = 25;
 
     // delegates
     // delegators
@@ -156,8 +158,8 @@ public partial class CFlatParser : Parser
         CommonTree char_literal6_tree=null;
         RewriteRuleTokenStream stream_CLASS = new RewriteRuleTokenStream(adaptor,"token CLASS");
         RewriteRuleTokenStream stream_30 = new RewriteRuleTokenStream(adaptor,"token 30");
+        RewriteRuleTokenStream stream_31 = new RewriteRuleTokenStream(adaptor,"token 31");
         RewriteRuleTokenStream stream_ID = new RewriteRuleTokenStream(adaptor,"token ID");
-        RewriteRuleTokenStream stream_28 = new RewriteRuleTokenStream(adaptor,"token 28");
         RewriteRuleTokenStream stream_29 = new RewriteRuleTokenStream(adaptor,"token 29");
         RewriteRuleSubtreeStream stream_method = new RewriteRuleSubtreeStream(adaptor,"rule method");
         try 
@@ -165,8 +167,8 @@ public partial class CFlatParser : Parser
             // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:23:5: ( 'public' CLASS ID '{' ( method )* '}' -> ^( CLASS ID ( method )* ) )
             // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:23:7: 'public' CLASS ID '{' ( method )* '}'
             {
-            	string_literal1=(IToken)Match(input,28,FOLLOW_28_in_prog78);  
-            	stream_28.Add(string_literal1);
+            	string_literal1=(IToken)Match(input,29,FOLLOW_29_in_prog78);  
+            	stream_29.Add(string_literal1);
 
             	CLASS2=(IToken)Match(input,CLASS,FOLLOW_CLASS_in_prog80);  
             	stream_CLASS.Add(CLASS2);
@@ -174,8 +176,8 @@ public partial class CFlatParser : Parser
             	ID3=(IToken)Match(input,ID,FOLLOW_ID_in_prog82);  
             	stream_ID.Add(ID3);
 
-            	char_literal4=(IToken)Match(input,29,FOLLOW_29_in_prog84);  
-            	stream_29.Add(char_literal4);
+            	char_literal4=(IToken)Match(input,30,FOLLOW_30_in_prog84);  
+            	stream_30.Add(char_literal4);
 
             	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:23:29: ( method )*
             	do 
@@ -183,7 +185,7 @@ public partial class CFlatParser : Parser
             	    int alt1 = 2;
             	    int LA1_0 = input.LA(1);
 
-            	    if ( (LA1_0 == 28) )
+            	    if ( (LA1_0 == 29) )
             	    {
             	        alt1 = 1;
             	    }
@@ -211,8 +213,8 @@ public partial class CFlatParser : Parser
             	loop1:
             		;	// Stops C# compiler whining that label 'loop1' has no statements
 
-            	char_literal6=(IToken)Match(input,30,FOLLOW_30_in_prog89);  
-            	stream_30.Add(char_literal6);
+            	char_literal6=(IToken)Match(input,31,FOLLOW_31_in_prog89);  
+            	stream_31.Add(char_literal6);
 
 
 
@@ -306,9 +308,9 @@ public partial class CFlatParser : Parser
         CommonTree char_literal9_tree=null;
         CommonTree char_literal11_tree=null;
         RewriteRuleTokenStream stream_30 = new RewriteRuleTokenStream(adaptor,"token 30");
+        RewriteRuleTokenStream stream_32 = new RewriteRuleTokenStream(adaptor,"token 32");
         RewriteRuleTokenStream stream_31 = new RewriteRuleTokenStream(adaptor,"token 31");
         RewriteRuleTokenStream stream_ID = new RewriteRuleTokenStream(adaptor,"token ID");
-        RewriteRuleTokenStream stream_28 = new RewriteRuleTokenStream(adaptor,"token 28");
         RewriteRuleTokenStream stream_29 = new RewriteRuleTokenStream(adaptor,"token 29");
         RewriteRuleSubtreeStream stream_stat = new RewriteRuleSubtreeStream(adaptor,"rule stat");
         try 
@@ -316,8 +318,8 @@ public partial class CFlatParser : Parser
             // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:26:8: ( 'public' t= ID name= ID '()' '{' ( stat )* '}' -> ^( METHOD $t $name ( stat )* ) )
             // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:26:10: 'public' t= ID name= ID '()' '{' ( stat )* '}'
             {
-            	string_literal7=(IToken)Match(input,28,FOLLOW_28_in_method113);  
-            	stream_28.Add(string_literal7);
+            	string_literal7=(IToken)Match(input,29,FOLLOW_29_in_method113);  
+            	stream_29.Add(string_literal7);
 
             	t=(IToken)Match(input,ID,FOLLOW_ID_in_method117);  
             	stream_ID.Add(t);
@@ -325,11 +327,11 @@ public partial class CFlatParser : Parser
             	name=(IToken)Match(input,ID,FOLLOW_ID_in_method121);  
             	stream_ID.Add(name);
 
-            	string_literal8=(IToken)Match(input,31,FOLLOW_31_in_method123);  
-            	stream_31.Add(string_literal8);
+            	string_literal8=(IToken)Match(input,32,FOLLOW_32_in_method123);  
+            	stream_32.Add(string_literal8);
 
-            	char_literal9=(IToken)Match(input,29,FOLLOW_29_in_method125);  
-            	stream_29.Add(char_literal9);
+            	char_literal9=(IToken)Match(input,30,FOLLOW_30_in_method125);  
+            	stream_30.Add(char_literal9);
 
             	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:26:41: ( stat )*
             	do 
@@ -337,7 +339,7 @@ public partial class CFlatParser : Parser
             	    int alt2 = 2;
             	    int LA2_0 = input.LA(1);
 
-            	    if ( (LA2_0 == ID || (LA2_0 >= RETURN && LA2_0 <= LBRAC) || (LA2_0 >= MINUS_OP && LA2_0 <= BOOL_LITERAL)) )
+            	    if ( (LA2_0 == ID || (LA2_0 >= RETURN && LA2_0 <= LBRAC) || LA2_0 == WHILE || (LA2_0 >= MINUS_OP && LA2_0 <= BOOL_LITERAL)) )
             	    {
             	        alt2 = 1;
             	    }
@@ -365,13 +367,13 @@ public partial class CFlatParser : Parser
             	loop2:
             		;	// Stops C# compiler whining that label 'loop2' has no statements
 
-            	char_literal11=(IToken)Match(input,30,FOLLOW_30_in_method130);  
-            	stream_30.Add(char_literal11);
+            	char_literal11=(IToken)Match(input,31,FOLLOW_31_in_method130);  
+            	stream_31.Add(char_literal11);
 
 
 
             	// AST REWRITE
-            	// elements:          stat, name, t
+            	// elements:          t, stat, name
             	// token labels:      t, name
             	// rule labels:       retval
             	// token list labels: 
@@ -439,7 +441,7 @@ public partial class CFlatParser : Parser
     };
 
     // $ANTLR start "stat"
-    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:28:1: stat : ( expr EOS -> expr | t= ID name= ID EQUALS expr EOS -> ^( EQUALS ^( $t $name) expr ) | name= ID EQUALS expr EOS -> ^( EQUALS $name expr ) | RETURN expr EOS -> ^( RETURN expr ) | IF LBRAC expr RBRAC '{' ( stat )* '}' -> ^( IF expr ( stat )* ) );
+    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:28:1: stat : ( expr EOS -> expr | t= ID name= ID EQUALS expr EOS -> ^( EQUALS ^( $t $name) expr ) | name= ID EQUALS expr EOS -> ^( EQUALS $name expr ) | RETURN expr EOS -> ^( RETURN expr ) | IF LBRAC expr RBRAC '{' ( stat )* '}' -> ^( IF expr ( stat )* ) | WHILE LBRAC expr RBRAC '{' ( stat )* '}' -> ^( WHILE expr ( stat )* ) );
     public CFlatParser.stat_return stat() // throws RecognitionException [1]
     {   
         CFlatParser.stat_return retval = new CFlatParser.stat_return();
@@ -461,6 +463,11 @@ public partial class CFlatParser : Parser
         IToken RBRAC26 = null;
         IToken char_literal27 = null;
         IToken char_literal29 = null;
+        IToken WHILE30 = null;
+        IToken LBRAC31 = null;
+        IToken RBRAC33 = null;
+        IToken char_literal34 = null;
+        IToken char_literal36 = null;
         CFlatParser.expr_return expr12 = default(CFlatParser.expr_return);
 
         CFlatParser.expr_return expr15 = default(CFlatParser.expr_return);
@@ -472,6 +479,10 @@ public partial class CFlatParser : Parser
         CFlatParser.expr_return expr25 = default(CFlatParser.expr_return);
 
         CFlatParser.stat_return stat28 = default(CFlatParser.stat_return);
+
+        CFlatParser.expr_return expr32 = default(CFlatParser.expr_return);
+
+        CFlatParser.stat_return stat35 = default(CFlatParser.stat_return);
 
 
         CommonTree t_tree=null;
@@ -488,21 +499,27 @@ public partial class CFlatParser : Parser
         CommonTree RBRAC26_tree=null;
         CommonTree char_literal27_tree=null;
         CommonTree char_literal29_tree=null;
+        CommonTree WHILE30_tree=null;
+        CommonTree LBRAC31_tree=null;
+        CommonTree RBRAC33_tree=null;
+        CommonTree char_literal34_tree=null;
+        CommonTree char_literal36_tree=null;
         RewriteRuleTokenStream stream_30 = new RewriteRuleTokenStream(adaptor,"token 30");
         RewriteRuleTokenStream stream_EQUALS = new RewriteRuleTokenStream(adaptor,"token EQUALS");
+        RewriteRuleTokenStream stream_WHILE = new RewriteRuleTokenStream(adaptor,"token WHILE");
+        RewriteRuleTokenStream stream_31 = new RewriteRuleTokenStream(adaptor,"token 31");
         RewriteRuleTokenStream stream_ID = new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_RBRAC = new RewriteRuleTokenStream(adaptor,"token RBRAC");
         RewriteRuleTokenStream stream_LBRAC = new RewriteRuleTokenStream(adaptor,"token LBRAC");
         RewriteRuleTokenStream stream_IF = new RewriteRuleTokenStream(adaptor,"token IF");
-        RewriteRuleTokenStream stream_29 = new RewriteRuleTokenStream(adaptor,"token 29");
         RewriteRuleTokenStream stream_RETURN = new RewriteRuleTokenStream(adaptor,"token RETURN");
         RewriteRuleTokenStream stream_EOS = new RewriteRuleTokenStream(adaptor,"token EOS");
         RewriteRuleSubtreeStream stream_expr = new RewriteRuleSubtreeStream(adaptor,"rule expr");
         RewriteRuleSubtreeStream stream_stat = new RewriteRuleSubtreeStream(adaptor,"rule stat");
         try 
     	{
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:28:5: ( expr EOS -> expr | t= ID name= ID EQUALS expr EOS -> ^( EQUALS ^( $t $name) expr ) | name= ID EQUALS expr EOS -> ^( EQUALS $name expr ) | RETURN expr EOS -> ^( RETURN expr ) | IF LBRAC expr RBRAC '{' ( stat )* '}' -> ^( IF expr ( stat )* ) )
-            int alt4 = 5;
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:28:5: ( expr EOS -> expr | t= ID name= ID EQUALS expr EOS -> ^( EQUALS ^( $t $name) expr ) | name= ID EQUALS expr EOS -> ^( EQUALS $name expr ) | RETURN expr EOS -> ^( RETURN expr ) | IF LBRAC expr RBRAC '{' ( stat )* '}' -> ^( IF expr ( stat )* ) | WHILE LBRAC expr RBRAC '{' ( stat )* '}' -> ^( WHILE expr ( stat )* ) )
+            int alt5 = 6;
             switch ( input.LA(1) ) 
             {
             case LBRAC:
@@ -512,7 +529,7 @@ public partial class CFlatParser : Parser
             case CHAR_LITERAL:
             case BOOL_LITERAL:
             	{
-                alt4 = 1;
+                alt5 = 1;
                 }
                 break;
             case ID:
@@ -526,48 +543,53 @@ public partial class CFlatParser : Parser
                 case MULT_OP:
                 case DIV_OP:
                 case REM_OP:
-                case 31:
+                case 32:
                 	{
-                    alt4 = 1;
+                    alt5 = 1;
                     }
                     break;
                 case ID:
                 	{
-                    alt4 = 2;
+                    alt5 = 2;
                     }
                     break;
                 case EQUALS:
                 	{
-                    alt4 = 3;
+                    alt5 = 3;
                     }
                     break;
                 	default:
-                	    NoViableAltException nvae_d4s2 =
-                	        new NoViableAltException("", 4, 2, input);
+                	    NoViableAltException nvae_d5s2 =
+                	        new NoViableAltException("", 5, 2, input);
 
-                	    throw nvae_d4s2;
+                	    throw nvae_d5s2;
                 }
 
                 }
                 break;
             case RETURN:
             	{
-                alt4 = 4;
+                alt5 = 4;
                 }
                 break;
             case IF:
             	{
-                alt4 = 5;
+                alt5 = 5;
+                }
+                break;
+            case WHILE:
+            	{
+                alt5 = 6;
                 }
                 break;
             	default:
-            	    NoViableAltException nvae_d4s0 =
-            	        new NoViableAltException("", 4, 0, input);
+            	    NoViableAltException nvae_d5s0 =
+            	        new NoViableAltException("", 5, 0, input);
 
-            	    throw nvae_d4s0;
+            	    throw nvae_d5s0;
             }
 
-            switch (alt4) 
+            switch (alt5) 
             {
                 case 1 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:28:9: expr EOS
@@ -625,7 +647,7 @@ public partial class CFlatParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          expr, name, t, EQUALS
+                    	// elements:          name, expr, EQUALS, t
                     	// token labels:      t, name
                     	// rule labels:       retval
                     	// token list labels: 
@@ -683,7 +705,7 @@ public partial class CFlatParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          name, expr, EQUALS
+                    	// elements:          EQUALS, expr, name
                     	// token labels:      name
                     	// rule labels:       retval
                     	// token list labels: 
@@ -729,7 +751,7 @@ public partial class CFlatParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          RETURN, expr
+                    	// elements:          expr, RETURN
                     	// token labels:      
                     	// rule labels:       retval
                     	// token list labels: 
@@ -773,8 +795,8 @@ public partial class CFlatParser : Parser
                     	RBRAC26=(IToken)Match(input,RBRAC,FOLLOW_RBRAC_in_stat248);  
                     	stream_RBRAC.Add(RBRAC26);
 
-                    	char_literal27=(IToken)Match(input,29,FOLLOW_29_in_stat250);  
-                    	stream_29.Add(char_literal27);
+                    	char_literal27=(IToken)Match(input,30,FOLLOW_30_in_stat250);  
+                    	stream_30.Add(char_literal27);
 
                     	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:36:26: ( stat )*
                     	do 
@@ -782,7 +804,7 @@ public partial class CFlatParser : Parser
                     	    int alt3 = 2;
                     	    int LA3_0 = input.LA(1);
 
-                    	    if ( (LA3_0 == ID || (LA3_0 >= RETURN && LA3_0 <= LBRAC) || (LA3_0 >= MINUS_OP && LA3_0 <= BOOL_LITERAL)) )
+                    	    if ( (LA3_0 == ID || (LA3_0 >= RETURN && LA3_0 <= LBRAC) || LA3_0 == WHILE || (LA3_0 >= MINUS_OP && LA3_0 <= BOOL_LITERAL)) )
                     	    {
                     	        alt3 = 1;
                     	    }
@@ -810,8 +832,8 @@ public partial class CFlatParser : Parser
                     	loop3:
                     		;	// Stops C# compiler whining that label 'loop3' has no statements
 
-                    	char_literal29=(IToken)Match(input,30,FOLLOW_30_in_stat255);  
-                    	stream_30.Add(char_literal29);
+                    	char_literal29=(IToken)Match(input,31,FOLLOW_31_in_stat255);  
+                    	stream_31.Add(char_literal29);
 
 
 
@@ -835,6 +857,100 @@ public partial class CFlatParser : Parser
 
                     	    adaptor.AddChild(root_1, stream_expr.NextTree());
                     	    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:36:49: ( stat )*
+                    	    while ( stream_stat.HasNext() )
+                    	    {
+                    	        adaptor.AddChild(root_1, stream_stat.NextTree());
+
+                    	    }
+                    	    stream_stat.Reset();
+
+                    	    adaptor.AddChild(root_0, root_1);
+                    	    }
+
+                    	}
+
+                    	retval.Tree = root_0;retval.Tree = root_0;
+                    }
+                    break;
+                case 6 :
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:38:2: WHILE LBRAC expr RBRAC '{' ( stat )* '}'
+                    {
+                    	WHILE30=(IToken)Match(input,WHILE,FOLLOW_WHILE_in_stat272);  
+                    	stream_WHILE.Add(WHILE30);
+
+                    	LBRAC31=(IToken)Match(input,LBRAC,FOLLOW_LBRAC_in_stat274);  
+                    	stream_LBRAC.Add(LBRAC31);
+
+                    	PushFollow(FOLLOW_expr_in_stat276);
+                    	expr32 = expr();
+                    	state.followingStackPointer--;
+
+                    	stream_expr.Add(expr32.Tree);
+                    	RBRAC33=(IToken)Match(input,RBRAC,FOLLOW_RBRAC_in_stat278);  
+                    	stream_RBRAC.Add(RBRAC33);
+
+                    	char_literal34=(IToken)Match(input,30,FOLLOW_30_in_stat280);  
+                    	stream_30.Add(char_literal34);
+
+                    	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:38:29: ( stat )*
+                    	do 
+                    	{
+                    	    int alt4 = 2;
+                    	    int LA4_0 = input.LA(1);
+
+                    	    if ( (LA4_0 == ID || (LA4_0 >= RETURN && LA4_0 <= LBRAC) || LA4_0 == WHILE || (LA4_0 >= MINUS_OP && LA4_0 <= BOOL_LITERAL)) )
+                    	    {
+                    	        alt4 = 1;
+                    	    }
+
+
+                    	    switch (alt4) 
+                    		{
+                    			case 1 :
+                    			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:38:29: stat
+                    			    {
+                    			    	PushFollow(FOLLOW_stat_in_stat282);
+                    			    	stat35 = stat();
+                    			    	state.followingStackPointer--;
+
+                    			    	stream_stat.Add(stat35.Tree);
+
+                    			    }
+                    			    break;
+
+                    			default:
+                    			    goto loop4;
+                    	    }
+                    	} while (true);
+
+                    	loop4:
+                    		;	// Stops C# compiler whining that label 'loop4' has no statements
+
+                    	char_literal36=(IToken)Match(input,31,FOLLOW_31_in_stat285);  
+                    	stream_31.Add(char_literal36);
+
+
+
+                    	// AST REWRITE
+                    	// elements:          stat, expr, WHILE
+                    	// token labels:      
+                    	// rule labels:       retval
+                    	// token list labels: 
+                    	// rule list labels:  
+                    	// wildcard labels: 
+                    	retval.Tree = root_0;
+                    	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
+
+                    	root_0 = (CommonTree)adaptor.GetNilNode();
+                    	// 38:39: -> ^( WHILE expr ( stat )* )
+                    	{
+                    	    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:38:42: ^( WHILE expr ( stat )* )
+                    	    {
+                    	    CommonTree root_1 = (CommonTree)adaptor.GetNilNode();
+                    	    root_1 = (CommonTree)adaptor.BecomeRoot(stream_WHILE.NextNode(), root_1);
+
+                    	    adaptor.AddChild(root_1, stream_expr.NextTree());
+                    	    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:38:55: ( stat )*
                     	    while ( stream_stat.HasNext() )
                     	    {
                     	        adaptor.AddChild(root_1, stream_stat.NextTree());
@@ -883,7 +999,7 @@ public partial class CFlatParser : Parser
     };
 
     // $ANTLR start "expr"
-    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:39:1: expr : additive_expr ( REL_OP additive_expr )* ;
+    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:41:1: expr : additive_expr ( REL_OP additive_expr )* ;
     public CFlatParser.expr_return expr() // throws RecognitionException [1]
     {   
         CFlatParser.expr_return retval = new CFlatParser.expr_return();
@@ -891,63 +1007,63 @@ public partial class CFlatParser : Parser
 
         CommonTree root_0 = null;
 
-        IToken REL_OP31 = null;
-        CFlatParser.additive_expr_return additive_expr30 = default(CFlatParser.additive_expr_return);
+        IToken REL_OP38 = null;
+        CFlatParser.additive_expr_return additive_expr37 = default(CFlatParser.additive_expr_return);
 
-        CFlatParser.additive_expr_return additive_expr32 = default(CFlatParser.additive_expr_return);
+        CFlatParser.additive_expr_return additive_expr39 = default(CFlatParser.additive_expr_return);
 
 
-        CommonTree REL_OP31_tree=null;
+        CommonTree REL_OP38_tree=null;
 
         try 
     	{
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:39:6: ( additive_expr ( REL_OP additive_expr )* )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:39:8: additive_expr ( REL_OP additive_expr )*
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:41:6: ( additive_expr ( REL_OP additive_expr )* )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:41:8: additive_expr ( REL_OP additive_expr )*
             {
             	root_0 = (CommonTree)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_additive_expr_in_expr277);
-            	additive_expr30 = additive_expr();
+            	PushFollow(FOLLOW_additive_expr_in_expr307);
+            	additive_expr37 = additive_expr();
             	state.followingStackPointer--;
 
-            	adaptor.AddChild(root_0, additive_expr30.Tree);
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:39:22: ( REL_OP additive_expr )*
+            	adaptor.AddChild(root_0, additive_expr37.Tree);
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:41:22: ( REL_OP additive_expr )*
             	do 
             	{
-            	    int alt5 = 2;
-            	    int LA5_0 = input.LA(1);
+            	    int alt6 = 2;
+            	    int LA6_0 = input.LA(1);
 
-            	    if ( (LA5_0 == REL_OP) )
+            	    if ( (LA6_0 == REL_OP) )
             	    {
-            	        alt5 = 1;
+            	        alt6 = 1;
             	    }
 
 
-            	    switch (alt5) 
+            	    switch (alt6) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:39:23: REL_OP additive_expr
+            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:41:23: REL_OP additive_expr
             			    {
-            			    	REL_OP31=(IToken)Match(input,REL_OP,FOLLOW_REL_OP_in_expr280); 
-            			    		REL_OP31_tree = (CommonTree)adaptor.Create(REL_OP31);
-            			    		root_0 = (CommonTree)adaptor.BecomeRoot(REL_OP31_tree, root_0);
+            			    	REL_OP38=(IToken)Match(input,REL_OP,FOLLOW_REL_OP_in_expr310); 
+            			    		REL_OP38_tree = (CommonTree)adaptor.Create(REL_OP38);
+            			    		root_0 = (CommonTree)adaptor.BecomeRoot(REL_OP38_tree, root_0);
 
-            			    	PushFollow(FOLLOW_additive_expr_in_expr283);
-            			    	additive_expr32 = additive_expr();
+            			    	PushFollow(FOLLOW_additive_expr_in_expr313);
+            			    	additive_expr39 = additive_expr();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, additive_expr32.Tree);
+            			    	adaptor.AddChild(root_0, additive_expr39.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop5;
+            			    goto loop6;
             	    }
             	} while (true);
 
-            	loop5:
-            		;	// Stops C# compiler whining that label 'loop5' has no statements
+            	loop6:
+            		;	// Stops C# compiler whining that label 'loop6' has no statements
 
 
             }
@@ -983,7 +1099,7 @@ public partial class CFlatParser : Parser
     };
 
     // $ANTLR start "additive_expr"
-    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:41:1: additive_expr : multExpr ( ( '+' | '-' ) multExpr )* ;
+    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:43:1: additive_expr : multExpr ( ( '+' | '-' ) multExpr )* ;
     public CFlatParser.additive_expr_return additive_expr() // throws RecognitionException [1]
     {   
         CFlatParser.additive_expr_return retval = new CFlatParser.additive_expr_return();
@@ -991,82 +1107,82 @@ public partial class CFlatParser : Parser
 
         CommonTree root_0 = null;
 
-        IToken char_literal34 = null;
-        IToken char_literal35 = null;
-        CFlatParser.multExpr_return multExpr33 = default(CFlatParser.multExpr_return);
+        IToken char_literal41 = null;
+        IToken char_literal42 = null;
+        CFlatParser.multExpr_return multExpr40 = default(CFlatParser.multExpr_return);
 
-        CFlatParser.multExpr_return multExpr36 = default(CFlatParser.multExpr_return);
+        CFlatParser.multExpr_return multExpr43 = default(CFlatParser.multExpr_return);
 
 
-        CommonTree char_literal34_tree=null;
-        CommonTree char_literal35_tree=null;
+        CommonTree char_literal41_tree=null;
+        CommonTree char_literal42_tree=null;
 
         try 
     	{
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:41:14: ( multExpr ( ( '+' | '-' ) multExpr )* )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:41:18: multExpr ( ( '+' | '-' ) multExpr )*
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:43:14: ( multExpr ( ( '+' | '-' ) multExpr )* )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:43:18: multExpr ( ( '+' | '-' ) multExpr )*
             {
             	root_0 = (CommonTree)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_multExpr_in_additive_expr294);
-            	multExpr33 = multExpr();
+            	PushFollow(FOLLOW_multExpr_in_additive_expr324);
+            	multExpr40 = multExpr();
             	state.followingStackPointer--;
 
-            	adaptor.AddChild(root_0, multExpr33.Tree);
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:42:1: ( ( '+' | '-' ) multExpr )*
+            	adaptor.AddChild(root_0, multExpr40.Tree);
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:44:1: ( ( '+' | '-' ) multExpr )*
             	do 
             	{
-            	    int alt7 = 2;
-            	    int LA7_0 = input.LA(1);
+            	    int alt8 = 2;
+            	    int LA8_0 = input.LA(1);
 
-            	    if ( (LA7_0 == MINUS_OP || LA7_0 == ARITH_OP) )
+            	    if ( (LA8_0 == MINUS_OP || LA8_0 == ARITH_OP) )
             	    {
-            	        alt7 = 1;
+            	        alt8 = 1;
             	    }
 
 
-            	    switch (alt7) 
+            	    switch (alt8) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:42:2: ( '+' | '-' ) multExpr
+            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:44:2: ( '+' | '-' ) multExpr
             			    {
-            			    	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:42:2: ( '+' | '-' )
-            			    	int alt6 = 2;
-            			    	int LA6_0 = input.LA(1);
+            			    	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:44:2: ( '+' | '-' )
+            			    	int alt7 = 2;
+            			    	int LA7_0 = input.LA(1);
 
-            			    	if ( (LA6_0 == ARITH_OP) )
+            			    	if ( (LA7_0 == ARITH_OP) )
             			    	{
-            			    	    alt6 = 1;
+            			    	    alt7 = 1;
             			    	}
-            			    	else if ( (LA6_0 == MINUS_OP) )
+            			    	else if ( (LA7_0 == MINUS_OP) )
             			    	{
-            			    	    alt6 = 2;
+            			    	    alt7 = 2;
             			    	}
             			    	else 
             			    	{
-            			    	    NoViableAltException nvae_d6s0 =
-            			    	        new NoViableAltException("", 6, 0, input);
+            			    	    NoViableAltException nvae_d7s0 =
+            			    	        new NoViableAltException("", 7, 0, input);
 
-            			    	    throw nvae_d6s0;
+            			    	    throw nvae_d7s0;
             			    	}
-            			    	switch (alt6) 
+            			    	switch (alt7) 
             			    	{
             			    	    case 1 :
-            			    	        // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:42:3: '+'
+            			    	        // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:44:3: '+'
             			    	        {
-            			    	        	char_literal34=(IToken)Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_additive_expr299); 
-            			    	        		char_literal34_tree = (CommonTree)adaptor.Create(char_literal34);
-            			    	        		root_0 = (CommonTree)adaptor.BecomeRoot(char_literal34_tree, root_0);
+            			    	        	char_literal41=(IToken)Match(input,ARITH_OP,FOLLOW_ARITH_OP_in_additive_expr329); 
+            			    	        		char_literal41_tree = (CommonTree)adaptor.Create(char_literal41);
+            			    	        		root_0 = (CommonTree)adaptor.BecomeRoot(char_literal41_tree, root_0);
 
 
             			    	        }
             			    	        break;
             			    	    case 2 :
-            			    	        // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:42:8: '-'
+            			    	        // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:44:8: '-'
             			    	        {
-            			    	        	char_literal35=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_additive_expr302); 
-            			    	        		char_literal35_tree = (CommonTree)adaptor.Create(char_literal35);
-            			    	        		root_0 = (CommonTree)adaptor.BecomeRoot(char_literal35_tree, root_0);
+            			    	        	char_literal42=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_additive_expr332); 
+            			    	        		char_literal42_tree = (CommonTree)adaptor.Create(char_literal42);
+            			    	        		root_0 = (CommonTree)adaptor.BecomeRoot(char_literal42_tree, root_0);
 
 
             			    	        }
@@ -1074,22 +1190,22 @@ public partial class CFlatParser : Parser
 
             			    	}
 
-            			    	PushFollow(FOLLOW_multExpr_in_additive_expr306);
-            			    	multExpr36 = multExpr();
+            			    	PushFollow(FOLLOW_multExpr_in_additive_expr336);
+            			    	multExpr43 = multExpr();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, multExpr36.Tree);
+            			    	adaptor.AddChild(root_0, multExpr43.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop7;
+            			    goto loop8;
             	    }
             	} while (true);
 
-            	loop7:
-            		;	// Stops C# compiler whining that label 'loop7' has no statements
+            	loop8:
+            		;	// Stops C# compiler whining that label 'loop8' has no statements
 
 
             }
@@ -1125,7 +1241,7 @@ public partial class CFlatParser : Parser
     };
 
     // $ANTLR start "multExpr"
-    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:45:1: multExpr : atom ( ( '*' | '/' | '%' ) atom )* ;
+    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:47:1: multExpr : atom ( ( '*' | '/' | '%' ) atom )* ;
     public CFlatParser.multExpr_return multExpr() // throws RecognitionException [1]
     {   
         CFlatParser.multExpr_return retval = new CFlatParser.multExpr_return();
@@ -1133,49 +1249,49 @@ public partial class CFlatParser : Parser
 
         CommonTree root_0 = null;
 
-        IToken set38 = null;
-        CFlatParser.atom_return atom37 = default(CFlatParser.atom_return);
+        IToken set45 = null;
+        CFlatParser.atom_return atom44 = default(CFlatParser.atom_return);
 
-        CFlatParser.atom_return atom39 = default(CFlatParser.atom_return);
+        CFlatParser.atom_return atom46 = default(CFlatParser.atom_return);
 
 
-        CommonTree set38_tree=null;
+        CommonTree set45_tree=null;
 
         try 
     	{
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:46:5: ( atom ( ( '*' | '/' | '%' ) atom )* )
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:46:9: atom ( ( '*' | '/' | '%' ) atom )*
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:48:5: ( atom ( ( '*' | '/' | '%' ) atom )* )
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:48:9: atom ( ( '*' | '/' | '%' ) atom )*
             {
             	root_0 = (CommonTree)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_atom_in_multExpr327);
-            	atom37 = atom();
+            	PushFollow(FOLLOW_atom_in_multExpr357);
+            	atom44 = atom();
             	state.followingStackPointer--;
 
-            	adaptor.AddChild(root_0, atom37.Tree);
-            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:46:14: ( ( '*' | '/' | '%' ) atom )*
+            	adaptor.AddChild(root_0, atom44.Tree);
+            	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:48:14: ( ( '*' | '/' | '%' ) atom )*
             	do 
             	{
-            	    int alt8 = 2;
-            	    int LA8_0 = input.LA(1);
+            	    int alt9 = 2;
+            	    int LA9_0 = input.LA(1);
 
-            	    if ( ((LA8_0 >= MULT_OP && LA8_0 <= REM_OP)) )
+            	    if ( ((LA9_0 >= MULT_OP && LA9_0 <= REM_OP)) )
             	    {
-            	        alt8 = 1;
+            	        alt9 = 1;
             	    }
 
 
-            	    switch (alt8) 
+            	    switch (alt9) 
             		{
             			case 1 :
-            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:46:15: ( '*' | '/' | '%' ) atom
+            			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:48:15: ( '*' | '/' | '%' ) atom
             			    {
-            			    	set38=(IToken)input.LT(1);
-            			    	set38 = (IToken)input.LT(1);
+            			    	set45=(IToken)input.LT(1);
+            			    	set45 = (IToken)input.LT(1);
             			    	if ( (input.LA(1) >= MULT_OP && input.LA(1) <= REM_OP) ) 
             			    	{
             			    	    input.Consume();
-            			    	    root_0 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(set38), root_0);
+            			    	    root_0 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(set45), root_0);
             			    	    state.errorRecovery = false;
             			    	}
             			    	else 
@@ -1184,22 +1300,22 @@ public partial class CFlatParser : Parser
             			    	    throw mse;
             			    	}
 
-            			    	PushFollow(FOLLOW_atom_in_multExpr339);
-            			    	atom39 = atom();
+            			    	PushFollow(FOLLOW_atom_in_multExpr369);
+            			    	atom46 = atom();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, atom39.Tree);
+            			    	adaptor.AddChild(root_0, atom46.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop8;
+            			    goto loop9;
             	    }
             	} while (true);
 
-            	loop8:
-            		;	// Stops C# compiler whining that label 'loop8' has no statements
+            	loop9:
+            		;	// Stops C# compiler whining that label 'loop9' has no statements
 
 
             }
@@ -1235,7 +1351,7 @@ public partial class CFlatParser : Parser
     };
 
     // $ANTLR start "atom"
-    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:49:1: atom : ( MINUS_OP INT | INT | LBRAC expr RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID '()' -> ^( CALL ID ) | ID );
+    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:51:1: atom : ( MINUS_OP INT | INT | LBRAC expr RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID '()' -> ^( CALL ID ) | ID );
     public CFlatParser.atom_return atom() // throws RecognitionException [1]
     {   
         CFlatParser.atom_return retval = new CFlatParser.atom_return();
@@ -1243,84 +1359,84 @@ public partial class CFlatParser : Parser
 
         CommonTree root_0 = null;
 
-        IToken MINUS_OP40 = null;
-        IToken INT41 = null;
-        IToken INT42 = null;
-        IToken LBRAC43 = null;
-        IToken RBRAC45 = null;
-        IToken STRING_LITERAL46 = null;
-        IToken CHAR_LITERAL47 = null;
-        IToken BOOL_LITERAL48 = null;
-        IToken ID49 = null;
-        IToken string_literal50 = null;
-        IToken ID51 = null;
-        CFlatParser.expr_return expr44 = default(CFlatParser.expr_return);
+        IToken MINUS_OP47 = null;
+        IToken INT48 = null;
+        IToken INT49 = null;
+        IToken LBRAC50 = null;
+        IToken RBRAC52 = null;
+        IToken STRING_LITERAL53 = null;
+        IToken CHAR_LITERAL54 = null;
+        IToken BOOL_LITERAL55 = null;
+        IToken ID56 = null;
+        IToken string_literal57 = null;
+        IToken ID58 = null;
+        CFlatParser.expr_return expr51 = default(CFlatParser.expr_return);
 
 
-        CommonTree MINUS_OP40_tree=null;
-        CommonTree INT41_tree=null;
-        CommonTree INT42_tree=null;
-        CommonTree LBRAC43_tree=null;
-        CommonTree RBRAC45_tree=null;
-        CommonTree STRING_LITERAL46_tree=null;
-        CommonTree CHAR_LITERAL47_tree=null;
-        CommonTree BOOL_LITERAL48_tree=null;
-        CommonTree ID49_tree=null;
-        CommonTree string_literal50_tree=null;
-        CommonTree ID51_tree=null;
-        RewriteRuleTokenStream stream_31 = new RewriteRuleTokenStream(adaptor,"token 31");
+        CommonTree MINUS_OP47_tree=null;
+        CommonTree INT48_tree=null;
+        CommonTree INT49_tree=null;
+        CommonTree LBRAC50_tree=null;
+        CommonTree RBRAC52_tree=null;
+        CommonTree STRING_LITERAL53_tree=null;
+        CommonTree CHAR_LITERAL54_tree=null;
+        CommonTree BOOL_LITERAL55_tree=null;
+        CommonTree ID56_tree=null;
+        CommonTree string_literal57_tree=null;
+        CommonTree ID58_tree=null;
+        RewriteRuleTokenStream stream_32 = new RewriteRuleTokenStream(adaptor,"token 32");
         RewriteRuleTokenStream stream_ID = new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_RBRAC = new RewriteRuleTokenStream(adaptor,"token RBRAC");
         RewriteRuleTokenStream stream_LBRAC = new RewriteRuleTokenStream(adaptor,"token LBRAC");
         RewriteRuleSubtreeStream stream_expr = new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try 
     	{
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:49:5: ( MINUS_OP INT | INT | LBRAC expr RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID '()' -> ^( CALL ID ) | ID )
-            int alt9 = 8;
-            alt9 = dfa9.Predict(input);
-            switch (alt9) 
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:51:5: ( MINUS_OP INT | INT | LBRAC expr RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID '()' -> ^( CALL ID ) | ID )
+            int alt10 = 8;
+            alt10 = dfa10.Predict(input);
+            switch (alt10) 
             {
                 case 1 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:49:9: MINUS_OP INT
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:51:9: MINUS_OP INT
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	MINUS_OP40=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_atom355); 
-                    		MINUS_OP40_tree = (CommonTree)adaptor.Create(MINUS_OP40);
-                    		adaptor.AddChild(root_0, MINUS_OP40_tree);
+                    	MINUS_OP47=(IToken)Match(input,MINUS_OP,FOLLOW_MINUS_OP_in_atom385); 
+                    		MINUS_OP47_tree = (CommonTree)adaptor.Create(MINUS_OP47);
+                    		adaptor.AddChild(root_0, MINUS_OP47_tree);
 
-                    	INT41=(IToken)Match(input,INT,FOLLOW_INT_in_atom357); 
-                    		INT41_tree = (CommonTree)adaptor.Create(INT41);
-                    		adaptor.AddChild(root_0, INT41_tree);
+                    	INT48=(IToken)Match(input,INT,FOLLOW_INT_in_atom387); 
+                    		INT48_tree = (CommonTree)adaptor.Create(INT48);
+                    		adaptor.AddChild(root_0, INT48_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:51:2: INT
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:53:2: INT
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	INT42=(IToken)Match(input,INT,FOLLOW_INT_in_atom363); 
-                    		INT42_tree = (CommonTree)adaptor.Create(INT42);
-                    		adaptor.AddChild(root_0, INT42_tree);
+                    	INT49=(IToken)Match(input,INT,FOLLOW_INT_in_atom393); 
+                    		INT49_tree = (CommonTree)adaptor.Create(INT49);
+                    		adaptor.AddChild(root_0, INT49_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:53:2: LBRAC expr RBRAC
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:55:2: LBRAC expr RBRAC
                     {
-                    	LBRAC43=(IToken)Match(input,LBRAC,FOLLOW_LBRAC_in_atom369);  
-                    	stream_LBRAC.Add(LBRAC43);
+                    	LBRAC50=(IToken)Match(input,LBRAC,FOLLOW_LBRAC_in_atom399);  
+                    	stream_LBRAC.Add(LBRAC50);
 
-                    	PushFollow(FOLLOW_expr_in_atom371);
-                    	expr44 = expr();
+                    	PushFollow(FOLLOW_expr_in_atom401);
+                    	expr51 = expr();
                     	state.followingStackPointer--;
 
-                    	stream_expr.Add(expr44.Tree);
-                    	RBRAC45=(IToken)Match(input,RBRAC,FOLLOW_RBRAC_in_atom373);  
-                    	stream_RBRAC.Add(RBRAC45);
+                    	stream_expr.Add(expr51.Tree);
+                    	RBRAC52=(IToken)Match(input,RBRAC,FOLLOW_RBRAC_in_atom403);  
+                    	stream_RBRAC.Add(RBRAC52);
 
 
 
@@ -1335,7 +1451,7 @@ public partial class CFlatParser : Parser
                     	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
                     	root_0 = (CommonTree)adaptor.GetNilNode();
-                    	// 53:19: -> expr
+                    	// 55:19: -> expr
                     	{
                     	    adaptor.AddChild(root_0, stream_expr.NextTree());
 
@@ -1345,49 +1461,49 @@ public partial class CFlatParser : Parser
                     }
                     break;
                 case 4 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:55:2: STRING_LITERAL
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:57:2: STRING_LITERAL
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	STRING_LITERAL46=(IToken)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_atom383); 
-                    		STRING_LITERAL46_tree = (CommonTree)adaptor.Create(STRING_LITERAL46);
-                    		adaptor.AddChild(root_0, STRING_LITERAL46_tree);
+                    	STRING_LITERAL53=(IToken)Match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_atom413); 
+                    		STRING_LITERAL53_tree = (CommonTree)adaptor.Create(STRING_LITERAL53);
+                    		adaptor.AddChild(root_0, STRING_LITERAL53_tree);
 
 
                     }
                     break;
                 case 5 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:57:2: CHAR_LITERAL
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:59:2: CHAR_LITERAL
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	CHAR_LITERAL47=(IToken)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_atom389); 
-                    		CHAR_LITERAL47_tree = (CommonTree)adaptor.Create(CHAR_LITERAL47);
-                    		adaptor.AddChild(root_0, CHAR_LITERAL47_tree);
+                    	CHAR_LITERAL54=(IToken)Match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_atom419); 
+                    		CHAR_LITERAL54_tree = (CommonTree)adaptor.Create(CHAR_LITERAL54);
+                    		adaptor.AddChild(root_0, CHAR_LITERAL54_tree);
 
 
                     }
                     break;
                 case 6 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:59:2: BOOL_LITERAL
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:61:2: BOOL_LITERAL
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	BOOL_LITERAL48=(IToken)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_atom395); 
-                    		BOOL_LITERAL48_tree = (CommonTree)adaptor.Create(BOOL_LITERAL48);
-                    		adaptor.AddChild(root_0, BOOL_LITERAL48_tree);
+                    	BOOL_LITERAL55=(IToken)Match(input,BOOL_LITERAL,FOLLOW_BOOL_LITERAL_in_atom425); 
+                    		BOOL_LITERAL55_tree = (CommonTree)adaptor.Create(BOOL_LITERAL55);
+                    		adaptor.AddChild(root_0, BOOL_LITERAL55_tree);
 
 
                     }
                     break;
                 case 7 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:61:2: ID '()'
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:63:2: ID '()'
                     {
-                    	ID49=(IToken)Match(input,ID,FOLLOW_ID_in_atom401);  
-                    	stream_ID.Add(ID49);
+                    	ID56=(IToken)Match(input,ID,FOLLOW_ID_in_atom431);  
+                    	stream_ID.Add(ID56);
 
-                    	string_literal50=(IToken)Match(input,31,FOLLOW_31_in_atom403);  
-                    	stream_31.Add(string_literal50);
+                    	string_literal57=(IToken)Match(input,32,FOLLOW_32_in_atom433);  
+                    	stream_32.Add(string_literal57);
 
 
 
@@ -1402,9 +1518,9 @@ public partial class CFlatParser : Parser
                     	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
                     	root_0 = (CommonTree)adaptor.GetNilNode();
-                    	// 61:10: -> ^( CALL ID )
+                    	// 63:10: -> ^( CALL ID )
                     	{
-                    	    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:61:13: ^( CALL ID )
+                    	    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:63:13: ^( CALL ID )
                     	    {
                     	    CommonTree root_1 = (CommonTree)adaptor.GetNilNode();
                     	    root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(CALL, "CALL"), root_1);
@@ -1420,13 +1536,13 @@ public partial class CFlatParser : Parser
                     }
                     break;
                 case 8 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:63:2: ID
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g:65:2: ID
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	ID51=(IToken)Match(input,ID,FOLLOW_ID_in_atom417); 
-                    		ID51_tree = (CommonTree)adaptor.Create(ID51);
-                    		adaptor.AddChild(root_0, ID51_tree);
+                    	ID58=(IToken)Match(input,ID,FOLLOW_ID_in_atom447); 
+                    		ID58_tree = (CommonTree)adaptor.Create(ID58);
+                    		adaptor.AddChild(root_0, ID58_tree);
 
 
                     }
@@ -1456,27 +1572,27 @@ public partial class CFlatParser : Parser
     // Delegated rules
 
 
-   	protected DFA9 dfa9;
+   	protected DFA10 dfa10;
 	private void InitializeCyclicDFAs()
 	{
-    	this.dfa9 = new DFA9(this);
+    	this.dfa10 = new DFA10(this);
 	}
 
-    const string DFA9_eotS =
+    const string DFA10_eotS =
         "\x0a\uffff";
-    const string DFA9_eofS =
+    const string DFA10_eofS =
         "\x0a\uffff";
-    const string DFA9_minS =
+    const string DFA10_minS =
         "\x01\x07\x06\uffff\x01\x08\x02\uffff";
-    const string DFA9_maxS =
-        "\x01\x13\x06\uffff\x01\x1f\x02\uffff";
-    const string DFA9_acceptS =
+    const string DFA10_maxS =
+        "\x01\x14\x06\uffff\x01\x20\x02\uffff";
+    const string DFA10_acceptS =
         "\x01\uffff\x01\x01\x01\x02\x01\x03\x01\x04\x01\x05\x01\x06\x01"+
         "\uffff\x01\x07\x01\x08";
-    const string DFA9_specialS =
+    const string DFA10_specialS =
         "\x0a\uffff}>";
-    static readonly string[] DFA9_transitionS = {
-            "\x01\x07\x04\uffff\x01\x03\x02\uffff\x01\x01\x01\x02\x01\x04"+
+    static readonly string[] DFA10_transitionS = {
+            "\x01\x07\x04\uffff\x01\x03\x03\uffff\x01\x01\x01\x02\x01\x04"+
             "\x01\x05\x01\x06",
             "",
             "",
@@ -1484,101 +1600,108 @@ public partial class CFlatParser : Parser
             "",
             "",
             "",
-            "\x01\x09\x04\uffff\x03\x09\x04\uffff\x04\x09\x07\uffff\x01"+
-            "\x08",
+            "\x01\x09\x04\uffff\x01\x09\x01\uffff\x02\x09\x04\uffff\x04"+
+            "\x09\x07\uffff\x01\x08",
             "",
             ""
     };
 
-    static readonly short[] DFA9_eot = DFA.UnpackEncodedString(DFA9_eotS);
-    static readonly short[] DFA9_eof = DFA.UnpackEncodedString(DFA9_eofS);
-    static readonly char[] DFA9_min = DFA.UnpackEncodedStringToUnsignedChars(DFA9_minS);
-    static readonly char[] DFA9_max = DFA.UnpackEncodedStringToUnsignedChars(DFA9_maxS);
-    static readonly short[] DFA9_accept = DFA.UnpackEncodedString(DFA9_acceptS);
-    static readonly short[] DFA9_special = DFA.UnpackEncodedString(DFA9_specialS);
-    static readonly short[][] DFA9_transition = DFA.UnpackEncodedStringArray(DFA9_transitionS);
+    static readonly short[] DFA10_eot = DFA.UnpackEncodedString(DFA10_eotS);
+    static readonly short[] DFA10_eof = DFA.UnpackEncodedString(DFA10_eofS);
+    static readonly char[] DFA10_min = DFA.UnpackEncodedStringToUnsignedChars(DFA10_minS);
+    static readonly char[] DFA10_max = DFA.UnpackEncodedStringToUnsignedChars(DFA10_maxS);
+    static readonly short[] DFA10_accept = DFA.UnpackEncodedString(DFA10_acceptS);
+    static readonly short[] DFA10_special = DFA.UnpackEncodedString(DFA10_specialS);
+    static readonly short[][] DFA10_transition = DFA.UnpackEncodedStringArray(DFA10_transitionS);
 
-    protected class DFA9 : DFA
+    protected class DFA10 : DFA
     {
-        public DFA9(BaseRecognizer recognizer)
+        public DFA10(BaseRecognizer recognizer)
         {
             this.recognizer = recognizer;
-            this.decisionNumber = 9;
-            this.eot = DFA9_eot;
-            this.eof = DFA9_eof;
-            this.min = DFA9_min;
-            this.max = DFA9_max;
-            this.accept = DFA9_accept;
-            this.special = DFA9_special;
-            this.transition = DFA9_transition;
+            this.decisionNumber = 10;
+            this.eot = DFA10_eot;
+            this.eof = DFA10_eof;
+            this.min = DFA10_min;
+            this.max = DFA10_max;
+            this.accept = DFA10_accept;
+            this.special = DFA10_special;
+            this.transition = DFA10_transition;
 
         }
 
         override public string Description
         {
-            get { return "49:1: atom : ( MINUS_OP INT | INT | LBRAC expr RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID '()' -> ^( CALL ID ) | ID );"; }
+            get { return "51:1: atom : ( MINUS_OP INT | INT | LBRAC expr RBRAC -> expr | STRING_LITERAL | CHAR_LITERAL | BOOL_LITERAL | ID '()' -> ^( CALL ID ) | ID );"; }
         }
 
     }
 
  
 
-    public static readonly BitSet FOLLOW_28_in_prog78 = new BitSet(new ulong[]{0x0000000000000040UL});
+    public static readonly BitSet FOLLOW_29_in_prog78 = new BitSet(new ulong[]{0x0000000000000040UL});
     public static readonly BitSet FOLLOW_CLASS_in_prog80 = new BitSet(new ulong[]{0x0000000000000080UL});
-    public static readonly BitSet FOLLOW_ID_in_prog82 = new BitSet(new ulong[]{0x0000000020000000UL});
-    public static readonly BitSet FOLLOW_29_in_prog84 = new BitSet(new ulong[]{0x0000000050000000UL});
-    public static readonly BitSet FOLLOW_method_in_prog86 = new BitSet(new ulong[]{0x0000000050000000UL});
-    public static readonly BitSet FOLLOW_30_in_prog89 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_28_in_method113 = new BitSet(new ulong[]{0x0000000000000080UL});
+    public static readonly BitSet FOLLOW_ID_in_prog82 = new BitSet(new ulong[]{0x0000000040000000UL});
+    public static readonly BitSet FOLLOW_30_in_prog84 = new BitSet(new ulong[]{0x00000000A0000000UL});
+    public static readonly BitSet FOLLOW_method_in_prog86 = new BitSet(new ulong[]{0x00000000A0000000UL});
+    public static readonly BitSet FOLLOW_31_in_prog89 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_29_in_method113 = new BitSet(new ulong[]{0x0000000000000080UL});
     public static readonly BitSet FOLLOW_ID_in_method117 = new BitSet(new ulong[]{0x0000000000000080UL});
-    public static readonly BitSet FOLLOW_ID_in_method121 = new BitSet(new ulong[]{0x0000000080000000UL});
-    public static readonly BitSet FOLLOW_31_in_method123 = new BitSet(new ulong[]{0x0000000020000000UL});
-    public static readonly BitSet FOLLOW_29_in_method125 = new BitSet(new ulong[]{0x00000000400F9C80UL});
-    public static readonly BitSet FOLLOW_stat_in_method127 = new BitSet(new ulong[]{0x00000000400F9C80UL});
-    public static readonly BitSet FOLLOW_30_in_method130 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_method121 = new BitSet(new ulong[]{0x0000000100000000UL});
+    public static readonly BitSet FOLLOW_32_in_method123 = new BitSet(new ulong[]{0x0000000040000000UL});
+    public static readonly BitSet FOLLOW_30_in_method125 = new BitSet(new ulong[]{0x00000000801F5C80UL});
+    public static readonly BitSet FOLLOW_stat_in_method127 = new BitSet(new ulong[]{0x00000000801F5C80UL});
+    public static readonly BitSet FOLLOW_31_in_method130 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_expr_in_stat154 = new BitSet(new ulong[]{0x0000000000000100UL});
     public static readonly BitSet FOLLOW_EOS_in_stat156 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_ID_in_stat167 = new BitSet(new ulong[]{0x0000000000000080UL});
     public static readonly BitSet FOLLOW_ID_in_stat171 = new BitSet(new ulong[]{0x0000000000000200UL});
-    public static readonly BitSet FOLLOW_EQUALS_in_stat173 = new BitSet(new ulong[]{0x00000000000F9080UL});
+    public static readonly BitSet FOLLOW_EQUALS_in_stat173 = new BitSet(new ulong[]{0x00000000001F1080UL});
     public static readonly BitSet FOLLOW_expr_in_stat175 = new BitSet(new ulong[]{0x0000000000000100UL});
     public static readonly BitSet FOLLOW_EOS_in_stat177 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_ID_in_stat201 = new BitSet(new ulong[]{0x0000000000000200UL});
-    public static readonly BitSet FOLLOW_EQUALS_in_stat203 = new BitSet(new ulong[]{0x00000000000F9080UL});
+    public static readonly BitSet FOLLOW_EQUALS_in_stat203 = new BitSet(new ulong[]{0x00000000001F1080UL});
     public static readonly BitSet FOLLOW_expr_in_stat205 = new BitSet(new ulong[]{0x0000000000000100UL});
     public static readonly BitSet FOLLOW_EOS_in_stat207 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_RETURN_in_stat224 = new BitSet(new ulong[]{0x00000000000F9080UL});
+    public static readonly BitSet FOLLOW_RETURN_in_stat224 = new BitSet(new ulong[]{0x00000000001F1080UL});
     public static readonly BitSet FOLLOW_expr_in_stat226 = new BitSet(new ulong[]{0x0000000000000100UL});
     public static readonly BitSet FOLLOW_EOS_in_stat228 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_IF_in_stat242 = new BitSet(new ulong[]{0x0000000000001000UL});
-    public static readonly BitSet FOLLOW_LBRAC_in_stat244 = new BitSet(new ulong[]{0x00000000000F9080UL});
+    public static readonly BitSet FOLLOW_LBRAC_in_stat244 = new BitSet(new ulong[]{0x00000000001F1080UL});
     public static readonly BitSet FOLLOW_expr_in_stat246 = new BitSet(new ulong[]{0x0000000000002000UL});
-    public static readonly BitSet FOLLOW_RBRAC_in_stat248 = new BitSet(new ulong[]{0x0000000020000000UL});
-    public static readonly BitSet FOLLOW_29_in_stat250 = new BitSet(new ulong[]{0x00000000400F9C80UL});
-    public static readonly BitSet FOLLOW_stat_in_stat252 = new BitSet(new ulong[]{0x00000000400F9C80UL});
-    public static readonly BitSet FOLLOW_30_in_stat255 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_additive_expr_in_expr277 = new BitSet(new ulong[]{0x0000000000004002UL});
-    public static readonly BitSet FOLLOW_REL_OP_in_expr280 = new BitSet(new ulong[]{0x00000000000F9080UL});
-    public static readonly BitSet FOLLOW_additive_expr_in_expr283 = new BitSet(new ulong[]{0x0000000000004002UL});
-    public static readonly BitSet FOLLOW_multExpr_in_additive_expr294 = new BitSet(new ulong[]{0x0000000000108002UL});
-    public static readonly BitSet FOLLOW_ARITH_OP_in_additive_expr299 = new BitSet(new ulong[]{0x00000000000F9080UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_additive_expr302 = new BitSet(new ulong[]{0x00000000000F9080UL});
-    public static readonly BitSet FOLLOW_multExpr_in_additive_expr306 = new BitSet(new ulong[]{0x0000000000108002UL});
-    public static readonly BitSet FOLLOW_atom_in_multExpr327 = new BitSet(new ulong[]{0x0000000000E00002UL});
-    public static readonly BitSet FOLLOW_set_in_multExpr330 = new BitSet(new ulong[]{0x00000000000F9080UL});
-    public static readonly BitSet FOLLOW_atom_in_multExpr339 = new BitSet(new ulong[]{0x0000000000E00002UL});
-    public static readonly BitSet FOLLOW_MINUS_OP_in_atom355 = new BitSet(new ulong[]{0x0000000000010000UL});
-    public static readonly BitSet FOLLOW_INT_in_atom357 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_INT_in_atom363 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_LBRAC_in_atom369 = new BitSet(new ulong[]{0x00000000000F9080UL});
-    public static readonly BitSet FOLLOW_expr_in_atom371 = new BitSet(new ulong[]{0x0000000000002000UL});
-    public static readonly BitSet FOLLOW_RBRAC_in_atom373 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_STRING_LITERAL_in_atom383 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_atom389 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_atom395 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_ID_in_atom401 = new BitSet(new ulong[]{0x0000000080000000UL});
-    public static readonly BitSet FOLLOW_31_in_atom403 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_ID_in_atom417 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_RBRAC_in_stat248 = new BitSet(new ulong[]{0x0000000040000000UL});
+    public static readonly BitSet FOLLOW_30_in_stat250 = new BitSet(new ulong[]{0x00000000801F5C80UL});
+    public static readonly BitSet FOLLOW_stat_in_stat252 = new BitSet(new ulong[]{0x00000000801F5C80UL});
+    public static readonly BitSet FOLLOW_31_in_stat255 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_WHILE_in_stat272 = new BitSet(new ulong[]{0x0000000000001000UL});
+    public static readonly BitSet FOLLOW_LBRAC_in_stat274 = new BitSet(new ulong[]{0x00000000001F1080UL});
+    public static readonly BitSet FOLLOW_expr_in_stat276 = new BitSet(new ulong[]{0x0000000000002000UL});
+    public static readonly BitSet FOLLOW_RBRAC_in_stat278 = new BitSet(new ulong[]{0x0000000040000000UL});
+    public static readonly BitSet FOLLOW_30_in_stat280 = new BitSet(new ulong[]{0x00000000801F5C80UL});
+    public static readonly BitSet FOLLOW_stat_in_stat282 = new BitSet(new ulong[]{0x00000000801F5C80UL});
+    public static readonly BitSet FOLLOW_31_in_stat285 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_additive_expr_in_expr307 = new BitSet(new ulong[]{0x0000000000008002UL});
+    public static readonly BitSet FOLLOW_REL_OP_in_expr310 = new BitSet(new ulong[]{0x00000000001F1080UL});
+    public static readonly BitSet FOLLOW_additive_expr_in_expr313 = new BitSet(new ulong[]{0x0000000000008002UL});
+    public static readonly BitSet FOLLOW_multExpr_in_additive_expr324 = new BitSet(new ulong[]{0x0000000000210002UL});
+    public static readonly BitSet FOLLOW_ARITH_OP_in_additive_expr329 = new BitSet(new ulong[]{0x00000000001F1080UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_additive_expr332 = new BitSet(new ulong[]{0x00000000001F1080UL});
+    public static readonly BitSet FOLLOW_multExpr_in_additive_expr336 = new BitSet(new ulong[]{0x0000000000210002UL});
+    public static readonly BitSet FOLLOW_atom_in_multExpr357 = new BitSet(new ulong[]{0x0000000001C00002UL});
+    public static readonly BitSet FOLLOW_set_in_multExpr360 = new BitSet(new ulong[]{0x00000000001F1080UL});
+    public static readonly BitSet FOLLOW_atom_in_multExpr369 = new BitSet(new ulong[]{0x0000000001C00002UL});
+    public static readonly BitSet FOLLOW_MINUS_OP_in_atom385 = new BitSet(new ulong[]{0x0000000000020000UL});
+    public static readonly BitSet FOLLOW_INT_in_atom387 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_INT_in_atom393 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_LBRAC_in_atom399 = new BitSet(new ulong[]{0x00000000001F1080UL});
+    public static readonly BitSet FOLLOW_expr_in_atom401 = new BitSet(new ulong[]{0x0000000000002000UL});
+    public static readonly BitSet FOLLOW_RBRAC_in_atom403 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_STRING_LITERAL_in_atom413 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CHAR_LITERAL_in_atom419 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_BOOL_LITERAL_in_atom425 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_atom431 = new BitSet(new ulong[]{0x0000000100000000UL});
+    public static readonly BitSet FOLLOW_32_in_atom433 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_ID_in_atom447 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }
 }

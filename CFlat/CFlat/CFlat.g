@@ -34,6 +34,8 @@ stat:   expr EOS-> expr
 	RETURN expr EOS -> ^(RETURN expr)
 	|
 	IF LBRAC expr RBRAC '{' stat* '}' -> ^(IF expr stat*)
+	|
+	WHILE LBRAC expr RBRAC '{' stat* '}' -> ^(WHILE expr stat*)
 	;
 	
 expr	:	additive_expr (REL_OP^ additive_expr)*;
@@ -68,6 +70,8 @@ CLASS	:	'class';
 RETURN 	:	'return';
 
 IF	: 	'if';
+
+WHILE	:	'while';
 
 ARITH_OP 
 	:	 '+';

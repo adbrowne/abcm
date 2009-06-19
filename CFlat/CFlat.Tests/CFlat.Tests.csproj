@@ -63,6 +63,7 @@
     <Compile Include="Helper\Parser.cs" />
     <Compile Include="Integration\BaseIntegrationTest.cs" />
     <Compile Include="Integration\ClassAndMethodTests.cs" />
+    <Compile Include="Integration\LoopTests.cs" />
     <Compile Include="Integration\RelationalExpressionTests.cs" />
     <Compile Include="Integration\IfThenElseTests.cs" />
     <Compile Include="Integration\IntegerExpressionTests.cs" />
@@ -71,6 +72,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Compile Include="Unit\Ast\AstTestBase.cs" />
+    <Compile Include="Unit\Ast\LoopTests.cs" />
     <Compile Include="Unit\Lexer\BasicLexerTests.cs" />
     <Compile Include="Unit\ClrCodeGen\ClrCodeGeneratorTests.cs" />
     <Compile Include="Unit\ClrCodeGen\ClrCodeGenExpressionTests.cs" />

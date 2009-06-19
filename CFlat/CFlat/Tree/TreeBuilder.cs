@@ -108,6 +108,11 @@ namespace CFlat.Tree
             return new AssignmentStatement(name, expression);
         }
 
+        public Statement WhileStatement(Expression expression)
+        {
+            return new WhileStatement(expression);
+        }
+
         public Types GetTypeFromName(string typeName)
         {
             switch (typeName)

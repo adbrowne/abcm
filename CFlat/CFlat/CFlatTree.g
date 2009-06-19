@@ -34,7 +34,10 @@ stat returns [Statement s]:  e=expr { $s = TB.Statement(e); }
 	|
 	^(RETURN e=expr) { $s = TB.ReturnStatement(e); }
 	|
-	^(IF e=expr { $s = TB.IfStatement(e); } (st=stat { ((IfStatement)$s).IfBody.Add(st); })*) ;
+	^(IF e=expr { $s = TB.IfStatement(e); } (st=stat { ((IfStatement)$s).IfBody.Add(st); })*) 
+	|
+	^(WHILE e=expr { $s = TB.WhileStatement(e); } (st=stat { ((WhileStatement)$s).Body.Add(st); })*) 
+	;
 
 expr returns [Expression e]
     :   ^('+' a=expr b=expr)       { $e = TB.AdditionExpression(a, b);}

@@ -95,6 +95,7 @@
     <Compile Include="Tree\StringExpression.cs" />
     <Compile Include="Tree\SubtractionExpression.cs" />
     <Compile Include="Tree\TreeBuilder.cs" />
+    <Compile Include="Tree\WhileStatement.cs" />
     <Compile Include="Types.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
