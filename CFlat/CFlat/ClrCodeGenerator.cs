@@ -18,6 +18,8 @@ namespace CFlat
         private Dictionary<string, LocalBuilder> methodVariables = new Dictionary<string, LocalBuilder>();
         private Stack<Label> ifLabels = new Stack<Label>();
         private Dictionary<string, MethodBuilder> classMethods = new Dictionary<string, MethodBuilder>();
+        private Stack<Label> beforeWhileLabels = new Stack<Label>();
+        private Stack<Label> afterWhileLabels = new Stack<Label>();
 
         public ClrCodeGenerator(string outputFileName)
             : this(outputFileName, false)
@@ -221,6 +223,29 @@ namespace CFlat
         {
             var afterIf = ifLabels.Pop();
             ilGenerator.MarkLabel(afterIf);
+        }
+
+        public void BeginWhileBody()
+        {
+            var afterWhile = ilGenerator.DefineLabel();
+            ilGenerator.Emit(OpCodes.Brfalse, afterWhile);
+            afterWhileLabels.Push(afterWhile);
+        }
+
+        public void EndWhile()
+        {
+            var beforeWhileLabel = beforeWhileLabels.Pop();
+            ilGenerator.Emit(OpCodes.Br, beforeWhileLabel);
+
+            var afterWhileLabel = afterWhileLabels.Pop();
+            ilGenerator.MarkLabel(afterWhileLabel);
+        }
+
+        public void BeginWhileExpression()
+        {
+            var beforeWhile = ilGenerator.DefineLabel();
+            ilGenerator.MarkLabel(beforeWhile);
+            beforeWhileLabels.Push(beforeWhile);
         }
     }
 }
