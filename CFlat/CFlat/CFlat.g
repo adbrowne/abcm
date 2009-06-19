@@ -29,6 +29,8 @@ stat:   expr EOS-> expr
 	|
 	t=ID name=ID EQUALS expr EOS -> ^(EQUALS ^($t $name) expr)
 	|
+	name=ID EQUALS expr EOS -> ^(EQUALS $name expr)
+	|
 	RETURN expr EOS -> ^(RETURN expr)
 	|
 	IF LBRAC expr RBRAC '{' stat* '}' -> ^(IF expr stat*)

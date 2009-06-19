@@ -22,5 +22,6 @@ namespace CFlat.Tree
         Statement IfStatement(Expression expression);
         Expression RelationalExpression(string op, Expression expr1, Expression expr2);
         Expression MethodCall(string name);
+        Statement AssignmentStatement(string name, Expression expression);
     }
 }

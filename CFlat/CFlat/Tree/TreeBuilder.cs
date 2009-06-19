@@ -103,6 +103,11 @@ namespace CFlat.Tree
             return new MethodCall(name);
         }
 
+        public Statement AssignmentStatement(string name, Expression expression)
+        {
+            return new AssignmentStatement(name, expression);
+        }
+
         public Types GetTypeFromName(string typeName)
         {
             switch (typeName)

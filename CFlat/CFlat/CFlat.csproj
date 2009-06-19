@@ -69,6 +69,7 @@
     <Compile Include="Tree\BooleanExpression.cs" />
     <Compile Include="Tree\CharExpression.cs" />
     <Compile Include="CompilerContext.cs" />
+    <Compile Include="Tree\AssignmentStatement.cs" />
     <Compile Include="Tree\IfStatement.cs" />
     <Compile Include="Tree\GreaterThanExpression.cs" />
     <Compile Include="Tree\LessThanExpression.cs" />

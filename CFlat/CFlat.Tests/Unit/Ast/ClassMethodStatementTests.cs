@@ -26,6 +26,24 @@ namespace CFlat.Tests.Unit.AST
         }
 
         [Test]
+        public void AssignValueIntegerWithValue()
+        {
+            var input = "public class Test { public int TestMethod(){ int a=9; a = 10;}}";
+            var @class = GetAst(input);
+
+            var statement = ((Class)@class)["TestMethod"].Statements[1];
+
+            var assignmentStatement = (AssignmentStatement)statement;
+
+            Assert.AreEqual("a", assignmentStatement.VariableName);
+            var expression = assignmentStatement.Expression;
+
+            var integerExpression = (IntegerExpression)expression;
+
+            Assert.AreEqual(10, integerExpression.Value);
+        }
+
+        [Test]
         public void UseVariableInExpressionTest()
         {
             var input = @"public class Test { public int TestMethod(){ int a = 8; return 9 + a;} }";
