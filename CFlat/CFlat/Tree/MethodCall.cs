@@ -14,9 +14,12 @@ namespace CFlat.Tree
 
         public string Name { get; private set; }
 
+        public List<Expression> Parameters { get; private set; }
+
         public MethodCall(string name)
         {
             Name = name;
+            Parameters = new List<Expression>();
         }
 
         public override void Compile(CompilerContext context)

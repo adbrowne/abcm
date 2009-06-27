@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g 2009-06-27 03:01:38
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g 2009-06-27 04:43:40
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -56,8 +56,7 @@ public partial class CFlatTree : TreeParser
 		"'public'", 
 		"'{'", 
 		"'}'", 
-		"','", 
-		"'()'"
+		"','"
     };
 
     public const int ALPHA_NUM = 28;
@@ -82,7 +81,6 @@ public partial class CFlatTree : TreeParser
     public const int T__33 = 33;
     public const int STRING_LITERAL = 19;
     public const int WS = 29;
-    public const int T__34 = 34;
     public const int CHAR_LITERAL = 20;
     public const int REL_OP = 16;
     public const int RBRAC = 14;
@@ -542,7 +540,7 @@ public partial class CFlatTree : TreeParser
 
 
     // $ANTLR start "expr"
-    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:45:1: expr returns [Expression e] : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | ^( REL_OP a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL | ^( CALL n= ID ) );
+    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:45:1: expr returns [Expression e] : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | ^( REL_OP a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL | ^( CALL n= ID (p= expr )* ) );
     public Expression expr() // throws RecognitionException [1]
     {   
         Expression e = default(Expression);
@@ -559,13 +557,15 @@ public partial class CFlatTree : TreeParser
 
         Expression b = default(Expression);
 
+        Expression p = default(Expression);
+
 
         try 
     	{
-            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:46:5: ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | ^( REL_OP a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL | ^( CALL n= ID ) )
-            int alt7 = 13;
-            alt7 = dfa7.Predict(input);
-            switch (alt7) 
+            // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:46:5: ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | ^( REL_OP a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL | ^( CALL n= ID (p= expr )* ) )
+            int alt8 = 13;
+            alt8 = dfa8.Predict(input);
+            switch (alt8) 
             {
                 case 1 :
                     // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:46:9: ^( '+' a= expr b= expr )
@@ -737,15 +737,49 @@ public partial class CFlatTree : TreeParser
                     }
                     break;
                 case 13 :
-                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:58:7: ^( CALL n= ID )
+                    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:58:7: ^( CALL n= ID (p= expr )* )
                     {
                     	Match(input,CALL,FOLLOW_CALL_in_expr587); 
 
                     	Match(input, Token.DOWN, null); 
                     	n=(CommonTree)Match(input,ID,FOLLOW_ID_in_expr591); 
+                    	 e =  TB.MethodCall(((n != null) ? n.Text : null));
+                    	// C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:58:51: (p= expr )*
+                    	do 
+                    	{
+                    	    int alt7 = 2;
+                    	    int LA7_0 = input.LA(1);
+
+                    	    if ( (LA7_0 == CALL || LA7_0 == ID || (LA7_0 >= REL_OP && LA7_0 <= REM_OP)) )
+                    	    {
+                    	        alt7 = 1;
+                    	    }
+
+
+                    	    switch (alt7) 
+                    		{
+                    			case 1 :
+                    			    // C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlatTree.g:58:52: p= expr
+                    			    {
+                    			    	PushFollow(FOLLOW_expr_in_expr598);
+                    			    	p = expr();
+                    			    	state.followingStackPointer--;
+
+                    			    	((MethodCall)e).Parameters.Add(p);
+
+                    			    }
+                    			    break;
+
+                    			default:
+                    			    goto loop7;
+                    	    }
+                    	} while (true);
+
+                    	loop7:
+                    		;	// Stops C# compiler whining that label 'loop7' has no statements
+
 
                     	Match(input, Token.UP, null); 
-                    	 e =  TB.MethodCall(((n != null) ? n.Text : null));
 
                     }
                     break;
@@ -767,11 +801,11 @@ public partial class CFlatTree : TreeParser
 
 
    	protected DFA6 dfa6;
-   	protected DFA7 dfa7;
+   	protected DFA8 dfa8;
 	private void InitializeCyclicDFAs()
 	{
     	this.dfa6 = new DFA6(this);
-    	this.dfa7 = new DFA7(this);
+    	this.dfa8 = new DFA8(this);
 
 
 	}
@@ -835,20 +869,20 @@ public partial class CFlatTree : TreeParser
 
     }
 
-    const string DFA7_eotS =
+    const string DFA8_eotS =
         "\x0f\uffff";
-    const string DFA7_eofS =
+    const string DFA8_eofS =
         "\x0f\uffff";
-    const string DFA7_minS =
+    const string DFA8_minS =
         "\x01\x05\x01\uffff\x01\x02\x0c\uffff";
-    const string DFA7_maxS =
+    const string DFA8_maxS =
         "\x01\x19\x01\uffff\x01\x12\x0c\uffff";
-    const string DFA7_acceptS =
+    const string DFA8_acceptS =
         "\x01\uffff\x01\x01\x01\uffff\x01\x03\x01\x04\x01\x05\x01\x06\x01"+
         "\x07\x01\x08\x01\x09\x01\x0b\x01\x0c\x01\x0d\x01\x02\x01\x0a";
-    const string DFA7_specialS =
+    const string DFA8_specialS =
         "\x0f\uffff}>";
-    static readonly string[] DFA7_transitionS = {
+    static readonly string[] DFA8_transitionS = {
             "\x01\x0c\x02\uffff\x01\x0a\x07\uffff\x01\x06\x01\x02\x01\x09"+
             "\x01\x07\x01\x08\x01\x0b\x01\x01\x01\x03\x01\x04\x01\x05",
             "",
@@ -867,33 +901,33 @@ public partial class CFlatTree : TreeParser
             ""
     };
 
-    static readonly short[] DFA7_eot = DFA.UnpackEncodedString(DFA7_eotS);
-    static readonly short[] DFA7_eof = DFA.UnpackEncodedString(DFA7_eofS);
-    static readonly char[] DFA7_min = DFA.UnpackEncodedStringToUnsignedChars(DFA7_minS);
-    static readonly char[] DFA7_max = DFA.UnpackEncodedStringToUnsignedChars(DFA7_maxS);
-    static readonly short[] DFA7_accept = DFA.UnpackEncodedString(DFA7_acceptS);
-    static readonly short[] DFA7_special = DFA.UnpackEncodedString(DFA7_specialS);
-    static readonly short[][] DFA7_transition = DFA.UnpackEncodedStringArray(DFA7_transitionS);
+    static readonly short[] DFA8_eot = DFA.UnpackEncodedString(DFA8_eotS);
+    static readonly short[] DFA8_eof = DFA.UnpackEncodedString(DFA8_eofS);
+    static readonly char[] DFA8_min = DFA.UnpackEncodedStringToUnsignedChars(DFA8_minS);
+    static readonly char[] DFA8_max = DFA.UnpackEncodedStringToUnsignedChars(DFA8_maxS);
+    static readonly short[] DFA8_accept = DFA.UnpackEncodedString(DFA8_acceptS);
+    static readonly short[] DFA8_special = DFA.UnpackEncodedString(DFA8_specialS);
+    static readonly short[][] DFA8_transition = DFA.UnpackEncodedStringArray(DFA8_transitionS);
 
-    protected class DFA7 : DFA
+    protected class DFA8 : DFA
     {
-        public DFA7(BaseRecognizer recognizer)
+        public DFA8(BaseRecognizer recognizer)
         {
             this.recognizer = recognizer;
-            this.decisionNumber = 7;
-            this.eot = DFA7_eot;
-            this.eof = DFA7_eof;
-            this.min = DFA7_min;
-            this.max = DFA7_max;
-            this.accept = DFA7_accept;
-            this.special = DFA7_special;
-            this.transition = DFA7_transition;
+            this.decisionNumber = 8;
+            this.eot = DFA8_eot;
+            this.eof = DFA8_eof;
+            this.min = DFA8_min;
+            this.max = DFA8_max;
+            this.accept = DFA8_accept;
+            this.special = DFA8_special;
+            this.transition = DFA8_transition;
 
         }
 
         override public string Description
         {
-            get { return "45:1: expr returns [Expression e] : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | ^( REL_OP a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL | ^( CALL n= ID ) );"; }
+            get { return "45:1: expr returns [Expression e] : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | ^( '%' a= expr b= expr ) | ^( REL_OP a= expr b= expr ) | STRING_LITERAL | CHAR_LITERAL | INT | MINUS_OP INT | ID | BOOL_LITERAL | ^( CALL n= ID (p= expr )* ) );"; }
         }
 
     }
@@ -953,7 +987,8 @@ public partial class CFlatTree : TreeParser
     public static readonly BitSet FOLLOW_ID_in_expr557 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_BOOL_LITERAL_in_expr572 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_CALL_in_expr587 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_ID_in_expr591 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_ID_in_expr591 = new BitSet(new ulong[]{0x0000000003FF0128UL});
+    public static readonly BitSet FOLLOW_expr_in_expr598 = new BitSet(new ulong[]{0x0000000003FF0128UL});
 
 }
 }

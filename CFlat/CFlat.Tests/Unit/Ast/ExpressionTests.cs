@@ -240,6 +240,9 @@ namespace CFlat.Tests.Unit.AST
             var methodCall = (MethodCall)exprTree;
             Assert.AreEqual("MethodWithSingleArgument", methodCall.Name);
 
+            Assert.AreEqual(1, methodCall.Parameters.Count);
+            Assert.AreEqual(9, ((IntegerExpression)methodCall.Parameters[0]).Value);
+
         }
 
         [Test]

@@ -5,6 +5,7 @@ options
     language=CSharp2;
     output=AST;
     ASTLabelType=CommonTree;
+    backtrack=true;
 }
 
 tokens {
@@ -24,7 +25,7 @@ tokens {
 prog: 'public' CLASS ID '{' method* '}' -> ^(CLASS ID method*)
     ;
 
-method	: 'public' t=ID name=ID '(' param (',' param)* ')' '{' stat* '}' -> ^(METHOD $t $name param* stat*);
+method	: 'public' t=ID name=ID '(' (param (',' param)*)? ')' '{' stat* '}' -> ^(METHOD $t $name param* stat*);
 
 param	:	 t=ID n=ID -> ^(PARAM $t $n);
 	
@@ -63,7 +64,7 @@ atom:   MINUS_OP INT
 	|
 	BOOL_LITERAL
 	|
-	ID '()' -> ^(CALL ID)
+	ID '(' expr* ')' -> ^(CALL ID expr*)
 	|
 	ID
 	;
