@@ -64,6 +64,7 @@
     <Compile Include="CFlatLexer.Static.cs" />
     <Compile Include="ErrorSet.cs" />
     <Compile Include="Operator.cs" />
+    <Compile Include="Parameter.cs" />
     <Compile Include="ParserException.cs" />
     <Compile Include="Tree\Argument.cs" />
     <Compile Include="Tree\BinOpExpression.cs" />

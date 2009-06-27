@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CFlat;
 
 namespace CFlat.Tree
@@ -39,7 +40,10 @@ namespace CFlat.Tree
 
         public void Register(CompilerContext context)
         {
-            context.CodeGenerator.RegisterMethod(Name);
+            var parameters = (from p in Arguments
+                              select new Parameter(p.Type, p.Name)).ToArray();
+
+            context.CodeGenerator.RegisterMethod(Name, parameters);
         }
     }
 }

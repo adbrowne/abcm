@@ -25,6 +25,10 @@ namespace CFlat.Tree
         public override void Compile(CompilerContext context)
         {
             base.Compile(context);
+            foreach (var parameter in Parameters)
+            {
+                parameter.Compile(context);
+            }
             context.CodeGenerator.MethodCall(Name);
         }
     }

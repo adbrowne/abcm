@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -12,12 +13,11 @@ namespace CFlat
         private ModuleBuilder mainModuleBuilder;
         AssemblyBuilder assemblyBuilder;
         private TypeBuilder currentType;
-        private MethodBuilder currentMethod;
+        private MethodData currentMethod;
         private ILGenerator ilGenerator;
         private string assemblyName;
-        private Dictionary<string, LocalBuilder> methodVariables = new Dictionary<string, LocalBuilder>();
         private Stack<Label> ifLabels = new Stack<Label>();
-        private Dictionary<string, MethodBuilder> classMethods = new Dictionary<string, MethodBuilder>();
+        private Dictionary<string, MethodData> classMethods = new Dictionary<string, MethodData>();
         private Stack<Label> beforeWhileLabels = new Stack<Label>();
         private Stack<Label> afterWhileLabels = new Stack<Label>();
 
@@ -64,17 +64,29 @@ namespace CFlat
             assemblyBuilder.Save(outputFileName);
         }
 
-        public void RegisterMethod(string name)
+        public void RegisterMethod(string name, params Parameter[] parameters)
         {
-            var method = currentType.DefineMethod(name, MethodAttributes.Static | MethodAttributes.Public, typeof(object), Type.EmptyTypes);
-            classMethods.Add(name, method);
+            Type[] types = (from p in parameters
+                           select typeof(int)).ToArray();
+
+            var method = currentType.DefineMethod(name, MethodAttributes.Static | MethodAttributes.Public, typeof(object), types);
+
+            MethodData methodData = new MethodData(method, new Dictionary<string, IVariable>());
+
+            int x = 0;
+            foreach (var parameter in parameters)
+            {
+                methodData.Varables.Add(parameter.Name, new ParameterVariable(x, methodData));
+                x++;
+            }
+            
+            classMethods.Add(name, methodData);
         }
 
         public void BeginMethod(string name)
         {
-            methodVariables.Clear();
             currentMethod = classMethods[name];
-            ilGenerator = currentMethod.GetILGenerator();
+            ilGenerator = currentMethod.Builder.GetILGenerator();
         }
 
         public void BeginExpression()
@@ -136,8 +148,8 @@ namespace CFlat
 
         public void ExprId(string name)
         {
-            var variable = methodVariables[name];
-            ilGenerator.Emit(OpCodes.Ldloc, variable.LocalIndex);
+            var variable = currentMethod.Varables[name];
+            variable.PushToStack();
         }
 
         public void ExprBool(bool i)
@@ -156,7 +168,7 @@ namespace CFlat
         public void MethodCall(string name)
         {
             var method = classMethods[name];
-            ilGenerator.Emit(OpCodes.Call, method);
+            ilGenerator.Emit(OpCodes.Call, method.Builder);
             ilGenerator.Emit(OpCodes.Unbox_Any, typeof(int));
         }
 
@@ -167,16 +179,15 @@ namespace CFlat
 
         public void AssignExpression(string name)
         {
-            ilGenerator.Emit(OpCodes.Stloc, methodVariables[name].LocalIndex);
+            currentMethod.Varables[name].StoreFromStack();
         }
 
         public void DefineVariable(string name, Types type)
         {
-            var localBuilder = ilGenerator.DeclareLocal(typeof(int));
-            methodVariables.Add(name, localBuilder);
+            currentMethod.Varables.Add(name, new LocalVariable(name, currentMethod));
         }
 
-        public MethodInfo GetCurrentMethod()
+        public MethodData GetCurrentMethod()
         {
             mainModuleBuilder.CreateGlobalFunctions();
             return currentMethod;
@@ -204,9 +215,8 @@ namespace CFlat
 
         public void Return(string name)
         {
-            var variable = methodVariables[name];
-            ilGenerator.Emit(OpCodes.Ldloc, variable.LocalIndex);
-
+            currentMethod.Varables[name].PushToStack();
+            
             ilGenerator.Emit(OpCodes.Box, typeof(int));
 
             ilGenerator.Emit(OpCodes.Ret);
@@ -246,6 +256,67 @@ namespace CFlat
             var beforeWhile = ilGenerator.DefineLabel();
             ilGenerator.MarkLabel(beforeWhile);
             beforeWhileLabels.Push(beforeWhile);
+        }
+    }
+
+    public class ParameterVariable : IVariable
+    {
+        private readonly int Number;
+        private readonly MethodData MethodData;
+
+        public ParameterVariable(int number, MethodData methodData)
+        {
+            Number = number;
+            MethodData = methodData;
+        }
+
+        public void PushToStack()
+        {
+            MethodData.Builder.GetILGenerator().Emit(OpCodes.Ldarg, Number);
+        }
+
+        public void StoreFromStack()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public interface IVariable
+    {
+        void PushToStack();
+        void StoreFromStack();
+    }
+
+    class LocalVariable : IVariable
+    {
+        private LocalBuilder localBuilder;
+        private MethodData methodData;
+        public LocalVariable(string name, MethodData methodData)
+        {
+            this.methodData = methodData;
+            localBuilder = methodData.Builder.GetILGenerator().DeclareLocal(typeof(int));
+        }
+
+        public void PushToStack()
+        {
+            methodData.Builder.GetILGenerator().Emit(OpCodes.Ldloc, localBuilder.LocalIndex);
+        }
+
+        public void StoreFromStack()
+        {
+            methodData.Builder.GetILGenerator().Emit(OpCodes.Stloc, localBuilder.LocalIndex);
+        }
+    }
+
+    public class MethodData
+    {
+        public MethodBuilder Builder { get; private set; }
+        public Dictionary<string, IVariable> Varables { get; private set; }
+
+        public MethodData(MethodBuilder builder, Dictionary<string, IVariable> varables)
+        {
+            Builder = builder;
+            Varables = varables;
         }
     }
 }

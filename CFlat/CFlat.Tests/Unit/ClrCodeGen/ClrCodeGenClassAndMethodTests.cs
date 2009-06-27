@@ -57,6 +57,30 @@ namespace CFlat.Tests.Unit.ClrCodeGen
         }
 
         [Test]
+        public void MethodWithArgumentsTest()
+        {
+            var clrCodeGenerator = GetGeneratorForClass();
+
+            clrCodeGenerator.StartModule("Test");
+
+            clrCodeGenerator.RegisterMethod("Test", new Parameter(Types.Int, "x"));
+
+            clrCodeGenerator.BeginMethod("Test");
+            clrCodeGenerator.Return("x");
+            clrCodeGenerator.EndModule();
+
+            var outputAssembly = GetResult(clrCodeGenerator);
+
+            Type foo = outputAssembly.GetType("Test");
+            MethodInfo main = foo.GetMethod("Test");
+
+            int result = (int)main.Invoke(null, new object[]{5});
+            Assert.AreEqual(5, result);
+        
+            Assert.That(outputAssembly.ContainsTypeWithMethod("Test", "Test"));
+        }
+
+        [Test]
         public void MultipleMethodTest()
         {
             var clrCodeGenerator = GetGeneratorForClass();
