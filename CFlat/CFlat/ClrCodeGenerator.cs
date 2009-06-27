@@ -147,11 +147,6 @@ namespace CFlat
             }
         }
 
-        public void Comment(string comment)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void EndExpression()
         {
         }
@@ -175,11 +170,6 @@ namespace CFlat
                 ilGenerator.Emit(OpCodes.Ldc_I4_0);
         }
 
-        public void ExprChar(char value)
-        {
-            throw new NotImplementedException();
-        }
-
         public void MethodCall(string name)
         {
             var method = classMethods[name];
@@ -187,11 +177,6 @@ namespace CFlat
             
             if(currentMethod.ReturnType != Types.Void)
                 ilGenerator.Emit(OpCodes.Unbox_Any, ClrType(currentMethod.ReturnType));
-        }
-
-        public void BeginMethodArguments()
-        {
-            throw new NotImplementedException();
         }
 
         public void AssignExpression(string name)
@@ -202,12 +187,6 @@ namespace CFlat
         public void DefineVariable(string name, Types type)
         {
             currentMethod.Varables.Add(name, new LocalVariable(name, currentMethod, ClrType(type)));
-        }
-
-        public MethodData GetCurrentMethod()
-        {
-            mainModuleBuilder.CreateGlobalFunctions();
-            return currentMethod;
         }
 
         public void ReturnExpression(Types type)

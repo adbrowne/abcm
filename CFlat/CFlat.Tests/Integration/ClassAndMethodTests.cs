@@ -10,6 +10,13 @@ namespace CFlat.Tests.Integration
     {
         [Test]
         [ExpectedException("CFlat.ParserException")]
+        public void EnsureFailureOnInvaidLex()
+        {
+            GetResult("!!!");
+        }
+
+        [Test]
+        [ExpectedException("CFlat.ParserException")]
         public void EnsureFailureOnInvaidParse()
         {
             GetResult("blah");
