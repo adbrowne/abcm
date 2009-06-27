@@ -24,8 +24,11 @@ throw;
 prog returns [Class c]: ^(CLASS name=ID {$c = TB.Class($name.text); } (m=method{ $c.AddMethod(m);})* )
     ;
 
-method	returns [Method m]: ^(METHOD t=ID name=ID { $m = TB.Method($name.text, $t.text);} (s=stat { $m.Statements.Add(s); } )* );    
-	 
+method	returns [Method m]: ^(METHOD t=ID name=ID { $m = TB.Method($name.text, $t.text); } (p=param {$m.Arguments.Add(p); })* (s=stat { $m.Statements.Add(s); } )* );    
+
+param returns [Argument a]:
+	^(PARAM t=ID n=ID) { $a = TB.Argument($t.text, $n.text); }
+	;
 stat returns [Statement s]:  e=expr { $s = TB.Statement(e); }
 	|
 	^(EQUALS ^(t=ID name=ID) e=expr {$s = TB.DeclarationStatement($t.text, $name.text, e); })

@@ -87,6 +87,52 @@ namespace CFlat.Tests.Unit.AST
         }
 
         [Test]
+        public void MethodWithArgument()
+        {
+            var input = @"
+public class Test 
+{ 
+    public int TestMethod(int x)
+    { 
+        return 9; 
+    }
+}";
+            var @class = GetAst(input);
+            var testMethod = ((Class) @class)["TestMethod"];
+
+            Assert.AreEqual(1, testMethod.Arguments.Count);
+
+            var argument = testMethod.Arguments[0];
+            Assert.AreEqual(Types.Int, argument.Type);
+            Assert.AreEqual("x", argument.Name);
+        }
+
+        [Test]
+        public void MethodWithMultipleArguments()
+        {
+            var input = @"
+public class Test 
+{ 
+    public int TestMethod(int x, bool y, char z)
+    { 
+        return 9; 
+    }
+}";
+            var @class = GetAst(input);
+            var testMethod = ((Class)@class)["TestMethod"];
+
+            Assert.AreEqual(3, testMethod.Arguments.Count);
+
+            var boolArgument = testMethod.Arguments[1];
+            Assert.AreEqual(Types.Bool, boolArgument.Type);
+            Assert.AreEqual("y", boolArgument.Name);
+
+            var charArgument = testMethod.Arguments[2];
+            Assert.AreEqual(Types.Char, charArgument.Type);
+            Assert.AreEqual("z", charArgument.Name);
+        }
+
+        [Test]
         public void MultipleStatementTest()
         {
             var input = @"public class Test { public int TestMethodName(){int a=9;int b=10; }}";

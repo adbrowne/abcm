@@ -13,6 +13,7 @@ namespace CFlat.Tree
             Name = name;
             ReturnType = returnType;
             Statements = new List<Statement>();
+            Arguments = new List<Argument>();
         }
 
         public List<Statement> Statements { get; private set; }
@@ -21,6 +22,8 @@ namespace CFlat.Tree
         {
             get; private set;
         }
+
+        public List<Argument> Arguments { get; private set; }
 
         public void Compile(CompilerContext context)
         {

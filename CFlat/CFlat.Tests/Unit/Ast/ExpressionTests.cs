@@ -231,6 +231,18 @@ namespace CFlat.Tests.Unit.AST
         }
 
         [Test]
+        public void MethodCallWithArgumentTest()
+        {
+            var input = @"MethodWithSingleArgument(9)";
+            var exprTree = GetExpressionTree(input);
+
+            Assert.IsInstanceOfType(typeof(MethodCall), exprTree);
+            var methodCall = (MethodCall)exprTree;
+            Assert.AreEqual("MethodWithSingleArgument", methodCall.Name);
+
+        }
+
+        [Test]
         public void BooleanFalseExpressionTest()
         {
             var input = "false";

@@ -42,6 +42,7 @@ namespace CFlat.Tests.Integration
             Assert.That(outputAssembly.ContainsTypeWithMethod("Test", "TestMethodName"));
         }
 
+
         [Test]
         public void SimpleMethodReturnTest()
         {
@@ -52,9 +53,35 @@ namespace CFlat.Tests.Integration
             Type type = outputAssembly.GetType("Test");
             MethodInfo main = type.GetMethod("TestMethodName");
 
-            var @return = (int) main.Invoke(null, null);
-        
+            var @return = (int)main.Invoke(null, null);
+
             Assert.AreEqual(9, @return);
+        }
+
+        [Test]
+        public void MethodCallWithArgumentsTest()
+        {
+            var input = @"
+public class Test { 
+    public int Times2(int x) 
+    { 
+        return x * 2; 
+    }
+
+    public int Main()
+    { 
+        return Times2(9);
+    } 
+}";
+
+            var outputAssembly = GetResult(input);
+
+            Type type = outputAssembly.GetType("Test");
+            MethodInfo main = type.GetMethod("Main");
+
+            var @return = (int)main.Invoke(null, null);
+
+            Assert.AreEqual(18, @return);
         }
 
         [Test]

@@ -65,6 +65,7 @@
     <Compile Include="ErrorSet.cs" />
     <Compile Include="Operator.cs" />
     <Compile Include="ParserException.cs" />
+    <Compile Include="Tree\Argument.cs" />
     <Compile Include="Tree\BinOpExpression.cs" />
     <Compile Include="Tree\BooleanExpression.cs" />
     <Compile Include="Tree\CharExpression.cs" />

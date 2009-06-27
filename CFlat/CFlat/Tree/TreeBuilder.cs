@@ -113,6 +113,11 @@ namespace CFlat.Tree
             return new WhileStatement(expression);
         }
 
+        public Argument Argument(string typeName, string name)
+        {
+            return new Argument(GetTypeFromName(typeName), name);
+        }
+
         public Types GetTypeFromName(string typeName)
         {
             switch (typeName)

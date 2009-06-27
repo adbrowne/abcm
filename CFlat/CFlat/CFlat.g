@@ -10,6 +10,7 @@ options
 tokens {
     METHOD;
     CALL;
+    PARAM;
 }
 
 @lexer::namespace {
@@ -23,8 +24,10 @@ tokens {
 prog: 'public' CLASS ID '{' method* '}' -> ^(CLASS ID method*)
     ;
 
-method	: 'public' t=ID name=ID '()' '{' stat* '}' -> ^(METHOD $t $name stat*);
+method	: 'public' t=ID name=ID '(' param (',' param)* ')' '{' stat* '}' -> ^(METHOD $t $name param* stat*);
 
+param	:	 t=ID n=ID -> ^(PARAM $t $n);
+	
 stat:   expr EOS-> expr
 	|
 	t=ID name=ID EQUALS expr EOS -> ^(EQUALS ^($t $name) expr)

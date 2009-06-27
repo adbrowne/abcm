@@ -24,5 +24,6 @@ namespace CFlat.Tree
         Expression MethodCall(string name);
         Statement AssignmentStatement(string name, Expression expression);
         Statement WhileStatement(Expression expression);
+        Argument Argument(string typeName, string name);
     }
 }
