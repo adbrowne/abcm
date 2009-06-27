@@ -91,6 +91,8 @@ namespace CFlat
                     return typeof (int);
                 case Types.Bool:
                     return typeof (bool);
+                case Types.String:
+                    return typeof (string);
                 default:
                     throw new ArgumentException("Unknown Clr Type: " + type);
             }

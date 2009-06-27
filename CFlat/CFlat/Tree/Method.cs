@@ -15,6 +15,7 @@ namespace CFlat.Tree
             ReturnType = returnType;
             Statements = new List<Statement>();
             Arguments = new List<Argument>();
+            Variables = new List<DeclarationStatement>();
         }
 
         public List<Statement> Statements { get; private set; }
@@ -26,7 +27,8 @@ namespace CFlat.Tree
 
         public List<Argument> Arguments { get; private set; }
 
-        
+        public List<DeclarationStatement> Variables { get; private set; }
+
 
         public void Compile(CompilerContext context)
         {
@@ -50,7 +52,12 @@ namespace CFlat.Tree
 
         public Types GetVariableType(string name)
         {
-            return (Arguments.Where(p => p.Name == name).Single().Type);
+            var argument = Arguments.Where(p => p.Name == name).SingleOrDefault();
+
+            if(argument != null)
+                return argument.Type;
+
+            return Variables.Where(p => p.VariableName == name).Single().Type;
         }
     }
 }

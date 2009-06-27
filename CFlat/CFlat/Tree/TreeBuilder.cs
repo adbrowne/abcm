@@ -67,8 +67,7 @@ namespace CFlat.Tree
 
         public Expression IdExpression(string name)
         {
-            var variableType = currentMethod.GetVariableType(name);
-            return new IdExpression(name, variableType);
+            return new IdExpression(name, currentMethod);
         }
 
         public Expression BooleanExpression(string value)
@@ -78,7 +77,7 @@ namespace CFlat.Tree
 
         public Statement DeclarationStatement(string typeName, string name, Expression expression)
         {
-            return new DeclarationStatement(GetTypeFromName(typeName), name, expression);
+            return new DeclarationStatement(GetTypeFromName(typeName), name, expression, currentMethod);
         }
 
         public Statement ReturnStatement(Expression expression)
@@ -106,7 +105,7 @@ namespace CFlat.Tree
 
         public Expression MethodCall(string name)
         {
-            return new MethodCall(name, currentClass[name].ReturnType);
+            return new MethodCall(name, currentClass);
         }
 
         public Statement AssignmentStatement(string name, Expression expression)

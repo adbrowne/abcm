@@ -4,10 +4,11 @@ namespace CFlat.Tree
 {
     public class DeclarationStatement : Statement
     {
-        public DeclarationStatement(Types type, string name, Expression expression) : base(expression)
+        public DeclarationStatement(Types type, string name, Expression expression, Method method) : base(expression)
         {
             Type = type;
             VariableName = name;
+            method.Variables.Add(this);
         }
 
         public string VariableName

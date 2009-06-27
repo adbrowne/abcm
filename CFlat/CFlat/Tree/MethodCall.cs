@@ -7,20 +7,20 @@ namespace CFlat.Tree
 {
     public class MethodCall : Expression
     {
-        private readonly Types ReturnType;
-
+        private readonly Class Class;
+        
         public override Types Type
         {
-            get { return ReturnType; }
+            get { return Class[Name].ReturnType; }
         }
 
         public string Name { get; private set; }
 
         public List<Expression> Parameters { get; private set; }
 
-        public MethodCall(string name, Types returnType)
+        public MethodCall(string name, Class @class)
         {
-            ReturnType = returnType;
+            Class = @class;
             Name = name;
             Parameters = new List<Expression>();
         }

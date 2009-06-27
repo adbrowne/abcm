@@ -4,20 +4,20 @@ namespace CFlat.Tree
 {
     public class IdExpression : Expression
     {
-        private readonly Types type;
+        private readonly Method Method;
         public string Name { get; private set; }
 
-        public IdExpression(string name, Types type)
+        public IdExpression(string name, Method method)
         {
+            Method = method;
             Name = name;
-            this.type = type;
         }
 
         public override Types Type
         {
             get
             {
-                return type;
+                return Method.GetVariableType(Name);
             }
         }
 
