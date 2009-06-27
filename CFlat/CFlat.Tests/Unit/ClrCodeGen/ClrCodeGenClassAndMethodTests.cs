@@ -40,8 +40,8 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             var clrCodeGenerator = GetGeneratorForClass();
 
             clrCodeGenerator.StartModule("Test");
-            
-            clrCodeGenerator.RegisterMethod("Test");
+
+            clrCodeGenerator.RegisterMethod("Test", Types.Int);
             
             clrCodeGenerator.BeginMethod("Test");
             clrCodeGenerator.DefineVariable("a", Types.Int);
@@ -63,7 +63,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
 
             clrCodeGenerator.StartModule("Test");
 
-            clrCodeGenerator.RegisterMethod("Test", new Parameter(Types.Int, "x"));
+            clrCodeGenerator.RegisterMethod("Test", Types.Int, new Parameter(Types.Int, "x"));
 
             clrCodeGenerator.BeginMethod("Test");
             clrCodeGenerator.Return("x");
@@ -87,7 +87,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
 
             clrCodeGenerator.StartModule("Test");
 
-            clrCodeGenerator.RegisterMethod("FirstMethod");
+            clrCodeGenerator.RegisterMethod("FirstMethod", Types.Int);
             clrCodeGenerator.BeginMethod("FirstMethod");
             clrCodeGenerator.DefineVariable("a", Types.Int);
             clrCodeGenerator.BeginExpression();
@@ -95,7 +95,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.EndExpression();
             clrCodeGenerator.Return("a");
 
-            clrCodeGenerator.RegisterMethod("SecondMethod");
+            clrCodeGenerator.RegisterMethod("SecondMethod", Types.Int);
             clrCodeGenerator.BeginMethod("SecondMethod");
             clrCodeGenerator.DefineVariable("a", Types.Int);
             clrCodeGenerator.BeginExpression();

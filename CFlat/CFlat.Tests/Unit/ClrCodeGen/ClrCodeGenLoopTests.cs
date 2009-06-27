@@ -29,7 +29,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
 
             clrCodeGenerator.StartModule("Test");
 
-            clrCodeGenerator.RegisterMethod("Test");
+            clrCodeGenerator.RegisterMethod("Test", Types.Int);
             clrCodeGenerator.BeginMethod("Test");
 
             clrCodeGenerator.DefineVariable("a", Types.Int);

@@ -14,8 +14,8 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             var clrCodeGenerator = new ClrCodeGenerator(name);
             clrCodeGenerator.StartModule("Foo");
 
-            clrCodeGenerator.RegisterMethod("GetValue");
-            clrCodeGenerator.RegisterMethod("Test");
+            clrCodeGenerator.RegisterMethod("GetValue", Types.Int);
+            clrCodeGenerator.RegisterMethod("Test", Types.Int);
 
             clrCodeGenerator.BeginMethod("GetValue");
             clrCodeGenerator.BeginExpression();

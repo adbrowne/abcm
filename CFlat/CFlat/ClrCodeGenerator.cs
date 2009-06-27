@@ -64,23 +64,36 @@ namespace CFlat
             assemblyBuilder.Save(outputFileName);
         }
 
-        public void RegisterMethod(string name, params Parameter[] parameters)
+        public void RegisterMethod(string name, Types returnType, params Parameter[] parameters)
         {
             Type[] types = (from p in parameters
-                           select typeof(int)).ToArray();
+                            select ClrType(p.Type)).ToArray();
 
             var method = currentType.DefineMethod(name, MethodAttributes.Static | MethodAttributes.Public, typeof(object), types);
 
-            MethodData methodData = new MethodData(method, new Dictionary<string, IVariable>());
+            MethodData methodData = new MethodData(method, returnType, new Dictionary<string, IVariable>());
 
             int x = 0;
             foreach (var parameter in parameters)
             {
-                methodData.Varables.Add(parameter.Name, new ParameterVariable(x, methodData));
+                methodData.Varables.Add(parameter.Name, new ParameterVariable(x, methodData, ClrType(parameter.Type)));
                 x++;
             }
-            
+
             classMethods.Add(name, methodData);
+        }
+
+        private Type ClrType(Types type)
+        {
+            switch (type)
+            {
+                case Types.Int:
+                    return typeof (int);
+                case Types.Bool:
+                    return typeof (bool);
+                default:
+                    throw new ArgumentException("Unknown Clr Type: " + type);
+            }
         }
 
         public void BeginMethod(string name)
@@ -169,7 +182,9 @@ namespace CFlat
         {
             var method = classMethods[name];
             ilGenerator.Emit(OpCodes.Call, method.Builder);
-            ilGenerator.Emit(OpCodes.Unbox_Any, typeof(int));
+            
+            if(currentMethod.ReturnType != Types.Void)
+                ilGenerator.Emit(OpCodes.Unbox_Any, ClrType(currentMethod.ReturnType));
         }
 
         public void BeginMethodArguments()
@@ -184,7 +199,7 @@ namespace CFlat
 
         public void DefineVariable(string name, Types type)
         {
-            currentMethod.Varables.Add(name, new LocalVariable(name, currentMethod));
+            currentMethod.Varables.Add(name, new LocalVariable(name, currentMethod, ClrType(type)));
         }
 
         public MethodData GetCurrentMethod()
@@ -195,16 +210,8 @@ namespace CFlat
 
         public void ReturnExpression(Types type)
         {
-            switch (type)
-            {
-                case Types.Bool:
-                    ilGenerator.Emit(OpCodes.Box, typeof(bool));
-                    break;
-                case Types.Int:
-                    ilGenerator.Emit(OpCodes.Box, typeof(int));
-                    break;
-            }
-
+            ilGenerator.Emit(OpCodes.Box, ClrType(type));
+            
             ilGenerator.Emit(OpCodes.Ret);
         }
 
@@ -215,9 +222,11 @@ namespace CFlat
 
         public void Return(string name)
         {
-            currentMethod.Varables[name].PushToStack();
-            
-            ilGenerator.Emit(OpCodes.Box, typeof(int));
+            var variable = currentMethod.Varables[name];
+            variable.PushToStack();
+
+            var varType = variable.ClrType;
+            ilGenerator.Emit(OpCodes.Box, varType);
 
             ilGenerator.Emit(OpCodes.Ret);
         }
@@ -264,9 +273,10 @@ namespace CFlat
         private readonly int Number;
         private readonly MethodData MethodData;
 
-        public ParameterVariable(int number, MethodData methodData)
+        public ParameterVariable(int number, MethodData methodData, Type type)
         {
             Number = number;
+            Type = type;
             MethodData = methodData;
         }
 
@@ -279,22 +289,31 @@ namespace CFlat
         {
             throw new NotImplementedException();
         }
+
+        public Type ClrType
+        {
+            get { return Type; }
+        }
+
+        private Type Type;
     }
 
     public interface IVariable
     {
         void PushToStack();
         void StoreFromStack();
+        Type ClrType { get; }
     }
 
     class LocalVariable : IVariable
     {
         private LocalBuilder localBuilder;
         private MethodData methodData;
-        public LocalVariable(string name, MethodData methodData)
+        public LocalVariable(string name, MethodData methodData, Type type)
         {
             this.methodData = methodData;
-            localBuilder = methodData.Builder.GetILGenerator().DeclareLocal(typeof(int));
+            Type = type;
+            localBuilder = methodData.Builder.GetILGenerator().DeclareLocal(type);
         }
 
         public void PushToStack()
@@ -306,6 +325,13 @@ namespace CFlat
         {
             methodData.Builder.GetILGenerator().Emit(OpCodes.Stloc, localBuilder.LocalIndex);
         }
+
+        public Type ClrType
+        {
+            get { return Type; }
+        }
+
+        private Type Type;
     }
 
     public class MethodData
@@ -313,9 +339,12 @@ namespace CFlat
         public MethodBuilder Builder { get; private set; }
         public Dictionary<string, IVariable> Varables { get; private set; }
 
-        public MethodData(MethodBuilder builder, Dictionary<string, IVariable> varables)
+        public Types ReturnType { get; private set; }
+
+        public MethodData(MethodBuilder builder, Types returnType, Dictionary<string, IVariable> varables)
         {
             Builder = builder;
+            ReturnType = returnType;
             Varables = varables;
         }
     }

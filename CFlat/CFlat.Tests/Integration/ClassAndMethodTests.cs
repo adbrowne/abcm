@@ -84,6 +84,33 @@ public class Test {
             Assert.AreEqual(18, @return);
         }
 
+
+        [Test]
+        public void MethodCallWithBooleanArgumentsTest()
+        {
+            var input = @"
+public class Test { 
+    public bool BooleanFunction(bool x) 
+    { 
+        return x; 
+    }
+
+    public bool Main()
+    { 
+        return BooleanFunction(true);
+    } 
+}";
+
+            var outputAssembly = GetResult(input);
+
+            Type type = outputAssembly.GetType("Test");
+            MethodInfo main = type.GetMethod("Main");
+
+            var @return = (bool)main.Invoke(null, null);
+
+            Assert.AreEqual(true, @return);
+        }
+
         [Test]
         public void MethodCallTest()
         {

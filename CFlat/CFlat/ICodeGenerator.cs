@@ -28,6 +28,6 @@ namespace CFlat
         void BeginWhileBody();
         void EndWhile();
         void BeginWhileExpression();
-        void RegisterMethod(string name, params Parameter[] parameters);
+        void RegisterMethod(string name, Types returnType, params Parameter[] parameters);
     }
 }

@@ -38,7 +38,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
         public void SimpleStatementTest()
         {
             var clrCodeGenerator = GetGeneratorForStatement();
-            clrCodeGenerator.RegisterMethod("Test");
+            clrCodeGenerator.RegisterMethod("Test", Types.Int);
             clrCodeGenerator.BeginMethod("Test");
             clrCodeGenerator.DefineVariable("a",Types.Int);
             clrCodeGenerator.BeginExpression();

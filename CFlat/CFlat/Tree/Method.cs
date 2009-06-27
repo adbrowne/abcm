@@ -26,6 +26,8 @@ namespace CFlat.Tree
 
         public List<Argument> Arguments { get; private set; }
 
+        
+
         public void Compile(CompilerContext context)
         {
             context.CodeGenerator.BeginMethod(Name);
@@ -43,7 +45,12 @@ namespace CFlat.Tree
             var parameters = (from p in Arguments
                               select new Parameter(p.Type, p.Name)).ToArray();
 
-            context.CodeGenerator.RegisterMethod(Name, parameters);
+            context.CodeGenerator.RegisterMethod(Name, ReturnType, parameters);
+        }
+
+        public Types GetVariableType(string name)
+        {
+            return (Arguments.Where(p => p.Name == name).Single().Type);
         }
     }
 }

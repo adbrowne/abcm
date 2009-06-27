@@ -75,7 +75,8 @@ namespace CFlat.Tests.Unit.AST
             var input = "public class Test { public int TestMethod(){ return 9; }}";
             var @class = GetAst(input);
 
-            var statement = ((Class)@class)["TestMethod"].Statements[0];
+            Method method = ((Class)@class)["TestMethod"];
+            var statement = method.Statements[0];
 
             var returnStatement = (ReturnStatement)statement;
 
@@ -84,6 +85,7 @@ namespace CFlat.Tests.Unit.AST
             var integerExpression = (IntegerExpression)expression;
 
             Assert.AreEqual(9, integerExpression.Value);
+            Assert.AreEqual(Types.Int, method.ReturnType);
         }
 
         [Test]

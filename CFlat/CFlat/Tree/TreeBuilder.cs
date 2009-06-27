@@ -5,6 +5,9 @@ namespace CFlat.Tree
 {
     public class TreeBuilder : ITreeBuilder
     {
+        private Method currentMethod = null;
+        private Class currentClass = null;
+
         public IntegerExpression IntegerExpression(string value)
         {
             return new IntegerExpression(value);
@@ -17,12 +20,14 @@ namespace CFlat.Tree
 
         public Class Class(string name)
         {
-            return new Class(name);
+            currentClass = new Class(name);
+            return currentClass;
         }
 
         public Method Method(string name, string returnTypeName)
         {
-            return new Method(name, GetTypeFromName(returnTypeName));
+            currentMethod =  new Method(name, GetTypeFromName(returnTypeName));
+            return currentMethod;
         }
 
         public Statement Statement(Expression e)
@@ -62,7 +67,8 @@ namespace CFlat.Tree
 
         public Expression IdExpression(string name)
         {
-            return new IdExpression(name);
+            var variableType = currentMethod.GetVariableType(name);
+            return new IdExpression(name, variableType);
         }
 
         public Expression BooleanExpression(string value)
@@ -100,7 +106,7 @@ namespace CFlat.Tree
 
         public Expression MethodCall(string name)
         {
-            return new MethodCall(name);
+            return new MethodCall(name, currentClass[name].ReturnType);
         }
 
         public Statement AssignmentStatement(string name, Expression expression)
