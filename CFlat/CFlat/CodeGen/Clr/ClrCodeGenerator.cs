@@ -16,7 +16,6 @@ namespace CFlat.CodeGen.Clr
         private MethodData currentMethod;
         private ILGenerator ilGenerator;
         private string assemblyName;
-        private Stack<Label> ifLabels = new Stack<Label>();
         private Dictionary<string, MethodData> classMethods = new Dictionary<string, MethodData>();
         private Stack<Label> beforeWhileLabels = new Stack<Label>();
         private Stack<Label> afterWhileLabels = new Stack<Label>();
@@ -191,16 +190,16 @@ namespace CFlat.CodeGen.Clr
             ilGenerator.Emit(OpCodes.Ret);
         }
 
-        public void BeginIf()
+        public IIfToken BeginIf()
         {
             var afterIf = ilGenerator.DefineLabel();
             ilGenerator.Emit(OpCodes.Brfalse, afterIf);
-            ifLabels.Push(afterIf);
+            return new ClrIfToken(afterIf);
         }
 
-        public void EndIf()
+        public void EndIf(IIfToken token)
         {
-            var afterIf = ifLabels.Pop();
+            var afterIf = ((ClrIfToken) token).Label;
             ilGenerator.MarkLabel(afterIf);
         }
 

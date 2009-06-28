@@ -20,8 +20,8 @@ namespace CFlat.CodeGen
         void BeginMethod(string name);
         void ReturnExpression(Types type);
         void EndMethod();
-        void BeginIf();
-        void EndIf();
+        IIfToken BeginIf();
+        void EndIf(IIfToken ifToken);
         Assembly Save(bool outputToFile);
         void BeginWhileBody();
         void EndWhile();

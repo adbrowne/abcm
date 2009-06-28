@@ -57,7 +57,9 @@
     <Compile Include="CFlatParser.cs" />
     <Compile Include="CFlatTree.cs" />
     <Compile Include="CFlatTree.Static.cs" />
+    <Compile Include="CodeGen\Clr\ClrIfToken.cs" />
     <Compile Include="CodeGen\Clr\ClrCodeGenerator.cs" />
+    <Compile Include="CodeGen\IIfToken.cs" />
     <Compile Include="CodeGen\Clr\IVariable.cs" />
     <Compile Include="CodeGen\Clr\LocalVariable.cs" />
     <Compile Include="CodeGen\Clr\MethodData.cs" />

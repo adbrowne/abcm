@@ -32,14 +32,14 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.EndExpression();
 
 
-            clrCodeGenerator.BeginIf();
+            var ifToken = clrCodeGenerator.BeginIf();
 
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprNumber(3);
             clrCodeGenerator.EndExpression();
             clrCodeGenerator.AssignExpression("a");
 
-            clrCodeGenerator.EndIf();
+            clrCodeGenerator.EndIf(ifToken);
 
             EndIfTestGeneration(clrCodeGenerator);
 
@@ -64,14 +64,14 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.EndExpression();
 
 
-            clrCodeGenerator.BeginIf();
+            var ifToken = clrCodeGenerator.BeginIf();
 
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprNumber(3);
             clrCodeGenerator.EndExpression();
             clrCodeGenerator.AssignExpression("a");
 
-            clrCodeGenerator.EndIf();
+            clrCodeGenerator.EndIf(ifToken);
 
             EndIfTestGeneration(clrCodeGenerator);
 
@@ -96,22 +96,22 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.EndExpression();
 
 
-            clrCodeGenerator.BeginIf();
+            var outerIf = clrCodeGenerator.BeginIf();
 
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprBool(true);
             clrCodeGenerator.EndExpression();
 
-            clrCodeGenerator.BeginIf();
+            var innerIf = clrCodeGenerator.BeginIf();
 
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprNumber(4);
             clrCodeGenerator.EndExpression();
             clrCodeGenerator.AssignExpression("a");
 
-            clrCodeGenerator.EndIf();
+            clrCodeGenerator.EndIf(innerIf);
 
-            clrCodeGenerator.EndIf();
+            clrCodeGenerator.EndIf(outerIf);
             EndIfTestGeneration(clrCodeGenerator);
 
             var outputAssembly = GetResult(clrCodeGenerator);

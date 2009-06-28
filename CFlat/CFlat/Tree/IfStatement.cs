@@ -19,12 +19,12 @@ namespace CFlat.Tree
                 context.ErrorSet.Add(new CompileError(CompileErrorType.TypeMismatch));
         
             Expression.Compile(context);
-            context.CodeGenerator.BeginIf();
+            var ifToken = context.CodeGenerator.BeginIf();
             foreach (var statement in IfBody)
             {
                 statement.Compile(context);
             }
-            context.CodeGenerator.EndIf();
+            context.CodeGenerator.EndIf(ifToken);
         }
     }
 }
