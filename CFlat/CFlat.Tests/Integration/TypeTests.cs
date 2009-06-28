@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Antlr.Runtime;
 using Antlr.Runtime.Tree;
 using NUnit.Framework;
@@ -24,6 +25,26 @@ namespace CFlat.Tests.Integration
             var output = GetErrors(input);
 
             Assert.AreEqual(CompileErrorType.TypeMismatch, output[0].Type);    
+        }
+
+        [Test]
+        public void CannotApplyOperatorToIncompatibleArgumentsWithAdditionOperator()
+        {
+            var input = @"
+public class Test { 
+    public int TestMethod(int a, bool b){ 
+        return a + b;
+    }
+}";
+            var error = GetErrors(input)[0];
+
+            Assert.AreEqual(CompileErrorType.CannotApplyOperator, error.Type);
+
+            var dataItems = error.Data.ToArray();
+
+            Assert.AreEqual(Operator.Add, dataItems[0]);
+            Assert.AreEqual(Types.Int, dataItems[1]);
+            Assert.AreEqual(Types.Bool, dataItems[2]);
         }
 
         private ErrorSet GetErrors(string input)

@@ -2,6 +2,7 @@ namespace CFlat
 {
     public enum CompileErrorType
     {
-        TypeMismatch = 0
+        TypeMismatch = 0,
+        CannotApplyOperator
     }
 }
