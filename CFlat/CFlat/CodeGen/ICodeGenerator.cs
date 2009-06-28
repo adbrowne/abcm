@@ -23,9 +23,11 @@ namespace CFlat.CodeGen
         IIfToken BeginIf();
         void EndIf(IIfToken ifToken);
         Assembly Save(bool outputToFile);
-        void BeginWhileBody();
-        void EndWhile();
-        void BeginWhileExpression();
+
+        void BeginWhileBody(IWhileToken whileToken);
+        void EndWhile(IWhileToken whileToken);
+        IWhileToken BeginWhileExpression();
+        
         void RegisterMethod(string name, Types returnType, params Parameter[] parameters);
     }
 }

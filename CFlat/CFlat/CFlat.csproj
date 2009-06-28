@@ -59,10 +59,12 @@
     <Compile Include="CFlatTree.Static.cs" />
     <Compile Include="CodeGen\Clr\ClrIfToken.cs" />
     <Compile Include="CodeGen\Clr\ClrCodeGenerator.cs" />
+    <Compile Include="CodeGen\Clr\ClrWhileToken.cs" />
     <Compile Include="CodeGen\IIfToken.cs" />
     <Compile Include="CodeGen\Clr\IVariable.cs" />
     <Compile Include="CodeGen\Clr\LocalVariable.cs" />
     <Compile Include="CodeGen\Clr\MethodData.cs" />
+    <Compile Include="CodeGen\IWhileToken.cs" />
     <Compile Include="CompileError.cs" />
     <Compile Include="CompileErrorType.cs" />
     <Compile Include="CFlatParser.Static.cs" />

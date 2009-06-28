@@ -15,16 +15,16 @@ namespace CFlat.Tree
             public override void Compile(CompilerContext context)
             {
                 base.Compile(context);
-                context.CodeGenerator.BeginWhileExpression();
+                var whileToken = context.CodeGenerator.BeginWhileExpression();
                 Expression.Compile(context);
-                context.CodeGenerator.BeginWhileBody();
+                context.CodeGenerator.BeginWhileBody(whileToken);
 
                 foreach (var statement in Body)
                 {
                     statement.Compile(context);
                 }
 
-                context.CodeGenerator.EndWhile();
+                context.CodeGenerator.EndWhile(whileToken);
             }
         }
 }

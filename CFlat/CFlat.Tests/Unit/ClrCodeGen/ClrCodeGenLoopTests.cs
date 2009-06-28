@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using CFlat;
+using CFlat.CodeGen;
 using CFlat.CodeGen.Clr;
 using CFlat.Tests.Helper;
 using NUnit.Framework;
@@ -38,7 +39,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.EndExpression();
             clrCodeGenerator.AssignExpression("a");
 
-            clrCodeGenerator.BeginWhileExpression();
+            IWhileToken whileToken = clrCodeGenerator.BeginWhileExpression();
 
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprId("a");
@@ -46,7 +47,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.Operation(Operator.LessThan);
             clrCodeGenerator.EndExpression();
 
-            clrCodeGenerator.BeginWhileBody();
+            clrCodeGenerator.BeginWhileBody(whileToken);
 
             clrCodeGenerator.BeginExpression();
             clrCodeGenerator.ExprId("a");
@@ -55,7 +56,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             clrCodeGenerator.EndExpression();
             clrCodeGenerator.AssignExpression("a");
 
-            clrCodeGenerator.EndWhile();
+            clrCodeGenerator.EndWhile(whileToken);
 
             clrCodeGenerator.Return("a");
             clrCodeGenerator.EndMethod();

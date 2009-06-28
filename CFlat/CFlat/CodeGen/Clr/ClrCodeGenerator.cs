@@ -17,9 +17,7 @@ namespace CFlat.CodeGen.Clr
         private ILGenerator ilGenerator;
         private string assemblyName;
         private Dictionary<string, MethodData> classMethods = new Dictionary<string, MethodData>();
-        private Stack<Label> beforeWhileLabels = new Stack<Label>();
-        private Stack<Label> afterWhileLabels = new Stack<Label>();
-
+        
         public ClrCodeGenerator(string outputFileName)
         {
             this.outputFileName = outputFileName;
@@ -203,27 +201,29 @@ namespace CFlat.CodeGen.Clr
             ilGenerator.MarkLabel(afterIf);
         }
 
-        public void BeginWhileBody()
+        public void BeginWhileBody(IWhileToken whileToken)
         {
-            var afterWhile = ilGenerator.DefineLabel();
+            var afterWhile = ((ClrWhileToken) whileToken).AfterWhile;
             ilGenerator.Emit(OpCodes.Brfalse, afterWhile);
-            afterWhileLabels.Push(afterWhile);
         }
 
-        public void EndWhile()
+        public void EndWhile(IWhileToken whileToken)
         {
-            var beforeWhileLabel = beforeWhileLabels.Pop();
+            var clrWhileToken = whileToken as ClrWhileToken;
+
+            var beforeWhileLabel = clrWhileToken.BeforeWhile;
             ilGenerator.Emit(OpCodes.Br, beforeWhileLabel);
 
-            var afterWhileLabel = afterWhileLabels.Pop();
-            ilGenerator.MarkLabel(afterWhileLabel);
+            ilGenerator.MarkLabel(clrWhileToken.AfterWhile);
         }
 
-        public void BeginWhileExpression()
+        public IWhileToken BeginWhileExpression()
         {
             var beforeWhile = ilGenerator.DefineLabel();
+            var afterWhile = ilGenerator.DefineLabel();
+            
             ilGenerator.MarkLabel(beforeWhile);
-            beforeWhileLabels.Push(beforeWhile);
+            return new ClrWhileToken(beforeWhile, afterWhile);
         }
     }
 
