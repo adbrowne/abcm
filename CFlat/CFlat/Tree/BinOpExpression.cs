@@ -12,5 +12,18 @@ namespace CFlat.Tree
             Expr1 = expr1;
             Expr2 = expr2;
         }
+
+        public override void Compile(CompilerContext context)
+        {
+            base.Compile(context);
+
+            if (Expr1.Type != Expr2.Type)
+            {
+                context.ErrorSet.Add(new CompileError(CompileErrorType.CannotApplyOperator, new object[] { Operator, Expr1.Type, Expr2.Type }));
+                return;
+            }
+        }
+
+        protected abstract Operator Operator { get; }
     }
 }

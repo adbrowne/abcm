@@ -48,6 +48,25 @@ namespace CFlat.Tests.Integration
             Assert.AreEqual(6, @return);
         }
 
+        [Test]
+        public void DivisionExpressionTest()
+        {
+
+            var expression = "9 / 3";
+            var @return = GetResult(expression);
+
+            Assert.AreEqual(3, @return);
+        }
+
+        [Test]
+        public void RemainderExpressionTest()
+        {
+
+            var expression = "10 % 3";
+            var @return = GetResult(expression);
+
+            Assert.AreEqual(1, @return);
+        }
         private static int GetResult(string expression)
         {
             var input = @"public class Test { public int TestMethodName(){ return " + expression + ";} }";

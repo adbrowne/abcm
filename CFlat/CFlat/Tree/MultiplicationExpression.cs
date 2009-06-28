@@ -20,5 +20,10 @@ namespace CFlat.Tree
             Expr2.Compile(context);
             context.CodeGenerator.Operation(Operator.Multiply);
         }
+
+        protected override Operator Operator
+        {
+            get { return Operator.Multiply; }
+        }
     }
 }

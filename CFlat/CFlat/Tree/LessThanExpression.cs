@@ -1,3 +1,5 @@
+using System;
+
 namespace CFlat.Tree
 {
     public class LessThanExpression : BinOpExpression
@@ -18,6 +20,11 @@ namespace CFlat.Tree
             Expr1.Compile(context);
             Expr2.Compile(context);
             context.CodeGenerator.Operation(Operator.LessThan);
+        }
+
+        protected override Operator Operator
+        {
+            get { return Operator.LessThan; }
         }
     }
 }

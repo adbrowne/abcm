@@ -1,3 +1,4 @@
+using System;
 using CFlat;
 
 namespace CFlat.Tree
@@ -10,7 +11,22 @@ namespace CFlat.Tree
 
         public override Types Type
         {
-            get { throw new System.NotImplementedException(); }
+            get { return Types.Int; }
+        }
+
+        protected override Operator Operator
+        {
+            get { return Operator.Mod; }
+        }
+
+        public override void Compile(CompilerContext context)
+        {
+            base.Compile(context);
+
+
+            Expr1.Compile(context);
+            Expr2.Compile(context);
+            context.CodeGenerator.Operation(Operator.Mod);
         }
     }
 }

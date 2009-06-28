@@ -7,6 +7,7 @@ namespace CFlat
         Divide,
         Subtract,
         LessThan,
-        GreaterThan
+        GreaterThan,
+        Mod
     }
 }

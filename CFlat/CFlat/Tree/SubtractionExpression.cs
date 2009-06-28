@@ -20,5 +20,10 @@ namespace CFlat.Tree
             Expr2.Compile(context);
             context.CodeGenerator.Operation(Operator.Subtract);
         }
+
+        protected override Operator Operator
+        {
+            get { return Operator.Subtract; }
+        }
     }
 }

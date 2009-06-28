@@ -1,3 +1,5 @@
+using System;
+
 namespace CFlat.Tree
 {
     public class GreaterThanExpression : BinOpExpression
@@ -20,6 +22,11 @@ namespace CFlat.Tree
             Expr2.Compile(context);
             context.CodeGenerator.Operation(Operator.GreaterThan);
         
+        }
+
+        protected override Operator Operator
+        {
+            get { return Operator.GreaterThan; }
         }
     }
 }

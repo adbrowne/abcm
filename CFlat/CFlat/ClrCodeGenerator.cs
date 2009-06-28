@@ -111,6 +111,12 @@ namespace CFlat
                 case Operator.Subtract:
                     ilGenerator.Emit(OpCodes.Sub);
                     break;
+                case Operator.Divide:
+                    ilGenerator.Emit(OpCodes.Div);
+                    break;
+                case Operator.Mod:
+                    ilGenerator.Emit(OpCodes.Rem);
+                    break;
                 case Operator.LessThan:
                     {
                         ilGenerator.Emit(OpCodes.Clt);
