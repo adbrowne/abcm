@@ -18,8 +18,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
 
         private Assembly GetResult(ClrCodeGenerator clrCodeGenerator)
         {
-            clrCodeGenerator.Save();
-            return Assembly.Load(clrCodeGenerator.Name);
+            return clrCodeGenerator.Save(false);
         }
 
         [Test]

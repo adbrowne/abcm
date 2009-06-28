@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace CFlat.CodeGen
 {
     public interface ICodeGenerator
@@ -20,8 +22,7 @@ namespace CFlat.CodeGen
         void EndMethod();
         void BeginIf();
         void EndIf();
-        void Save();
-        string Name { get; }
+        Assembly Save(bool outputToFile);
         void BeginWhileBody();
         void EndWhile();
         void BeginWhileExpression();

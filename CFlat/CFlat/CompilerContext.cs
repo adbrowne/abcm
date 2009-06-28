@@ -1,3 +1,4 @@
+using System.Reflection;
 using CFlat.CodeGen;
 
 namespace CFlat
@@ -12,9 +13,9 @@ namespace CFlat
             ErrorSet = errorSet;
         }
 
-        public void Save()
+        public Assembly Save(bool outputToFile)
         {
-            CodeGenerator.Save();
+            return CodeGenerator.Save(outputToFile);
         }
     }
 }

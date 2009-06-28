@@ -32,9 +32,8 @@ namespace CFlat.Tests.Unit.ClrCodeGen
         {
             clrCodeGenerator.ReturnExpression(types);
             clrCodeGenerator.EndModule();
-            clrCodeGenerator.Save();
-            Assembly a = Assembly.Load(clrCodeGenerator.Name);
-
+            Assembly a = clrCodeGenerator.Save(false);
+             
             Type foo = a.GetType("Foo");
             MethodInfo main = foo.GetMethod("Test");
 

@@ -22,30 +22,18 @@ namespace CFlat.CodeGen.Clr
         private Stack<Label> afterWhileLabels = new Stack<Label>();
 
         public ClrCodeGenerator(string outputFileName)
-            : this(outputFileName, false)
-        {
-        }
-
-        public ClrCodeGenerator(string outputFileName, bool inMemory)
         {
             this.outputFileName = outputFileName;
             string name = Path.GetFileNameWithoutExtension(outputFileName);
             this.assemblyName = name;
             var assemblyName = new AssemblyName(name);
 
-            AssemblyBuilderAccess accessType = AssemblyBuilderAccess.Save;
-
-            if (inMemory) accessType = AssemblyBuilderAccess.Run;
+            AssemblyBuilderAccess accessType = AssemblyBuilderAccess.RunAndSave;
 
             assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName,
                                                                             accessType);
 
             mainModuleBuilder = assemblyBuilder.DefineDynamicModule(outputFileName, true);
-        }
-
-        public string Name
-        {
-            get { return assemblyName; }
         }
 
         public void StartModule(string id)
@@ -58,10 +46,12 @@ namespace CFlat.CodeGen.Clr
             currentType.CreateType();
         }
 
-        public void Save()
+        public Assembly Save(bool outputToFile)
         {
             mainModuleBuilder.CreateGlobalFunctions();
-            assemblyBuilder.Save(outputFileName);
+            if(outputToFile) 
+                assemblyBuilder.Save(outputFileName);
+            return assemblyBuilder;
         }
 
         public void RegisterMethod(string name, Types returnType, params Parameter[] parameters)

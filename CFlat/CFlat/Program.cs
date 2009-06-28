@@ -26,7 +26,7 @@ namespace CFlat
             var context = new CompilerContext(new ClrCodeGenerator(outputFile), new ErrorSet());
             prog.Compile(context);
 
-            context.Save();
+            context.Save(true);
         }
     }
 }

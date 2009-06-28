@@ -39,8 +39,7 @@ namespace CFlat.Tests.Integration
 
             @class.Compile(compilerContext);
 
-            compilerContext.Save();
-            var outputAssembly =  Assembly.Load(compilerContext.CodeGenerator.Name);
+            var outputAssembly = compilerContext.Save(false);
 
             Type type = outputAssembly.GetType("Test");
             MethodInfo main = type.GetMethod("TestMethodName");

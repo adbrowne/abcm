@@ -18,8 +18,7 @@ namespace CFlat.Tests.Integration
 
                 @class.Compile(compilerContext);
 
-            compilerContext.Save();
-            return Assembly.Load(compilerContext.CodeGenerator.Name);
+            return compilerContext.Save(false);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CFlat.Tests.Unit.ClrCodeGen
             var clrCodeGenerator = new ClrCodeGenerator("Output.exe");
             clrCodeGenerator.StartModule("Foo");
             clrCodeGenerator.EndModule();
-            clrCodeGenerator.Save();
+            clrCodeGenerator.Save(false);
         }
     }
 }
