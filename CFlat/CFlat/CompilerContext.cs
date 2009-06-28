@@ -1,3 +1,5 @@
+using CFlat.CodeGen;
+
 namespace CFlat
 {
     public class CompilerContext

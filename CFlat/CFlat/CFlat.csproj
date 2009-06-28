@@ -57,7 +57,10 @@
     <Compile Include="CFlatParser.cs" />
     <Compile Include="CFlatTree.cs" />
     <Compile Include="CFlatTree.Static.cs" />
-    <Compile Include="ClrCodeGenerator.cs" />
+    <Compile Include="CodeGen\Clr\ClrCodeGenerator.cs" />
+    <Compile Include="CodeGen\Clr\IVariable.cs" />
+    <Compile Include="CodeGen\Clr\LocalVariable.cs" />
+    <Compile Include="CodeGen\Clr\MethodData.cs" />
     <Compile Include="CompileError.cs" />
     <Compile Include="CompileErrorType.cs" />
     <Compile Include="CFlatParser.Static.cs" />
@@ -81,7 +84,7 @@
     <Compile Include="Tree\DivisionExpression.cs" />
     <Compile Include="Tree\Expression.cs" />
     <Compile Include="ExpressionType.cs" />
-    <Compile Include="ICodeGenerator.cs" />
+    <Compile Include="CodeGen\ICodeGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tree\AdditionExpression.cs" />

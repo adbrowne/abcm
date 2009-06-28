@@ -2,6 +2,7 @@
 using System.Linq;
 using Antlr.Runtime;
 using Antlr.Runtime.Tree;
+using CFlat.CodeGen.Clr;
 using NUnit.Framework;
 
 namespace CFlat.Tests.Integration

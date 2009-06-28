@@ -1,4 +1,4 @@
-namespace CFlat
+namespace CFlat.CodeGen
 {
     public interface ICodeGenerator
     {

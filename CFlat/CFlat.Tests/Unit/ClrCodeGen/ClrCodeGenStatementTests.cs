@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using CFlat;
+using CFlat.CodeGen.Clr;
 using NUnit.Framework;
 
 namespace CFlat.Tests.Unit.ClrCodeGen

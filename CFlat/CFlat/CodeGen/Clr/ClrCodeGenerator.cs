@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace CFlat
+namespace CFlat.CodeGen.Clr
 {
     public class ClrCodeGenerator : ICodeGenerator
     {
@@ -38,7 +38,7 @@ namespace CFlat
             if (inMemory) accessType = AssemblyBuilderAccess.Run;
 
             assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName,
-                                                                        accessType);
+                                                                            accessType);
 
             mainModuleBuilder = assemblyBuilder.DefineDynamicModule(outputFileName, true);
         }
@@ -266,56 +266,5 @@ namespace CFlat
         }
 
         private Type Type;
-    }
-
-    public interface IVariable
-    {
-        void PushToStack();
-        void StoreFromStack();
-        Type ClrType { get; }
-    }
-
-    class LocalVariable : IVariable
-    {
-        private LocalBuilder localBuilder;
-        private MethodData methodData;
-        public LocalVariable(string name, MethodData methodData, Type type)
-        {
-            this.methodData = methodData;
-            Type = type;
-            localBuilder = methodData.Builder.GetILGenerator().DeclareLocal(type);
-        }
-
-        public void PushToStack()
-        {
-            methodData.Builder.GetILGenerator().Emit(OpCodes.Ldloc, localBuilder.LocalIndex);
-        }
-
-        public void StoreFromStack()
-        {
-            methodData.Builder.GetILGenerator().Emit(OpCodes.Stloc, localBuilder.LocalIndex);
-        }
-
-        public Type ClrType
-        {
-            get { return Type; }
-        }
-
-        private Type Type;
-    }
-
-    public class MethodData
-    {
-        public MethodBuilder Builder { get; private set; }
-        public Dictionary<string, IVariable> Varables { get; private set; }
-
-        public Types ReturnType { get; private set; }
-
-        public MethodData(MethodBuilder builder, Types returnType, Dictionary<string, IVariable> varables)
-        {
-            Builder = builder;
-            ReturnType = returnType;
-            Varables = varables;
-        }
     }
 }
