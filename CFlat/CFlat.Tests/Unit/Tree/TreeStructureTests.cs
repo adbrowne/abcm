@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using CFlat.Tree;
 
 namespace CFlat.Tests.Unit.Tree
@@ -6,7 +7,7 @@ namespace CFlat.Tests.Unit.Tree
     [TestFixture]
     public class TreeStructureTests
     {
-        private ITreeBuilder tb;
+        private TreeBuilder tb;
 
         [SetUp]
         public void SetUp()
@@ -45,6 +46,20 @@ namespace CFlat.Tests.Unit.Tree
             Assert.AreEqual("TestClass", @class.Name);
 
             Assert.AreSame(@class["TestMethod"], method);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ExceptionOnInvalidRelationalOperator()
+        {
+            tb.RelationalExpression("dd", new IntegerExpression("9"), new IntegerExpression("10"));
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ExceptionOnInvalidTypeName()
+        {
+            tb.GetTypeFromName("Test");
         }
     }
 }
