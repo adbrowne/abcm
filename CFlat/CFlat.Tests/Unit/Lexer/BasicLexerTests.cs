@@ -2,7 +2,7 @@
 using CFlat.Tests.Helper;
 using NUnit.Framework;
 
-namespace CFlat.Tests
+namespace CFlat.Tests.Unit.Lexer
 {
     [TestFixture]
     public class BasicLexerTests

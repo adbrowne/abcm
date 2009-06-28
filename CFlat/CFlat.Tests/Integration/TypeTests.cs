@@ -3,7 +3,7 @@ using Antlr.Runtime;
 using Antlr.Runtime.Tree;
 using NUnit.Framework;
 
-namespace CFlat.Tests
+namespace CFlat.Tests.Integration
 {
     [TestFixture]
     public class TypeTests

@@ -13,6 +13,8 @@ namespace CFlat.Tests.Unit.Tree
         public void SetUp()
         {
             tb = new TreeBuilder();
+            tb.Class("Test");
+            tb.Method("Test", "void");
         }
 
         [Test]

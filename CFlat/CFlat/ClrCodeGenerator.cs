@@ -67,7 +67,7 @@ namespace CFlat
         public void RegisterMethod(string name, Types returnType, params Parameter[] parameters)
         {
             Type[] types = (from p in parameters
-                            select ClrType(p.Type)).ToArray();
+                            select p.Type.ClrType).ToArray();
 
             var method = currentType.DefineMethod(name, MethodAttributes.Static | MethodAttributes.Public, typeof(object), types);
 
@@ -76,26 +76,11 @@ namespace CFlat
             int x = 0;
             foreach (var parameter in parameters)
             {
-                methodData.Varables.Add(parameter.Name, new ParameterVariable(x, methodData, ClrType(parameter.Type)));
+                methodData.Varables.Add(parameter.Name, new ParameterVariable(x, methodData, parameter.Type.ClrType));
                 x++;
             }
 
             classMethods.Add(name, methodData);
-        }
-
-        private Type ClrType(Types type)
-        {
-            switch (type)
-            {
-                case Types.Int:
-                    return typeof (int);
-                case Types.Bool:
-                    return typeof (bool);
-                case Types.String:
-                    return typeof (string);
-                default:
-                    throw new ArgumentException("Unknown Clr Type: " + type);
-            }
         }
 
         public void BeginMethod(string name)
@@ -176,7 +161,7 @@ namespace CFlat
             ilGenerator.Emit(OpCodes.Call, method.Builder);
             
             if(currentMethod.ReturnType != Types.Void)
-                ilGenerator.Emit(OpCodes.Unbox_Any, ClrType(currentMethod.ReturnType));
+                ilGenerator.Emit(OpCodes.Unbox_Any, currentMethod.ReturnType.ClrType);
         }
 
         public void AssignExpression(string name)
@@ -186,12 +171,12 @@ namespace CFlat
 
         public void DefineVariable(string name, Types type)
         {
-            currentMethod.Varables.Add(name, new LocalVariable(name, currentMethod, ClrType(type)));
+            currentMethod.Varables.Add(name, new LocalVariable(name, currentMethod, type.ClrType));
         }
 
         public void ReturnExpression(Types type)
         {
-            ilGenerator.Emit(OpCodes.Box, ClrType(type));
+            ilGenerator.Emit(OpCodes.Box, type.ClrType);
             
             ilGenerator.Emit(OpCodes.Ret);
         }
