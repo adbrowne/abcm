@@ -133,8 +133,6 @@ namespace CFlat
                         ilGenerator.Emit(OpCodes.Ldloc, localBuilder);
                     }
                     break;
-                default:
-                    throw new InvalidOperationException("Invalid operation: " + operation);
             }
         }
 
