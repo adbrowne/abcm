@@ -3,7 +3,7 @@ using Antlr.Runtime.Tree;
 
 namespace CFlat
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
