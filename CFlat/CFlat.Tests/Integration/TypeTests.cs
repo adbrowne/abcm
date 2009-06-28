@@ -52,8 +52,8 @@ public class Test {
         {
             var input = @"
 public class Test { 
-    public int TestMethod(int a, string b){ 
-        return a * b;
+    public int TestMethod(int a){ 
+        return a * ""b"";
     }
 }";
             var error = GetErrors(input)[0];
@@ -72,8 +72,8 @@ public class Test {
         {
             var input = @"
 public class Test { 
-    public int TestMethod(int a, char b){ 
-        return a % b;
+    public int TestMethod(int a){ 
+        return a % 'b';
     }
 }";
             var error = GetErrors(input)[0];
