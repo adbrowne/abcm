@@ -257,7 +257,7 @@ namespace CFlat
 
         public void StoreFromStack()
         {
-            throw new NotImplementedException();
+            MethodData.Builder.GetILGenerator().Emit(OpCodes.Starg, Number);
         }
 
         public Type ClrType

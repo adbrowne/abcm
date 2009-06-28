@@ -187,5 +187,26 @@ public class Test
 
             Assert.AreEqual(9, @return);    
         }
+
+        public int test(int a)
+        {
+            a = a + 1;
+            return a;
+        }
+
+        [Test]
+        public void AssignValueToParameterTest()
+        {
+            var input = @"public class Test { public int TestMethodName(int a){ a = a + 1; return a;} }";
+
+            var outputAssembly = GetResult(input);
+
+            Type type = outputAssembly.GetType("Test");
+            MethodInfo main = type.GetMethod("TestMethodName");
+
+            var @return = (int)main.Invoke(null, new object[]{8});
+
+            Assert.AreEqual(9, @return);    
+        }
     }
 }
