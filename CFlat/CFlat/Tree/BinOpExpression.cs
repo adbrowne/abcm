@@ -22,6 +22,10 @@ namespace CFlat.Tree
                 context.ErrorSet.Add(new CompileError(CompileErrorType.CannotApplyOperator, new object[] { Operator, Expr1.Type, Expr2.Type }));
                 return;
             }
+
+            Expr1.Compile(context);
+            Expr2.Compile(context);
+            context.CodeGenerator.Operation(Operator);
         }
 
         protected abstract Operator Operator { get; }

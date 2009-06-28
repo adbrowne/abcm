@@ -5,7 +5,8 @@ namespace CFlat.Tree
 {
     public class RemainderExpression : BinOpExpression
     {
-        public RemainderExpression(Expression expr1, Expression expr2) : base(expr1, expr2)
+        public RemainderExpression(Expression expr1, Expression expr2)
+            : base(expr1, expr2)
         {
         }
 
@@ -17,16 +18,6 @@ namespace CFlat.Tree
         protected override Operator Operator
         {
             get { return Operator.Mod; }
-        }
-
-        public override void Compile(CompilerContext context)
-        {
-            base.Compile(context);
-
-
-            Expr1.Compile(context);
-            Expr2.Compile(context);
-            context.CodeGenerator.Operation(Operator.Mod);
         }
     }
 }

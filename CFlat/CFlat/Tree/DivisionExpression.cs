@@ -16,10 +16,6 @@ namespace CFlat.Tree
         public override void Compile(CompilerContext context)
         {
             base.Compile(context);
-
-            Expr1.Compile(context);
-            Expr2.Compile(context);
-            context.CodeGenerator.Operation(Operator.Divide);
         }
 
         protected override Operator Operator
