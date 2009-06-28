@@ -48,6 +48,46 @@ public class Test {
         }
 
         [Test]
+        public void CannotApplyOperatorToIncompatibleArgumentsWithMutliplicationOperator()
+        {
+            var input = @"
+public class Test { 
+    public int TestMethod(int a, string b){ 
+        return a * b;
+    }
+}";
+            var error = GetErrors(input)[0];
+
+            Assert.AreEqual(CompileErrorType.CannotApplyOperator, error.Type);
+
+            var dataItems = error.Data.ToArray();
+
+            Assert.AreEqual(Operator.Multiply, dataItems[0]);
+            Assert.AreEqual(Types.Int, dataItems[1]);
+            Assert.AreEqual(Types.String, dataItems[2]);
+        }
+
+        [Test]
+        public void CannotApplyOperatorToIncompatibleArgumentsWithRemainderOperator()
+        {
+            var input = @"
+public class Test { 
+    public int TestMethod(int a, char b){ 
+        return a % b;
+    }
+}";
+            var error = GetErrors(input)[0];
+
+            Assert.AreEqual(CompileErrorType.CannotApplyOperator, error.Type);
+
+            var dataItems = error.Data.ToArray();
+
+            Assert.AreEqual(Operator.Mod, dataItems[0]);
+            Assert.AreEqual(Types.Int, dataItems[1]);
+            Assert.AreEqual(Types.Char, dataItems[2]);
+        }
+
+        [Test]
         public void CannotApplyOperatorToIncompatibleArgumentsWithDivisionOperator()
         {
             var input = @"
