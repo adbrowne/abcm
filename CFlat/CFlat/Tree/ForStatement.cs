@@ -15,5 +15,25 @@ namespace CFlat.Tree
         {
             Body = new List<Statement>();
         }
+
+        public override void Compile(CompilerContext context)
+        {
+            base.Compile(context);
+
+            Declaration.Compile(context);
+
+            var loopToken = context.CodeGenerator.BeginLoopExpression();
+            Expression.Compile(context);
+            context.CodeGenerator.BeginLoopBody(loopToken);
+
+            foreach (var statement in Body)
+            {
+                statement.Compile(context);
+            }
+
+            Iterator.Compile(context);
+
+            context.CodeGenerator.EndLoop(loopToken);
+        }
     }
 }
