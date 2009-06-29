@@ -108,7 +108,7 @@ namespace CFlat.Tree
             return new MethodCall(name, currentClass);
         }
 
-        public Statement AssignmentStatement(string name, Expression expression)
+        public AssignmentStatement AssignmentStatement(string name, Expression expression)
         {
             return new AssignmentStatement(name, expression);
         }
@@ -121,6 +121,11 @@ namespace CFlat.Tree
         public Argument Argument(string typeName, string name)
         {
             return new Argument(GetTypeFromName(typeName), name);
+        }
+
+        public Statement ForStatement(Expression expression)
+        {
+            return new ForStatement(expression);
         }
 
         public Types GetTypeFromName(string typeName)

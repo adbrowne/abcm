@@ -31,17 +31,30 @@ param returns [Argument a]:
 	;
 stat returns [Statement s]:  e=expr { $s = TB.Statement(e); }
 	|
-	^(EQUALS ^(t=ID name=ID) e=expr {$s = TB.DeclarationStatement($t.text, $name.text, e); })
+	ds=declaration_stmt {$s = ds;}
 	|
-	^(EQUALS name=ID e=expr) {$s = TB.AssignmentStatement($name.text, e); }
+	as_stmt=assignment_stmt {$s = as_stmt;}
 	|
 	^(RETURN e=expr) { $s = TB.ReturnStatement(e); }
 	|
 	^(IF e=expr { $s = TB.IfStatement(e); } (st=stat { ((IfStatement)$s).IfBody.Add(st); })*) 
 	|
 	^(WHILE e=expr { $s = TB.WhileStatement(e); } (st=stat { ((WhileStatement)$s).Body.Add(st); })*) 
+	|
+	^(FOR ds=declaration_stmt e=expr 
+		{$s = TB.ForStatement(e); ((ForStatement)$s).Declaration = (DeclarationStatement)ds;} 
+		as_stmt=assignment_stmt {((ForStatement)$s).Iterator = (AssignmentStatement)as_stmt;}
+		(st=stat {((ForStatement)$s).Body.Add(st);})*
+	 )
 	;
 
+
+declaration_stmt returns [Statement s]
+	:	^(EQUALS ^(t=ID name=ID) e=expr {$s = TB.DeclarationStatement($t.text, $name.text, e); });
+
+assignment_stmt returns [AssignmentStatement s]
+	:	^(EQUALS name=ID e=expr) {$s = TB.AssignmentStatement($name.text, e); };
+	
 expr returns [Expression e]
     :   ^('+' a=expr b=expr)       { $e = TB.AdditionExpression(a, b);}
     | 	^('-' a=expr b=expr)       { $e = TB.SubtractionExpression(a, b);}

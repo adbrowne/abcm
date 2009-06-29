@@ -63,5 +63,30 @@ public class Test {
 
             Assert.AreEqual(25, @return);
         }
+
+        [Test]
+        public void SimpleForLoopTest()
+        {
+
+            var input = @"
+public class Test { 
+    public int TestMethod(){ 
+        int a = 0;
+        for(int b = 0; b < 5; b = b + 1){
+            a = a + 1;
+        }
+        return a; 
+    }
+}";
+
+            var outputAssembly = GetResult(input);
+
+            Type type = outputAssembly.GetType("Test");
+            MethodInfo main = type.GetMethod("TestMethod");
+
+            var @return = (int)main.Invoke(null, null);
+
+            Assert.AreEqual(5, @return);
+        }
     }
 }

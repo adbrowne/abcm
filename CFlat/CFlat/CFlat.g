@@ -31,16 +31,25 @@ param	:	 t=ID n=ID -> ^(PARAM $t $n);
 	
 stat:   expr EOS-> expr
 	|
-	t=ID name=ID EQUALS expr EOS -> ^(EQUALS ^($t $name) expr)
+	declaration_stmt EOS!
 	|
-	name=ID EQUALS expr EOS -> ^(EQUALS $name expr)
+	assignment_stmt EOS!
 	|
 	RETURN expr EOS -> ^(RETURN expr)
 	|
 	IF LBRAC expr RBRAC '{' stat* '}' -> ^(IF expr stat*)
 	|
 	WHILE LBRAC expr RBRAC '{' stat* '}' -> ^(WHILE expr stat*)
+	|
+	FOR LBRAC declaration_stmt EOS expr EOS assignment_stmt RBRAC '{' stat* '}' 
+		-> ^(FOR declaration_stmt expr assignment_stmt stat*)
 	;
+	
+declaration_stmt
+	:	t=ID name=ID EQUALS expr -> ^(EQUALS ^($t $name) expr);
+
+assignment_stmt
+	:	name=ID EQUALS expr -> ^(EQUALS $name expr);
 	
 expr	:	additive_expr (REL_OP^ additive_expr)*;
 
@@ -76,6 +85,8 @@ RETURN 	:	'return';
 IF	: 	'if';
 
 WHILE	:	'while';
+
+FOR	: 	'for';
 
 ARITH_OP 
 	:	 '+';
