@@ -60,6 +60,7 @@
     <Compile Include="CodeGen\Clr\ClrIfToken.cs" />
     <Compile Include="CodeGen\Clr\ClrCodeGenerator.cs" />
     <Compile Include="CodeGen\Clr\ClrWhileToken.cs" />
+    <Compile Include="CodeGen\Clr\ParameterVariable.cs" />
     <Compile Include="CodeGen\IIfToken.cs" />
     <Compile Include="CodeGen\Clr\IVariable.cs" />
     <Compile Include="CodeGen\Clr\LocalVariable.cs" />

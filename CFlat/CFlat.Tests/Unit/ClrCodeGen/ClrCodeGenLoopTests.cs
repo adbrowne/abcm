@@ -72,7 +72,5 @@ namespace CFlat.Tests.Unit.ClrCodeGen
         
             Assert.That(outputAssembly.ContainsTypeWithMethod("Test", "Test"));
         }
-
-
     }
 }
