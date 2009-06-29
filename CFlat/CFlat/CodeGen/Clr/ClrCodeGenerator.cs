@@ -201,29 +201,29 @@ namespace CFlat.CodeGen.Clr
             ilGenerator.MarkLabel(afterIf);
         }
 
-        public void BeginWhileBody(IWhileToken whileToken)
+        public ILoopToken BeginLoopExpression()
         {
-            var afterWhile = ((ClrWhileToken) whileToken).AfterWhile;
-            ilGenerator.Emit(OpCodes.Brfalse, afterWhile);
+            var beforeLoop = ilGenerator.DefineLabel();
+            var afterLoop = ilGenerator.DefineLabel();
+
+            ilGenerator.MarkLabel(beforeLoop);
+            return new ClrLoopToken(beforeLoop, afterLoop);
         }
 
-        public void EndWhile(IWhileToken whileToken)
+        public void BeginLoopBody(ILoopToken loopToken)
         {
-            var clrWhileToken = whileToken as ClrWhileToken;
-
-            var beforeWhileLabel = clrWhileToken.BeforeWhile;
-            ilGenerator.Emit(OpCodes.Br, beforeWhileLabel);
-
-            ilGenerator.MarkLabel(clrWhileToken.AfterWhile);
+            var afterLoop = ((ClrLoopToken) loopToken).AfterLoop;
+            ilGenerator.Emit(OpCodes.Brfalse, afterLoop);
         }
 
-        public IWhileToken BeginWhileExpression()
+        public void EndLoop(ILoopToken loopToken)
         {
-            var beforeWhile = ilGenerator.DefineLabel();
-            var afterWhile = ilGenerator.DefineLabel();
-            
-            ilGenerator.MarkLabel(beforeWhile);
-            return new ClrWhileToken(beforeWhile, afterWhile);
+            var clrLoopToken = loopToken as ClrLoopToken;
+
+            var beforeLoopLabel = clrLoopToken.BeforeLoop;
+            ilGenerator.Emit(OpCodes.Br, beforeLoopLabel);
+
+            ilGenerator.MarkLabel(clrLoopToken.AfterLoop);
         }
     }
 }

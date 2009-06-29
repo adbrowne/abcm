@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g 2009-06-29 14:38:10
+// $ANTLR 3.1.2 C:\\data\\code\\abcm\\CFlat\\CFlat\\CFlat.g 2009-06-29 15:41:46
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -225,7 +225,7 @@ public partial class CFlatParser : Parser
 
 
             	// AST REWRITE
-            	// elements:          ID, method, CLASS
+            	// elements:          method, CLASS, ID
             	// token labels:      
             	// rule labels:       retval
             	// token list labels: 
@@ -456,7 +456,7 @@ public partial class CFlatParser : Parser
 
 
             	// AST REWRITE
-            	// elements:          stat, name, param, t
+            	// elements:          name, t, stat, param
             	// token labels:      t, name
             	// rule labels:       retval
             	// token list labels: 
@@ -876,7 +876,7 @@ public partial class CFlatParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          expr, RETURN
+                    	// elements:          RETURN, expr
                     	// token labels:      
                     	// rule labels:       retval
                     	// token list labels: 
@@ -964,7 +964,7 @@ public partial class CFlatParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          stat, expr, IF
+                    	// elements:          expr, IF, stat
                     	// token labels:      
                     	// rule labels:       retval
                     	// token list labels: 
@@ -1059,7 +1059,7 @@ public partial class CFlatParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          expr, WHILE, stat
+                    	// elements:          expr, stat, WHILE
                     	// token labels:      
                     	// rule labels:       retval
                     	// token list labels: 
@@ -1170,7 +1170,7 @@ public partial class CFlatParser : Parser
 
 
                     	// AST REWRITE
-                    	// elements:          stat, FOR, declaration_stmt, expr, assignment_stmt
+                    	// elements:          declaration_stmt, assignment_stmt, stat, expr, FOR
                     	// token labels:      
                     	// rule labels:       retval
                     	// token list labels: 
@@ -1283,7 +1283,7 @@ public partial class CFlatParser : Parser
 
 
             	// AST REWRITE
-            	// elements:          name, t, expr, EQUALS
+            	// elements:          expr, EQUALS, name, t
             	// token labels:      t, name
             	// rule labels:       retval
             	// token list labels: 
@@ -1391,7 +1391,7 @@ public partial class CFlatParser : Parser
 
 
             	// AST REWRITE
-            	// elements:          EQUALS, expr, name
+            	// elements:          expr, name, EQUALS
             	// token labels:      name
             	// rule labels:       retval
             	// token list labels: 

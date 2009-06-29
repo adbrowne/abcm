@@ -1,6 +1,6 @@
 namespace CFlat.CodeGen
 {
-    public interface IWhileToken
+    public interface ILoopToken
     {
     }
 }
